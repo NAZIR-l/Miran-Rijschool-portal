@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+  pre_build:
+    commands:
+      - npm install
+  post_build:
+    commands:
+      - chmod a+x ./deploy.sh
+      - ./deploy.sh
