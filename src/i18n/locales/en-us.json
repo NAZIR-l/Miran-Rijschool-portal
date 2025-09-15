@@ -3,5 +3,73 @@
   "about": "About Us",
   "contact": "Contact Us",
   "is_required": "is required",
-  "language": "Lang"
+  "language": "Language",
+  "header": {
+    "hello": "Hello,"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "account": "Account",
+    "orders": "Orders",
+    "logout": "Log out"
+  },
+  "index": {
+    "title": "Driving Lesson Packages",
+    "subtitle": "Choose manual, automatic or retake",
+    "manual": "Manual (stick shift)",
+    "manual_desc": "Manual",
+    "automatic": "Automatic",
+    "automatic_desc": "Automatic",
+    "retake_desc": "Retake packages",
+    "retake": "Retake packages",
+    "retake_note": "For retakes only",
+    "start": "Starter package",
+    "basic": "Basic package",
+    "total": "Total package",
+    "complete": "Complete package",
+    "most_chosen": "Most chosen",
+    "lesson_desc": "{count} lessons (100 min.) + 1 practical exam",
+    "lesson_desc_free": "{count} lessons (100 min.) + FREE practical exam",
+    "note_all_lessons": "All lessons are 100 minutes.",
+    "note_inclusive": "Packages include a practical exam at the CBR.",
+    "note_retake_only": "Retake packages are only available for students who failed their first exam."
+  },
+  "cta": {
+    "sign_up": "Sign up"
+  },
+  "account": {
+    "title": "Account details",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "birth_date": "Date of birth",
+    "phone": "Phone number",
+    "country": "Country",
+    "postal_code": "Postcode",
+    "address2": "Number + addition",
+    "street": "Street",
+    "city": "City",
+    "email": "Email address",
+    "section_login_with": "Log in with",
+    "password": "Password",
+    "warning_after_password": "Note: after changing your password you need to log in again.",
+    "oauth_google": "Sign in with Google",
+    "oauth_apple": "Sign in with Apple",
+    "email_pref_title": "Manage email preferences",
+    "email_pref_label": "I would like to receive emails about new packages or special offers.",
+    "exam_date": "Exam date",
+    "submit": "Update"
+  },
+  "orders": {
+    "title": "Orders",
+    "package": "Package",
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    "products": "Products",
+    "order_details": "Order details",
+    "order_id": "Order id",
+    "date": "Date",
+    "total": "Total",
+    "payment_method": "Payment Method",
+    "view_invoice": "View invoice"
+  }
 }

@@ -1,0 +1,76 @@
+{
+  "home": "Home",
+  "about": "Over ons",
+  "contact": "Contact",
+  "is_required": "is verplicht",
+  "language": "Taal",
+  "header": {
+    "hello": "Hallo,"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "account": "Account",
+    "orders": "Bestellingen",
+    "logout": "Uitloggen"
+  },
+  "index": {
+    "title": "Rijles Pakketten",
+    "subtitle": "Kies handgeschakeld, automaat of herpakketten",
+    "manual": "Handgeschakeld (schakelauto)",
+    "manual_desc": "Handgeschakeld",
+    "automatic_desc": "Automaat",
+    "retake_desc": "Herpakketten",
+    "automatic": "Automaat",
+    "retake": "Herpakketten",
+    "retake_note": "Alleen voor gezakten",
+    "start": "Startpakket",
+    "basic": "Basispakket",
+    "total": "Totaalpakket",
+    "complete": "Compleet pakket",
+    "most_chosen": "Meest gekozen",
+    "lesson_desc": "{count} lessen (100 min.) + 1 praktijkexamen",
+    "lesson_desc_free": "{count} lessen (100 min.) + GRATIS praktijkexamen",
+    "note_all_lessons": "Alle lessen zijn 100 minuten.",
+    "note_inclusive": "Pakketten zijn inclusief praktijkexamen bij het CBR.",
+    "note_retake_only": "Herpakketten zijn alleen beschikbaar voor leerlingen die bij het eerste examen gezakt zijn."
+  },
+  "cta": {
+    "sign_up": "Meld je aan"
+  },
+  "account": {
+    "title": "Account gegevens",
+    "first_name": "Voornaam",
+    "last_name": "Achternaam",
+    "birth_date": "Geboortedatum",
+    "phone": "Telefoonnummer",
+    "country": "Land",
+    "postal_code": "Postcode",
+    "address2": "Nummer + toevoeging",
+    "street": "Straat",
+    "city": "Stad",
+    "email": "E-mailadres",
+    "section_login_with": "Log in met",
+    "password": "Wachtwoord",
+    "warning_after_password": "Let op, na het wijzigen van je wachtwoord is het nodig om opnieuw in te loggen.",
+    "oauth_google": "Aanmelden met Google",
+    "oauth_apple": "Aanmelden met Apple",
+    "email_pref_title": "Email-voorkeur beheren",
+    "email_pref_label": "Ik wil graag emails ontvangen over nieuwe pakketten of speciale aanbiedingen.",
+    "exam_date": "Examen datum",
+    "submit": "Wijzig"
+  },
+  "orders": {
+    "title": "Bestellingen",
+    "package": "Pakket",
+    "paid": "Betaald",
+    "unpaid": "Onbetaald",
+    "products": "Producten",
+    "order_details": "Bestelgegevens",
+    "order_id": "Bestelnummer",
+    "date": "Datum",
+    "total": "Totaal",
+    "payment_method": "Betaalmethode",
+    "view_invoice": "Bekijk factuur"
+  }
+}
+
