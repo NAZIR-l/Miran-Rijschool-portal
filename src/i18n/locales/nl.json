@@ -9,8 +9,11 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "downloads": "Downloads",
     "account": "Account",
     "orders": "Bestellingen",
+    "signals": "Signalen",
+    "packages": "Pakketten",
     "logout": "Uitloggen"
   },
   "index": {
@@ -28,6 +31,7 @@
     "total": "Totaalpakket",
     "complete": "Compleet pakket",
     "most_chosen": "Meest gekozen",
+    "recommended": "Aanbevolen",
     "lesson_desc": "{count} lessen (100 min.) + 1 praktijkexamen",
     "lesson_desc_free": "{count} lessen (100 min.) + GRATIS praktijkexamen",
     "note_all_lessons": "Alle lessen zijn 100 minuten.",
@@ -71,6 +75,10 @@
     "total": "Totaal",
     "payment_method": "Betaalmethode",
     "view_invoice": "Bekijk factuur"
+  }
+  ,
+  "downloads": {
+    "title": "Downloads"
   }
 }
 

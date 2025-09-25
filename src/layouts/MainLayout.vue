@@ -44,16 +44,23 @@
             <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
           </div>
           <nav>
-            <ul>
+            <ul class="nav-list">
               <li
-                :class="{ active: isActive('/') }"
+                :class="['menu-item', { active: isActive('/') }]"
                 @click="navigateAndClose('/')"
               >
                 <q-icon name="dashboard" size="18px" />
                 <span>{{ $t('nav.dashboard') }}</span>
               </li>
               <li
-                :class="{ active: isActive('/account') }"
+                :class="['menu-item', { active: isActive('/downloads') }]"
+                @click="navigateAndClose('/downloads')"
+              >
+                <q-icon name="download" size="18px" />
+                <span>{{ $t('nav.downloads') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/account') }]"
                 @click="navigateAndClose('/account')"
               >
                 <q-icon name="person" size="18px" />
@@ -61,13 +68,13 @@
                 <!-- <span class="badge">1</span> -->
               </li>
               <li
-                :class="{ active: isActive('/orders') }"
+                :class="['menu-item', { active: isActive('/orders') }]"
                 @click="navigateAndClose('/orders')"
               >
                 <q-icon name="receipt" size="18px" />
                 <span>{{ $t('nav.orders') }}</span>
               </li>
-              <li class="logout">
+              <li class="menu-item logout">
                 <q-icon name="logout" size="18px" />
                 <span>{{ $t('nav.logout') }}</span>
               </li>
@@ -76,17 +83,24 @@
         </q-drawer>
 
         <aside class="sidebar">
-          <div class="nav-brand">
+          <!-- <div class="nav-brand">
             <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
-          </div>
+          </div> -->
           <nav>
-            <ul>
-              <li :class="{ active: isActive('/') }" @click="navigate('/')">
+            <ul class="nav-list">
+              <li :class="['menu-item', { active: isActive('/') }]" @click="navigate('/')">
                 <q-icon name="dashboard" size="18px" />
                 <span>{{ $t('nav.dashboard') }}</span>
               </li>
               <li
-                :class="{ active: isActive('/account') }"
+                :class="['menu-item', { active: isActive('/downloads') }]"
+                @click="navigate('/downloads')"
+              >
+                <q-icon name="download" size="18px" />
+                <span>{{ $t('nav.downloads') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/account') }]"
                 @click="navigate('/account')"
               >
                 <q-icon name="person" size="18px" />
@@ -94,40 +108,57 @@
                 <!-- <span class="badge">1</span> -->
               </li>
               <li
-                :class="{ active: isActive('/orders') }"
+                :class="['menu-item', { active: isActive('/signals') }]"
+                @click="navigate('/signals')"
+              >
+                <q-icon name="traffic" size="18px" />
+                <span>{{ $t('nav.signals') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/packages') }]"
+                @click="navigate('/packages')"
+              >
+                <q-icon name="inventory_2" size="18px" />
+                <span>{{ $t('nav.packages') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/orders') }]"
                 @click="navigate('/orders')"
               >
                 <q-icon name="receipt" size="18px" />
                 <span>{{ $t('nav.orders') }}</span>
               </li>
-              <li class="logout">
+              <li class="menu-item logout">
                 <q-icon name="logout" size="18px" />
                 <span>{{ $t('nav.logout') }}</span>
               </li>
+
             </ul>
           </nav>
         </aside>
-        <main class="content">
-          <div class="page-header"></div>
-          <router-view />
-          <!-- Content footer inside page content -->
-          <footer class="footer-wrap">
-            <div class="footer-inner">
-              <div class="left">
-                <div>Call us: 020 261 7438</div>
-                <div>Mon - Fri 09:00 to 17:30</div>
-                <div>Sat 11:00 to 16:00</div>
-                <div>Sun closed</div>
+        <main class="content content-aligned">
+          <div class="content-container">
+            <div class="page-header"></div>
+            <router-view />
+            <!-- Content footer inside page content -->
+            <footer class="footer-wrap">
+              <div class="footer-inner">
+                <div class="left">
+                  <div>Call us: 020 261 7438</div>
+                  <div>Mon - Fri 09:00 to 17:30</div>
+                  <div>Sat 11:00 to 16:00</div>
+                  <div>Sun closed</div>
+                </div>
+                <div class="middle">
+                  <div>WhatsApp: 06 18 99 20</div>
+                  <div>69slagen@theorietoppers.nl</div>
+                </div>
+                <div class="right">
+                  <div>Terms and Conditions © Theorie Toppers 2025</div>
+                </div>
               </div>
-              <div class="middle">
-                <div>WhatsApp: 06 18 99 20</div>
-                <div>69slagen@theorietoppers.nl</div>
-              </div>
-              <div class="right">
-                <div>Terms and Conditions © Theorie Toppers 2025</div>
-              </div>
-            </div>
-          </footer>
+            </footer>
+          </div>
         </main>
       </div>
     </q-page-container>
@@ -299,6 +330,7 @@ export default defineComponent({
   width: 220px;
   padding: 16px 0;
 }
+.content-aligned{ flex:1; }
 .nav-brand {
   padding: 0 10px;
   height: 74px;
@@ -313,6 +345,7 @@ export default defineComponent({
   justify-content: flex-start;
   margin-top: 10px;
   margin-bottom: 16px;
+  
   overflow: hidden;
   position: relative;
   pointer-events: none;
@@ -328,8 +361,10 @@ export default defineComponent({
 .sidebar nav {
   flex: 1;
   height: 100%;
+  
 }
 .sidebar nav ul {
+  height: max-content !important; 
   list-style: none;
   margin: 0;
   font-size: 16px;
@@ -337,8 +372,9 @@ export default defineComponent({
   unicode-bidi: isolate;
   padding: 0;
   padding-top: 16px;
+  
   height: 100%;
-  margin-top: 40px;
+  margin-top: 14px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -350,20 +386,28 @@ export default defineComponent({
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: flex-start;
+  border-top: 5px solid #2b3bff !important;
 }
 .sidebar nav li {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 18px;
+  padding: 12px 16px;
   border-radius: 10px;
   cursor: pointer;
-  color: #565656;
+  color: #334155;
+  border: 1px solid transparent;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.sidebar nav li:hover {
+  background: #f8fafc;
 }
 .sidebar nav li.active {
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   color: #0f172a;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.9));
+  border-color: #e5e7eb;
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
+  transform: translateY(-1px);
 }
 .sidebar nav li .badge {
   margin-left: auto;
@@ -377,19 +421,68 @@ export default defineComponent({
   color: #e24d3a;
 }
 
+/* Drawer and sidebar: container surface like category menu */
+.mobile-drawer .nav-list,
+.sidebar .nav-list {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+/* Left accent bar on active state */
+.sidebar nav li.active,
+.mobile-drawer nav li.active {
+  position: relative;
+}
+.sidebar nav li.active::before,
+.mobile-drawer nav li.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #1275ff, #2b3bff);
+}
+
+/* Icon color harmony */
+.sidebar nav li .q-icon,
+.mobile-drawer nav li .q-icon {
+  color: #64748b;
+}
+.sidebar nav li.active .q-icon,
+.mobile-drawer nav li.active .q-icon {
+  color: #0f172a;
+}
+
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 91vh;
 }
 /* Stick footer to bottom of viewport when content is short */
-.content > .footer-wrap {
+.content-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content-container > .footer-wrap {
   margin-top: auto;
 }
 
+.content-container{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .footer-wrap {
-  padding: 40px 0;
+  padding: 40px 0 0;
 }
 .footer-inner {
   display: flex;

@@ -9,8 +9,11 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "downloads": "Downloads",
     "account": "Account",
     "orders": "Orders",
+    "signals": "Signals",
+    "packages": "Packages",
     "logout": "Log out"
   },
   "index": {
@@ -28,6 +31,7 @@
     "total": "Total package",
     "complete": "Complete package",
     "most_chosen": "Most chosen",
+    "recommended": "Recommended",
     "lesson_desc": "{count} lessons (100 min.) + 1 practical exam",
     "lesson_desc_free": "{count} lessons (100 min.) + FREE practical exam",
     "note_all_lessons": "All lessons are 100 minutes.",
@@ -71,5 +75,9 @@
     "total": "Total",
     "payment_method": "Payment Method",
     "view_invoice": "View invoice"
+  }
+  ,
+  "downloads": {
+    "title": "Downloads"
   }
 }

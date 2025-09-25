@@ -1,76 +1,60 @@
 <template>
   <q-page class="home-bg">
-    <div class="programs">
-
-
-      <div class="section-header">
-        <h2>{{ $t('index.title') }}</h2>
-        <p class="section-subtitle">{{ $t('index.subtitle') }}</p>
-      </div>
-
-      <div class="category-menu" :class="selectedCategory">
-        <div
-          v-for="item in categoryMenu"
-          :key="item.id"
-          :class="['menu-item', { active: selectedCategory === item.id }]"
-          @click="selectedCategory = item.id"
-        >
-          <q-icon :name="item.icon" size="20px" />
-          <span class="label">{{ item.label }}</span>
-        </div>
-        <div class="active-bar" :style="activeBarStyle"></div>
-      </div>
-
-      <transition name="fade-slide" mode="out-in">
-        <div
-          v-if="currentCategory"
-          :key="currentCategory.id"
-          class="program-category"
-          :class="currentCategory.id"
-        >
-        <div class="category-note-container " style="    direction: rtl;">
-        <span v-if="currentCategory.note" class="category-note">{{ currentCategory.note }}</span>
-        </div>
-          <div class="category-header">
-            
-            <div class="category-heading">
-              <q-icon :name="menuItemFor(currentCategory.id)?.icon" size="22px" />
-              <h3 class="category-title">{{ currentCategory.title }}</h3>
-            </div>
-            <img class="category-image" src="../assets/logo.svg" alt="category" />
-          </div>
-
-          <div class="category-grid">
-            <div
-              v-for="pkg in currentCategory.packages"
-              :key="pkg.code"
-              :class="['package-card', { recommended: isRecommended(currentCategory.id, pkg.code) }]"
-            >
-              <div class="card-accent" aria-hidden="true"></div>
-              <div class="card-body">
-                <div class="card-top">
-                  <div class="pkg-label">{{ pkg.name }}</div>
-                  <span v-if="isRecommended(currentCategory.id, pkg.code)" class="pkg-badge">{{ $t('index.most_chosen') }}</span>
-                </div>
-                <div class="pkg-desc">{{ pkg.description }}</div>
-                <div class="price-row">
-                  <span class="price-old">{{ pkg.normalPrice }}</span>
-                  <span class="price-new">{{ pkg.packagePrice }}</span>
-                </div>
-                <div class="cta-row">
-                  <q-btn class="cta-card" color="primary" unelevated :label="$t('cta.sign_up')" />
-                </div>
+    <div class="dashboard">
+      <div class="dashboard-grid three">
+        <!-- Greeting -->
+        <div class="dash-card greeting-card d-col-12">
+          <div class="greeting-inner">
+            <div class="copy">
+              <div class="eyebrow">Welcome back</div>
+              <h2 class="headline">{{ username }}!</h2>
+              <div class="sub">Ready to continue learning? Pick up where you left off.</div>
+              <div class="actions">
+                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="q-mr-sm" />
+                <q-btn outline color="primary" no-caps icon="menu_book" label="Browse chapters" />
               </div>
             </div>
+            <div class="art">
+              <img src="../assets/logo.svg" alt="art" />
+            </div>
           </div>
         </div>
-      </transition>
-      
-      <ul class="notes">
-        <li>{{ $t('index.note_all_lessons') }}</li>
-        <li>{{ $t('index.note_inclusive') }}</li>
-        <li>{{ $t('index.note_retake_only') }}</li>
-      </ul>
+
+        <!-- Overview -->
+        <div class="dash-card overview-card d-col-6">
+          <div class="card-title with-badge">
+            <span>Overview</span>
+            <q-chip color="green-6" text-color="white" size="sm">{{ currentPackage.name }}</q-chip>
+          </div>
+          <div class="overview-rows">
+            <div class="row-line">
+              <span class="muted">Days left</span>
+              <span class="value">{{ daysLeft }} days</span>
+            </div>
+            <div class="row-line">
+              <span class="muted">Expires</span>
+              <span class="value">{{ currentPackage.expires }}</span>
+            </div>
+          </div>
+          <div class="quick-links">
+            <q-btn flat color="primary" no-caps icon="download" label="Downloads" @click="goto('/downloads')" />
+            <q-btn flat color="primary" no-caps icon="person" label="Account" @click="goto('/account')" />
+            <q-btn flat color="primary" no-caps icon="receipt" label="Orders" @click="goto('/orders')" />
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="dash-card progress-card d-col-6">
+          <div class="card-title">Progress</div>
+          <div class="muted">Exams attempted</div>
+          <div class="progress-line">
+            <div class="percent">{{ progressPercent }}%</div>
+            <div class="ratio">({{ practice.done }}/{{ practice.total }})</div>
+          </div>
+          <q-linear-progress :value="practiceProgress" color="primary" track-color="grey-3" rounded class="q-mt-sm" />
+          <div class="hint">Keep going—you’re almost there!</div>
+        </div>
+      </div>
     </div>
   </q-page>
 
@@ -78,127 +62,42 @@
 
 <script>
 import { defineComponent, ref, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
 export default defineComponent({
   name: "IndexPage",
   setup() {
-    const { t: $t } = useI18n({ useScope: 'global' })
-    const selectedCategory = ref('automatic')
-    const categoryMenu = computed(() => ([
-      { id: 'manual', label: $t('index.manual_desc'), icon: 'directions_car' },
-      { id: 'automatic', label: $t('index.automatic_desc'), icon: 'bolt' },
-      { id: 'retake', label: $t('index.retake_desc'), icon: 'autorenew' },
-    ]))
-    // Build all labels dynamically from i18n so switching languages updates immediately
-    const categories = computed(() => [
-      {
-        id: "manual",
-        title: $t('index.manual'),
-        packages: [
-          {
-            code: 'start',
-            name: $t('index.start'),
-            description: $t('index.lesson_desc', { count: 5 }),
-            normalPrice: "€800",
-            packagePrice: "€770",
-          },
-          {
-            code: 'basic',
-            name: $t('index.basic'),
-            description: $t('index.lesson_desc', { count: 10 }),
-            normalPrice: "€1.300",
-            packagePrice: "€1.250",
-          },
-          {
-            code: 'total',
-            name: $t('index.total'),
-            description: $t('index.lesson_desc', { count: 15 }),
-            normalPrice: "€1.800",
-            packagePrice: "€1.730",
-          },
-          {
-            code: 'complete',
-            name: $t('index.complete'),
-            description: $t('index.lesson_desc', { count: 20 }),
-            normalPrice: "€2.300",
-            packagePrice: "€2.220",
-          },
-        ],
-      },
-      {
-        id: "automatic",
-        title: $t('index.automatic'),
-        packages: [
-          {
-            code: 'start',
-            name: $t('index.start'),
-            description: $t('index.lesson_desc', { count: 5 }),
-            normalPrice: "€850",
-            packagePrice: "€820",
-          },
-          {
-            code: 'basic',
-            name: $t('index.basic'),
-            description: $t('index.lesson_desc', { count: 10 }),
-            normalPrice: "€1.400",
-            packagePrice: "€1.350",
-          },
-          {
-            code: 'total',
-            name: $t('index.total'),
-            description: $t('index.lesson_desc', { count: 15 }),
-            normalPrice: "€1.950",
-            packagePrice: "€1.870",
-          },
-          {
-            code: 'complete',
-            name: $t('index.complete'),
-            description: $t('index.lesson_desc', { count: 20 }),
-            normalPrice: "€2.500",
-            packagePrice: "€2.400",
-          },
-        ],
-      },
-      {
-        id: "retake",
-        title: $t('index.retake'),
-        note: $t('index.retake_note'),
-        packages: [
-          {
-            code: 'basic_retake',
-            name: $t('index.basic'),
-            description: $t('index.lesson_desc_free', { count: 5 }),
-            normalPrice: "€800",
-            packagePrice: "€500",
-          },
-          {
-            code: 'plus_retake',
-            name: $t('index.total'),
-            description: $t('index.lesson_desc_free', { count: 7 }),
-            normalPrice: "€1.000",
-            packagePrice: "€700",
-          },
-        ],
-      },
-    ])
-    function isRecommended(categoryId, packageCode) {
-      if (categoryId === "manual") return packageCode === "basic";
-      if (categoryId === "automatic") return packageCode === "total";
-      if (categoryId === "retake") return packageCode === "plus_retake";
-      return false;
+    const router = useRouter();
+    const username = ref("Tareqyt01");
+
+    const practice = ref({ done: 2, total: 7 });
+    const practiceProgress = computed(() => {
+      if (practice.value.total === 0) return 0;
+      return practice.value.done / practice.value.total;
+    });
+    const progressPercent = computed(() => Math.round(practiceProgress.value * 100));
+
+    const currentPackage = ref({
+      name: 'deluxe',
+      expires: '26-10-25 14:07',
+      daysUsed: 10,
+      totalDays: 31,
+    });
+    const daysLeft = computed(() => {
+      const total = currentPackage.value.totalDays || 0;
+      const used = currentPackage.value.daysUsed || 0;
+      const left = Math.max(total - used, 0);
+      return left;
+    });
+
+    function goto(path){
+      try { router.push(path); } catch(e) {}
     }
-    const currentCategory = computed(() => categories.value.find(c => c.id === selectedCategory.value))
-    function menuItemFor(id){ return categoryMenu.value.find(m => m.id === id) }
-    const activeBarStyle = computed(() => {
-      const idx = categoryMenu.value.findIndex(m => m.id === selectedCategory.value)
-      const width = 100 / categoryMenu.value.length
-      return { width: width + '%', transform: `translateX(${idx * 100}%)` }
-    })
-    return { categories, isRecommended, categoryMenu, selectedCategory, currentCategory, menuItemFor, activeBarStyle };
+
+    return { username, practice, practiceProgress, progressPercent, currentPackage, daysLeft, goto };
   },
 });
 </script>
 
-<style scoped lang="scss" src="./index.scss">
+<style scoped lang="scss" src="../css/dashboard.scss">
 
 </style>

@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     padding: 12px;
+    margin-top: 6px;
+    
 }
 
 /* New semantic layout */
@@ -10,6 +12,7 @@
     border-radius: 10px;
     padding: 48px 56px;
     margin-bottom: 20px;
+    border-top: 5px solid #2b3bff;
     width: 100%;
 }
 
@@ -94,13 +97,17 @@
 }
 
 .banner--tip {
-    background-color: #ffb800;
-    border: 1px solid #ffb800;
+    background-color: #65656520;
+    border: 1px solid #b9b9b9;
+    color: #656565;
+    font-size: 12px;
 }
 
 .banner--warning {
-    background-color: #ffb800;
-    border: 1px solid #ffb800;
+    background-color: #65656520;
+    border: 1px solid #b9b9b9;
+    color: #656565;
+    font-size: 12px;
 }
 
 .oauth-btn {
@@ -111,6 +118,7 @@
     font-weight: 600;
     line-height: 140%;
     border-radius: 6px;
+    max-width: 460px;
     border: 1px solid #ddd;
     min-height: 60px;
     padding-left: 21px;

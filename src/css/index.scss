@@ -753,23 +753,111 @@
 
 .package-card {
     position: relative;
-    background: #fff;
-    border: 1px solid #eef2f7;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    background: linear-gradient(135deg, #f5f8ff 0%, #ffffff 65%);
+    border: 2px solid #2b6cff14;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(17, 24, 39, 0.05);
     overflow: hidden;
     transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
-.package-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    border-color: #dbe4ef;
+.package-card.selected {
+    border-color: #2b6cff88;
+    box-shadow: 0 18px 44px rgba(43,108,255,.18);
 }
 
-.card-accent {
-    height: 6px;
-    background: linear-gradient(90deg, #1275ff, #2b3bff);
+.package-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.12);
+    border-color: #8bb0ff55;
+}
+
+/* New layout matching the image */
+.plan-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plan-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.radio-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 2px solid #2b6cff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.radio-dot.selected::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #2b6cff;
+    border-radius: 999px;
+}
+
+/* Selected state and radio color follow the program color */
+.program-category.manual .package-card.selected {
+    border-color: rgba(34, 197, 94, 0.55);
+    box-shadow: 0 18px 44px rgba(34, 197, 94, .18);
+}
+
+.program-category.automatic .package-card.selected {
+    border-color: rgba(13, 91, 224, 0.55);
+    box-shadow: 0 18px 44px rgba(13, 91, 224, .18);
+}
+
+.program-category.retake .package-card.selected {
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 18px 44px rgba(245, 158, 11, .20);
+}
+
+.program-category.manual .radio-dot { border-color: #16a34a; }
+.program-category.manual .radio-dot.selected::after { background: #16a34a; }
+
+.program-category.automatic .radio-dot { border-color: #2b6cff; }
+.program-category.automatic .radio-dot.selected::after { background: #2b6cff; }
+
+.program-category.retake .radio-dot { border-color: #f59e0b; }
+.program-category.retake .radio-dot.selected::after { background: #f59e0b; }
+
+.name-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pkg-name {
+    font-weight: 800;
+    font-size: 18px;
+    color: #0b1324;
+}
+
+.pkg-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2b6cff, #1275ff);
+    box-shadow: 0 6px 16px rgba(43, 108, 255, .25);
+}
+
+.price-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
 }
 
 .manual .package-card .card-accent {
@@ -785,10 +873,10 @@
 }
 
 .card-body {
-    padding: 16px;
+    padding: 18px 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .card-top {
@@ -797,31 +885,20 @@
     justify-content: space-between;
 }
 
-.pkg-label {
-    font-weight: 800;
-    font-size: 16px;
+
+
+
+
+.plan-features {
+    margin: 0;
+    padding: 0 0 4px 0;
+    list-style: none;
+    color: #0b1324;
+    font-weight: 600;
 }
 
-.pkg-badge {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .2px;
-    color: #0f172a;
-    background: #e2e8f0;
-    padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid #cbd5e1;
-}
-
-.pkg-desc {
-    color: #374151;
-    font-size: 14px;
-}
-
-.price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
+.plan-features li+li {
+    margin-top: 4px;
 }
 
 .package-card .price-old {
@@ -831,12 +908,12 @@
 
 .package-card .price-new {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .package-card.recommended {
-    border-color: #c7d2fe;
-    box-shadow: 0 8px 28px rgba(67, 56, 202, 0.12);
+    border-color: #8bb0ff66;
+    box-shadow: 0 10px 30px rgba(43,108,255,0.12);
 }
 
 .package-card.recommended .card-accent {
@@ -854,6 +931,48 @@
 .retake .package-card.recommended .card-accent {
     background: linear-gradient(90deg, #f59e0b, #d97706);
 }
+
+/* Make recommended card adopt program color similar to selected */
+.program-category.manual .package-card.recommended { border-color: rgba(34,197,94,.45); box-shadow: 0 14px 36px rgba(34,197,94,.16); }
+.program-category.automatic .package-card.recommended { border-color: rgba(13,91,224,.45); box-shadow: 0 14px 36px rgba(13,91,224,.16); }
+.program-category.retake .package-card.recommended { border-color: rgba(245,158,11,.50); box-shadow: 0 14px 36px rgba(245,158,11,.18); }
+
+.selected-actions {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.join-btn {
+    min-width: 240px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    background: linear-gradient(90deg, #1275ff, #2b6cff) !important;
+    box-shadow: 0 10px 24px rgba(43,108,255,.25);
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.join-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59,130,246,.3), 0 10px 24px rgba(43,108,255,.25);
+}
+
+.join-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+}
+
+.join-btn:active {
+    transform: translateY(0);
+    filter: brightness(.98);
+}
+
+/* Category colored variants */
+.program-category.manual .join-btn { background: linear-gradient(90deg, #16a34a, #22c55e) !important; box-shadow: 0 10px 24px rgba(34,197,94,.24); }
+.program-category.automatic .join-btn { background: linear-gradient(90deg, #1275ff, #2b6cff) !important; box-shadow: 0 10px 24px rgba(43,108,255,.24); }
+.program-category.retake .join-btn { background: linear-gradient(90deg, #f59e0b, #f59f0b) !important; box-shadow: 0 10px 24px rgba(245,158,11,.24); }
 
 .cta-row {
     margin-top: 4px;

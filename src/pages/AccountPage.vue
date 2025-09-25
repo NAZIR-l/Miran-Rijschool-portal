@@ -451,7 +451,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss" src="./account.scss">
+<style scoped lang="scss" src="../css/account.scss">
 </style>
 
 

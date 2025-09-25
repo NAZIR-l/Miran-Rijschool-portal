@@ -61,6 +61,6 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="scss" src="./orders.scss"></style>
+<style scoped lang="scss" src="../css/orders.scss"></style>
 
 

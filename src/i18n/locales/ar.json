@@ -9,8 +9,11 @@
   },
   "nav": {
     "dashboard": "لوحة التحكم",
+    "downloads": "التحميلات",
     "account": "الحساب",
     "orders": "الطلبات",
+    "signals": "الإشارات",
+    "packages": "الباقات",
     "logout": "تسجيل الخروج"
   },
   "index": {
@@ -28,6 +31,7 @@
     "total": "شاملة",
     "complete": "كاملة",
     "most_chosen": "الأكثر اختياراً",
+    "recommended": "موصى به",
     "lesson_desc": "{count} دروس (100 دقيقة) + اختبار عملي واحد",
     "lesson_desc_free": "{count} دروس (100 دقيقة) + اختبار عملي مجاني",
     "note_all_lessons": "جميع الدروس مدتها 100 دقيقة.",
@@ -71,5 +75,9 @@
     "total": "الإجمالي",
     "payment_method": "طريقة الدفع",
     "view_invoice": "عرض الفاتورة"
+  }
+  ,
+  "downloads": {
+    "title": "التحميلات"
   }
 }
