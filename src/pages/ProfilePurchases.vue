@@ -34,14 +34,18 @@
           <div class="card-title">Dates</div>
           <div class="dates">
             <div class="date-item">
-              <q-icon name="event" size="20px" />
+              <div class="icon-wrap">
+                <q-icon name="event" size="18px" />
+              </div>
               <div class="contents">
                 <div class="label">Start date</div>
                 <div class="value">{{ currentPackage.startDate }}</div>
               </div>
             </div>
             <div class="date-item">
-              <q-icon name="event_busy" size="20px" />
+              <div class="icon-wrap warning">
+                <q-icon name="event_busy" size="18px" />
+              </div>
               <div class="contents">
                 <div class="label">Expiry date</div>
                 <div class="value">{{ currentPackage.expires }}</div>
@@ -67,6 +71,42 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Previous packages (collapsible) -->
+      <div class="previous-packages card-surface">
+        <div class="card-title">Previous packages</div>
+        <q-expansion-item
+          v-for="pkg in previousPackages"
+          :key="pkg.id"
+          expand-separator
+          dense
+          class="pkg-item"
+        >
+          <template #header>
+            <div class="pkg-header">
+              <div class="title">
+                <q-icon name="inventory_2" size="18px" />
+                <span>{{ pkg.name }}</span>
+              </div>
+              <div class="meta">
+                <q-chip outline color="grey-7" size="sm">{{ pkg.vehicleType }}</q-chip>
+                <span class="dates">{{ pkg.startDate }} → {{ pkg.endDate }}</span>
+              </div>
+            </div>
+          </template>
+
+          <div class="pkg-body">
+            <div class="rows">
+              <div class="row"><span class="label">Lessons</span><span class="value">{{ pkg.lessons }}</span></div>
+              <div class="row"><span class="label">Status</span><span class="value">{{ pkg.status }}</span></div>
+            </div>
+            <div class="actions">
+              <q-btn flat color="primary" icon="receipt_long" no-caps label="View invoice" />
+            </div>
+          </div>
+        </q-expansion-item>
+        <div v-if="previousPackages.length === 0" class="empty-state">No previous packages</div>
       </div>
     </div>
   </q-page>
@@ -94,12 +134,17 @@ export default defineComponent({
       { id: "2025-0005", date: "01-07-2025", amount: "249.00", status: "refunded" },
     ]);
 
+    const previousPackages = ref([
+      { id: 'pkg-2025-01', name: 'Auto Standard', vehicleType: 'Automatic', startDate: '01-06-2025', endDate: '30-06-2025', lessons: 15, status: 'Expired' },
+      { id: 'pkg-2025-02', name: 'Auto Pro', vehicleType: 'Manual', startDate: '01-03-2025', endDate: '31-03-2025', lessons: 20, status: 'Expired' },
+    ]);
+
     const invoicesRef = ref(null);
     function scrollToInvoices() {
       invoicesRef.value?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    return { username, currentPackage, daysLeft, validityPercent, invoices, invoicesRef, scrollToInvoices };
+    return { username, currentPackage, daysLeft, validityPercent, invoices, invoicesRef, scrollToInvoices, previousPackages };
   },
 });
 </script>

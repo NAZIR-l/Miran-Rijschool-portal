@@ -10,8 +10,8 @@
               <h2 class="headline">{{ username }}!</h2>
               <div class="sub">Ready to continue learning? Pick up where you left off.</div>
               <div class="actions">
-                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="q-mr-sm" />
-                <q-btn outline color="primary" no-caps icon="menu_book" label="Browse chapters" />
+                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="q-mr-sm" @click="goto('/practice-exams')" />
+                <q-btn outline color="primary" no-caps icon="menu_book" label="Browse chapters" @click="goto('/downloads')" />
               </div>
             </div>
             <div class="art">
@@ -38,7 +38,7 @@
           </div>
           <div class="quick-links">
             <q-btn flat color="primary" no-caps icon="download" label="Downloads" @click="goto('/downloads')" />
-            <q-btn flat color="primary" no-caps icon="person" label="Account" @click="goto('/account')" />
+            <q-btn flat color="primary" no-caps icon="person" label="Account" @click="goto('/profile-purchases')" />
             <q-btn flat color="primary" no-caps icon="receipt" label="Orders" @click="goto('/orders')" />
           </div>
         </div>

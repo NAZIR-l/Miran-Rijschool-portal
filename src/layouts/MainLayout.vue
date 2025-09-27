@@ -5,30 +5,27 @@
       <div class="topbar">
         <div class="left">
           <q-btn
-            flat
+            outline
             dense
             round
+            size="md"
+            color="primary"
             icon="menu"
+            aria-label="Open menu"
             class="menu-btn"
-            @click="isDrawerOpen = true"
+            @click="isDrawerOpen = !isDrawerOpen"
           />
           <img src="../assets/logo.svg" alt="Logo" class="logo" />
         </div>
         <div class="right">
           <div class="user-greeting">
-            <span class="hi">{{$t('header.hello')}}</span>
+            <span class="hi">{{ $t("header.hello") }}</span>
             <span class="username">Tareqyt01</span>
           </div>
-          
+
           <!-- Notifications Bell Icon -->
           <div class="notifications-bell">
-            <q-btn
-              flat
-              dense
-              round
-              icon="notifications"
-              class="bell-btn"
-            >
+            <q-btn flat dense round icon="notifications" class="bell-btn">
               <q-badge
                 v-if="hasUnread"
                 floating
@@ -37,7 +34,7 @@
                 class="notification-badge"
               />
               <q-tooltip>Notifications</q-tooltip>
-              
+
               <!-- Notifications Dropdown -->
               <q-menu
                 anchor="bottom right"
@@ -47,91 +44,122 @@
                 max-width="400px"
                 max-height="500px"
               >
-              <div class="notifications-dropdown">
-                <div class="notifications-header">
-                  <div class="header-title">
-                    <q-icon name="notifications" size="20px" color="primary" />
-                    <span>Notifications</span>
-                    <q-badge v-if="hasUnread" color="red" :label="unreadCount" class="unread-badge" />
-                  </div>
-                  <div class="header-actions">
-                    <q-btn
-                      flat
-                      dense
-                      round
-                      icon="refresh"
-                      size="sm"
-                      color="grey-6"
-                      @click="refreshNotifications"
-                      :loading="refreshing"
-                    >
-                      <q-tooltip>Refresh</q-tooltip>
-                    </q-btn>
-                    <q-btn
-                      flat
-                      dense
-                      round
-                      icon="done_all"
-                      size="sm"
-                      color="grey-6"
-                      @click="markAllAsRead"
-                      :disable="!hasUnread"
-                    >
-                      <q-tooltip>Mark all as read</q-tooltip>
-                    </q-btn>
-                  </div>
-                </div>
-
-                <q-separator />
-
-                <div class="notifications-list">
-                  <div v-if="notifications.length === 0" class="no-notifications">
-                    <q-icon name="notifications_off" size="32px" color="grey-4" />
-                    <p>No notifications</p>
-                    <span>You're all caught up!</span>
-                  </div>
-                  
-                  <div v-else class="notification-items">
-                    <div 
-                      v-for="notification in notifications.slice(0, 6)" 
-                      :key="notification.id"
-                      class="notification-item"
-                      :class="[`notification-${notification.type}`, { 'unread': !notification.read }]"
-                    >
-                      <div class="notification-icon">
-                        <q-icon 
-                          :name="getNotificationIcon(notification.type)" 
-                          :color="getNotificationColor(notification.type)"
-                          size="18px"
-                        />
-                        <div v-if="!notification.read" class="unread-dot"></div>
-                      </div>
-                      
-                      <div class="notification-content" @click="markAsRead(notification.id)">
-                        <div class="notification-title">{{ notification.title }}</div>
-                        <div class="notification-message">{{ notification.message }}</div>
-                        <div class="notification-time">{{ formatTime(notification.timestamp) }}</div>
-                      </div>
-                      
-                      <q-btn 
-                        flat 
-                        dense 
-                        round 
-                        icon="close" 
-                        size="xs"
-                        color="grey-5"
-                        @click="dismissNotification(notification.id)"
-                        class="dismiss-btn"
+                <div class="notifications-dropdown">
+                  <div class="notifications-header">
+                    <div class="header-title">
+                      <q-icon
+                        name="notifications"
+                        size="20px"
+                        color="primary"
+                      />
+                      <span>Notifications</span>
+                      <q-badge
+                        v-if="hasUnread"
+                        color="red"
+                        :label="unreadCount"
+                        class="unread-badge"
+                      />
+                    </div>
+                    <div class="header-actions">
+                      <q-btn
+                        flat
+                        dense
+                        round
+                        icon="refresh"
+                        size="sm"
+                        color="grey-6"
+                        @click="refreshNotifications"
+                        :loading="refreshing"
                       >
-                        <q-tooltip>Dismiss</q-tooltip>
+                        <q-tooltip>Refresh</q-tooltip>
+                      </q-btn>
+                      <q-btn
+                        flat
+                        dense
+                        round
+                        icon="done_all"
+                        size="sm"
+                        color="grey-6"
+                        @click="markAllAsRead"
+                        :disable="!hasUnread"
+                      >
+                        <q-tooltip>Mark all as read</q-tooltip>
                       </q-btn>
                     </div>
                   </div>
-                </div>
 
-                <q-separator v-if="notifications.length > 0" />
+                  <q-separator />
 
-                <div v-if="notifications.length > 0" class="notifications-footer">
+                  <div class="notifications-list">
+                    <div
+                      v-if="notifications.length === 0"
+                      class="no-notifications"
+                    >
+                      <q-icon
+                        name="notifications_off"
+                        size="32px"
+                        color="grey-4"
+                      />
+                      <p>No notifications</p>
+                      <span>You're all caught up!</span>
+                    </div>
+
+                    <div v-else class="notification-items">
+                      <div
+                        v-for="notification in notifications.slice(0, 6)"
+                        :key="notification.id"
+                        class="notification-item"
+                        :class="[
+                          `notification-${notification.type}`,
+                          { unread: !notification.read },
+                        ]"
+                      >
+                        <div class="notification-icon">
+                          <q-icon
+                            :name="getNotificationIcon(notification.type)"
+                            :color="getNotificationColor(notification.type)"
+                            size="18px"
+                          />
+                          <div
+                            v-if="!notification.read"
+                            class="unread-dot"
+                          ></div>
+                        </div>
+
+                        <div
+                          class="notification-content"
+                          @click="markAsRead(notification.id)"
+                        >
+                          <div class="notification-title">
+                            {{ notification.title }}
+                          </div>
+                          <div class="notification-message">
+                            {{ notification.message }}
+                          </div>
+                          <div class="notification-time">
+                            {{ formatTime(notification.timestamp) }}
+                          </div>
+                        </div>
+
+                        <q-btn
+                          flat
+                          dense
+                          round
+                          icon="close"
+                          size="xs"
+                          color="grey-5"
+                          @click="dismissNotification(notification.id)"
+                          class="dismiss-btn"
+                        >
+                          <q-tooltip>Dismiss</q-tooltip>
+                        </q-btn>
+                      </div>
+                    </div>
+                  </div>
+
+                  <q-separator v-if="notifications.length > 0" />
+
+                  <!-- <div v-if="notifications.length > 0" class="notifications-footer">
                   <q-btn
                     flat
                     no-caps
@@ -140,16 +168,81 @@
                     @click="viewAllNotifications"
                     class="view-all-btn"
                   />
+                </div> -->
                 </div>
-              </div>
               </q-menu>
             </q-btn>
           </div>
-          
+
           <HeaderLangSwitcher />
         </div>
       </div>
     </q-header>
+
+    <!-- Mobile Drawer (must be a direct child of q-layout) -->
+    <q-drawer
+      v-model="isDrawerOpen"
+      side="left"
+      overlay
+      elevated
+      behavior="mobile"
+      class="mobile-drawer"
+      :width="260"
+    >
+      <div class="nav-brand">
+        <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li
+            :class="['menu-item', { active: isActive('/') }]"
+            @click="navigateAndClose('/')"
+          >
+            <q-icon name="dashboard" size="18px" />
+            <span>{{ $t("nav.dashboard") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/downloads') }]"
+            @click="navigateAndClose('/downloads')"
+          >
+            <q-icon name="download" size="18px" />
+            <span>{{ $t("nav.downloads") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/packages') }]"
+            @click="navigateAndClose('/packages')"
+          >
+            <q-icon name="inventory_2" size="18px" />
+            <span>{{ $t("nav.packages") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/profile-purchases') }]"
+            @click="navigateAndClose('/profile-purchases')"
+          >
+            <q-icon name="person" size="18px" />
+            <span>{{ $t("nav.profile-purchases") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/account') }]"
+            @click="navigateAndClose('/account')"
+          >
+            <q-icon name="person" size="18px" />
+            <span>{{ $t("nav.account") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/orders') }]"
+            @click="navigateAndClose('/orders')"
+          >
+            <q-icon name="receipt" size="18px" />
+            <span>{{ $t("nav.orders") }}</span>
+          </li>
+          <li class="menu-item logout">
+            <q-icon name="logout" size="18px" />
+            <span>{{ $t("nav.logout") }}</span>
+          </li>
+        </ul>
+      </nav>
+    </q-drawer>
 
     <!-- ================= PAGE CONTENT ================= -->
     <q-page-container>
@@ -157,138 +250,85 @@
         class="layout-wrap app-container"
         :class="{ 'drawer-open': isDrawerOpen }"
       >
-        <!-- Mobile Drawer -->
-        <q-drawer
-          v-model="isDrawerOpen"
-          side="left"
-          overlay
-          class="mobile-drawer"
-          :width="260"
-          :breakpoint="1024"
-          behavior="mobile"
-        >
-          <div class="nav-brand">
-            <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
-          </div>
-          <nav>
-            <ul class="nav-list">
-              <li
-                :class="['menu-item', { active: isActive('/') }]"
-                @click="navigateAndClose('/')"
-              >
-                <q-icon name="dashboard" size="18px" />
-                <span>{{ $t('nav.dashboard') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/downloads') }]"
-                @click="navigateAndClose('/downloads')"
-              >
-                <q-icon name="download" size="18px" />
-                <span>{{ $t('nav.downloads') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/packages') }]"
-                @click="navigateAndClose('/packages')"
-              >
-                <q-icon name="inventory_2" size="18px" />
-                <span>{{ $t('nav.packages') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/profile-purchases') }]"
-                @click="navigateAndClose('/profile-purchases')"
-              >
-                <q-icon name="person" size="18px" />
-                <span>{{ $t('nav.profile-purchases') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/account') }]"
-                @click="navigateAndClose('/account')"
-              >
-                <q-icon name="person" size="18px" />
-                <span>{{ $t('nav.account') }}</span>
-                <!-- <span class="badge">1</span> -->
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/orders') }]"
-                @click="navigateAndClose('/orders')"
-              >
-                <q-icon name="receipt" size="18px" />
-                <span>{{ $t('nav.orders') }}</span>
-              </li>
-              <li class="menu-item logout">
-                <q-icon name="logout" size="18px" />
-                <span>{{ $t('nav.logout') }}</span>
-              </li>
-            </ul>
-          </nav>
-        </q-drawer>
-
         <aside class="sidebar">
           <!-- <div class="nav-brand">
             <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
           </div> -->
           <nav>
             <ul class="nav-list">
-              <li :class="['menu-item', { active: isActive('/') }]" @click="navigate('/')">
+              <li
+                :class="['menu-item', { active: isActive('/') }]"
+                @click="navigate('/')"
+              >
                 <q-icon name="dashboard" size="18px" />
-                <span>{{ $t('nav.dashboard') }}</span>
+                <span>{{ $t("nav.dashboard") }}</span>
               </li>
               <li
-                :class="['menu-item', { active: isActive('/downloads') }]"
-                @click="navigate('/downloads')"
+                :class="['menu-item', { active: isActive('/practice-exams') }]"
+                @click="navigate('/practice-exams')"
               >
-                <q-icon name="download" size="18px" />
-                <span>{{ $t('nav.downloads') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/account') }]"
-                @click="navigate('/account')"
-              >
-                <q-icon name="person" size="18px" />
-                <span>{{ $t('nav.account') }}</span>
-                <!-- <span class="badge">1</span> -->
+                <q-icon name="school" size="18px" />
+                <span>{{ $t("nav.practice-exams") }}</span>
               </li>
               <li
                 :class="['menu-item', { active: isActive('/signals') }]"
                 @click="navigate('/signals')"
               >
                 <q-icon name="traffic" size="18px" />
-                <span>{{ $t('nav.signals') }}</span>
+                <span>{{ $t("nav.signals") }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/downloads') }]"
+                @click="navigate('/downloads')"
+              >
+                <q-icon name="download" size="18px" />
+                <span>{{ $t("nav.downloads") }}</span>
+              </li>
+              <!-- <li
+                :class="['menu-item', { active: isActive('/account') }]"
+                @click="navigate('/account')"
+              >
+                <q-icon name="person" size="18px" />
+                <span>{{ $t('nav.account') }}</span>
+                <span class="badge">1</span>
+              </li> -->
+              <li
+                :class="[
+                  'menu-item',
+                  { active: isActive('/profile-purchases') },
+                ]"
+                @click="navigate('/profile-purchases')"
+              >
+                <q-icon name="person" size="18px" />
+                <span>{{ $t("nav.profile-purchases") }}</span>
+              </li>
+     
+              <li
+                :class="['menu-item', { active: isActive('/support') }]"
+                @click="navigate('/support')"
+              >
+                <q-icon name="download" size="18px" />
+                <span>{{ $t("nav.support") }}</span>
               </li>
               <li
                 :class="['menu-item', { active: isActive('/packages') }]"
                 @click="navigate('/packages')"
               >
                 <q-icon name="inventory_2" size="18px" />
-                <span>{{ $t('nav.packages') }}</span>
+                <span>{{ $t("nav.packages") }}</span>
               </li>
-              <li
-                :class="['menu-item', { active: isActive('/profile-purchases') }]"
-                @click="navigate('/profile-purchases')"
-              >
-                <q-icon name="person" size="18px" />
-                <span>{{ $t('nav.profile-purchases') }}</span>
-              </li>
-              <li
-                :class="['menu-item', { active: isActive('/support') }]"
-                @click="navigate('/support')"
-              >
-                <q-icon name="download" size="18px" />
-                <span>{{ $t('nav.support') }}</span>
-              </li>
-              
+            
               <li
                 :class="['menu-item', { active: isActive('/orders') }]"
                 @click="navigate('/orders')"
               >
                 <q-icon name="receipt" size="18px" />
-                <span>{{ $t('nav.orders') }}</span>
+                <span>{{ $t("nav.orders") }}</span>
               </li>
               <li class="menu-item logout">
                 <q-icon name="logout" size="18px" />
-                <span>{{ $t('nav.logout') }}</span>
+                <span>{{ $t("nav.logout") }}</span>
               </li>
-
             </ul>
           </nav>
         </aside>
@@ -298,19 +338,63 @@
             <router-view />
             <!-- Content footer inside page content -->
             <footer class="footer-wrap">
-              <div class="footer-inner">
-                <div class="left">
-                  <div>Call us: 020 261 7438</div>
-                  <div>Mon - Fri 09:00 to 17:30</div>
-                  <div>Sat 11:00 to 16:00</div>
-                  <div>Sun closed</div>
+              <div class="footer-top">
+                <div class="footer-col brand">
+                  <img
+                    src="../assets/logo.svg"
+                    alt="Theorie Toppers"
+                    class="footer-logo"
+                  />
+                  <p class="tagline">Learn smarter. Pass faster.</p>
+                  <div class="socials">
+                    <div class="social-link">
+                      <q-icon name="chat" size="18px" />
+                      <span>WhatsApp: 06 18 99 20</span>
+                    </div>
+                    <a
+                      class="social-link"
+                      href="mailto:69slagen@theorietoppers.nl"
+                    >
+                      <q-icon name="email" size="18px" />
+                      <span>69slagen@theorietoppers.nl</span>
+                    </a>
+                  </div>
                 </div>
-                <div class="middle">
-                  <div>WhatsApp: 06 18 99 20</div>
-                  <div>69slagen@theorietoppers.nl</div>
+
+                <div class="footer-col contact">
+                  <div class="col-title">Contact</div>
+                  <ul class="list">
+                    <li>
+                      <q-icon name="call" size="16px" />
+                      <span>020 261 7438</span>
+                    </li>
+                    <li>
+                      <q-icon name="chat" size="16px" />
+                      <span>WhatsApp: 06 18 99 20</span>
+                    </li>
+                    <li>
+                      <q-icon name="mail" size="16px" />
+                      <a href="mailto:69slagen@theorietoppers.nl"
+                        >69slagen@theorietoppers.nl</a
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <div class="right">
-                  <div>Terms and Conditions © Theorie Toppers 2025</div>
+
+                <div class="footer-col hours">
+                  <div class="col-title">Opening hours</div>
+                  <ul class="list">
+                    <li><span>Mon - Fri</span><span>09:00 – 17:30</span></li>
+                    <li><span>Sat</span><span>11:00 – 16:00</span></li>
+                    <li><span>Sun</span><span>Closed</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <div class="copy">© 2025 Theorie Toppers</div>
+                <div class="footer-links">
+                  <span>Terms and Conditions</span>
                 </div>
               </div>
             </footer>
@@ -366,11 +450,11 @@ export default defineComponent({
       markAsRead,
       markAllAsRead,
       dismissNotification,
-      refreshNotifications
+      refreshNotifications,
     } = useNotifications();
 
     function viewAllNotifications() {
-      navigate('/support');
+      navigate("/support");
     }
 
     return {
@@ -394,7 +478,7 @@ export default defineComponent({
       markAllAsRead,
       dismissNotification,
       refreshNotifications,
-      viewAllNotifications
+      viewAllNotifications,
     };
   },
 });
@@ -403,7 +487,7 @@ export default defineComponent({
 <style  >
 /* Top header styling to resemble a professional marketing navbar */
 .top-header {
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: saturate(1.2) blur(12px);
 }
 .topbar {
@@ -413,29 +497,72 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
 }
-.topbar .left { display: flex; align-items: center; gap: 10px; }
-.topbar .right { display: flex; align-items: center; gap: 12px; }
-.logo { height: 32px; width: auto; }
-.user-greeting { display: flex; align-items: baseline; gap: 6px; font-size: 14px; }
-.user-greeting .hi { color: #64748b; }
-.user-greeting .username { font-weight: 800; color: #0f172a; }
+.menu-item span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
+
+}
+.topbar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar .right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+}
+.logo {
+  height: 32px;
+  width: auto;
+}
+.menu-btn {
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.08);
+}
+.user-greeting {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.user-greeting .hi {
+  color: #64748b;
+}
+.user-greeting .username {
+  font-weight: 800;
+  color: #0f172a;
+}
 
 /* Creative subtle entrance animation */
-.topbar { animation: slideDownFade .45s ease both; }
+.topbar {
+  animation: slideDownFade 0.45s ease both;
+}
 @keyframes slideDownFade {
-  0% { transform: translateY(-12px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @media (min-width: 768px) {
-    .css-na5tku img {
-        width: 14px;
-    }
+  .css-na5tku img {
+    width: 14px;
+  }
 }
 
 .css-na5tku img {
-    margin-right: 4px;
-    width: 14px;
+  margin-right: 4px;
+  width: 14px;
 }
 .css-y3dqpa {
   display: flex;
@@ -472,10 +599,10 @@ export default defineComponent({
   margin-right: 8px;
 }
 @media (min-width: 768px) {
-    .css-na5tku {
-        margin-right: 16px;
-        font-size: 22px;
-    }
+  .css-na5tku {
+    margin-right: 16px;
+    font-size: 22px;
+  }
 }
 .container {
   max-width: 1200px;
@@ -516,11 +643,21 @@ export default defineComponent({
   display: flex;
   gap: 24px;
 }
+.layout-wrap.drawer-open {
+  overflow: hidden;
+}
 .sidebar {
   width: 220px;
   padding: 16px 0;
 }
-.content-aligned{ flex:1; }
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}
+.content-aligned {
+  flex: 1;
+}
 .nav-brand {
   padding: 0 10px;
   height: 74px;
@@ -535,7 +672,7 @@ export default defineComponent({
   justify-content: flex-start;
   margin-top: 10px;
   margin-bottom: 16px;
-  
+
   overflow: hidden;
   position: relative;
   pointer-events: none;
@@ -551,10 +688,9 @@ export default defineComponent({
 .sidebar nav {
   flex: 1;
   height: 100%;
-  
 }
 .sidebar nav ul {
-  height: max-content !important; 
+  height: max-content !important;
   list-style: none;
   margin: 0;
   font-size: 16px;
@@ -562,7 +698,7 @@ export default defineComponent({
   unicode-bidi: isolate;
   padding: 0;
   padding-top: 16px;
-  
+
   height: 100%;
   margin-top: 14px;
   display: -webkit-box;
@@ -587,16 +723,23 @@ export default defineComponent({
   cursor: pointer;
   color: #334155;
   border: 1px solid transparent;
-  transition: background-color .2s ease, color .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .sidebar nav li:hover {
   background: #f8fafc;
 }
 .sidebar nav li.active {
   color: #0f172a;
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(248, 250, 252, 0.85),
+    rgba(255, 255, 255, 0.9)
+  );
   border-color: #e5e7eb;
-  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
+  border-left: 5px solid #2b3bff;
+  border-right: 5px solid #2b3bff;
+  box-shadow: 20px 16px 24px rgba(0, 0, 0, 0.06);
   transform: translateY(-1px);
 }
 .sidebar nav li .badge {
@@ -618,7 +761,13 @@ export default defineComponent({
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 8px 6px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure mobile drawer overlays above header */
+.mobile-drawer {
+  background: #ffffff;
+  z-index: 3000;
 }
 
 /* Left accent bar on active state */
@@ -631,11 +780,10 @@ export default defineComponent({
   content: "";
   position: absolute;
   left: 0;
-  top: 8px;
-  bottom: 8px;
   width: 4px;
   border-radius: 4px;
-  background: linear-gradient(180deg, #1275ff, #2b3bff);
+  /* background: #2b3bff; */
+  /* border-left: 15px solid #2b3bff; */
 }
 
 /* Icon color harmony */
@@ -664,7 +812,7 @@ export default defineComponent({
   margin-top: auto;
 }
 
-.content-container{
+.content-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -674,28 +822,117 @@ export default defineComponent({
 .footer-wrap {
   padding: 40px 0 0;
 }
-.footer-inner {
+/* New professional footer styles */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 24px;
+  padding: 32px 0 16px;
+  border-top: 1px solid #eef2f7;
+}
+
+.footer-col .col-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.footer-col.brand {
+  color: #475569;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  margin: 0 0 12px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #334155;
+}
+.social-link a,
+.social-link span,
+.footer-col.contact a {
+  color: #334155;
+  text-decoration: none;
+}
+.social-link a:hover,
+.footer-col.contact a:hover {
+  text-decoration: underline;
+}
+
+.footer-col .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #334155;
+}
+
+.footer-col.hours .list li,
+.footer-col.contact .list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-col.hours .list li {
+  justify-content: space-between;
+}
+
+.footer-bottom {
+  padding: 14px 0 24px;
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-  color: #666;
-  font-size: 14px;
+  align-items: center;
+  gap: 16px;
+  color: #64748b;
+  border-top: 1px dashed #e5e7eb;
+  white-space: nowrap;
 }
-.footer-inner .left,
-.footer-inner .middle {
-  font-size: 14px;
-  color: #281931;
-}
-.footer-inner .right {
-  font-size: 14px;
+
+.footer-links {
   display: flex;
-  align-items: flex-end;
-  color: #b1b1b1;
-  margin: 0 0 0.5em;
+  gap: 16px;
 }
-.footer-inner .left div + div,
-.footer-inner .middle div + div {
-  margin-top: 4px;
+.footer-links span {
+  cursor: pointer;
+}
+.footer-links span:hover {
+  color: #0f172a;
+}
+
+/* Responsive footer */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ================= NOTIFICATIONS STYLES ================= */
@@ -903,11 +1140,11 @@ export default defineComponent({
     width: 320px;
     max-height: 400px;
   }
-  
+
   .notification-item {
     padding: 10px 16px;
   }
-  
+
   .notifications-header,
   .notifications-footer {
     padding: 12px 16px;
