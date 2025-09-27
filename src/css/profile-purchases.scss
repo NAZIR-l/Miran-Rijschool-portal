@@ -1,0 +1,195 @@
+.profile-purchases {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card-surface {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    border-top: 5px solid #2b3bff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.hero .eyebrow {
+    color: #2563eb;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.hero .title {
+    margin: 2px 0;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.hero .subtitle {
+    color: #64748b;
+}
+
+.hero .progress-ring {
+    background: linear-gradient(135deg, #e8f0ff, #ffffff 65%);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.ring-inner {
+    text-align: center;
+}
+
+.ring-inner .days-left {
+    font-weight: 800;
+    font-size: 22px;
+    color: #0f172a;
+    line-height: 1;
+}
+
+.ring-inner .hint {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 16px;
+}
+
+.card-title {
+    font-weight: 800;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.package-body .row-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eef2f7;
+}
+
+.package-body .row-line:last-child {
+    border-bottom: none;
+}
+
+.package-body .muted {
+    color: #667085;
+}
+
+.package-body .value {
+    font-weight: 700;
+}
+
+.package-body .value.success {
+    color: #16a34a;
+}
+
+.row-actions {
+    margin-top: 10px;
+}
+
+.validity-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.validity-body .metric .label {
+    color: #667085;
+}
+
+.validity-body .metric .value {
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.dates {
+    display: grid;
+    gap: 10px;
+}
+
+.date-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.date-item .label {
+    color: #667085;
+    font-size: 13px;
+}
+
+.date-item .value {
+    font-weight: 700;
+}
+
+.invoices {
+    padding: 16px;
+    margin-top: 18px;
+}
+
+.invoice-list {
+    display: grid;
+    gap: 8px;
+}
+
+.invoice-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #eef2f7;
+    border-radius: 10px;
+}
+
+.invoice-row .meta {
+    display: flex;
+    gap: 10px;
+    color: #64748b;
+}
+
+.invoice-row .amount {
+    font-weight: 800;
+}
+
+.invoice-row .status {
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    width: max-content;
+}
+
+.invoice-row .status.paid {
+    background: #e7f5ff;
+    color: #1d4ed8;
+}
+
+.invoice-row .status.refunded {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+@media (max-width: 1024px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

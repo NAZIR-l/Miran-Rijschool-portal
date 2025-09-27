@@ -19,6 +19,133 @@
             <span class="hi">{{$t('header.hello')}}</span>
             <span class="username">Tareqyt01</span>
           </div>
+          
+          <!-- Notifications Bell Icon -->
+          <div class="notifications-bell">
+            <q-btn
+              flat
+              dense
+              round
+              icon="notifications"
+              class="bell-btn"
+            >
+              <q-badge
+                v-if="hasUnread"
+                floating
+                color="red"
+                :label="unreadCount"
+                class="notification-badge"
+              />
+              <q-tooltip>Notifications</q-tooltip>
+              
+              <!-- Notifications Dropdown -->
+              <q-menu
+                anchor="bottom right"
+                self="top right"
+                class="notifications-menu"
+                :offset="[0, 8]"
+                max-width="400px"
+                max-height="500px"
+              >
+              <div class="notifications-dropdown">
+                <div class="notifications-header">
+                  <div class="header-title">
+                    <q-icon name="notifications" size="20px" color="primary" />
+                    <span>Notifications</span>
+                    <q-badge v-if="hasUnread" color="red" :label="unreadCount" class="unread-badge" />
+                  </div>
+                  <div class="header-actions">
+                    <q-btn
+                      flat
+                      dense
+                      round
+                      icon="refresh"
+                      size="sm"
+                      color="grey-6"
+                      @click="refreshNotifications"
+                      :loading="refreshing"
+                    >
+                      <q-tooltip>Refresh</q-tooltip>
+                    </q-btn>
+                    <q-btn
+                      flat
+                      dense
+                      round
+                      icon="done_all"
+                      size="sm"
+                      color="grey-6"
+                      @click="markAllAsRead"
+                      :disable="!hasUnread"
+                    >
+                      <q-tooltip>Mark all as read</q-tooltip>
+                    </q-btn>
+                  </div>
+                </div>
+
+                <q-separator />
+
+                <div class="notifications-list">
+                  <div v-if="notifications.length === 0" class="no-notifications">
+                    <q-icon name="notifications_off" size="32px" color="grey-4" />
+                    <p>No notifications</p>
+                    <span>You're all caught up!</span>
+                  </div>
+                  
+                  <div v-else class="notification-items">
+                    <div 
+                      v-for="notification in notifications.slice(0, 6)" 
+                      :key="notification.id"
+                      class="notification-item"
+                      :class="[`notification-${notification.type}`, { 'unread': !notification.read }]"
+                    >
+                      <div class="notification-icon">
+                        <q-icon 
+                          :name="getNotificationIcon(notification.type)" 
+                          :color="getNotificationColor(notification.type)"
+                          size="18px"
+                        />
+                        <div v-if="!notification.read" class="unread-dot"></div>
+                      </div>
+                      
+                      <div class="notification-content" @click="markAsRead(notification.id)">
+                        <div class="notification-title">{{ notification.title }}</div>
+                        <div class="notification-message">{{ notification.message }}</div>
+                        <div class="notification-time">{{ formatTime(notification.timestamp) }}</div>
+                      </div>
+                      
+                      <q-btn 
+                        flat 
+                        dense 
+                        round 
+                        icon="close" 
+                        size="xs"
+                        color="grey-5"
+                        @click="dismissNotification(notification.id)"
+                        class="dismiss-btn"
+                      >
+                        <q-tooltip>Dismiss</q-tooltip>
+                      </q-btn>
+                    </div>
+                  </div>
+                </div>
+
+                <q-separator v-if="notifications.length > 0" />
+
+                <div v-if="notifications.length > 0" class="notifications-footer">
+                  <q-btn
+                    flat
+                    no-caps
+                    color="primary"
+                    label="View All Notifications"
+                    @click="viewAllNotifications"
+                    class="view-all-btn"
+                  />
+                </div>
+              </div>
+              </q-menu>
+            </q-btn>
+          </div>
+          
           <HeaderLangSwitcher />
         </div>
       </div>
@@ -58,6 +185,20 @@
               >
                 <q-icon name="download" size="18px" />
                 <span>{{ $t('nav.downloads') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/packages') }]"
+                @click="navigateAndClose('/packages')"
+              >
+                <q-icon name="inventory_2" size="18px" />
+                <span>{{ $t('nav.packages') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/profile-purchases') }]"
+                @click="navigateAndClose('/profile-purchases')"
+              >
+                <q-icon name="person" size="18px" />
+                <span>{{ $t('nav.profile-purchases') }}</span>
               </li>
               <li
                 :class="['menu-item', { active: isActive('/account') }]"
@@ -122,6 +263,21 @@
                 <span>{{ $t('nav.packages') }}</span>
               </li>
               <li
+                :class="['menu-item', { active: isActive('/profile-purchases') }]"
+                @click="navigate('/profile-purchases')"
+              >
+                <q-icon name="person" size="18px" />
+                <span>{{ $t('nav.profile-purchases') }}</span>
+              </li>
+              <li
+                :class="['menu-item', { active: isActive('/support') }]"
+                @click="navigate('/support')"
+              >
+                <q-icon name="download" size="18px" />
+                <span>{{ $t('nav.support') }}</span>
+              </li>
+              
+              <li
                 :class="['menu-item', { active: isActive('/orders') }]"
                 @click="navigate('/orders')"
               >
@@ -169,6 +325,7 @@
 import { defineComponent, ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import HeaderLangSwitcher from "src/components/HeaderLangSwitcher.vue";
+import { useNotifications } from "src/composables/useNotifications.js";
 
 export default defineComponent({
   name: "MainLayout",
@@ -196,6 +353,26 @@ export default defineComponent({
         (path === "/" && currentRoute.path === "/")
       );
     }
+
+    // Notifications functionality
+    const {
+      notifications,
+      unreadCount,
+      hasUnread,
+      refreshing,
+      getNotificationIcon,
+      getNotificationColor,
+      formatTime,
+      markAsRead,
+      markAllAsRead,
+      dismissNotification,
+      refreshNotifications
+    } = useNotifications();
+
+    function viewAllNotifications() {
+      navigate('/support');
+    }
+
     return {
       isMenuOpen,
       isPakkettenOpen,
@@ -205,6 +382,19 @@ export default defineComponent({
       currentTitle,
       isDrawerOpen,
       navigateAndClose,
+      // Notifications
+      notifications,
+      unreadCount,
+      hasUnread,
+      refreshing,
+      getNotificationIcon,
+      getNotificationColor,
+      formatTime,
+      markAsRead,
+      markAllAsRead,
+      dismissNotification,
+      refreshNotifications,
+      viewAllNotifications
     };
   },
 });
@@ -506,5 +696,221 @@ export default defineComponent({
 .footer-inner .left div + div,
 .footer-inner .middle div + div {
   margin-top: 4px;
+}
+
+/* ================= NOTIFICATIONS STYLES ================= */
+.notifications-bell {
+  position: relative;
+  margin: 0 8px;
+}
+
+.bell-btn {
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.bell-btn:hover {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+.notification-badge {
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+}
+
+.notifications-dropdown {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  width: 380px;
+  max-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-header {
+  padding: 16px 20px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.unread-badge {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.notifications-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.no-notifications {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+}
+
+.no-notifications p {
+  margin: 8px 0 4px 0;
+  font-weight: 500;
+}
+
+.no-notifications span {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.notification-items {
+  padding: 8px 0;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item:hover {
+  background-color: #f8fafc;
+}
+
+.notification-item.unread {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+  border-left: 3px solid #3b82f6;
+}
+
+.notification-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.notification-exam .notification-icon {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.notification-payment .notification-icon {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+}
+
+.notification-announcement .notification-icon {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+}
+
+.unread-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 6px;
+  height: 6px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.notification-message {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notification-time {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.dismiss-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.notification-item:hover .dismiss-btn {
+  opacity: 1;
+}
+
+.notifications-footer {
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.view-all-btn {
+  width: 100%;
+  font-weight: 500;
+}
+
+/* Responsive styles for notifications */
+@media (max-width: 480px) {
+  .notifications-dropdown {
+    width: 320px;
+    max-height: 400px;
+  }
+  
+  .notification-item {
+    padding: 10px 16px;
+  }
+  
+  .notifications-header,
+  .notifications-footer {
+    padding: 12px 16px;
+  }
 }
 </style>

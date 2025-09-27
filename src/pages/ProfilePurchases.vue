@@ -1,33 +1,7 @@
 <template>
   <q-page class="home-bg">
     <div class="profile-purchases">
-      <!-- Header / Greeting -->
-      <div class="hero card-surface">
-        <div class="hero-left">
-          <div class="eyebrow">Profile & Purchases</div>
-          <h2 class="title">Welcome back, {{ username }}!</h2>
-          <div class="subtitle">Manage your package, validity and payments from one place.</div>
-          <div class="actions">
-            <q-btn color="primary" unelevated no-caps icon="upgrade" label="Upgrade package" class="q-mr-sm" />
-            <q-btn outline color="primary" no-caps icon="history" label="View payment history" @click="scrollToInvoices" />
-          </div>
-        </div>
-        <div class="hero-right">
-          <q-circular-progress
-            show-value
-            :value="validityPercent"
-            size="110px"
-            color="primary"
-            track-color="grey-3"
-            class="progress-ring"
-          >
-            <div class="ring-inner">
-              <div class="days-left">{{ daysLeft }}</div>
-              <div class="hint">days left</div>
-            </div>
-          </q-circular-progress>
-        </div>
-      </div>
+
 
       <!-- Info grid -->
       <div class="info-grid">
@@ -55,34 +29,20 @@
           </div>
         </div>
 
-        <div class="card card-surface">
-          <div class="card-title">Validity</div>
-          <div class="validity-body">
-            <div class="metric">
-              <div class="label">Days used</div>
-              <div class="value">{{ currentPackage.daysUsed }}</div>
-            </div>
-            <div class="metric">
-              <div class="label">Days left</div>
-              <div class="value">{{ daysLeft }}</div>
-            </div>
-            <q-linear-progress :value="validityPercent/100" color="primary" track-color="grey-3" rounded class="q-mt-sm" />
-          </div>
-        </div>
 
         <div class="card card-surface">
           <div class="card-title">Dates</div>
           <div class="dates">
             <div class="date-item">
               <q-icon name="event" size="20px" />
-              <div class="content">
+              <div class="contents">
                 <div class="label">Start date</div>
                 <div class="value">{{ currentPackage.startDate }}</div>
               </div>
             </div>
             <div class="date-item">
               <q-icon name="event_busy" size="20px" />
-              <div class="content">
+              <div class="contents">
                 <div class="label">Expiry date</div>
                 <div class="value">{{ currentPackage.expires }}</div>
               </div>
