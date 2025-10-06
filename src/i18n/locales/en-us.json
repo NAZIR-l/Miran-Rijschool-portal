@@ -111,4 +111,46 @@
   "downloads": {
     "title": "Downloads"
   }
+  ,
+  "practice": {
+    "title": "Practice exams",
+    "status": {
+      "new": "New exam",
+      "in_progress": "In progress",
+      "passed": "Passed",
+      "failed": "Failed"
+    },
+    "actions": {
+      "start": "Start",
+      "resume": "Resume",
+      "retry": "Retry"
+    }
+  }
+  ,
+  "exam_intro": {
+    "title": "Auto oefenexamen",
+    "p1": "In the practice exam you get questions about traffic rules & insight.",
+    "p2": "The practice exam consists of {total} questions, you must answer {pass} or more correctly.",
+    "note": "It is important that you first watch the full video course.",
+    "cta": "Continue",
+    "close": "Close",
+    "confirm": {
+      "title": "Are you sure you want to stop the exam?",
+      "stop": "Stop exam",
+      "continue": "Continue exam"
+    },
+    "stats": {
+      "questions": "questions",
+      "pass": "to pass",
+      "time": "min"
+    }
+  }
+  ,
+  "exam_run": {
+    "time_left": "Remaining time",
+    "mark": "Mark",
+    "overview": "Overview",
+    "question": "Vraag",
+    "next": "Next question"
+  }
 }

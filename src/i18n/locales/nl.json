@@ -15,7 +15,7 @@
     "signals": "Verkeerssignalen",
     "packages": "Pakketten",
     "profile-purchases": "Profiel en aankopen",
-    "support": "Support / Help", 
+    "support": "Support / Help",
     "practice-exams": "Praktijk examens",
     "logout": "Uitloggen"
   },
@@ -46,7 +46,7 @@
     "note_all_lessons": "Alle lessen zijn 100 minuten.",
     "note_inclusive": "Pakketten zijn inclusief praktijkexamen bij het CBR.",
     "note_retake_only": "Herpakketten zijn alleen beschikbaar voor leerlingen die bij het eerste examen gezakt zijn."
-  },  
+  },
   "index": {
     "title": "Rijles Pakketten",
     "subtitle": "Kies handgeschakeld, automaat of herpakketten",
@@ -110,6 +110,48 @@
   ,
   "downloads": {
     "title": "Downloads"
+  }
+  ,
+  "practice": {
+    "title": "Oefenexamens",
+    "status": {
+      "new": "Nieuw examen",
+      "in_progress": "Bezig",
+      "passed": "Geslaagd",
+      "failed": "Gezakt"
+    },
+    "actions": {
+      "start": "Start",
+      "resume": "Hervatten",
+      "retry": "Opnieuw"
+    }
+  }
+  ,
+  "exam_intro": {
+    "title": "Auto oefenexamen",
+    "p1": "In het oefenexamen krijg je vragen over verkeersregels & verkeersinzicht.",
+    "p2": "Het oefenexamen bestaat uit {total} vragen, hiervan moet je {pass} of meer vragen goed beantwoorden.",
+    "note": "Het is belangrijk dat je eerst de videocursus volledig hebt bekeken.",
+    "cta": "Verder",
+    "close": "Sluiten",
+    "confirm": {
+      "title": "Weet je zeker dat je het examen wilt stoppen?",
+      "stop": "Examen stoppen",
+      "continue": "Doorgaan met examen"
+    },
+    "stats": {
+      "questions": "vragen",
+      "pass": "voor slagen",
+      "time": "min"
+    }
+  }
+  ,
+  "exam_run": {
+    "time_left": "Resterende tijd",
+    "mark": "Markeren",
+    "overview": "Overzicht",
+    "question": "Vraag",
+    "next": "Volgende vraag"
   }
 }
 

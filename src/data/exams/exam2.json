@@ -1,0 +1,232 @@
+{
+  "id": "exam2",
+  "title": "Exam 2",
+  "questions": [
+    {
+      "id": "exam2-q1",
+      "image": "../../exam2/q1.png",
+      "text": "Mag je als bestuurder van een personenauto gebruikmaken van een rijstrook met de aanduiding 'BUS' of 'LIJNBUS'?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q2",
+      "image": "../../assets/exam2/q2.png",
+      "text": "Mag een kind van 12 jaar en 1.30 meter lang gebruik maken van een driepuntsgordel ?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q3",
+      "image": "../../assets/exam2/q3.png",
+      "text": "je wilt rechtdoor. Moet je de hele militaire colonne voor laten gaan?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q4",
+      "image": "../../assets/exam2/q4.png",
+      "text": "Mag je hier doorrijden bij groen licht?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q5",
+      "image": "../../assets/exam2/q5.png",
+      "text": "welk deel van de weg wordt de rijbaan genoemd?",
+      "options": [
+        { "id": "a", "label": "A" },
+        { "id": "b", "label": "B" },
+        { "id": "c", "label": "C" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q6",
+      "image": "../../assets/exam2/q6.png",
+      "text": "wat betekent een groene ventieldop op de band?",
+      "options": [
+        { "id": "a", "label": "Reserveband" },
+        { "id": "b", "label": "Zomerband" },
+        { "id": "c", "label": "Een band die gevuld is met stikstof" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q7",
+      "image": "../../assets/exam2/q7.png",
+      "text": "je komt hier aan rijden en wil linksaf slaan. wat doe je?",
+      "options": [
+        { "id": "a", "label": "je wacht voor de haaientanden totdat de grijze auto is afgeslagen" },
+        { "id": "b", "label": "je rijdt door tot het middenstuk en wqacht daar tot de grijze auto is afgeslagen" },
+        { "id": "c", "label": "je ridjt door en neemt de afslag voor de grijze auto omdat jij eerst mag" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q8",
+      "image": "../../assets/exam2/q8.png",
+      "text": "Is een kentekenplaat noodzakelijk in deze situatie?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q9",
+      "image": "../../assets/exam2/q9.png",
+      "text": "je wilt hier rechtdoor. Moet je toch stoppen?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q10",
+      "image": "../../assets/exam2/q10.png",
+      "text": "Je wilt rechtdoo. Moet je de bromfietser voor laten gaan?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q11",
+      "image": "../../assets/exam2/q11.png",
+      "text": "je wilt linsaf. Moet je stoppen?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q12",
+      "image": "../../assets/exam2/q12.png",
+      "text": "Wie mag je bij uitstappen niet hinderen?",
+      "options": [
+        { "id": "a", "label": "Alleen voetgangers" },
+        { "id": "b", "label": "Alleen bestuurders" },
+        { "id": "c", "label": "Bestuurders en voetgangers" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q13",
+      "image": "../../assets/exam2/q13.png",
+      "text": "Wat os je toegestane maximumsnelheid op deze weg?",
+      "options": [
+        { "id": "a", "label": "Alleen voetgangers" },
+        { "id": "b", "label": "Alleen bestuurders" },
+        { "id": "c", "label": "Bestuurders en voetgangers" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q14",
+      "image": "../../assets/exam2/q14.png",
+      "text": "Wat geeft dit verkeersbord aan?",
+      "options": [
+        { "id": "a", "label": "Verboden in te rijden" },
+        { "id": "b", "label": "Je kruist een voorrangsweg" },
+        { "id": "c", "label": "Je nadert een gevaarlijk kruispunt" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+    {
+      "id": "exam2-q15",
+      "image": "../../assets/exam2/q15.png",
+      "text": "Mag de tractor hier 50 km/u rijden?",
+      "options": [
+        { "id": "a", "label": "Ja" },
+        { "id": "b", "label": "Nee" }
+      ],
+      "correct": "b",
+      "category": "lanes"
+    }
+    ,
+
+    { "id": "exam2-q14", "image": "../../assets/exam2/q14.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q15", "image": "../../assets/exam2/q15.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q16", "image": "../../assets/exam2/q16.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q17", "image": "../../assets/exam2/q17.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q18", "image": "../../assets/exam2/q18.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q19", "image": "../../assets/exam2/q19.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q20", "image": "../../assets/exam2/q20.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q21", "image": "../../assets/exam2/q21.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q22", "image": "../../assets/exam2/q22.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q23", "image": "../../assets/exam2/q23.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q24", "image": "../../assets/exam2/q24.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q25", "image": "../../assets/exam2/q25.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q26", "image": "../../assets/exam2/q26.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q27", "image": "../../assets/exam2/q27.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q28", "image": "../../assets/exam2/q28.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q29", "image": "../../assets/exam2/q29.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q30", "image": "../../assets/exam2/q30.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q31", "image": "../../assets/exam2/q31.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q32", "image": "../../assets/exam2/q32.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q33", "image": "../../assets/exam2/q33.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q34", "image": "../../assets/exam2/q34.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q35", "image": "../../assets/exam2/q35.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q36", "image": "../../assets/exam2/q36.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q37", "image": "../../assets/exam2/q37.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q38", "image": "../../assets/exam2/q38.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q39", "image": "../../assets/exam2/q39.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q40", "image": "../../assets/exam2/q40.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q41", "image": "../../assets/exam2/q41.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q42", "image": "../../assets/exam2/q42.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q43", "image": "../../assets/exam2/q43.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q44", "image": "../../assets/exam2/q44.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q45", "image": "../../assets/exam2/q45.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q46", "image": "../../assets/exam2/q46.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q47", "image": "../../assets/exam2/q47.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q48", "image": "../../assets/exam2/q48.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q49", "image": "../../assets/exam2/q49.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
+    { "id": "exam2-q50", "image": "../../assets/exam2/q50.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" }
+  ]
+}
+
+

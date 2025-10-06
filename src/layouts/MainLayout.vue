@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff ">
     <!-- ================= HEADER ================= -->
-    <q-header class="top-header" elevated>
+    <q-header v-if="!isExamMode" class="top-header" elevated>
       <div class="topbar">
         <div class="left">
           <q-btn
@@ -15,9 +15,10 @@
             class="menu-btn"
             @click="isDrawerOpen = !isDrawerOpen"
           />
-          <img src="../assets/logo.svg" alt="Logo" class="logo" />
+          <img src="../assets/Logo-test1.png" alt="Logo" class="logo" />
         </div>
         <div class="right">
+
           <div class="user-greeting">
             <span class="hi">{{ $t("header.hello") }}</span>
             <span class="username">Tareqyt01</span>
@@ -181,6 +182,7 @@
 
     <!-- Mobile Drawer (must be a direct child of q-layout) -->
     <q-drawer
+      v-if="!isExamMode"
       v-model="isDrawerOpen"
       side="left"
       overlay
@@ -250,7 +252,7 @@
         class="layout-wrap app-container"
         :class="{ 'drawer-open': isDrawerOpen }"
       >
-        <aside class="sidebar">
+        <aside class="sidebar" v-if="!isExamMode">
           <!-- <div class="nav-brand">
             <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
           </div> -->
@@ -302,7 +304,7 @@
                 <q-icon name="person" size="18px" />
                 <span>{{ $t("nav.profile-purchases") }}</span>
               </li>
-     
+
               <li
                 :class="['menu-item', { active: isActive('/support') }]"
                 @click="navigate('/support')"
@@ -317,7 +319,7 @@
                 <q-icon name="inventory_2" size="18px" />
                 <span>{{ $t("nav.packages") }}</span>
               </li>
-            
+
               <li
                 :class="['menu-item', { active: isActive('/orders') }]"
                 @click="navigate('/orders')"
@@ -341,7 +343,7 @@
               <div class="footer-top">
                 <div class="footer-col brand">
                   <img
-                    src="../assets/logo.svg"
+                    src="../assets/Logo-test1.png"
                     alt="Theorie Toppers"
                     class="footer-logo"
                   />
@@ -422,6 +424,7 @@ export default defineComponent({
     const router = useRouter();
     const currentRoute = useRoute();
     const currentTitle = computed(() => currentRoute.meta?.title || "");
+    const isExamMode = computed(() => currentRoute.meta?.hideSidebar === true);
     function navigate(path) {
       try {
         router.push(path);
@@ -479,6 +482,7 @@ export default defineComponent({
       dismissNotification,
       refreshNotifications,
       viewAllNotifications,
+      isExamMode,
     };
   },
 });
@@ -516,10 +520,10 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 12px;
-  
+
 }
 .logo {
-  height: 32px;
+  height: 60px;
   width: auto;
 }
 .menu-btn {
@@ -842,7 +846,7 @@ export default defineComponent({
 }
 
 .footer-logo {
-  height: 36px;
+  height: 80px;
   width: auto;
   margin-bottom: 10px;
 }
