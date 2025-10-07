@@ -10,12 +10,12 @@
               <h2 class="headline">{{ username }}!</h2>
               <div class="sub">Ready to continue learning? Pick up where you left off.</div>
               <div class="actions">
-                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="q-mr-sm" @click="goto('/practice-exams')" />
+                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="" @click="goto('/practice-exams')" />
                 <q-btn outline color="primary" no-caps icon="menu_book" label="Browse chapters" @click="goto('/downloads')" />
               </div>
             </div>
             <div class="art">
-              <img src="../assets/logo.svg" alt="art" />
+              <img src="../assets/Logo-test1.png" alt="art" />
             </div>
           </div>
         </div>
