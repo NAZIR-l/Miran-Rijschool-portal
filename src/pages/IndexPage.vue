@@ -6,12 +6,12 @@
         <div class="dash-card greeting-card d-col-12">
           <div class="greeting-inner">
             <div class="copy">
-              <div class="eyebrow">Welcome back</div>
+              <div class="eyebrow">{{ $t('dashboard.welcome_back') }}</div>
               <h2 class="headline">{{ username }}!</h2>
-              <div class="sub">Ready to continue learning? Pick up where you left off.</div>
+              <div class="sub">{{ $t('dashboard.ready') }}</div>
               <div class="actions">
-                <q-btn color="primary" unelevated no-caps icon="play_arrow" label="Continue" class="" @click="goto('/practice-exams')" />
-                <q-btn outline color="primary" no-caps icon="menu_book" label="Browse chapters" @click="goto('/downloads')" />
+                <q-btn color="primary" unelevated no-caps icon="play_arrow" :label="$t('dashboard.btn_continue')" class="" @click="goto('/practice-exams')" />
+                <q-btn outline color="primary" no-caps icon="menu_book" :label="$t('dashboard.btn_browse')" @click="goto('/downloads')" />
               </div>
             </div>
             <div class="art">
@@ -23,36 +23,36 @@
         <!-- Overview -->
         <div class="dash-card overview-card d-col-6">
           <div class="card-title with-badge">
-            <span>Overview</span>
+            <span>{{ $t('dashboard.overview') }}</span>
             <q-chip color="green-6" text-color="white" size="sm">{{ currentPackage.name }}</q-chip>
           </div>
           <div class="overview-rows">
             <div class="row-line">
-              <span class="muted">Days left</span>
-              <span class="value">{{ daysLeft }} days</span>
+              <span class="muted">{{ $t('dashboard.days_left') }}</span>
+              <span class="value">{{ daysLeft }} {{ $t('dashboard.days') }}</span>
             </div>
             <div class="row-line">
-              <span class="muted">Expires</span>
+              <span class="muted">{{ $t('dashboard.expires') }}</span>
               <span class="value">{{ currentPackage.expires }}</span>
             </div>
           </div>
           <div class="quick-links">
-            <q-btn flat color="primary" no-caps icon="download" label="Downloads" @click="goto('/downloads')" />
-            <q-btn flat color="primary" no-caps icon="person" label="Account" @click="goto('/profile-purchases')" />
-            <q-btn flat color="primary" no-caps icon="receipt" label="Orders" @click="goto('/orders')" />
+            <q-btn flat color="primary" no-caps icon="download" :label="$t('dashboard.quick_downloads')" @click="goto('/downloads')" />
+            <q-btn flat color="primary" no-caps icon="person" :label="$t('dashboard.quick_account')" @click="goto('/profile-purchases')" />
+            <q-btn flat color="primary" no-caps icon="receipt" :label="$t('dashboard.quick_orders')" @click="goto('/orders')" />
           </div>
         </div>
 
         <!-- Progress -->
         <div class="dash-card progress-card d-col-6">
-          <div class="card-title">Progress</div>
-          <div class="muted">Exams attempted</div>
+          <div class="card-title">{{ $t('dashboard.progress') }}</div>
+          <div class="muted">{{ $t('dashboard.exams_attempted') }}</div>
           <div class="progress-line">
             <div class="percent">{{ progressPercent }}%</div>
             <div class="ratio">({{ practice.done }}/{{ practice.total }})</div>
           </div>
           <q-linear-progress :value="practiceProgress" color="primary" track-color="grey-3" rounded class="q-mt-sm" />
-          <div class="hint">Keep going—you’re almost there!</div>
+          <div class="hint">{{ $t('dashboard.hint') }}</div>
         </div>
       </div>
     </div>

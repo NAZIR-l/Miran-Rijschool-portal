@@ -69,6 +69,27 @@
     "note_inclusive": "Packages include a practical exam at the CBR.",
     "note_retake_only": "Retake packages are only available for students who failed their first exam."
   },
+  "dashboard": {
+    "welcome_back": "Welcome back",
+    "ready": "Ready to continue learning? Pick up where you left off.",
+    "btn_continue": "Continue",
+    "btn_browse": "Browse chapters",
+    "overview": "Overview",
+    "days_left": "Days left",
+    "days": "days",
+    "expires": "Expires",
+    "quick_downloads": "Downloads",
+    "quick_account": "Account",
+    "quick_orders": "Orders",
+    "progress": "Progress",
+    "exams_attempted": "Exams attempted",
+    "hint": "Keep going—you’re almost there!"
+  },
+  "not_found": {
+    "title": "Page not Found",
+    "body": "We didn’t break the internet, but we can’t find what you are looking for.",
+    "back_home": "Go Back Home"
+  },
   "cta": {
     "sign_up": "Sign up"
   },
@@ -143,7 +164,8 @@
       "questions": "questions",
       "pass": "to pass",
       "time": "min"
-    }
+    },
+    "exit_tooltip": "Exit exam"
   }
   ,
   "exam_run": {
@@ -151,6 +173,92 @@
     "mark": "Mark",
     "overview": "Overview",
     "question": "Vraag",
-    "next": "Next question"
+    "next": "Next question",
+    "previous": "Previous",
+    "finish": "Finish exam",
+    "overview_title": "Questions Overview",
+    "overview_current": "Current question",
+    "overview_answered": "Answered",
+    "overview_flagged": "Flagged",
+    "exit": {
+      "title": "Leave exam?",
+      "message": "Are you sure you want to leave the exam? Your progress will not be saved.",
+      "continue": "Continue Exam",
+      "stop": "Stop Exam"
+    },
+    "image_not_available": "Image not available",
+    "progress_of": "Question {current} of {total}"
+  },
+  "support": {
+    "title": "Support & Help",
+    "sub": "We’re here to help. Choose a quick option or browse FAQs.",
+    "call_us": "Call us",
+    "faq_title": "Frequently asked questions",
+    "contact": {
+      "title": "Contact Our Support Team",
+      "subtitle": "We're here to help. Send us a detailed message and we'll get back to you within 24 hours.",
+      "personal_info": "Personal Information",
+      "full_name": "Full Name",
+      "email": "Email Address",
+      "inquiry_details": "Inquiry Details",
+      "topic": "Topic Category",
+      "order_id": "Order ID",
+      "optional_order_hint": "Optional - helps us locate your order faster",
+      "your_message": "Your Message",
+      "message_placeholder": "Describe your inquiry in detail",
+      "response_time": "Expected response time: 2-24 hours",
+      "reset_form": "Reset Form",
+      "send_message": "Send Message"
+    },
+    "validation": {
+      "full_name_required": "Full name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email",
+      "topic_required": "Please select a topic",
+      "message_required": "Please provide a detailed message",
+      "message_min": "Message must be at least 10 characters"
+    },
+    "notify": {
+      "form_reset": "Form has been reset",
+      "send_ok_title": "Thank you! Your message has been sent successfully.",
+      "send_ok_caption": "Our support team will respond within 24 hours.",
+      "send_fail": "Failed to send message. Please try again.",
+      "dismiss": "Dismiss"
+    }
+  },
+  "profile": {
+    "current_package": "Current package",
+    "vehicle_type": "Vehicle type",
+    "status": "Status",
+    "lessons_included": "Lessons included",
+    "renew_package": "Renew package",
+    "dates": "Dates",
+    "start_date": "Start date",
+    "expiry_date": "Expiry date",
+    "payment_history": "Payment history",
+    "previous_packages": "Previous packages",
+    "lessons": "Lessons",
+    "active": "Active",
+    "expired": "Expired",
+    "download": "Download",
+    "view_invoice": "View invoice",
+    "no_previous_packages": "No previous packages"
+  },
+  "traffic": {
+    "search_placeholder": "Search signs...",
+    "search_aria": "Search traffic sign",
+    "all": "All",
+    "bookmarks": "Saved ({count})",
+    "clear": "Clear",
+    "clear_bookmarks": "Clear bookmarks",
+    "groups": {
+      "warnings": "Warning signs",
+      "speed": "Speed signs",
+      "priority": "Priority signs",
+      "info": "Information signs",
+      "prohibition": "Prohibition signs",
+      "direction": "Direction signs",
+      "parking": "Parking"
+    }
   }
 }

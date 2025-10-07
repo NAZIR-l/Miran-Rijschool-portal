@@ -11,6 +11,11 @@
           <q-item-label>English</q-item-label>
         </q-item-section>
       </q-item>
+      <q-item clickable v-close-popup @click="lang = 'nl'" :class="{ ActiveLang: lang === 'nl' }">
+        <q-item-section>
+          <q-item-label>Nederlands</q-item-label>
+        </q-item-section>
+      </q-item>
     </q-list>
   </q-btn-dropdown>
 </template>
@@ -21,7 +26,7 @@ import { useI18n } from "vue-i18n";
 import languages from "quasar/lang/index.json";
 
 const appLanguages = languages.filter(lang =>
-  ["ar", "en-US"].includes(lang.isoName)
+  ["ar", "en-US", "nl"].includes(lang.isoName)
 );
 $(".English").hide();
 export default {
@@ -59,12 +64,16 @@ export default {
     lang(lang) {
       // dynamic import, so loading on demand onlyFDSAF
       import(
-        /* webpackInclude: /(ar|en-US)\.js$/ */
+        /* webpackInclude: /(ar|en-US|nl)\.js$/ */
         "quasar/lang/" + lang
       ).then(lang => {
         this.$q.lang.set(lang.default);
         this.locale = lang.default.isoName;
         this.$q.cookies.set("locale", lang.default.isoName);
+        try {
+          document.documentElement.setAttribute('dir', this.locale === 'ar' ? 'rtl' : 'ltr');
+          document.documentElement.setAttribute('lang', this.locale);
+        } catch (e) {}
       });
     }
   }

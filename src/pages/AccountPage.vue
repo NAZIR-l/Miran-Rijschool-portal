@@ -6,8 +6,7 @@
         <form class="account-form">
           <div class="form-grid">
             <div class="banner banner--tip">
-              Maak je account compleet en maak kans op een leuke goodie bag. We
-              versturen er 5 per dag! 🤩
+              {{ $t('account.banner_tip') }}
             </div>
             <div class="field">
               <span>{{ $t('account.first_name') }}</span><input type="string" name="firstName" />

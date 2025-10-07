@@ -143,7 +143,8 @@
       "questions": "vragen",
       "pass": "voor slagen",
       "time": "min"
-    }
+    },
+    "exit_tooltip": "Examen beëindigen"
   }
   ,
   "exam_run": {
@@ -151,7 +152,117 @@
     "mark": "Markeren",
     "overview": "Overzicht",
     "question": "Vraag",
-    "next": "Volgende vraag"
+    "next": "Volgende vraag",
+    "previous": "Vorige",
+    "finish": "Examen afronden",
+    "overview_title": "Vragenoverzicht",
+    "overview_current": "Huidige vraag",
+    "overview_answered": "Beantwoord",
+    "overview_flagged": "Gemarkeerd",
+    "exit": {
+      "title": "Examen verlaten?",
+      "message": "Weet u zeker dat u het examen wilt verlaten? Uw voortgang wordt niet opgeslagen.",
+      "continue": "Verder met examen",
+      "stop": "Examen stoppen"
+    },
+    "image_not_available": "Afbeelding niet beschikbaar",
+    "progress_of": "Vraag {current} van {total}"
+  },
+  "dashboard": {
+    "welcome_back": "Welkom terug",
+    "ready": "Klaar om verder te leren? Ga door waar je was gebleven.",
+    "btn_continue": "Doorgaan",
+    "btn_browse": "Hoofdstukken bekijken",
+    "overview": "Overzicht",
+    "days_left": "Dagen resterend",
+    "days": "dagen",
+    "expires": "Verloopt",
+    "quick_downloads": "Downloads",
+    "quick_account": "Account",
+    "quick_orders": "Bestellingen",
+    "progress": "Voortgang",
+    "exams_attempted": "Afgelegde examens",
+    "hint": "Ga door — je bent er bijna!"
+  },
+  "not_found": {
+    "title": "Pagina niet gevonden",
+    "body": "We hebben het internet niet kapot gemaakt, maar we kunnen niet vinden wat je zoekt.",
+    "back_home": "Terug naar home"
+  },
+  "support": {
+    "title": "Support & Help",
+    "sub": "We helpen je graag. Kies een snelle optie of bekijk de FAQ.",
+    "call_us": "Bel ons",
+    "faq_title": "Veelgestelde vragen",
+    "contact": {
+      "title": "Neem contact op met support",
+      "subtitle": "Stuur ons een gedetailleerd bericht en wij reageren binnen 24 uur.",
+      "personal_info": "Persoonlijke gegevens",
+      "full_name": "Volledige naam",
+      "email": "E-mailadres",
+      "inquiry_details": "Details van vraag",
+      "topic": "Onderwerp categorie",
+      "order_id": "Bestelnummer",
+      "optional_order_hint": "Optioneel - helpt ons je bestelling sneller te vinden",
+      "your_message": "Je bericht",
+      "message_placeholder": "Beschrijf je vraag in detail",
+      "response_time": "Verwachte reactietijd: 2-24 uur",
+      "reset_form": "Formulier resetten",
+      "send_message": "Bericht verzenden"
+    },
+    "validation": {
+      "full_name_required": "Volledige naam is verplicht",
+      "email_required": "E-mailadres is verplicht",
+      "email_invalid": "Voer een geldig e-mailadres in",
+      "topic_required": "Selecteer een onderwerp",
+      "message_required": "Geef een gedetailleerd bericht op",
+      "message_min": "Bericht moet minstens 10 tekens bevatten"
+    },
+    "notify": {
+      "form_reset": "Formulier is gereset",
+      "send_ok_title": "Bedankt! Je bericht is succesvol verzonden.",
+      "send_ok_caption": "Ons supportteam reageert binnen 24 uur.",
+      "send_fail": "Verzenden mislukt. Probeer het opnieuw.",
+      "dismiss": "Sluiten"
+    }
+  },
+  "profile": {
+    "current_package": "Huidig pakket",
+    "vehicle_type": "Voertuigtype",
+    "status": "Status",
+    "lessons_included": "Inclusief lessen",
+    "renew_package": "Pakket verlengen",
+    "dates": "Data",
+    "start_date": "Startdatum",
+    "expiry_date": "Vervaldatum",
+    "payment_history": "Betalingsgeschiedenis",
+    "previous_packages": "Vorige pakketten",
+    "lessons": "Lessen",
+    "active": "Actief",
+    "expired": "Verlopen",
+    "download": "Downloaden",
+    "view_invoice": "Factuur bekijken",
+    "no_previous_packages": "Geen vorige pakketten"
+  },
+  "traffic": {
+    "search_placeholder": "Zoeken naar borden...",
+    "search_aria": "Zoek verkeersbord",
+    "all": "Alles",
+    "bookmarks": "Opgeslagen ({count})",
+    "clear": "Wissen",
+    "clear_bookmarks": "Bladwijzers wissen",
+    "groups": {
+      "warnings": "Waarschuwingsborden",
+      "speed": "Snelheidsborden",
+      "priority": "Voorrangsborden",
+      "info": "Informatieborden",
+      "prohibition": "Gebods- en verbodsborden",
+      "direction": "Rijrichtingen",
+      "parking": "Parkeren"
+    }
+  },
+  "account": {
+    "banner_tip": "Maak je account compleet en maak kans op een leuke goodie bag. We versturen er 5 per dag! 🤩"
   }
 }
 

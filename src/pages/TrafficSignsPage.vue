@@ -9,11 +9,11 @@
             outlined
             rounded
             debounce="150"
-            placeholder="Zoeken naar borden..."
+            :placeholder="$t('traffic.search_placeholder')"
             class="search"
             clearable
             clear-icon="close"
-            aria-label="Zoek verkeersbord"
+            :aria-label="$t('traffic.search_aria')"
           >
             <template #prepend><q-icon name="search" /></template>
             <template #append>
@@ -29,9 +29,9 @@
               rounded
               unelevated
               :options="[
-                { label: 'Alles', value: 'all', icon: 'grid_view' },
+                { label: $t('traffic.all'), value: 'all', icon: 'grid_view' },
                 {
-                  label: `Opgeslagen (${bookmarkedCount})`,
+                  label: $t('traffic.bookmarks', { count: bookmarkedCount }),
                   value: 'bookmarks',
                   icon: 'bookmark',
                 },
@@ -45,7 +45,7 @@
               rounded
               flat
               icon="delete_sweep"
-              label="Wissen"
+              :label="$t('traffic.clear')"
               @click="clearBookmarks"
             />
           </div>
@@ -56,7 +56,7 @@
     <section class="ts-content">
       <div class="container">
         <div v-for="group in filteredGroups" :key="group.key" class="group">
-          <h3 class="group-title">{{ group.title }}</h3>
+          <h3 class="group-title">{{ $t('traffic.groups.' + group.key) }}</h3>
           <div class="grid">
             <div
               v-for="item in group.items"
@@ -319,7 +319,7 @@ export default defineComponent({
     })();
 
     const groups = ref([
-      { key: "warning", title: "Waarschuwingsborden", items: warningItems },
+      { key: "warnings", title: "Waarschuwingsborden", items: warningItems },
       { key: "speed", title: "Snelheidsborden", items: speedItems },
       { key: "priority", title: "Voorrangsborden", items: priorityItems },
       { key: "info", title: "Informatieborden", items: infoItems },

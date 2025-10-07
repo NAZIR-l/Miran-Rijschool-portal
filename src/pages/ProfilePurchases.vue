@@ -7,38 +7,38 @@
       <div class="info-grid">
         <div class="card card-surface">
           <div class="card-title with-badge">
-            <span>Current package</span>
+            <span>{{ $t('profile.current_package') }}</span>
             <q-chip color="green-6" text-color="white" size="sm">{{ currentPackage.name }}</q-chip>
           </div>
           <div class="package-body">
             <div class="row-line">
-              <span class="muted">Vehicle type</span>
+              <span class="muted">{{ $t('profile.vehicle_type') }}</span>
               <span class="value">Automatic</span>
             </div>
             <div class="row-line">
-              <span class="muted">Status</span>
-              <span class="value success">Active</span>
+              <span class="muted">{{ $t('profile.status') }}</span>
+              <span class="value success">{{ $t('profile.active') }}</span>
             </div>
             <div class="row-line">
-              <span class="muted">Lessons included</span>
+              <span class="muted">{{ $t('profile.lessons_included') }}</span>
               <span class="value">20</span>
             </div>
           </div>
           <div class="row-actions">
-            <q-btn color="primary" unelevated no-caps icon="autorenew" label="Renew package" />
+            <q-btn color="primary" unelevated no-caps icon="autorenew" :label="$t('profile.renew_package')" />
           </div>
         </div>
 
 
         <div class="card card-surface">
-          <div class="card-title">Dates</div>
+          <div class="card-title">{{ $t('profile.dates') }}</div>
           <div class="dates">
             <div class="date-item">
               <div class="icon-wrap">
                 <q-icon name="event" size="18px" />
               </div>
               <div class="contents">
-                <div class="label">Start date</div>
+                <div class="label">{{ $t('profile.start_date') }}</div>
                 <div class="value">{{ currentPackage.startDate }}</div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                 <q-icon name="event_busy" size="18px" />
               </div>
               <div class="contents">
-                <div class="label">Expiry date</div>
+                <div class="label">{{ $t('profile.expiry_date') }}</div>
                 <div class="value">{{ currentPackage.expires }}</div>
               </div>
             </div>
@@ -57,7 +57,7 @@
 
       <!-- Invoices / payment history -->
       <div ref="invoicesRef" class="invoices card-surface">
-        <div class="card-title">Payment history</div>
+        <div class="card-title">{{ $t('profile.payment_history') }}</div>
         <div class="invoice-list">
           <div class="invoice-row" v-for="inv in invoices" :key="inv.id">
             <div class="meta">
@@ -75,7 +75,7 @@
 
       <!-- Previous packages (collapsible) -->
       <div class="previous-packages card-surface">
-        <div class="card-title">Previous packages</div>
+        <div class="card-title">{{ $t('profile.previous_packages') }}</div>
         <q-expansion-item
           v-for="pkg in previousPackages"
           :key="pkg.id"
@@ -98,15 +98,15 @@
 
           <div class="pkg-body">
             <div class="rows">
-              <div class="row"><span class="label">Lessons</span><span class="value">{{ pkg.lessons }}</span></div>
-              <div class="row"><span class="label">Status</span><span class="value">{{ pkg.status }}</span></div>
+              <div class="row"><span class="label">{{ $t('profile.lessons') }}</span><span class="value">{{ pkg.lessons }}</span></div>
+              <div class="row"><span class="label">{{ $t('profile.status') }}</span><span class="value">{{ pkg.status }}</span></div>
             </div>
             <div class="actions">
-              <q-btn flat color="primary" icon="receipt_long" no-caps label="View invoice" />
+              <q-btn flat color="primary" icon="receipt_long" no-caps :label="$t('profile.view_invoice')" />
             </div>
           </div>
         </q-expansion-item>
-        <div v-if="previousPackages.length === 0" class="empty-state">No previous packages</div>
+        <div v-if="previousPackages.length === 0" class="empty-state">{{ $t('profile.no_previous_packages') }}</div>
       </div>
     </div>
   </q-page>
