@@ -263,6 +263,30 @@
   },
   "account": {
     "banner_tip": "Maak je account compleet en maak kans op een leuke goodie bag. We versturen er 5 per dag! 🤩"
+  },
+  "layout": {
+    "menu_open": "Menu openen",
+    "notifications": {
+      "tooltip": "Meldingen",
+      "title": "Meldingen",
+      "refresh": "Vernieuwen",
+      "mark_all": "Alles als gelezen markeren",
+      "none": "Geen meldingen",
+      "caught_up": "Je bent helemaal bij!",
+      "dismiss": "Sluiten"
+    },
+    "footer": {
+      "tagline": "Leer slimmer. Slaag sneller.",
+      "contact_title": "Contact",
+      "opening_hours": "Openingstijden",
+      "days": {
+        "mon_fri": "Ma - Vr",
+        "sat": "Za",
+        "sun": "Zo",
+        "closed": "Gesloten"
+      },
+      "terms": "Algemene voorwaarden"
+    }
   }
 }
 

@@ -260,5 +260,29 @@
       "direction": "Direction signs",
       "parking": "Parking"
     }
+  },
+  "layout": {
+    "menu_open": "Open menu",
+    "notifications": {
+      "tooltip": "Notifications",
+      "title": "Notifications",
+      "refresh": "Refresh",
+      "mark_all": "Mark all as read",
+      "none": "No notifications",
+      "caught_up": "You're all caught up!",
+      "dismiss": "Dismiss"
+    },
+    "footer": {
+      "tagline": "Learn smarter. Pass faster.",
+      "contact_title": "Contact",
+      "opening_hours": "Opening hours",
+      "days": {
+        "mon_fri": "Mon - Fri",
+        "sat": "Sat",
+        "sun": "Sun",
+        "closed": "Closed"
+      },
+      "terms": "Terms and Conditions"
+    }
   }
 }
