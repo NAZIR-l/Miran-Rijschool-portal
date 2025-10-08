@@ -123,6 +123,8 @@ import {
   watch,
   nextTick,
 } from "vue";
+import { useFavoriteTrafficSignals } from '../composables/useFavoriteTrafficSignals'
+import { Cookies } from 'quasar'
 
 export default defineComponent({
   name: "TrafficSignsPage",
@@ -134,6 +136,19 @@ export default defineComponent({
     const filterMode = ref("all"); // 'all' | 'bookmarks'
     const bookmarkedIdSet = ref(new Set());
     const STORAGE_KEY = "traffic_sign_bookmarks_v1";
+
+    // Check if user is authenticated
+    const isAuthenticated = computed(() => !!Cookies.get('auth_token'))
+    
+    // Use the favorites composable for backend integration
+    const {
+      favorites,
+      fetchFavorites,
+      addToFavorites,
+      removeFromFavorites,
+      isFavorite: isBackendFavorite,
+      loading: favoritesLoading
+    } = useFavoriteTrafficSignals()
 
     // Load images dynamically from src/assets/Waarschuwingsborden (trw1..trw32)
     const warningItems = (() => {
@@ -349,8 +364,14 @@ export default defineComponent({
               it.vehicle.includes("all") ||
               it.vehicle.includes(vehicle.value);
             const m = q === "" || norm(it.title).includes(q);
+            
+            // Use backend favorites for authenticated users, localStorage for others
             const b =
-              filterMode.value === "all" || bookmarkedIdSet.value.has(it.id);
+              filterMode.value === "all" ||
+              (isAuthenticated.value 
+                ? isBackendFavorite(it.id) 
+                : bookmarkedIdSet.value.has(it.id));
+            
             return v && m && b;
           }),
         }))
@@ -365,18 +386,63 @@ export default defineComponent({
     }
 
     function isBookmarked(id) {
+      // Use backend for authenticated users, localStorage for others
+      if (isAuthenticated.value) {
+        return isBackendFavorite(id)
+      }
       return bookmarkedIdSet.value.has(id);
     }
-    function toggleBookmark(item) {
-      const set = new Set(Array.from(bookmarkedIdSet.value));
-      if (set.has(item.id)) set.delete(item.id);
-      else set.add(item.id);
-      bookmarkedIdSet.value = set;
-      saveBookmarks();
+    
+    async function toggleBookmark(item) {
+      if (isAuthenticated.value) {
+        // Use backend API for authenticated users
+        try {
+          // Find the group this item belongs to
+          const group = groups.value.find(g => 
+            g.items.some(i => i.id === item.id)
+          )
+          
+          const favoriteData = {
+            signalId: item.id,
+            signalName: item.title,
+            signalType: group?.key || 'unknown',
+            signalImageUrl: item.id // Store only the ID, not the full webpack URL
+          }
+          
+          if (isBackendFavorite(item.id)) {
+            await removeFromFavorites(item.id)
+          } else {
+            await addToFavorites(favoriteData)
+          }
+        } catch (error) {
+          console.error('Failed to toggle favorite:', error)
+        }
+      } else {
+        // Use localStorage for unauthenticated users
+        const set = new Set(Array.from(bookmarkedIdSet.value));
+        if (set.has(item.id)) set.delete(item.id);
+        else set.add(item.id);
+        bookmarkedIdSet.value = set;
+        saveBookmarks();
+      }
     }
-    function clearBookmarks() {
-      bookmarkedIdSet.value = new Set();
-      saveBookmarks();
+    
+    async function clearBookmarks() {
+      if (isAuthenticated.value) {
+        // Clear from backend
+        try {
+          const favoriteIds = favorites.value.map(f => f.signalId)
+          for (const id of favoriteIds) {
+            await removeFromFavorites(id)
+          }
+        } catch (error) {
+          console.error('Failed to clear favorites:', error)
+        }
+      } else {
+        // Clear from localStorage
+        bookmarkedIdSet.value = new Set();
+        saveBookmarks();
+      }
     }
     function saveBookmarks() {
       try {
@@ -395,8 +461,64 @@ export default defineComponent({
         bookmarkedIdSet.value = new Set();
       }
     }
-    onMounted(() => {
+    
+    // Sync localStorage bookmarks to backend on first login
+    async function syncLocalToBackend() {
+      if (!isAuthenticated.value || bookmarkedIdSet.value.size === 0) return
+      
+      const syncKey = 'favorites_synced_v1'
+      const alreadySynced = localStorage.getItem(syncKey)
+      
+      if (alreadySynced) return
+      
+      try {
+        console.log('Syncing local bookmarks to backend...')
+        // Upload local bookmarks to backend
+        for (const id of bookmarkedIdSet.value) {
+          // Find the item details
+          for (const group of groups.value) {
+            const item = group.items.find(i => i.id === id)
+            if (item) {
+              try {
+                await addToFavorites({
+                  signalId: item.id,
+                  signalName: item.title,
+                  signalType: group.key,
+                  signalImageUrl: item.id // Store only the ID for migration
+                })
+              } catch (err) {
+                // Ignore duplicates (409 conflict)
+                if (err.response?.status !== 409) {
+                  console.error('Failed to sync:', id, err)
+                }
+              }
+              break
+            }
+          }
+        }
+        
+        // Mark as synced
+        localStorage.setItem(syncKey, 'true')
+        console.log('Local bookmarks synced successfully!')
+      } catch (error) {
+        console.error('Failed to sync local favorites to backend:', error)
+      }
+    }
+    
+    onMounted(async () => {
       loadBookmarks();
+      
+      // Load favorites from backend if authenticated
+      if (isAuthenticated.value) {
+        try {
+          await fetchFavorites()
+          // Sync localStorage bookmarks to backend (one-time)
+          await syncLocalToBackend()
+        } catch (error) {
+          console.error('Failed to load favorites:', error)
+        }
+      }
+      
       // Keyboard shortcut: Cmd/Ctrl+K focuses the search
       window.addEventListener("keydown", (e) => {
         const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
@@ -409,7 +531,13 @@ export default defineComponent({
       });
     });
 
-    const bookmarkedCount = computed(() => bookmarkedIdSet.value.size);
+    const bookmarkedCount = computed(() => {
+      // Use backend count for authenticated users
+      if (isAuthenticated.value) {
+        return favorites.value.length
+      }
+      return bookmarkedIdSet.value.size
+    });
 
     // Provide display names for known IDs like trw1 etc.
     const displayNames = {

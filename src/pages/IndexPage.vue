@@ -61,13 +61,14 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { api } from "boot/axios";
 export default defineComponent({
   name: "IndexPage",
   setup() {
     const router = useRouter();
-    const username = ref("Tareqyt01");
+    const username = ref("");
 
     const practice = ref({ done: 2, total: 7 });
     const practiceProgress = computed(() => {
@@ -92,6 +93,25 @@ export default defineComponent({
     function goto(path){
       try { router.push(path); } catch(e) {}
     }
+
+    onMounted(async () => {
+      try {
+        const res = await api.get('/auth/me');
+        const user = res?.data;
+        if (user && (user.firstName || user.lastName)) {
+          const first = user.firstName || '';
+          const last = user.lastName || '';
+          username.value = `${first} ${last}`.trim();
+        } else if (user?.email) {
+          username.value = user.email;
+        } else {
+          username.value = 'User';
+        }
+      } catch (e) {
+        // If unauthorized, you may redirect to login page of website
+        // router.push('/login');
+      }
+    });
 
     return { username, practice, practiceProgress, progressPercent, currentPackage, daysLeft, goto };
   },
