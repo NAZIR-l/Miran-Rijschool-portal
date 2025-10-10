@@ -2,16 +2,16 @@
   <div class=" text-center flex flex-center">
     <div class="containtError">
       <div class="text-h2 ErrorType" style="opacity:1">
-        Page not Found
+        {{ $t('not_found.title') }}
       </div>
       <div class="text-h6 ErrorBody">
-        We didn’t break the internet, but we can’t find what you are looking for.
+        {{ $t('not_found.body') }}
       </div>
 
         <router-link to="/">
          <div class="BackHome">
          <button>
-          Go Back Home
+          {{ $t('not_found.back_home') }}
         </button>
         </div>
         </router-link>

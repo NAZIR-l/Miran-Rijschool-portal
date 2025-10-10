@@ -15,7 +15,7 @@
               <q-icon name="schedule" class="timer-icon" />
             </div>
             <div class="timer-content">
-              <div class="timer-label">Resterende tijd</div>
+              <div class="timer-label">{{ $t('exam_run.time_left') }}</div>
               <div class="timer-value" :class="{ 'warning': remaining < 300 }">
                 {{ formattedTime }}
               </div>
@@ -33,13 +33,13 @@
             :color="isFlagged ? 'amber' : 'grey'"
             @click="toggleFlag"
           >
-            <q-tooltip>Markeer vraag</q-tooltip>
+            <q-tooltip>{{ $t('exam_run.mark') }}</q-tooltip>
           </q-btn>
           <q-btn flat round dense icon="grid_view" class="action-btn" @click="showOverview = true">
-            <q-tooltip>Overzicht</q-tooltip>
+            <q-tooltip>{{ $t('exam_run.overview') }}</q-tooltip>
           </q-btn>
           <q-btn flat round dense icon="logout" class="action-btn exit-btn" @click="askExit">
-            <q-tooltip>Examen beëindigen</q-tooltip>
+            <q-tooltip>{{ $t('exam_intro.exit_tooltip') }}</q-tooltip>
           </q-btn>
         </div>
       </div>
@@ -60,6 +60,9 @@
             :style="{ width: progressPercentage + '%' }"
           ></div>
         </div>
+        <div class="progress-text">
+          {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
+        </div>
       </div>
     </div>
 
@@ -70,7 +73,6 @@
           <!-- Left Column: Image -->
           <div class="image-column">
             <div class="visual-card">
-
               <div class="visual-content">
                 <div class="image-container">
                   <q-img
@@ -84,7 +86,12 @@
                     <template v-slot:error>
                       <div class="image-error">
                         <q-icon name="image_not_supported" size="xl" color="grey-5" />
-                        <div class="error-text">Afbeelding niet beschikbaar</div>
+                        <div class="error-text">{{ $t('exam_run.image_not_available') }}</div>
+                        <div class="image-debug" v-if="current.rawImage">
+                          Path: {{ current.rawImage }}<br>
+                          Exam: {{ examId }}<br>
+                          Resolved: {{ currentImage }}
+                        </div>
                       </div>
                     </template>
                   </q-img>
@@ -104,8 +111,7 @@
               <div class="question-options-header">
                 <div class="question-meta">
                   <div class="question-number-badge">
-                    <span class="question-number">Vraag {{ indexDisplay }}</span>
-
+                    <span class="question-number">{{ $t('exam_run.question') }} {{ indexDisplay }}</span>
                   </div>
                   <div class="question-actions">
                     <q-btn
@@ -118,7 +124,7 @@
                       @click="toggleFlag"
                       class="flag-btn"
                     >
-                      <q-tooltip>Markeer deze vraag</q-tooltip>
+                      <q-tooltip>{{ $t('exam_run.mark') }}</q-tooltip>
                     </q-btn>
                   </div>
                 </div>
@@ -138,7 +144,6 @@
 
               <!-- Options Section -->
               <div class="options-section">
-
 
                 <div class="options-content">
                   <!-- Multiple Choice Options -->
@@ -180,7 +185,7 @@
                         map-options
                         class="professional-select"
                         behavior="menu"
-                        label="Selecteer een antwoord"
+                        :label="$t('exam_run.select_answer')"
                       >
                         <template v-slot:selected>
                           <div class="selected-option" v-if="selected">
@@ -189,7 +194,7 @@
                             </div>
                           </div>
                           <div class="placeholder" v-else>
-                            Kies een optie
+                            {{ $t('exam_run.choose_option') }}
                           </div>
                         </template>
                         <template v-slot:option="scope">
@@ -215,10 +220,10 @@
                           type="text"
                           outlined
                           class="professional-input"
-                          placeholder="Voer hier uw antwoord in..."
+                          :placeholder="$t('exam_run.enter_answer')"
                           :maxlength="200"
                           counter
-                          label="Typ uw antwoord"
+                          :label="$t('exam_run.type_answer')"
                         >
                           <template v-slot:prepend>
                             <q-icon name="edit" class="input-icon" />
@@ -227,7 +232,7 @@
                       </div>
                       <div class="input-hint">
                         <q-icon name="info" size="xs" />
-                        <span>Geef een duidelijk en beknopt antwoord</span>
+                        <span>{{ $t('exam_run.answer_hint') }}</span>
                       </div>
                     </div>
                   </template>
@@ -276,7 +281,7 @@
     <q-dialog v-model="showOverview" position="right" full-height>
       <q-card class="overview-dialog">
         <q-card-section class="overview-header">
-          <div class="overview-title">Vragen Overzicht</div>
+          <div class="overview-title">{{ $t('exam_run.overview_title') }}</div>
           <q-btn flat round dense icon="close" v-close-popup />
         </q-card-section>
         <q-card-section class="overview-stats">
@@ -328,15 +333,15 @@
           <div class="overview-legend">
             <div class="legend-item">
               <div class="legend-color current"></div>
-              <span>Huidige vraag</span>
+              <span>{{ $t('exam_run.overview_current') }}</span>
             </div>
             <div class="legend-item">
               <div class="legend-color answered"></div>
-              <span>Beantwoord</span>
+              <span>{{ $t('exam_run.overview_answered') }}</span>
             </div>
             <div class="legend-item">
               <div class="legend-color flagged"></div>
-              <span>Gemarkeerd</span>
+              <span>{{ $t('exam_run.overview_flagged') }}</span>
             </div>
           </div>
           <!-- <div class="overview-actions">
@@ -354,11 +359,11 @@
       <q-card class="confirm-dialog">
         <q-card-section class="dialog-header">
           <q-icon name="help_outline" color="primary" size="lg" />
-          <h3 class="dialog-title">Examen Verlaten?</h3>
+          <h3 class="dialog-title">{{ $t('exam_run.exit.title') }}</h3>
         </q-card-section>
 
         <q-card-section class="dialog-content">
-          <p>Weet u zeker dat u het examen wilt verlaten? Uw voortgang zal niet worden opgeslagen.</p>
+          <p>{{ $t('exam_run.exit.message') }}</p>
         </q-card-section>
 
         <q-card-actions class="dialog-actions">
@@ -368,7 +373,7 @@
             class="cancel-btn"
             @click="exitConfirm = false"
           >
-            Verder met Examen
+            {{ $t('exam_run.exit.continue') }}
           </q-btn>
           <q-btn
             color="primary"
@@ -377,7 +382,7 @@
             class="confirm-btn"
             @click="exit"
           >
-            Examen Stoppen
+            {{ $t('exam_run.exit.stop') }}
           </q-btn>
         </q-card-actions>
       </q-card>

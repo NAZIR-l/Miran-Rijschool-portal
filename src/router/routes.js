@@ -12,6 +12,7 @@ const routes = [
       { path: 'orders', name: 'Orders', component: () => import('pages/OrdersPage.vue') },
       { path: 'packages', name: 'Packages', component: () => import('pages/Packages.vue') },
       { path: 'signals', name: 'Signals', component: () => import('pages/TrafficSignsPage.vue') },
+      { path: 'favorites', name: 'Favorites', component: () => import('pages/FavoritesPage.vue') },
       { path: 'profile-purchases', name: 'ProfilePurchases', component: () => import('pages/ProfilePurchases.vue') },
       { path: 'support', name: 'Support', component: () => import('pages/SupportPage.vue') },
       { path: 'exam/:id', name: 'ExamIntro', component: () => import('pages/ExamIntroPage.vue'), meta: { hideSidebar: true } },

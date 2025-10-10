@@ -9,7 +9,7 @@
 
         <div class="header-right">
           <q-btn flat round dense icon="logout" class="action-btn exit-btn" @click="askExit">
-            <q-tooltip>Examen beëindigen</q-tooltip>
+            <q-tooltip>{{ $t('exam_intro.exit_tooltip') }}</q-tooltip>
           </q-btn>
         </div>
       </div>
@@ -40,11 +40,11 @@
       <q-card class="confirm-dialog">
         <q-card-section class="dialog-header">
           <q-icon name="help_outline" color="primary" size="lg" />
-          <h3 class="dialog-title">Examen Verlaten?</h3>
+          <h3 class="dialog-title">{{ $t('exam_run.exit.title') }}</h3>
         </q-card-section>
 
         <q-card-section class="dialog-content">
-          <p>Weet u zeker dat u het examen wilt verlaten? Uw voortgang zal niet worden opgeslagen.</p>
+          <p>{{ $t('exam_run.exit.message') }}</p>
         </q-card-section>
 
         <q-card-actions class="dialog-actions">
@@ -54,7 +54,7 @@
             class="cancel-btn"
             @click="exitConfirm = false"
           >
-            Verder met Examen
+            {{ $t('exam_run.exit.continue') }}
           </q-btn>
           <q-btn
             color="primary"
@@ -63,7 +63,7 @@
             class="confirm-btn"
             @click="exit"
           >
-            Examen Stoppen
+            {{ $t('exam_run.exit.stop') }}
           </q-btn>
         </q-card-actions>
       </q-card>

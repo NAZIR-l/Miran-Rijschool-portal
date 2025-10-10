@@ -4,19 +4,19 @@
       <!-- Quick links -->
       <div class="quick card-surface">
         <div class="header">
-          <h2>Support & Help</h2>
+          <h2>{{ $t('support.title') }}</h2>
           <div class="sub">
-            We’re here to help. Choose a quick option or browse FAQs.
+            {{ $t('support.sub') }}
           </div>
         </div>
         <div class="links">
-          <q-btn color="primary" no-caps icon="call" label="Call us" outline />
+          <q-btn color="primary" no-caps icon="call" :label="$t('support.call_us')" outline />
         </div>
       </div>
 
 
       <div class="faq card-surface">
-        <div class="card-title">Frequently asked questions</div>
+        <div class="card-title">{{ $t('support.faq_title') }}</div>
         <q-expansion-item
           v-for="faq in faqs"
           :key="faq.q"
@@ -36,8 +36,8 @@
           <div class="contact-title">
             <q-icon name="support_agent" size="28px" color="primary" />
             <div>
-              <h3>Contact Our Support Team</h3>
-              <p>We're here to help. Send us a detailed message and we'll get back to you within 24 hours.</p>
+              <h3>{{ $t('support.contact.title') }}</h3>
+              <p>{{ $t('support.contact.subtitle') }}</p>
             </div>
           </div>
         </div>
@@ -46,15 +46,15 @@
           <div class="form-section">
             <div class="section-label">
               <q-icon name="person" size="18px" />
-              <span>Personal Information</span>
+              <span>{{ $t('support.contact.personal_info') }}</span>
             </div>
             <div class="form-row">
               <q-input
                 v-model="form.name"
-                label="Full Name"
+                :label="$t('support.contact.full_name')"
                 outlined
                 class="form-field"
-                :rules="[(v) => !!v || 'Full name is required']"
+                :rules="[(v) => !!v || $t('support.validation.full_name_required')]"
                 hint="Enter your first and last name"
               >
                 <template v-slot:prepend>
@@ -63,13 +63,13 @@
               </q-input>
               <q-input
                 v-model="form.email"
-                label="Email Address"
+                :label="$t('support.contact.email')"
                 outlined
                 type="email"
                 class="form-field"
                 :rules="[
-                  (v) => !!v || 'Email is required',
-                  (v) => /.+@.+\..+/.test(v) || 'Please enter a valid email'
+                  (v) => !!v || $t('support.validation.email_required'),
+                  (v) => /.+@.+\..+/.test(v) || $t('support.validation.email_invalid')
                 ]"
                 hint="We'll use this to respond to your inquiry"
               >
@@ -83,18 +83,18 @@
           <div class="form-section">
             <div class="section-label">
               <q-icon name="help_outline" size="18px" />
-              <span>Inquiry Details</span>
+              <span>{{ $t('support.contact.inquiry_details') }}</span>
             </div>
             <div class="form-row">
               <q-select
                 v-model="form.topic"
                 :options="topicOptions"
-                label="Topic Category"
+                :label="$t('support.contact.topic')"
                 outlined
                 class="form-field"
                 emit-value
                 map-options
-                :rules="[(v) => !!v || 'Please select a topic']"
+                :rules="[(v) => !!v || $t('support.validation.topic_required')]"
               >
                 <template v-slot:prepend>
                   <q-icon name="category" />
@@ -102,10 +102,10 @@
               </q-select>
               <q-input
                 v-model="form.orderId"
-                label="Order ID"
+                :label="$t('support.contact.order_id')"
                 outlined
                 class="form-field"
-                hint="Optional - helps us locate your order faster"
+                :hint="$t('support.contact.optional_order_hint')"
               >
                 <template v-slot:prepend>
                   <q-icon name="receipt" />
@@ -117,19 +117,19 @@
           <div class="form-section">
             <div class="section-label">
               <q-icon name="message" size="18px" />
-              <span>Your Message</span>
+              <span>{{ $t('support.contact.your_message') }}</span>
             </div>
             <q-input
               v-model="form.message"
-              label="Describe your inquiry in detail"
+              :label="$t('support.contact.message_placeholder')"
               type="textarea"
               outlined
               class="message-field"
               :autogrow="true"
               :rows="6"
               :rules="[
-                (v) => !!v || 'Please provide a detailed message',
-                (v) => v.length >= 10 || 'Message must be at least 10 characters'
+                (v) => !!v || $t('support.validation.message_required'),
+                (v) => v.length >= 10 || $t('support.validation.message_min')
               ]"
               hint="Please provide as much detail as possible to help us assist you better"
               counter
@@ -140,7 +140,7 @@
           <div class="form-actions">
             <div class="action-info">
               <q-icon name="info" size="16px" color="grey-6" />
-              <span class="info-text">Expected response time: 2-24 hours</span>
+              <span class="info-text">{{ $t('support.contact.response_time') }}</span>
             </div>
             <div class="button-group">
               <q-btn
@@ -149,7 +149,7 @@
                 unelevated
                 no-caps
                 icon="refresh"
-                label="Reset Form"
+                :label="$t('support.contact.reset_form')"
                 @click="resetForm"
                 class="reset-btn"
               />
@@ -159,7 +159,7 @@
                 unelevated
                 no-caps
                 icon="send"
-                label="Send Message"
+                :label="$t('support.contact.send_message')"
                 class="submit-btn"
                 size="md"
                 :loading="submitting"
@@ -220,11 +220,11 @@ export default defineComponent({
         orderId: "",
         message: "",
       };
-      $q.notify({
-        type: "info",
-        message: "Form has been reset",
-        position: "top"
-      });
+        $q.notify({
+          type: "info",
+          message: $t('support.notify.form_reset'),
+          position: "top"
+        });
     }
     
     async function submit() {
@@ -236,12 +236,12 @@ export default defineComponent({
         
         $q.notify({
           type: "positive",
-          message: "Thank you! Your message has been sent successfully.",
-          caption: "Our support team will respond within 24 hours.",
+          message: $t('support.notify.send_ok_title'),
+          caption: $t('support.notify.send_ok_caption'),
           position: "top-right",
           timeout: 5000,
           actions: [
-            { label: "Dismiss", color: "white", handler: () => {} }
+            { label: $t('support.notify.dismiss'), color: "white", handler: () => {} }
           ]
         });
         
@@ -256,7 +256,7 @@ export default defineComponent({
       } catch (error) {
         $q.notify({
           type: "negative",
-          message: "Failed to send message. Please try again.",
+          message: $t('support.notify.send_fail'),
           position: "top-right"
         });
       } finally {

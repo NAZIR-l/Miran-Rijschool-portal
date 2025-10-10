@@ -38,7 +38,9 @@ body,
 .q-page-container {
   background: var(--page-bg);
   min-height: 100vh;
-  padding: 18px;
+  @media (max-width: 420px) {
+    width: fit-content;
+  }
 }
 
 /* Page header bar inside content */

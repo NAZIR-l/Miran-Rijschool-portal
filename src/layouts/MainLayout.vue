@@ -15,14 +15,15 @@
             class="menu-btn"
             @click="isDrawerOpen = !isDrawerOpen"
           />
-          <img src="../assets/Logo-test1.png" alt="Logo" class="logo" />
+          <div class="logo-container">
+            <img src="../assets/Logo-test1.png" alt="Logo" class="logo" />
+          </div>
         </div>
         <div class="right">
-
-          <div class="user-greeting">
+          <!-- <div class="user-greeting">
             <span class="hi">{{ $t("header.hello") }}</span>
             <span class="username">Tareqyt01</span>
-          </div>
+          </div> -->
 
           <!-- Notifications Bell Icon -->
           <div class="notifications-bell">
@@ -192,48 +193,72 @@
       :width="260"
     >
       <div class="nav-brand">
-        <img src="../assets/logo.svg" alt="Logo" class="brand-logo" />
+        <img src="../assets/Logo-test1.png" alt="Logo" class="brand-logo" />
       </div>
       <nav>
         <ul class="nav-list">
           <li
             :class="['menu-item', { active: isActive('/') }]"
-            @click="navigateAndClose('/')"
+            @click="navigate('/')"
           >
             <q-icon name="dashboard" size="18px" />
             <span>{{ $t("nav.dashboard") }}</span>
           </li>
           <li
+            :class="['menu-item', { active: isActive('/practice-exams') }]"
+            @click="navigate('/practice-exams')"
+          >
+            <q-icon name="school" size="18px" />
+            <span>{{ $t("nav.practice-exams") }}</span>
+          </li>
+          <li
+            :class="['menu-item', { active: isActive('/signals') }]"
+            @click="navigate('/signals')"
+          >
+            <q-icon name="traffic" size="18px" />
+            <span>{{ $t("nav.signals") }}</span>
+          </li>
+          <li
             :class="['menu-item', { active: isActive('/downloads') }]"
-            @click="navigateAndClose('/downloads')"
+            @click="navigate('/downloads')"
           >
             <q-icon name="download" size="18px" />
             <span>{{ $t("nav.downloads") }}</span>
           </li>
-          <li
-            :class="['menu-item', { active: isActive('/packages') }]"
-            @click="navigateAndClose('/packages')"
-          >
-            <q-icon name="inventory_2" size="18px" />
-            <span>{{ $t("nav.packages") }}</span>
-          </li>
+          <!-- <li
+                :class="['menu-item', { active: isActive('/account') }]"
+                @click="navigate('/account')"
+              >
+                <q-icon name="person" size="18px" />
+                <span>{{ $t('nav.account') }}</span>
+                <span class="badge">1</span>
+              </li> -->
           <li
             :class="['menu-item', { active: isActive('/profile-purchases') }]"
-            @click="navigateAndClose('/profile-purchases')"
+            @click="navigate('/profile-purchases')"
           >
             <q-icon name="person" size="18px" />
             <span>{{ $t("nav.profile-purchases") }}</span>
           </li>
+
           <li
-            :class="['menu-item', { active: isActive('/account') }]"
-            @click="navigateAndClose('/account')"
+            :class="['menu-item', { active: isActive('/support') }]"
+            @click="navigate('/support')"
           >
-            <q-icon name="person" size="18px" />
-            <span>{{ $t("nav.account") }}</span>
+            <q-icon name="download" size="18px" />
+            <span>{{ $t("nav.support") }}</span>
           </li>
           <li
+            :class="['menu-item', { active: isActive('/packages') }]"
+            @click="navigate('/packages')"
+          >
+            <q-icon name="inventory_2" size="18px" />
+            <span>{{ $t("nav.packages") }}</span>
+          </li>
+
+          <li
             :class="['menu-item', { active: isActive('/orders') }]"
-            @click="navigateAndClose('/orders')"
+            @click="navigate('/orders')"
           >
             <q-icon name="receipt" size="18px" />
             <span>{{ $t("nav.orders") }}</span>
@@ -501,7 +526,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .menu-item span {
   flex-shrink: 0;
@@ -509,7 +534,6 @@ export default defineComponent({
   overflow: hidden;
   text-overflow: ellipsis;
   width: 90%;
-
 }
 .topbar .left {
   display: flex;
@@ -520,11 +544,13 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 12px;
-
+}
+.logo-container {
+  max-width: 150px;
 }
 .logo {
+  width: 100%;
   height: 60px;
-  width: auto;
 }
 .menu-btn {
   box-shadow: 0 2px 8px rgba(2, 6, 23, 0.08);
