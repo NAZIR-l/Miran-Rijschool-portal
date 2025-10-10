@@ -4,229 +4,948 @@
   "questions": [
     {
       "id": "exam2-q1",
-      "image": "../../exam2/q1.png",
-      "text": "Mag je als bestuurder van een personenauto gebruikmaken van een rijstrook met de aanduiding 'BUS' of 'LIJNBUS'?",
+      "image": "../../assets/exam2/q1.png",
+      "text": "Waarom mag je niet rijden met een gedraaide veiligheidsgordel?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Omdat de gordel dan minder comfortabel zit"
+        },
+        {
+          "id": "b",
+          "label": "Omdat de gordel dan sneller slijt "
+        },
+        {
+          "id": "c",
+          "label": "Omdat de gordel bij een botsing minder goed reageert"
+        }
       ],
-      "correct": "b",
+      "correct": "c",
+      "reason": "Een gedraaide gordel verdeelt de krachten bij een botsing niet goed, waardoor de kans op letsel toeneemt. Daarnaast vergroot het de kans op snijwonden.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q2",
       "image": "../../assets/exam2/q2.png",
-      "text": "Mag een kind van 12 jaar en 1.30 meter lang gebruik maken van een driepuntsgordel ?",
+      "text": "Wat is de dode hoek?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Het gebied rondom een voertuig dat de bestuurder niet kan zien van achter het stuur, ook niet met behulp van zijn spiegels"
+        },
+        {
+          "id": "b",
+          "label": "Het gebied achter het voertuig dat de bestuurder alleen kan zien met de binnenspiegel"
+        },
+        {
+          "id": "c",
+          "label": "Het punt vanaf waar je niet meer verder voor je uit kan kijken"
+        }
       ],
-      "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "correct": "a",
+      "category": "lanes",
+      "reason": "De dode hoek is het gebied rondom een voertuig dat niet zichtbaar is voor de bestuurder, zelfs niet via de zij- of binnenspiegels. Dit vormt een risico bij bijvoorbeeld het wisselen van rijstrook en afslaan, vooral voor kwetsbare weggebruikers zoals fietsers en voetgangers. Dode hoeken worden ook wel blinde hoeken genoemd."
+
+    },
     {
       "id": "exam2-q3",
       "image": "../../assets/exam2/q3.png",
-      "text": "je wilt rechtdoor. Moet je de hele militaire colonne voor laten gaan?",
+      "text": "Mag je op deze manier rijden?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "category": "lanes",
+      "reason": "Zorg ervoor dat puin, zoals los zand of bladeren in de aanhangwagen altijd bedekt is."
+
+    },
     {
       "id": "exam2-q4",
       "image": "../../assets/exam2/q4.png",
-      "text": "Mag je hier doorrijden bij groen licht?",
+      "text": "Bij welk toerental verbruik je de minste brandstof?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Bij toerental 1"
+        },
+        {
+          "id": "b",
+          "label": "Bij toerental 2"
+        },
+        {
+          "id": "c",
+          "label": "Bij toerental 3"
+        }
       ],
-      "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "correct": "a",
+      "category": "lanes",
+      "reason": "Je verbrandt de minste brandstof bij een laag toerental."
+    },
     {
       "id": "exam2-q5",
       "image": "../../assets/exam2/q5.png",
-      "text": "welk deel van de weg wordt de rijbaan genoemd?",
+      "text": "Hoelang is een rijbewijs B geldig?",
       "options": [
-        { "id": "a", "label": "A" },
-        { "id": "b", "label": "B" },
-        { "id": "c", "label": "C" }
+        {
+          "id": "a",
+          "label": "4 jaar"
+        },
+        {
+          "id": "b",
+          "label": "8 jaar"
+        },
+        {
+          "id": "c",
+          "label": "10 jaar"
+        }
       ],
-      "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "correct": "c",
+      "category": "lanes",
+      "reason": "Het rijbewijs B is 10 jaar geldig en dient daarna verlengd te worden. Na je 70e is dit geen 10, maar 5 jaar."
+    },
     {
       "id": "exam2-q6",
       "image": "../../assets/exam2/q6.png",
-      "text": "wat betekent een groene ventieldop op de band?",
+      "text": "Kun je hier een bromfietser op de rijbaan verwachten?",
       "options": [
-        { "id": "a", "label": "Reserveband" },
-        { "id": "b", "label": "Zomerband" },
-        { "id": "c", "label": "Een band die gevuld is met stikstof" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
-      "correct": "b",
+      "correct": "a",
+      "reason":"De maximumsnelheid van een bromfiets op de rijbaan buiten de bebouwde kom is: 45 km/u. Dit is snel genoeg om op een weg te mogen rijden waar je maximaal 60 km/u per uur mag rijden.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q7",
       "image": "../../assets/exam2/q7.png",
-      "text": "je komt hier aan rijden en wil linksaf slaan. wat doe je?",
+      "text": "Mag je hier doorrijden?",
       "options": [
-        { "id": "a", "label": "je wacht voor de haaientanden totdat de grijze auto is afgeslagen" },
-        { "id": "b", "label": "je rijdt door tot het middenstuk en wqacht daar tot de grijze auto is afgeslagen" },
-        { "id": "c", "label": "je ridjt door en neemt de afslag voor de grijze auto omdat jij eerst mag" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
+      "reason" :"Knipperend rood licht bij een treinspoor geeft aan dat er een trein aankomt, dus je mag dan niet doorrijden.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q8",
       "image": "../../assets/exam2/q8.png",
-      "text": "Is een kentekenplaat noodzakelijk in deze situatie?",
+      "text": " Moet de auto de persoon op skates voor laten gaan?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
+      "reason": "Nee, een persoon op skates valt onder een voetganger en niet onder een bestuurder. Enkel bestuurders van rechts hebben voorrang.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q9",
       "image": "../../assets/exam2/q9.png",
-      "text": "je wilt hier rechtdoor. Moet je toch stoppen?",
+      "text": "Je wilt rechtdoor. Moet je de brandweerauto met optische- en geluidssignalen voor laten gaan? ",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
-      "correct": "b",
+      "correct": "a",
+      "reason": "Een brandweer auto die optische- en geluidssignalen voert dien je altijd voorrang te verlenen.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q10",
       "image": "../../assets/exam2/q10.png",
-      "text": "Je wilt rechtdoo. Moet je de bromfietser voor laten gaan?",
+      "text": "Je rijdt hier op de snelweg en wil deze rijstrook blijven volgen. Wat kan je verwachten?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Dat jouw rijstrook ophoudt en je een rijstrook naar links moet verschuiven"
+        },
+        {
+          "id": "b",
+          "label": "Dat jouw rijstrook over gaat in een afslag die je naar rechts moet nemen"
+        },
+        {
+          "id": "c",
+          "label": "Dat de rijstrook links van je samen gaat met de rijstrook aan de andere kant van de berm"
+        }
       ],
-      "correct": "b",
+      "correct": "c",
+      "reason": "Dit is een taper-aansluiting. De rijstroken aan weerszijden van de berm versmallen tot één rijstrook, dat is dus de rijstrook die links van jou ligt en die waar de vrachtwagen op rijdt. Jouw rijstrook blijft gewoon bestaan en je kan hier blijven rijden.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q11",
       "image": "../../assets/exam2/q11.png",
-      "text": "je wilt linsaf. Moet je stoppen?",
+      "text": "Mag je een motorfiets met pech slepen?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
+      "reason": "Met een motorvoertuig mag geen tweewielig motorvoertuig worden gesleept.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q12",
       "image": "../../assets/exam2/q12.png",
-      "text": "Wie mag je bij uitstappen niet hinderen?",
+      "text": "Moet je een douaneambte voor laten gaan waneer deze gele zwaailichten voert? ",
       "options": [
-        { "id": "a", "label": "Alleen voetgangers" },
-        { "id": "b", "label": "Alleen bestuurders" },
-        { "id": "c", "label": "Bestuurders en voetgangers" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
+      "reason": "Dit hoeft niet, want de zwaailichten van de douane zijn geel en niet blauw. Enkel blauwe zwaailichten moet je voor laten gaan.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q13",
       "image": "../../assets/exam2/q13.png",
-      "text": "Wat os je toegestane maximumsnelheid op deze weg?",
+      "text": "Welke tijd moet je instellen op je parkeerschijf als je parkeert in een parkeerschijf zone?",
       "options": [
-        { "id": "a", "label": "Alleen voetgangers" },
-        { "id": "b", "label": "Alleen bestuurders" },
-        { "id": "c", "label": "Bestuurders en voetgangers" }
+        {
+          "id": "a",
+          "label": "Aanvangsttijd"
+        },
+        {
+          "id": "b",
+          "label": "Parkeerduur "
+        },
+        {
+          "id": "c",
+          "label": "Eindtijd"
+        }
       ],
-      "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "correct": "a",
+      "category": "lanes",
+      "reason": "Bij het parkeren in een blauwe zone wordt de pijl van de parkeerschijf gezet op het streepje dat volgt op het tijdstip van aankomst."
+    },
     {
       "id": "exam2-q14",
       "image": "../../assets/exam2/q14.png",
-      "text": "Wat geeft dit verkeersbord aan?",
+      "text": "Je wilt hier inhalen. Mag dat?",
       "options": [
-        { "id": "a", "label": "Verboden in te rijden" },
-        { "id": "b", "label": "Je kruist een voorrangsweg" },
-        { "id": "c", "label": "Je nadert een gevaarlijk kruispunt" }
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
+      "reason": "In deze situatie mogen motorvoertuigen elkaar onderling niet inhalen.",
       "category": "lanes"
-    }
-    ,
+    },
     {
       "id": "exam2-q15",
       "image": "../../assets/exam2/q15.png",
-      "text": "Mag de tractor hier 50 km/u rijden?",
+      "text": "Waar moet het derde, rode remlicht zitten?",
       "options": [
-        { "id": "a", "label": "Ja" },
-        { "id": "b", "label": "Nee" }
+        {
+          "id": "a",
+          "label": "Boven de achterruit"
+        },
+        {
+          "id": "b",
+          "label": "Voor de bumper"
+        },
+        {
+          "id": "c",
+          "label": "Onder de kentekenplaat"
+        }
+      ],
+      "correct": "a",
+      "reason": "Een derde remlicht is verplicht en die zit boven de achterruit.",
+      "category": "lanes"
+    },
+
+    {
+      "id": "exam2-q16",
+      "image": "../../assets/exam2/q16.png",
+      "text": "Mag je deze weg inrijden?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
       ],
       "correct": "b",
-      "category": "lanes"
-    }
-    ,
+      "reason": "Dit is een inrijverbod dat niet geldt voor bussen en landbouwvoertuigen, maar dus wel voor jou."
+    },
+    {
+      "id": "exam2-q17",
+      "image": "../../assets/exam2/q17.png",
+      "text": "Welke volgafstand houd je aan voordat je gaat inhalen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "2s",
+      "reason": "Bij normale weersomstandigheden houd je altijd twee seconden volgafstand aan."
+    },
+    {
+      "id": "exam2-q18",
+      "image": "../../assets/exam2/q18.png",
+      "text": "Een 4-seizoensband heeft een minimale profieldiepte van:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": " 1,6mm",
+      "reason": "Dit is net als een zomerband 1,6 millimeter."
+    },
+    {
+      "id": "exam2-q19",
+      "image": "../../assets/exam2/q19.png",
+      "text": "Je bandenspanning is te laag. Waar moet je rekening mee houden?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Een hoger brandstofverbruik"
+        },
+        {
+          "id": "b",
+          "label": "Slechtere ligging op de weg"
+        },
+        {
+          "id": "c",
+          "label": "Beide"
+        }
+      ],
+      "correct": "c",
+      "reason": "Een te lage bandenspanning zorgt voor een hoger brandstofverbruik en vermindert de grip op de weg."
+    },
+    {
+      "id": "exam2-q20",
+      "image": "../../assets/exam2/q20.png",
+      "text": "Welk rijbewijs heb je nodig voor een motorvoertuig met meer dan 9 zitplaatsen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Rijbewijs B"
+        },
+        {
+          "id": "b",
+          "label": "Rijbewijs C"
+        },
+        {
+          "id": "c",
+          "label": "Rijbewijs D"
+        }
+      ],
+      "correct": "c",
+      "reason": "Wil je een voertuig besturen met meer dan 9 zitplaatsen, dan heb je een rijbewijs D nodig."
+    },
+    {
+      "id": "exam2-q21",
+      "image": "../../assets/exam2/q21.png",
+      "text": "Mag je hier sneller dan 30 km/u gaan rijden?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Het verkeersbord geeft een adviessnelheid aan, harder dan 30km/u mag dus wel."
+    },
+    {
+      "id": "exam2-q22",
+      "image": "../../assets/exam2/q22.png",
+      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
+      "reason": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links."
+    },
+    {
+      "id": "exam2-q23",
+      "image": "../../assets/exam2/q23.png",
+      "text": "Je wilt rechtsaf. In welke situatie sta je het veiligst opgesteld?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Situatie A"
+        },
+        {
+          "id": "b",
+          "label": "Situatie B"
+        }
+      ],
+      "correct": "Situatie A",
+      "reason": "Je mag het overige verkeer niet hinderen."
+    },
+    {
+      "id": "exam2-q24",
+      "image": "../../assets/exam2/q24.png",
+      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": " 1. Fietser, 2. Personenauto, 3. Motor",
+      "reason": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt."
+    },
+    {
+      "id": "exam2-q25",
+      "image": "../../assets/exam2/q25.png",
+      "text": "Wat is het algemene alarmnummer wanneer elke seconde telt?",
+      "options": [
+        {
+          "id": "a",
+          "label": "100"
+        },
+        {
+          "id": "b",
+          "label": "112"
+        },
+        {
+          "id": "c",
+          "label": "0611"
+        }
+      ],
+      "correct": "b",
+      "reason": "112 is het algemeen nummer voor de hulpdiensten in een noodsituatie."
+    },
+    {
+      "id": "exam2-q26",
+      "image": "../../assets/exam2/q26.png",
+      "text": "Wat of wie volg je hier op?",
+      "options": [
+        {
+          "id": "a",
+          "label": "De verkeerslichten"
+        },
+        {
+          "id": "b",
+          "label": "De verkeersbordern / tekens"
 
-    { "id": "exam2-q14", "image": "../../assets/exam2/q14.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q15", "image": "../../assets/exam2/q15.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q16", "image": "../../assets/exam2/q16.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q17", "image": "../../assets/exam2/q17.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q18", "image": "../../assets/exam2/q18.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q19", "image": "../../assets/exam2/q19.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q20", "image": "../../assets/exam2/q20.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q21", "image": "../../assets/exam2/q21.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q22", "image": "../../assets/exam2/q22.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q23", "image": "../../assets/exam2/q23.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q24", "image": "../../assets/exam2/q24.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q25", "image": "../../assets/exam2/q25.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q26", "image": "../../assets/exam2/q26.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q27", "image": "../../assets/exam2/q27.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q28", "image": "../../assets/exam2/q28.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q29", "image": "../../assets/exam2/q29.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q30", "image": "../../assets/exam2/q30.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q31", "image": "../../assets/exam2/q31.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q32", "image": "../../assets/exam2/q32.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q33", "image": "../../assets/exam2/q33.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q34", "image": "../../assets/exam2/q34.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q35", "image": "../../assets/exam2/q35.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q36", "image": "../../assets/exam2/q36.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q37", "image": "../../assets/exam2/q37.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q38", "image": "../../assets/exam2/q38.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q39", "image": "../../assets/exam2/q39.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q40", "image": "../../assets/exam2/q40.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q41", "image": "../../assets/exam2/q41.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q42", "image": "../../assets/exam2/q42.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q43", "image": "../../assets/exam2/q43.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q44", "image": "../../assets/exam2/q44.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q45", "image": "../../assets/exam2/q45.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q46", "image": "../../assets/exam2/q46.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q47", "image": "../../assets/exam2/q47.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q48", "image": "../../assets/exam2/q48.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q49", "image": "../../assets/exam2/q49.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" },
-    { "id": "exam2-q50", "image": "../../assets/exam2/q50.png", "text": "", "options": [ {"id":"a","label":"Ja"}, {"id":"b","label":"Nee"} ], "correct": "b" }
+        },
+        {
+          "id": "c",
+          "label": "De verkeersregelaar"
+        }
+      ],
+      "correct": "c",
+      "reason": "Je bent verplicht de aanwijzingen van een verkeersregelaar op te volgen; deze gaan boven verkeerslichten en verkeerstekens."
+    },
+    {
+      "id": "exam2-q27",
+      "image": "../../assets/exam2/q27.png",
+      "text": "De politie heeft je een rijverbod opgelegd. Welk voertuig mag je besturen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Alleen een fiets"
+        },
+        {
+          "id": "b",
+          "label": "Geen enkel voertuig"
+        },
+        {
+          "id": "c",
+          "label": "Alleen een fiets en een snorfiets"
+        }
+      ],
+      "correct": "b",
+      "reason": "Bij een rijverbod mag je geen enkel voertuig besturen. Ook geen fiets."
+    },
+    {
+      "id": "exam2-q28",
+      "image": "../../assets/exam2/q28.png",
+      "text": "Wat betekent dit verkeersbord?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Einde maximumsnelheid"
+        },
+        {
+          "id": "b",
+          "label": "Einde adviessnelheid"
+        }
+      ],
+      "correct": "b",
+      "reason": "De adviessnelheid van 50 km/u is niet langer geldig."
+    },
+    {
+      "id": "exam2-q29",
+      "image": "../../assets/exam2/q29.png",
+      "text": "Mag je hier stilstaan om te bellen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Op een vluchthaven mag je niet parkeren of stilstaan."
+    },
+    {
+      "id": "exam2-q30",
+      "image": "../../assets/exam2/q30.png",
+      "text": "Bij welk bord mag je een vrachtauto inhalen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Alleen bord A"
+        },
+        {
+          "id": "b",
+          "label": "Alleen bord B"
+        },
+        {
+          "id": "c",
+          "label": "Bord A en B"
+        }
+      ],
+      "correct": "Alleen bord A",
+      "reason": "Bij verkeersbord B mogen auto's, motoren en vrachtauto's elkaar niet inhalen op de weg."
+    },
+    {
+      "id": "exam2-q31",
+      "image": "../../assets/exam2/q31.png",
+      "text": "Sta je hier goed als je linksaf wilt slaan?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Als bestuurder dien je indien mogelijk altijd zoveel mogelijk rechts voor te sorteren."
+    },
+    {
+      "id": "exam2-q32",
+      "image": "../../assets/exam2/q32.png",
+      "text": "Verlaat je hier de autosnelweg?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Je verlaat hier de autosnelweg via afrit 7 en vervolgt de N470."
+    },
+    {
+      "id": "exam2-q33",
+      "image": "../../assets/exam2/q33.png",
+      "text": "Welk bord geeft aan dat je op een voorrangsweg rijdt?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A"
+        },
+        {
+          "id": "b",
+          "label": "B"
+        },
+        {
+          "id": "c",
+          "label": "c"
+        }
+      ],
+      "correct": "B",
+      "reason": "De vorm van een voorrangsbord is ruitvormig."
+    },
+    {
+      "id": "exam2-q34",
+      "image": "../../assets/exam2/q34.png",
+      "text": "Gebruikt een auto met een volle dakkoffer extra brandstof?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "De auto wordt zwaarder en verbruikt daardoor ook meer brandstof."
+    },
+    {
+      "id": "exam2-q35",
+      "image": "../../assets/exam2/q35.png",
+      "text": "Welk symbool heeft te maken met het oliesysteem?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Symbool A"
+        },
+        {
+          "id": "b",
+          "label": "Symbool B"
+        },
+        {
+          "id": "c",
+          "label": "Symbool C"
+        }
+      ],
+      "correct": "c",
+      "reason": "Een rood brandend olielampje geeft een laag oliepeil aan."
+
+
+    },
+    {
+      "id": "exam2-q36",
+      "image": "../../assets/exam2/q36.png",
+      "text": "Ben je ter controle verplicht je autopapieren aan de de agent af te geven?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Als je met je auto gaat rijden, moet je jouw rijbewijs en kentekenbewijs altijd bij je hebben."
+    },
+    {
+      "id": "exam2-q37",
+      "image": "../../assets/exam2/q37.png",
+      "text": "Wat betekenen de schuine witte strepen op de weg?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Suggestiestrook - de weg wordt smaller"
+        },
+        {
+          "id": "b",
+          "label": "Verdrijvingsvlak - je mag daar niet op rijden"
+        },
+        {
+          "id": "c",
+          "label": "Redreesserstrook - je mag op deze strook uitvoegen"
+        }
+      ],
+      "correct": "Verdrijvingsvlak - je mag daar niet op rijden",
+      "reason": "Een verdrijvingsvlak is een gedeelte op de rijbaan dat gemarkeerd is met schuine strepen waar bestuurders niet overheen mogen rijden."
+     },
+    {
+      "id": "exam2-q38",
+      "image": "../../assets/exam2/q38.png",
+      "text": "Wat mag je doen wanneer je wordt verblind door een tegenligger die zijn groot licht aan heeft?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Je geeft geluids-en lichtsignalen om de bestuurder te waarschuwen"
+        },
+        {
+          "id": "b",
+          "label": "Je wijkt uit naar de berm en rijdt via de berm om de bestuurder heen"
+        }
+      ],
+      "correct": "a",
+      "reason": "Als je wordt verblind door een voertuig dat groot licht voert, mag je deze waarschuwen met licht-en geluidssignalen."
+    },
+    {
+      "id": "exam2-q39",
+      "image": "../../assets/exam2/q39.png",
+      "text": "Kun je hier bromfietsers op de rijbaan verwachten?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Bromfietsers moeten in dit geval op het verplichte fiets/bromfietspad rijden, die herken je aan het verkeersbord."
+    },
+    {
+      "id": "exam2-q40",
+      "image": "../../assets/exam2/q40.png",
+      "type": "input",
+      "text": "Je staat met pech langs de snelweg. Op hoeveel meter afstand plaats je de gevarendriehoek?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+
+      "correct": "30 metter",
+      "reason": "Heb je pech en je wilt een gevarendriehoek plaatsen? Zorg er dan voor dat je die 30 meter achter d﻿e auto plaatst. Een gevarendriehoek is overigens niet verplicht, maar natuurlijk wel zo veilig!"
+    },
+    {
+      "id": "exam2-q41",
+      "image": "../../assets/exam2/q41.png",
+      "text": "Je rijdt op de middelste rijstrook. Mag dat?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Als bestuurder is je plaats op de weg zoveel mogelijk rechts. De twee rechterrijstroken zijn afgesloten."
+    },
+    {
+      "id": "exam2-q42",
+      "image": "../../assets/exam2/q42.png",
+      "text": "Je rijdt met mist. Je kunt de twee volgende hectometerpaaltjes nog zien. Mag je het mistachterlicht aandoen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Het mistachterlicht mag alleen worden gebruikt bij mist als het zicht minder is dan 50 meter."
+    },
+    {
+      "id": "exam2-q43",
+      "image": "../../assets/exam2/q43.png",
+      "text": "Waar waarschuwt dit bord je voor?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Voetgangers"
+        },
+        {
+          "id": "b",
+          "label": "Spelende kinderen"
+        },
+        {
+          "id": "c",
+          "label": "School"
+        }
+      ],
+      "correct": "b",
+      "reason": "Dit is een vooraanduiding van overstekende en/ of spelende kinderen."
+    },
+    {
+      "id": "exam2-q44",
+      "image": "../../assets/exam2/q44.png",
+      "text": "Bij welk bord mag je laden en lossen?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "Bord B",
+      "reason": "Aan de kant van de weg waar dit bord is geplaatst, mag je niet parkeren. Je mag hier wel passagiers laten in- of uitstappen of goederen laden of lossen."
+    },
+    {
+      "id": "exam2-q45",
+      "image": "../../assets/exam2/q45.png",
+      "text": "Moet je de voetgangers hier voor laten gaan bij het oversteken?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Er is hier een platform waar voetgangers bij het uitstappen veilig kunnen wachten tot ze kunnen oversteken. Je hoeft ze in dit geval geen voorrang te geven."
+    },
+    {
+      "id": "exam2-q46",
+      "image": "../../assets/exam2/q46.png",
+      "text": "Je wilt de weg naar links blijven volgen. Moet je de snorfietser voor laten gaan?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Het onderbord geeft aan dat je op een voorrangsbocht rijdt; je hebt dus voorrang."
+    },
+    {
+      "id": "exam2-q47",
+      "image": "../../assets/exam2/q47.png",
+      "text": "Mag je zo gaan rijden?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Iedereen moet een eigen autogordel gebruiken en over een eigen zitplaats beschikken."
+    },
+    {
+      "id": "exam2-q48",
+      "image": "../../assets/exam2/q48.png",
+      "text": "Je wilt de autosnelweg oprijden. Mag je nu al richting aangeven?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "b",
+      "reason": "Je geeft altijd en overal je richting aan maar alleen als het veilig kan. Als je nu je richting aangeeft is dat te vroeg om in te schatten voor het verkeer achter je wanneer je daadwerkelijk gaat invoegen."
+    },
+    {
+      "id": "exam2-q49",
+      "image": "../../assets/exam2/q49.png",
+      "text": "Wie moet je voor laten gaan bij het wegrijden?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Alle weggebruikers"
+        },
+        {
+          "id": "b",
+          "label": "Alleen motorvoertuigen"
+        },
+        {
+          "id": "c",
+          "label": "Alleen bestuurders"
+        }
+      ],
+      "correct": "a",
+      "reason": "Wegrijden vanuit stilstand is een bijzondere manoeuvre en dan dien je alle weggebruikers voor te laten gaan."
+    },
+    {
+      "id": "exam2-q50",
+      "image": "../../assets/exam2/q50.png",
+      "text": "Je wilt aan de linkerkant file-parkeren. Moet je de voetganger voor laten gaan?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ja"
+        },
+        {
+          "id": "b",
+          "label": "Nee"
+        }
+      ],
+      "correct": "a",
+      "reason": "Je voert een bijzondere manoeuvre dus dien je alle overige weggebruikers voor te laten."
+    }
   ]
 }
-
-

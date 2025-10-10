@@ -6,6 +6,7 @@
       "id": "exam1-q1",
       "image": "exam1/q1.png",
       "text": "Mag je als bestuurder van een personenauto gebruikmaken van een rijstrook met de aanduiding 'BUS' of 'LIJNBUS'?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -23,6 +24,7 @@
       "id": "exam1-q2",
       "image": "../../assets/exam1/q2.png",
       "text": "Mag een kind van 12 jaar en 1.30 meter lang gebruik maken van een driepuntsgordel ?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -40,6 +42,7 @@
       "id": "exam1-q3",
       "image": "../../assets/exam1/q3.png",
       "text": "je wilt rechtdoor. Moet je de hele militaire colonne voor laten gaan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -57,6 +60,7 @@
       "id": "exam1-q4",
       "image": "../../assets/exam1/q4.png",
       "text": "Mag je hier doorrijden bij groen licht?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -74,6 +78,7 @@
       "id": "exam1-q5",
       "image": "../../assets/exam1/q5.png",
       "text": "welk deel van de weg wordt de rijbaan genoemd?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -95,6 +100,7 @@
       "id": "exam1-q6",
       "image": "../../assets/exam1/q6.png",
       "text": "wat betekent een groene ventieldop op de band?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -116,6 +122,7 @@
       "id": "exam1-q7",
       "image": "../../assets/exam1/q7.png",
       "text": "je komt hier aan rijden en wil linksaf slaan. wat doe je?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -137,6 +144,7 @@
       "id": "exam1-q8",
       "image": "../../assets/exam1/q8.png",
       "text": "Is een kentekenplaat noodzakelijk in deze situatie?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -154,6 +162,7 @@
       "id": "exam1-q9",
       "image": "../../assets/exam1/q9.png",
       "text": "je wilt hier rechtdoor. Moet je toch stoppen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -171,6 +180,7 @@
       "id": "exam1-q10",
       "image": "../../assets/exam1/q10.png",
       "text": "Je wilt rechtdoo. Moet je de bromfietser voor laten gaan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -188,6 +198,7 @@
       "id": "exam1-q11",
       "image": "../../assets/exam1/q11.png",
       "text": "je wilt linsaf. Moet je stoppen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -205,6 +216,7 @@
       "id": "exam1-q12",
       "image": "../../assets/exam1/q12.png",
       "text": "Wie mag je bij uitstappen niet hinderen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -226,6 +238,7 @@
       "id": "exam1-q13",
       "image": "../../assets/exam1/q13.png",
       "text": "Wat os je toegestane maximumsnelheid op deze weg?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -247,6 +260,7 @@
       "id": "exam1-q14",
       "image": "../../assets/exam1/q14.png",
       "text": "Wat geeft dit verkeersbord aan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -268,6 +282,7 @@
       "id": "exam1-q15",
       "image": "../../assets/exam1/q15.png",
       "text": "Mag de tractor hier 50 km/u rijden?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -285,6 +300,7 @@
       "id": "exam1-q16",
       "image": "../../assets/exam1/q16.png",
       "text": "Is het ook verplicht om richting aan te geven als je afslaat naar een voorsorteerstrook?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -302,6 +318,7 @@
       "id": "exam1-q17",
       "image": "../../assets/exam1/q17.png",
       "text": "Welke hoofdsteun is hier juist afgesteld?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -323,6 +340,7 @@
       "id": "exam1-q18",
       "image": "../../assets/exam1/q18.png",
       "text": "Je bent bijna aan het einde van de tunnel en er komt ineens rook onder de motorkap vandaan.wat oet je doen ?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -340,6 +358,7 @@
       "id": "exam1-q19",
       "image": "exam1/q19.png",
       "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -365,6 +384,7 @@
       "id": "exam1-q20",
       "image": "../../assets/exam1/q20.png",
       "text": "Je haalt de brommobiel hier in .Mag dat?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -382,6 +402,7 @@
       "id": "exam1-q21",
       "image": "../../assets/exam1/q21.png",
       "text": "De brug staat open. Moet je de motor uitschakelen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -399,6 +420,7 @@
       "id": "exam1-q22",
       "image": "../../assets/exam1/q22.png",
       "text": "Moet je de bus hier voor laten gaan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -416,6 +438,7 @@
       "id": "exam1-q23",
       "image": "../../assets/exam1/q23.png",
       "text": "De blauwe auto staat tagen de as van de weg voorgesorteerdom links af te slaan. Mag jij de auto van rechts inhalen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -433,6 +456,7 @@
       "id": "exam1-q24",
       "image": "../../assets/exam1/q24.png",
       "text": "Wat is het grootste verschil tussen een e-bike en een speed-pedelc?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -453,6 +477,7 @@
       "id": "exam1-q25",
       "image": "../../assets/exam1/q25.png",
       "text": "Je wilt rotonde verlaten. Moetje de voetganger voor laten gaan?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -469,6 +494,7 @@
       "id": "exam1-q26",
       "image": "../../assets/exam1/q26.png",
       "text": "Hoe kun je zo energiezuinig rijden?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -489,6 +515,7 @@
       "id": "exam1-q27",
       "image": "../../assets/exam1/q27.png",
       "text": "Kun je hier een tegemoetkomende motor verwachten?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -505,6 +532,7 @@
       "id": "exam1-q28",
       "image": "../../assets/exam1/q28.png",
       "text": "Wat betekent dit bord?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -524,15 +552,28 @@
     {
       "id": "exam1-q29",
       "image": "../../assets/exam1/q29.png",
-      "text": "Je ridjt in een dieselauto met emissieklasse 3. Mag je deze milieuzone inrijden?",
+      "text": {
+        "nl": "Je rijdt in een dieselauto met emissieklasse 3. Mag je deze milieuzone inrijden?",
+        "en": "You are driving a diesel car with emission class 3. Are you allowed to enter this environmental zone?",
+        "ar": "أنت تقود سيارة ديزل من فئة الانبعاثات 3. هل يُسمح لك بدخول هذه المنطقة البيئية؟"
+      },
+      "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b"
@@ -541,6 +582,7 @@
       "id": "exam1-q30",
       "image": "../../assets/exam1/q30.png",
       "text": "Gelden op een Y-splitsing dezelfde voorrangsregels als op een volledig kruispunt?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -556,7 +598,8 @@
     {
       "id": "exam1-q31",
       "image": "../../assets/exam1/q31.png",
-      "text": "",
+      "text": "Mistlichten aan de voorkant mogen gevoerd worden bij mist, regen of sneeuwval als het zicht minder is dan?",
+      "type": "input",
       "options": [
         {
           "id": "a",
@@ -573,6 +616,7 @@
       "id": "exam1-q32",
       "image": "../../assets/exam1/q32.png",
       "text": "Mag je hier 130 km/u rijden?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -589,6 +633,7 @@
       "id": "exam1-q33",
       "image": "../../assets/exam1/q33.png",
       "text": "Mag je hier inrijden?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -604,7 +649,8 @@
     {
       "id": "exam1-q34",
       "image": "../../assets/exam1/q34.png",
-      "text": "",
+      "text": "Ho snel mag je hier rijden?",
+      "type": "input-km",
       "options": [
         {
           "id": "a",
@@ -621,6 +667,7 @@
       "id": "exam1-q35",
       "image": "../../assets/exam1/q35.png",
       "text": "Je ziet geen verkeer naderen. Moet je stoppen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -637,6 +684,7 @@
       "id": "exam1-q36",
       "image": "../../assets/exam1/q36.png",
       "text": "Door de sneeuw is je nummerplaat bedekt. Mag je zo rijden?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -653,6 +701,7 @@
       "id": "exam1-q37",
       "image": "../../assets/exam1/q37.png",
       "text": "Wanneer krijg je als beginnende bestuurder direct een rijvebod opgelegd?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -673,6 +722,7 @@
       "id": "exam1-q38",
       "image": "../../assets/exam1/q38.png",
       "text": "Nader je hier een spoorwegovergang met een dubbel spoor?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -689,6 +739,7 @@
       "id": "exam1-q39",
       "image": "../../assets/exam1/q39.png",
       "text": "Wie mag er als eerst?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -705,6 +756,7 @@
       "id": "exam1-q40",
       "image": "../../assets/exam1/q40.png",
       "text": "je merkt dat je door de flinke regenval grip op de wegverliest met je banden. Wat moet je doen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -725,6 +777,7 @@
       "id": "exam1-q41",
       "image": "../../assets/exam1/q41.png",
       "text": "Je stopt hier om een passagier uit te laten stappen. Mag dat?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -741,6 +794,7 @@
       "id": "exam1-q42",
       "image": "../../assets/exam1/q42.png",
       "text": "Wat verstaan we onder het verkeer?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -761,6 +815,7 @@
       "id": "exam1-q43",
       "image": "../../assets/exam1/q43.png",
       "text": "Je rijdt hier met grootlicht. Mag dat?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -777,6 +832,7 @@
       "id": "exam1-q44",
       "image": "../../assets/exam1/q44.png",
       "text": "Je staat hier stil om te laden. Mag dat?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -793,6 +849,7 @@
       "id": "exam1-q45",
       "image": "../../assets/exam1/q45.png",
       "text": "Een tegenligger haalt in.Je denkt dat hij hij het niet haalt. Wat doe je?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -812,7 +869,8 @@
     {
       "id": "exam1-q46",
       "image": "../../assets/exam1/q46.png",
-      "text": "",
+      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "type": "input",
       "options": [
         {
           "id": "a",
@@ -829,6 +887,7 @@
       "id": "exam1-q47",
       "image": "../../assets/exam1/q47.png",
       "text": "Je parkeert hier. Mag dat?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -844,15 +903,20 @@
     {
       "id": "exam1-q48",
       "image": "../../assets/exam1/q48.png",
-      "text": "",
+      "text": "Je rijdt in de ondergaande zon, die fel in de ogen van tegenliggers schijnt. Wat moet je in dit geval doen?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "Je zet je groot licht aan, dit is fel genoeg om door de felheid van de zon heen te komen"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "Je zet je dimlicht aan, daarmee zrog je ervoor dat je goed zictbaar bent"
+        },
+        {
+          "id": "c",
+          "label": "Je zet je mistlicht aan, omdat het zicht door het tegenlicht van de zon voor tegenliggers minder dan 50 meter kan zijn"
         }
       ],
       "correct": "b"
@@ -861,6 +925,7 @@
       "id": "exam1-q49",
       "image": "../../assets/exam1/q49.png",
       "text": "Je neemt de derd afslag. Waar geef je richting aan naar rechts?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",
@@ -877,6 +942,7 @@
       "id": "exam1-q50",
       "image": "../../assets/exam1/q50.png",
       "text": "Je neemt de derd afslag. Sorteer je zo goed voor?",
+      "type": "multiple",
       "options": [
         {
           "id": "a",

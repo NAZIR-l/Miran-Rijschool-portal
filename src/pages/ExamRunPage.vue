@@ -1,15 +1,19 @@
 <template>
-  <q-page class="exam-run-page q-page-container">
+  <q-page class="exam-run-page q-page-container no-select" @dragover.prevent @drop.prevent>
     <!-- Header -->
     <header class="exam-header">
       <div class="header-content">
         <div class="header-left">
-          <img src="../assets/Logo-test1.png" alt="Logo" class="header-logo" />
+          <div class="logo-container">
+            <img src="../assets/Logo-test1.png" alt="Logo" class="header-logo" />
+          </div>
         </div>
 
         <div class="header-center">
           <div class="timer-container">
-            <q-icon name="schedule" class="timer-icon" />
+            <div class="timer-icon-wrapper">
+              <q-icon name="schedule" class="timer-icon" />
+            </div>
             <div class="timer-content">
               <div class="timer-label">Resterende tijd</div>
               <div class="timer-value" :class="{ 'warning': remaining < 300 }">
@@ -44,14 +48,17 @@
     <!-- Progress -->
     <div class="progress-section">
       <div class="progress-container">
+        <div class="progress-info">
+          <div class="progress-text">
+            Vraag {{ indexDisplay }} van {{ questions.length }}
+          </div>
+          <div class="progress-percentage">{{ Math.round(progressPercentage) }}%</div>
+        </div>
         <div class="progress-bar">
           <div
             class="progress-fill"
             :style="{ width: progressPercentage + '%' }"
           ></div>
-        </div>
-        <div class="progress-text">
-          Vraag {{ indexDisplay }} van {{ questions.length }}
         </div>
       </div>
     </div>
@@ -59,40 +66,47 @@
     <!-- Main Content -->
     <main class="exam-main">
       <div class="content-wrapper">
-        <div class="side-by-side-content">
-          <!-- Visual Section (Left) -->
-          <div class="visual-section">
+        <div class="main-container">
+          <!-- Left Column: Image -->
+          <div class="image-column">
             <div class="visual-card">
-              <q-img
-                :src="currentImage"
-                ratio="16/9"
-                class="visual-image"
-                :placeholder-src="placeholderImage"
-              >
-                <template v-slot:error>
-                  <div class="image-error">
-                    <q-icon name="image" size="xl" />
-                    <div>Afbeelding niet beschikbaar</div>
-                    <div class="image-debug" v-if="current.rawImage">
-                      Path: {{ current.rawImage }}<br>
-                      Exam: {{ examId }}<br>
-                      Resolved: {{ currentImage }}
-                    </div>
-                  </div>
-                </template>
-              </q-img>
+
+              <div class="visual-content">
+                <div class="image-container">
+                  <q-img
+                    :src="currentImage"
+                    ratio="1"
+                    class="visual-image"
+                    :placeholder-src="placeholderImage"
+                    fit="contain"
+                    draggable="false"
+                  >
+                    <template v-slot:error>
+                      <div class="image-error">
+                        <q-icon name="image_not_supported" size="xl" color="grey-5" />
+                        <div class="error-text">Afbeelding niet beschikbaar</div>
+                      </div>
+                    </template>
+                  </q-img>
+                </div>
+              </div>
               <div class="image-caption" v-if="current.imageCaption">
+                <q-icon name="description" size="xs" color="grey-6" />
                 {{ current.imageCaption }}
               </div>
             </div>
           </div>
 
-          <!-- Question Section (Right) -->
-          <div class="question-section">
-            <div class="question-card">
-              <div class="question-header">
+          <!-- Right Column: Question and Options in Single Container -->
+          <div class="question-options-column">
+            <div class="question-options-card">
+              <!-- Question Header -->
+              <div class="question-options-header">
                 <div class="question-meta">
-                  <span class="question-number">Vraag {{ indexDisplay }}</span>
+                  <div class="question-number-badge">
+                    <span class="question-number">Vraag {{ indexDisplay }}</span>
+
+                  </div>
                   <div class="question-actions">
                     <q-btn
                       flat
@@ -102,56 +116,121 @@
                       size="sm"
                       :color="isFlagged ? 'amber' : 'grey-5'"
                       @click="toggleFlag"
+                      class="flag-btn"
                     >
                       <q-tooltip>Markeer deze vraag</q-tooltip>
                     </q-btn>
                   </div>
                 </div>
+              </div>
 
-                <div class="question-text">
-                  {{ current.text }}
+              <!-- Question Text -->
+              <div class="question-content">
+                <div class="question-text-wrapper">
+                  <div class="question-icon">
+                    <q-icon name="help_outline" size="md" color="primary" />
+                  </div>
+                  <div class="question-text">
+                    {{ current.text }}
+                  </div>
                 </div>
               </div>
 
-              <!-- Options -->
+              <!-- Options Section -->
               <div class="options-section">
-                <q-option-group
-                  v-model="selected"
-                  :options="optionGroup"
-                  type="radio"
-                  color="primary"
-                  class="custom-option-group"
-                />
-              </div>
 
-              <!-- Navigation -->
-              <div class="navigation-section">
-                <div class="navigation-buttons">
-                  <q-btn
-                    v-if="index > 0"
-                    outline
-                    color="primary"
-                    no-caps
-                    icon="arrow_back"
-                    class="nav-btn prev-btn"
-                    @click="previous"
-                  >
-                    Vorige
-                  </q-btn>
 
-                  <div class="spacer"></div>
+                <div class="options-content">
+                  <!-- Multiple Choice Options -->
+                  <template v-if="questionType === 'multiple'">
+                    <div class="options-list">
+                      <div
+                        v-for="(option, idx) in optionGroup"
+                        :key="option.value"
+                        class="option-item"
+                        :class="{ 'selected': selected === option.value }"
+                        @click="selected = option.value"
+                      >
+                        <div class="option-selector">
+                          <div class="option-radio">
+                            <div class="radio-outer">
+                              <div class="radio-inner" :class="{ 'checked': selected === option.value }"></div>
+                            </div>
+                          </div>
+                          <div class="option-content">
+                            <div class="option-label">{{ option.label }}</div>
+                          </div>
+                        </div>
+                        <div class="option-indicator" v-if="selected === option.value">
+                          <q-icon name="check_circle" class="check-icon" />
+                        </div>
+                      </div>
+                    </div>
+                  </template>
 
-                  <q-btn
-                    color="primary"
-                    unelevated
-                    no-caps
-                    class="nav-btn next-btn"
-                    :icon="isLastQuestion ? 'check' : 'arrow_forward'"
-                    @click="next"
-                    :disabled="!selected"
-                  >
-                    {{ isLastQuestion ? 'Examen Afronden' : 'Volgende' }}
-                  </q-btn>
+                  <!-- Dropdown Options -->
+                  <template v-else-if="questionType === 'dropdown'">
+                    <div class="dropdown-container">
+                      <q-select
+                        v-model="selected"
+                        :options="optionGroup"
+                        outlined
+                        dense
+                        emit-value
+                        map-options
+                        class="professional-select"
+                        behavior="menu"
+                        label="Selecteer een antwoord"
+                      >
+                        <template v-slot:selected>
+                          <div class="selected-option" v-if="selected">
+                            <div class="selected-label">
+                              {{ optionGroup.find(opt => opt.value === selected)?.label }}
+                            </div>
+                          </div>
+                          <div class="placeholder" v-else>
+                            Kies een optie
+                          </div>
+                        </template>
+                        <template v-slot:option="scope">
+                          <q-item
+                            v-bind="scope.itemProps"
+                            class="dropdown-option"
+                          >
+                            <q-item-section>
+                              <q-item-label>{{ scope.opt.label }}</q-item-label>
+                            </q-item-section>
+                          </q-item>
+                        </template>
+                      </q-select>
+                    </div>
+                  </template>
+
+                  <!-- Input Field -->
+                  <template v-else-if="questionType === 'input'">
+                    <div class="input-container">
+                      <div class="input-field-wrapper">
+                        <q-input
+                          v-model="selected"
+                          type="text"
+                          outlined
+                          class="professional-input"
+                          placeholder="Voer hier uw antwoord in..."
+                          :maxlength="200"
+                          counter
+                          label="Typ uw antwoord"
+                        >
+                          <template v-slot:prepend>
+                            <q-icon name="edit" class="input-icon" />
+                          </template>
+                        </q-input>
+                      </div>
+                      <div class="input-hint">
+                        <q-icon name="info" size="xs" />
+                        <span>Geef een duidelijk en beknopt antwoord</span>
+                      </div>
+                    </div>
+                  </template>
                 </div>
               </div>
             </div>
@@ -160,12 +239,62 @@
       </div>
     </main>
 
+    <!-- Navigation Section -->
+    <div class="navigation-section">
+      <div class="navigation-container">
+        <div class="navigation-buttons">
+          <q-btn
+            v-if="index > 0"
+            outline
+            color="primary"
+            no-caps
+            icon="arrow_back"
+            class="nav-btn prev-btn"
+            @click="previous"
+          >
+            Vorige
+          </q-btn>
+
+          <div class="spacer"></div>
+
+          <q-btn
+            color="primary"
+            unelevated
+            no-caps
+            class="nav-btn next-btn"
+            :icon="isLastQuestion ? 'check' : 'arrow_forward'"
+            @click="next"
+            :disabled="!canProceed"
+          >
+            {{ isLastQuestion ? 'Examen Afronden' : 'Volgende' }}
+          </q-btn>
+        </div>
+      </div>
+    </div>
+
     <!-- Overview Dialog -->
     <q-dialog v-model="showOverview" position="right" full-height>
       <q-card class="overview-dialog">
         <q-card-section class="overview-header">
           <div class="overview-title">Vragen Overzicht</div>
           <q-btn flat round dense icon="close" v-close-popup />
+        </q-card-section>
+        <q-card-section class="overview-stats">
+          <div class="stat">
+            <q-icon name="check_circle" color="positive" size="16px" />
+            <div class="stat-value">{{ answeredCount }}</div>
+            <div class="stat-label">Beantwoord</div>
+          </div>
+          <div class="stat">
+            <q-icon name="flag" color="amber-7" size="16px" />
+            <div class="stat-value">{{ flaggedCount }}</div>
+            <div class="stat-label">Gemarkeerd</div>
+          </div>
+          <div class="stat">
+            <q-icon name="help_outline" color="grey-7" size="16px" />
+            <div class="stat-value">{{ unansweredCount }}</div>
+            <div class="stat-label">Open</div>
+          </div>
         </q-card-section>
 
         <q-card-section class="overview-content">
@@ -175,13 +304,22 @@
               :key="idx"
               class="question-indicator"
               :class="{
-                'answered': answer !== null,
+                'answered': answer !== null && answer !== undefined && answer !== '',
                 'current': idx === index,
                 'flagged': flaggedQuestions.has(idx)
               }"
+              role="button"
+              tabindex="0"
               @click="goToQuestion(idx)"
+              @keydown.enter.prevent="goToQuestion(idx)"
+              @keydown.space.prevent="goToQuestion(idx)"
             >
               {{ idx + 1 }}
+              <q-tooltip>
+                <span v-if="flaggedQuestions.has(idx)">Gemarkeerd</span>
+                <span v-else-if="answer !== null && answer !== undefined && answer !== ''">Beantwoord</span>
+                <span v-else>Onbeantwoord</span>
+              </q-tooltip>
             </div>
           </div>
         </q-card-section>
@@ -201,11 +339,17 @@
               <span>Gemarkeerd</span>
             </div>
           </div>
+          <!-- <div class="overview-actions">
+            <q-btn dense outline color="primary" no-caps icon="flag" label="Ga naar gemarkeerde" @click="goToFirstFlagged" :disable="flaggedCount === 0" />
+            <q-btn dense unelevated color="primary" no-caps icon="help_outline" label="Eerste onbeantwoorde" @click="goToFirstUnanswered" :disable="unansweredCount === 0" />
+          </div> -->
         </q-card-section>
       </q-card>
     </q-dialog>
 
     <!-- Exit Dialog -->
+
+    <!-- Exit Bevestiging Dialog -->
     <q-dialog v-model="exitConfirm" persistent>
       <q-card class="confirm-dialog">
         <q-card-section class="dialog-header">
@@ -218,10 +362,21 @@
         </q-card-section>
 
         <q-card-actions class="dialog-actions">
-          <q-btn flat no-caps class="cancel-btn" @click="exitConfirm = false">
+          <q-btn
+            flat
+            no-caps
+            class="cancel-btn"
+            @click="exitConfirm = false"
+          >
             Verder met Examen
           </q-btn>
-          <q-btn color="primary" unelevated no-caps class="confirm-btn" @click="exit">
+          <q-btn
+            color="primary"
+            unelevated
+            no-caps
+            class="confirm-btn"
+            @click="exit"
+          >
             Examen Stoppen
           </q-btn>
         </q-card-actions>
@@ -234,73 +389,42 @@
 import { defineComponent, computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-// استيراد جميع الصور من مجلد assets
-const assetsCtx = require.context('../assets', true, /\.(png|jpe?g|webp|svg|gif)$/)
+const assetsCtx = require.context('../assets', true, /(png|jpe?g|webp|svg|gif)$/)
 const examsCtx = require.context('../data/exams', false, /\.json$/)
 
-// دالة محسنة لحل مسارات الصور لجميع الامتحانات
+function normalizeExamId(rawId) {
+  const str = String(rawId ?? '').trim()
+  const match = str.match(/(\d+)/)
+  return match ? match[1] : '1'
+}
+
 function resolveAsset(inputPath, examId) {
   try {
-    if (!inputPath) {
-      console.log('❌ No input path provided for exam', examId)
-      return ''
-    }
-
-    console.log('🔍 Resolving asset for exam', examId, 'path:', inputPath)
+    if (!inputPath) return ''
 
     const raw = String(inputPath).trim().replace(/\\/g, '/')
-
-    // استخراج اسم الملف من المسار
-    // من "exam1/q1.png" نأخذ "q1.png"
     const fileName = raw.split('/').pop()
-    console.log('📄 Extracted filename:', fileName)
 
-    // الحصول على جميع الملفات المتاحة
     const allAssets = assetsCtx.keys()
-    console.log('📂 Total assets available:', allAssets.length)
 
-    // البحث عن الملف المناسب
-    let foundAsset = null
-
-    // الطريقة 1: البحث بالمسار الكامل المتوقع
     const expectedPath = `./exam${examId}/${fileName}`
-    foundAsset = allAssets.find(path => path === expectedPath)
+    let foundAsset = allAssets.find(p => p === expectedPath)
 
-    // الطريقة 2: البحث باسم الملف في مجلد exam المطلوب
     if (!foundAsset) {
-      foundAsset = allAssets.find(path =>
-        path.includes(fileName) && path.includes(`exam${examId}`)
-      )
+      foundAsset = allAssets.find(p => p.includes(`exam${examId}/`) && p.endsWith(fileName))
     }
 
-    // الطريقة 3: البحث باسم الملف فقط (كحل أخير)
     if (!foundAsset) {
-      foundAsset = allAssets.find(path => path.includes(fileName))
+      foundAsset = allAssets.find(p => p.endsWith(fileName))
     }
-
-    // الطريقة 4: عرض جميع الملفات المتاحة لهذا الامتحان للمساعدة
-    const examAssets = allAssets.filter(path => path.includes(`exam${examId}`))
-    console.log(`📁 Available assets for exam ${examId}:`, examAssets)
 
     if (foundAsset) {
-      console.log('✅ Asset found at:', foundAsset)
-      try {
-        const mod = assetsCtx(foundAsset)
-        const result = mod && mod.default ? mod.default : mod
-        console.log('✅ Asset loaded successfully')
-        return result
-      } catch (e) {
-        console.error('❌ Error loading asset:', e)
-        return ''
-      }
-    } else {
-      console.warn('❌ Asset not found:', fileName)
-      console.log('💡 Tried to find in exam:', examId)
-      console.log('💡 Available exam assets:', examAssets)
-      return ''
+      const mod = assetsCtx(foundAsset)
+      return mod && mod.default ? mod.default : mod
     }
+    return ''
   } catch (e) {
-    console.error('❌ Asset resolution error for', inputPath, e)
+    console.error('Asset resolution error:', inputPath, e)
     return ''
   }
 }
@@ -308,14 +432,13 @@ function resolveAsset(inputPath, examId) {
 function loadExamDataById(id) {
   try {
     const file = `./exam${id}.json`
-    console.log('📁 Loading exam file:', file)
     const mod = examsCtx(file)
     return mod && mod.default ? mod.default : mod
   } catch (e) {
-    console.error('❌ Error loading exam:', e)
+    console.error('Error loading exam json:', e)
     try {
-      const fallback = examsCtx('./exam1.json')
-      return fallback && fallback.default ? fallback.default : fallback
+      const fb = examsCtx('./exam1.json')
+      return fb && fb.default ? fb.default : fb
     } catch (_) {
       return { questions: [] }
     }
@@ -327,47 +450,34 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const examId = route.params.id
+    const examParam = route.params.id || '1'
+    const examId = normalizeExamId(examParam)
 
     console.log('🚀 Starting exam:', examId)
 
-    // تحميل بيانات الامتحان
     const data = loadExamDataById(examId)
-    console.log('📊 Loaded exam data:', data)
-
     const raw = (data && data.questions ? data.questions : []).slice(0, 50)
 
-    // معالجة الأسئلة مع حل مسارات الصور
     const questions = ref(
-      raw.map((q, index) => {
-        console.log(`🔄 Processing question ${index + 1} for exam ${examId}`)
-
-        const resolvedImage = q.image ? resolveAsset(q.image, examId) : ''
-
-        console.log(`✅ Question ${index + 1} result:`, {
-          original: q.image,
-          resolved: resolvedImage,
-          type: typeof resolvedImage
-        })
-
-        return {
+      raw.map((q, idx) => ({
           ...q,
           rawImage: q.image || '',
-          image: resolvedImage
-        }
-      })
+        image: q.image ? resolveAsset(q.image, examId) : ''
+      }))
     )
 
     console.log('🎯 Final processed questions for exam', examId, ':', questions.value)
 
     // State management
     function getDefaultSelection(question) {
-      if (question && question.type === 'multi') return []
+      if (!question) return null
+      const type = (question.type || 'multiple')
+      if (type === 'input') return ''
       return null
     }
 
     const index = ref(0)
-    const selected = ref(getDefaultSelection(raw[0] || null))
+    const selected = ref(getDefaultSelection(questions.value[0] || null))
     const answers = ref(questions.value.map(() => null))
     const flaggedQuestions = ref(new Set())
     const showOverview = ref(false)
@@ -405,11 +515,42 @@ export default defineComponent({
       return img
     })
 
-    const optionGroup = computed(() => current.value.options.map(o => ({ label: o.label, value: o.id })))
+    const questionType = computed(() => current.value.type || 'multiple')
+    const optionGroup = computed(() => Array.isArray(current.value.options)
+      ? current.value.options.map(o => ({ label: o.label, value: o.id }))
+      : []
+    )
     const indexDisplay = computed(() => index.value + 1)
     const isLastQuestion = computed(() => index.value === questions.value.length - 1)
     const progressPercentage = computed(() => ((index.value + 1) / questions.value.length) * 100)
     const isFlagged = computed(() => flaggedQuestions.value.has(index.value))
+    const canProceed = computed(() => {
+      const type = questionType.value
+      const val = selected.value
+      if (type === 'input') return typeof val === 'string' && val.trim().length > 0
+      if (Array.isArray(val)) return val.length > 0
+      return val !== null && val !== undefined && val !== ''
+    })
+
+    // Overview stats
+    const answeredCount = computed(() => answers.value.filter(a => a !== null && a !== undefined && a !== '').length)
+    const flaggedCount = computed(() => flaggedQuestions.value.size)
+    const unansweredCount = computed(() => Math.max(questions.value.length - answeredCount.value, 0))
+
+    function goToFirstUnanswered() {
+      const idx = answers.value.findIndex(a => a === null || a === undefined || a === '')
+      if (idx >= 0) {
+        goToQuestion(idx)
+      }
+    }
+
+    function goToFirstFlagged() {
+      const arr = Array.from(flaggedQuestions.value)
+      if (arr.length > 0) {
+        const idx = arr.sort((a, b) => a - b)[0]
+        goToQuestion(idx)
+      }
+    }
 
     // Timer (30 min)
     const remaining = ref(30 * 60)
@@ -422,15 +563,18 @@ export default defineComponent({
         }
       }, 1000)
 
-      // تسجيل معلومات إضافية بعد التحميل
-      setTimeout(() => {
-        console.log('🔍 Post-mount check for exam', examId)
-        console.log('🖼️ First question image:', currentImage.value)
-      }, 500)
+      // Prevent pasting images/files into the page
+      window.addEventListener('paste', handlePaste)
+      // Block file/image drag & drop onto the page
+      window.addEventListener('drop', handleDrop)
+      window.addEventListener('dragover', handleDragOver)
     })
 
     onBeforeUnmount(() => {
       if (timer) clearInterval(timer)
+      window.removeEventListener('paste', handlePaste)
+      window.removeEventListener('drop', handleDrop)
+      window.removeEventListener('dragover', handleDragOver)
     })
 
     const formattedTime = computed(() => {
@@ -443,6 +587,51 @@ export default defineComponent({
     const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIyNSIgdmlld0JveD0iMCAwIDQwMCAyMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNjAgMTEwQzE2MCAxMjMuODA3IDE0OC44MDcgMTM1IDEzNSAxMzVDMTIxLjE5MyAxMzUgMTEwIDEyMy44MDcgMTEwIDExMEMxMTAgOTYuMTkzMiAxMjEuMTkzIDg1IDEzNSA4NUMxNDguODA3IDg1IDE2MCA5Ni4xOTMyIDE2MCAxMTBaIiBmaWxsPSIjRDhEOEQ4Ii8+CjxwYXRoIGQ9Ik0yMDAgNzVIMzAwVjE2NUgyMDBWNzVaIiBmaWxsPSIjRDhEOEQ4Ii8+Cjwvc3ZnPgo='
 
     // Methods
+    function handlePaste(e) {
+      try {
+        const dt = e.clipboardData
+        if (!dt) return
+        const hasFiles = dt.files && dt.files.length > 0
+        const hasImageItems = Array.from(dt.items || []).some(item => (item && (item.kind === 'file' || (item.type && item.type.startsWith('image/')))))
+        if (hasFiles || hasImageItems) {
+          e.preventDefault()
+        }
+      } catch (_) {
+        // no-op
+      }
+    }
+
+    function handleDrop(e) {
+      try {
+        const dt = e.dataTransfer
+        if (dt && dt.files && dt.files.length > 0) {
+          e.preventDefault()
+        }
+      } catch (_) {
+        // no-op
+      }
+    }
+
+    function handleDragOver(e) {
+      try {
+        if (e.dataTransfer) {
+          e.dataTransfer.dropEffect = 'none'
+        }
+        e.preventDefault()
+      } catch (_) {
+        // no-op
+      }
+    }
+
+    function getQuestionTypeLabel(type) {
+      const types = {
+        'multiple': 'Meerkeuze',
+        'dropdown': 'Keuzelijst',
+        'input': 'Open vraag'
+      }
+      return types[type] || 'Meerkeuze'
+    }
+
     function next() {
       if (questions.value.length === 0) return
       answers.value[index.value] = selected.value
@@ -509,6 +698,7 @@ export default defineComponent({
       questions,
       index,
       current,
+      questionType,
       optionGroup,
       selected,
       answers,
@@ -526,9 +716,17 @@ export default defineComponent({
       isLastQuestion,
       progressPercentage,
       isFlagged,
+      canProceed,
       remaining,
       currentImage,
-      placeholderImage
+      placeholderImage,
+      getQuestionTypeLabel,
+      // overview exports
+      answeredCount,
+      flaggedCount,
+      unansweredCount,
+      goToFirstUnanswered,
+      goToFirstFlagged
     }
   }
 })
@@ -538,24 +736,52 @@ export default defineComponent({
 .exam-run-page {
   min-height: 100vh;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Disable text selection on page, allow in inputs */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Re-enable selection inside form fields */
+input, textarea, .professional-input :deep(.q-field__native), .professional-select :deep(.q-field__native) {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Prevent dragging images */
+.visual-image {
+  -webkit-user-drag: none;
 }
 
 .exam-header {
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 12px 24px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
 }
+
 
 .header-left {
   display: flex;
@@ -563,9 +789,26 @@ export default defineComponent({
   gap: 16px;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .header-logo {
-  height: 32px;
+  height: 36px;
   width: auto;
+  filter: brightness(1.1);
+}
+
+.exam-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .header-center {
@@ -577,15 +820,40 @@ export default defineComponent({
 .timer-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #f8fafc;
-  padding: 8px 16px;
-  border-radius: 12px;
+  gap: 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 12px 20px;
+  border-radius: 16px;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 16px 16px 0 0;
+}
+
+.timer-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .timer-icon {
-  color: #64748b;
+  color: #3b82f6;
   font-size: 20px;
 }
 
@@ -596,24 +864,33 @@ export default defineComponent({
 .timer-label {
   font-size: 12px;
   color: #64748b;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .timer-value {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
   color: #0f172a;
   font-family: 'Courier New', monospace;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .timer-value.warning {
   color: #dc2626;
-  animation: pulse 2s infinite;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 }
 
 .header-right {
@@ -627,11 +904,16 @@ export default defineComponent({
 .action-btn {
   color: #64748b;
   transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
 }
 
 .action-btn:hover {
   background: #f1f5f9;
   color: #334155;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .exit-btn:hover {
@@ -639,48 +921,91 @@ export default defineComponent({
   color: #dc2626;
 }
 
+/* Progress - نفس العرض */
 .progress-section {
-  max-width: 1400px;
-  margin: 0 auto 16px auto;
+  max-width: 1200px;
+  margin: 0 auto 24px auto;
+  width: 100%;
 }
 
 .progress-container {
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 24px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.progress-text {
+  color: #475569;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.progress-percentage {
+  color: #3b82f6;
+  font-size: 18px;
+  font-weight: 700;
+  background: #eff6ff;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
+  height: 12px;
   background: #f1f5f9;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 8px;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, #3b82f6, #60a5fa);
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  border-radius: 8px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.progress-text {
-  text-align: center;
-  color: #64748b;
-  font-size: 14px;
-  font-weight: 500;
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
 }
 
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+/* Main Content - التصميم الجديد */
 .exam-main {
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
   background: #fff;
   border-radius: 20px;
   padding: 0;
+  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  flex: 1;
+  width: 100%;
 }
 
 .content-wrapper {
@@ -690,151 +1015,459 @@ export default defineComponent({
   padding: 32px 24px;
 }
 
-.side-by-side-content {
+.main-container {
   width: 100%;
-  max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 1.2fr;
+  gap: 32px;
   align-items: start;
 }
 
-.visual-section {
+/* Image Column */
+.image-column {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .visual-card {
-  background: #fff;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: fit-content;
+}
+
+.visual-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.visual-content {
+  padding: 0;
+}
+
+.image-container {
   width: 100%;
-  max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
 }
 
 .visual-image {
-  border-radius: 16px;
+  border-radius: 20px;
   width: 100%;
+  transition: transform 0.3s ease;
 }
+
 
 .image-error {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px;
+  height: 250px;
   color: #9ca3af;
   gap: 12px;
+  background: #f8fafc;
 }
 
-.image-debug {
-  font-size: 12px;
-  color: #6b7280;
-  background: #f3f4f6;
-  padding: 8px;
-  border-radius: 4px;
-  margin-top: 8px;
-  font-family: monospace;
-  text-align: center;
+.error-text {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .image-caption {
-  padding: 12px 16px;
+  padding: 16px 20px;
   background: #f8fafc;
   border-top: 1px solid #e2e8f0;
   color: #64748b;
   font-size: 14px;
   text-align: center;
-}
-
-.question-section {
-  width: 100%;
+  font-style: italic;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.question-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+.question-options-column {
   width: 100%;
-  height: fit-content;
 }
 
-.question-header {
-  margin-bottom: 32px;
-  width: 100%;
+.question-options-card {
+
+  overflow: hidden;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Question Header */
+.question-options-header {
+  padding: 24px 24px 0 24px;
 }
 
 .question-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.question-number-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .question-number {
   font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.question-type-indicator {
+  font-size: 12px;
   font-weight: 600;
-  color: #374151;
-  background: #f3f4f6;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.question-type-indicator.multiple {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+
+.question-type-indicator.dropdown {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #dcfce7;
+}
+
+.question-type-indicator.input {
+  background: #fef7ed;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+}
+
+.question-actions {
+  display: flex;
+  align-items: center;
+}
+
+.flag-btn {
+  transition: all 0.3s ease;
+}
+
+.flag-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Question Content */
+.question-content {
+  padding: 0 24px 24px 24px;
+  /* border-bottom: 1px solid #f1f5f9; */
+}
+
+.question-text-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 12px;
+  /* border-left: 4px solid #3b82f6; */
+}
+
+.question-icon {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
 }
 
 .question-text {
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.7;
   color: #1f2937;
   font-weight: 500;
-  width: 100%;
+  flex: 1;
 }
 
+/* Options Section */
 .options-section {
-  margin-bottom: 32px;
-  width: 100%;
+  padding: 24px;
 }
 
-.custom-option-group {
-  width: 100%;
+.options-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.custom-option-group :deep(.q-option) {
-  border: 2px solid #f3f4f6;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-  transition: all 0.3s ease;
+.options-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.selection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #dcfce7;
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #166534;
+}
+
+/* Options List */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border: 2px solid #f1f5f9;
+  border-radius: 16px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+  transition: left 0.5s ease;
 }
 
-.custom-option-group :deep(.q-option:hover) {
+.option-item:hover::before {
+  left: 100%;
+}
+
+.option-item:hover {
   border-color: #3b82f6;
-  background: #f0f9ff;
+  background: #f8faff;
+  /* transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15); */
 }
 
-.custom-option-group :deep(.q-option.q-option--selected) {
+.option-item.selected {
   border-color: #3b82f6;
   background: #eff6ff;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.2);
 }
 
-.custom-option-group :deep(.q-option__label) {
+.option-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.option-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-outer {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.option-item:hover .radio-outer {
+  border-color: #3b82f6;
+}
+
+.option-item.selected .radio-outer {
+  border-color: #3b82f6;
+  background: #3b82f6;
+}
+
+.radio-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.radio-inner.checked {
+  background: #fff;
+}
+
+.option-content {
+  flex: 1;
+}
+
+.option-label {
   font-size: 16px;
-  color: #374151;
   font-weight: 500;
+  color: #374151;
+  line-height: 1.5;
 }
 
-.navigation-section {
-  border-top: 1px solid #f3f4f6;
-  padding-top: 24px;
+.option-item.selected .option-label {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.option-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  color: #10b981;
+  font-size: 20px;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
   width: 100%;
+}
+
+.professional-select :deep(.q-field__control) {
+  border-radius: 12px;
+  height: 56px;
+  font-size: 16px;
+}
+
+.professional-select :deep(.q-field__control:hover) {
+  border-color: #3b82f6;
+}
+
+.professional-select :deep(.q-field__control:before) {
+  border-color: #e2e8f0;
+}
+
+.professional-select :deep(.q-field__control:after) {
+  border-color: #3b82f6;
+}
+
+.selected-option {
+  display: flex;
+  align-items: center;
+}
+
+.selected-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.placeholder {
+  font-size: 16px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.dropdown-option {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-option:hover {
+  background: #f8fafc;
+}
+
+/* Input Styles */
+.input-container {
+  width: 100%;
+}
+
+.input-field-wrapper {
+  margin-bottom: 16px;
+}
+
+.professional-input :deep(.q-field__control) {
+  border-radius: 12px;
+  height: 56px;
+  font-size: 16px;
+}
+
+.professional-input :deep(.q-field__control:hover) {
+  border-color: #3b82f6;
+}
+
+.professional-input :deep(.q-field__control:before) {
+  border-color: #e2e8f0;
+}
+
+.professional-input :deep(.q-field__control:after) {
+  border-color: #3b82f6;
+}
+
+.input-icon {
+  color: #6b7280;
+}
+
+.input-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 3px solid #d1d5db;
+}
+
+/* Navigation Section */
+.navigation-section {
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  flex: 1;
+  width: 100%;
+}
+
+.navigation-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
 }
 
 .navigation-buttons {
@@ -846,123 +1479,762 @@ export default defineComponent({
 }
 
 .nav-btn {
-  padding: 12px 24px;
+  padding: 14px 28px;
   font-weight: 600;
-  border-radius: 10px;
-  min-width: 140px;
+  border-radius: 12px;
+  min-width: 160px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  border: 2px solid #3b82f6;
+}
+
+.next-btn {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .spacer {
   flex: 1;
 }
 
-.overview-dialog {
-  width: 400px;
-  border-radius: 16px;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .exam-header,
+  .progress-section,
+  .exam-main,
+  .navigation-section {
+    max-width: 95%;
+  }
+
+  .content-wrapper {
+    padding: 24px 20px;
+  }
+
+  .header-content {
+    padding: 12px 16px;
+  }
 }
 
-.overview-header {
+@media (max-width: 768px) {
+  .exam-run-page {
+    padding: 12px;
+  }
+
+  .exam-header,
+  .progress-section,
+  .exam-main,
+  .navigation-section {
+    max-width: 100%;
+  }
+
+  .content-wrapper {
+    padding: 20px 16px;
+  }
+
+  .question-text-wrapper {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .question-icon {
+    justify-content: center;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
+
+  .question-meta {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .options-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .option-item {
+    padding: 16px 20px;
+  }
+
+  .option-label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exam-run-page {
+    padding: 8px;
+  }
+
+  .content-wrapper {
+    padding: 16px 12px;
+  }
+
+  .question-text {
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .question-text-wrapper {
+    padding: 16px;
+  }
+
+  .progress-container {
+    padding: 16px;
+  }
+
+  .visual-card,
+  .question-options-card {
+    border-radius: 16px;
+  }
+
+  .nav-btn {
+    min-width: auto;
+    padding: 12px 20px;
+  }
+
+  .header-content {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-center {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .option-selector {
+    gap: 12px;
+  }
+
+  .option-label {
+    font-size: 13px;
+  }
+}
+
+.question-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1f2937;
+  font-weight: 300;
+  width: 100%;
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 12px;
+  border-left: 4px solid #3b82f6;
+}
+
+/* Options Section - Professional Redesign */
+.options-section {
+  width: 100%;
+}
+
+.options-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  height: fit-content;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.options-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 20px 20px 0 0;
+}
+
+.options-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.options-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
-  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.overview-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.overview-content {
-  padding: 24px;
-  max-height: 60vh;
-  overflow-y: auto;
-}
-
-.questions-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.options-title-container {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-.question-indicator {
-  width: 48px;
-  height: 48px;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+.options-icon {
+  color: #3b82f6;
+  font-size: 24px;
+  background: #eff6ff;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.options-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.selection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #dcfce7;
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #166534;
+}
+
+/* Options List */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border: 2px solid #f1f5f9;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.option-item:hover::before {
+  left: 100%;
+}
+
+.option-item:hover {
+  border-color: #3b82f6;
+  background: #f8faff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+}
+
+.option-item.selected {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.2);
+}
+
+.option-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.option-radio {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  color: #6b7280;
-  cursor: pointer;
+}
+
+.radio-outer {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
-.question-indicator:hover {
+.option-item:hover .radio-outer {
   border-color: #3b82f6;
-  color: #3b82f6;
 }
 
-.question-indicator.answered {
-  background: #dcfce7;
-  border-color: #16a34a;
-  color: #16a34a;
-}
-
-.question-indicator.current {
+.option-item.selected .radio-outer {
+  border-color: #3b82f6;
   background: #3b82f6;
-  border-color: #3b82f6;
-  color: white;
 }
 
-.question-indicator.flagged {
-  border-color: #f59e0b;
-  color: #f59e0b;
+.radio-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 
-.overview-footer {
-  padding: 20px 24px;
-  border-top: 1px solid #e2e8f0;
+.radio-inner.checked {
+  background: #fff;
 }
 
-.overview-legend {
+.option-content {
+  flex: 1;
+}
+
+.option-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.option-item.selected .option-label {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.option-indicator {
   display: flex;
-  gap: 20px;
+  align-items: center;
   justify-content: center;
 }
 
-.legend-item {
+.check-icon {
+  color: #10b981;
+  font-size: 20px;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  width: 100%;
+}
+
+.dropdown-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.professional-select :deep(.q-field__control) {
+  border-radius: 12px;
+  height: 56px;
+  font-size: 16px;
+}
+
+.professional-select :deep(.q-field__control:hover) {
+  border-color: #3b82f6;
+}
+
+.professional-select :deep(.q-field__control:before) {
+  border-color: #e2e8f0;
+}
+
+.professional-select :deep(.q-field__control:after) {
+  border-color: #3b82f6;
+}
+
+.selected-option {
+  display: flex;
+  align-items: center;
+}
+
+.selected-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.placeholder {
+  font-size: 16px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.dropdown-option {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-option:hover {
+  background: #f8fafc;
+}
+
+/* Input Styles */
+.input-container {
+  width: 100%;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-field-wrapper {
+  margin-bottom: 16px;
+}
+
+.professional-input :deep(.q-field__control) {
+  border-radius: 12px;
+  height: 56px;
+  font-size: 16px;
+}
+
+.professional-input :deep(.q-field__control:hover) {
+  border-color: #3b82f6;
+}
+
+.professional-input :deep(.q-field__control:before) {
+  border-color: #e2e8f0;
+}
+
+.professional-input :deep(.q-field__control:after) {
+  border-color: #3b82f6;
+}
+
+.input-icon {
+  color: #6b7280;
+}
+
+.input-hint {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   color: #6b7280;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 3px solid #d1d5db;
 }
 
-.legend-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 2px solid #e5e7eb;
+/* Guidance Section */
+.guidance-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
 }
 
-.legend-color.current {
-  background: #3b82f6;
-  border-color: #3b82f6;
+.guidance-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #92400e;
 }
 
-.legend-color.answered {
-  background: #dcfce7;
-  border-color: #16a34a;
+.guidance-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.legend-color.flagged {
-  border-color: #f59e0b;
+.guidance-content li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  color: #475569;
+  font-size: 14px;
 }
 
+.guidance-content li:before {
+  content: '•';
+  color: #f59e0b;
+  font-weight: bold;
+  position: absolute;
+  left: 8px;
+}
+
+/* Navigation Section */
+.navigation-section {
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  flex: 1;
+  width: 100%;
+}
+
+.navigation-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.nav-btn {
+  padding: 14px 28px;
+  font-weight: 600;
+  border-radius: 12px;
+  min-width: 160px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  border: 2px solid #3b82f6;
+}
+
+.next-btn {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .two-column-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .exam-header,
+  .progress-section,
+  .exam-main,
+  .navigation-section {
+    max-width: 95%;
+  }
+
+  .content-wrapper {
+    padding: 24px 20px;
+  }
+
+  .header-content {
+    padding: 12px 16px;
+  }
+
+  .question-card,
+  .options-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .exam-run-page {
+    padding: 12px;
+  }
+
+  .exam-header,
+  .progress-section,
+  .exam-main,
+  .navigation-section {
+    max-width: 100%;
+  }
+
+  .content-wrapper {
+    padding: 20px 16px;
+  }
+
+  .two-column-layout {
+    gap: 24px;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
+
+  .question-meta {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .question-card,
+  .options-card {
+    padding: 20px;
+  }
+
+  .options-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .option-item {
+    padding: 16px 20px;
+  }
+
+  .option-label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exam-run-page {
+    padding: 8px;
+  }
+
+  .content-wrapper {
+    padding: 16px 12px;
+  }
+
+  .two-column-layout {
+    gap: 20px;
+  }
+
+  .question-text {
+    font-size: 15px;
+    padding: 16px;
+  }
+
+  .progress-container {
+    padding: 16px;
+  }
+
+  .visual-card,
+  .question-card,
+  .options-card {
+    border-radius: 16px;
+  }
+
+  .question-card,
+  .options-card {
+    padding: 16px;
+  }
+
+  .nav-btn {
+    min-width: auto;
+    padding: 12px 20px;
+  }
+
+  .header-content {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-center {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .option-selector {
+    gap: 12px;
+  }
+
+  .option-label {
+    font-size: 13px;
+  }
+}
+
+/* Overview Dialog - Professional Styling */
+.overview-dialog { width: 460px; max-width: 90vw; border-radius: 16px; overflow: hidden; }
+.overview-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 8px 16px; border-bottom: 1px solid #e5e7eb; }
+.overview-title { font-weight: 700; font-size: 16px; color: #111827; }
+.overview-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 8px 16px 12px 16px; border-bottom: 1px solid #f1f5f9; }
+.overview-stats .stat { display: grid; grid-template-columns: 18px auto; column-gap: 8px; row-gap: 2px; align-items: center; background:#f9fafb; border:1px solid #eef2f7; border-radius: 10px; padding: 8px 10px; }
+.overview-stats .stat-value { font-weight: 700; font-size: 14px; color:#0f172a; }
+.overview-stats .stat-label { grid-column: 2; font-size: 12px; color:#6b7280; }
+.overview-content { padding: 16px; }
+.questions-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+@media (max-width: 480px) { .questions-grid { grid-template-columns: repeat(5, 1fr); } }
+.question-indicator { display:flex; align-items:center; justify-content:center; height:42px; border-radius:10px; border: 2px solid #e2e8f0; color:#334155; background:#fff; cursor:pointer; transition:all 0.2s ease; font-weight:700; }
+.question-indicator:hover { background:#f8fafc; border-color:#cbd5e1; }
+.question-indicator.answered { background:#ecfdf5; border-color:#bbf7d0; color:#065f46; }
+.question-indicator.current { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
+.question-indicator.flagged { background:#fffbeb; border-color:#fde68a; color:#b45309; }
+.question-indicator:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+.overview-footer { padding: 12px 16px 16px 16px; border-top: 1px solid #f1f5f9; }
+.overview-legend { display:flex; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.legend-item { display:flex; align-items:center; gap:8px; font-size: 12px; color:#475569; }
+.legend-color { width: 14px; height: 14px; border-radius: 4px; border:1px solid #e2e8f0; }
+.legend-color.current { background:#eff6ff; border-color:#bfdbfe; }
+.legend-color.answered { background:#ecfdf5; border-color:#bbf7d0; }
+.legend-color.flagged { background:#fffbeb; border-color:#fde68a; }
+.overview-actions { display:flex; gap: 8px; justify-content: flex-end; }
+
+/* Confirm Dialog */
 .confirm-dialog {
   border-radius: 16px;
   max-width: 480px;
@@ -1002,88 +2274,6 @@ export default defineComponent({
 .confirm-btn {
   font-weight: 500;
 }
-
-@media (max-width: 1024px) {
-  .side-by-side-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    max-width: 800px;
-  }
-  .content-wrapper {
-    padding: 24px 20px;
-  }
-  .header-content {
-    padding: 12px 16px;
-  }
-  .question-card {
-    padding: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .exam-run-page {
-    padding: 12px;
-  }
-  .content-wrapper {
-    padding: 20px 16px;
-  }
-  .side-by-side-content {
-    gap: 24px;
-  }
-  .question-text {
-    font-size: 18px;
-  }
-  .questions-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .navigation-buttons {
-    flex-direction: column;
-  }
-  .nav-btn {
-    width: 100%;
-  }
-  .question-meta {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-  .question-card {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .exam-run-page {
-    padding: 8px;
-  }
-  .content-wrapper {
-    padding: 16px 12px;
-  }
-  .side-by-side-content {
-    gap: 20px;
-  }
-  .questions-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .overview-legend {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .question-text {
-    font-size: 16px;
-  }
-  .custom-option-group :deep(.q-option__label) {
-    font-size: 14px;
-  }
-  .progress-container {
-    padding: 16px;
-  }
-  .visual-card,
-  .question-card {
-    border-radius: 12px;
-  }
-  .question-card {
-    padding: 16px;
-  }
-}
+/* Focus states */
+.action-btn:focus-visible, .nav-btn:focus-visible, .question-indicator:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
 </style>

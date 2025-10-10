@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="art">
-              <img src="../assets/logo.svg" alt="art" />
+              <img src="../assets/Logo-test1.png" alt="art" />
             </div>
           </div>
         </div>
