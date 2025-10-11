@@ -1,20 +1,34 @@
 {
   "id": "exam1",
-  "title": "Exam 1",
+  "title": {
+    "nl": "Examen 1"
+  },
   "questions": [
     {
       "id": "exam1-q1",
       "image": "exam1/q1.png",
-      "text": "Mag je als bestuurder van een personenauto gebruikmaken van een rijstrook met de aanduiding 'BUS' of 'LIJNBUS'?",
+      "text": {
+        "nl": "Mag je als bestuurder van een personenauto gebruikmaken van een rijstrook met de aanduiding 'BUS' of 'LIJNBUS'?",
+        "en": "As a driver of a passenger car, are you allowed to use a lane marked with 'BUS' or 'LIJNBUS'?",
+        "ar": "هل يُسمح لك كسائق سيارة ركاب باستخدام حارة مخصصة للباصات أو حافلات النقل العام؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",
@@ -23,16 +37,28 @@
     {
       "id": "exam1-q2",
       "image": "../../assets/exam1/q2.png",
-      "text": "Mag een kind van 12 jaar en 1.30 meter lang gebruik maken van een driepuntsgordel ?",
+      "text": {
+        "nl": "Mag een kind van 12 jaar en 1.30 meter lang gebruik maken van een driepuntsgordel?",
+        "en": "Is a 12-year-old child who is 1.30 meters tall allowed to use a three-point seatbelt?",
+        "ar": "هل يُسمح لطفل يبلغ من العمر 12 عاماً وطوله 1.30 متر باستخدام حزام الأمان ثلاثي النقاط؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",

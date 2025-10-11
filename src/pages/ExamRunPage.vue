@@ -161,6 +161,7 @@
                             <div class="radio-outer">
                               <div class="radio-inner" :class="{ 'checked': selected === option.value }"></div>
                             </div>
+
                           </div>
                           <div class="option-content">
                             <div class="option-label">{{ option.label }}</div>
@@ -1023,7 +1024,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 .main-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 1.2fr;
+  grid-template-columns: 1.3fr 1.2fr;
   gap: 32px;
   align-items: start;
 }

@@ -77,7 +77,7 @@
                 </q-btn>
               </div>
             </q-img>
-            
+
             <q-card-section>
               <div class="text-h6">{{ favorite.signalName }}</div>
               <div class="text-caption text-grey-7 q-mt-xs">
@@ -129,19 +129,19 @@ const getImageUrl = (signalId, signalType) => {
       'direction': 'Rijrichtingen',
       'parking': 'Parkeren'
     }
-    
+
     const folder = folderMap[signalType] || 'Waarschuwingsborden'
-    
-    // Try to require the image
+
+    // Use relative path instead of @ alias for require
     try {
-      return require(`@/assets/${folder}/${signalId}.webp`)
+      return require(`../assets/${folder}/${signalId}.webp`)
     } catch (e) {
       // Try other extensions if webp fails
       try {
-        return require(`@/assets/${folder}/${signalId}.png`)
+        return require(`../assets/${folder}/${signalId}.png`)
       } catch (e2) {
         try {
-          return require(`@/assets/${folder}/${signalId}.jpg`)
+          return require(`../assets/${folder}/${signalId}.jpg`)
         } catch (e3) {
           return null
         }
@@ -187,7 +187,7 @@ const formatDate = (dateString) => {
   const now = new Date()
   const diffTime = Math.abs(now - date)
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
-  
+
   if (diffDays === 0) {
     return 'today'
   } else if (diffDays === 1) {
@@ -220,7 +220,7 @@ onMounted(async () => {
 .favorite-card {
   height: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

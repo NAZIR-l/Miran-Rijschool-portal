@@ -1,48 +1,40 @@
 {
-  "id": "exam2",
-  "title": "Exam 2",
+  "id": "exam3",
+  "title": "Exam 3",
   "questions": [
     {
-      "id": "exam2-q1",
-      "image": "../../assets/exam2/q1.png",
-      "text": "Waarom mag je niet rijden met een gedraaide veiligheidsgordel?",
+      "id": "exam3-q1",
+      "image": "../../assets/exam3/q1.png",
+      "text": "Verbruikt je auto meer energie als deze zwaarder beladen is?",
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Omdat de gordel dan minder comfortabel zit"
+          "label": "Ja"
         },
         {
           "id": "b",
-          "label": "Omdat de gordel dan sneller slijt "
-        },
-        {
-          "id": "c",
-          "label": "Omdat de gordel bij een botsing minder goed reageert"
+          "label": "Nee"
         }
       ],
-      "correct": "c",
+      "correct": "a",
       "reason": "Een gedraaide gordel verdeelt de krachten bij een botsing niet goed, waardoor de kans op letsel toeneemt. Daarnaast vergroot het de kans op snijwonden.",
       "category": "lanes"
     },
     {
-      "id": "exam2-q2",
-      "image": "../../assets/exam2/q2.png",
-      "text": "Wat is de dode hoek?",
+      "id": "exam3-q2",
+      "image": "../../assets/exam3/q2.png",
+      "text": "Je staat hier te laden. Mag dat?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Het gebied rondom een voertuig dat de bestuurder niet kan zien van achter het stuur, ook niet met behulp van zijn spiegels"
+          "label": "Ja"
         },
         {
           "id": "b",
-          "label": "Het gebied achter het voertuig dat de bestuurder alleen kan zien met de binnenspiegel"
-        },
-        {
-          "id": "c",
-          "label": "Het punt vanaf waar je niet meer verder voor je uit kan kijken"
+          "label": "Nee"
         }
       ],
       "correct": "a",
@@ -51,9 +43,9 @@
 
     },
     {
-      "id": "exam2-q3",
-      "image": "../../assets/exam2/q3.png",
-      "text": "Mag je op deze manier rijden?",
+      "id": "exam3-q3",
+      "image": "../../assets/exam3/q3.png",
+      "text": "Je haalt de blauwe auto via rechts. Is dit toegestaan?",
       "type": "multiple",
 
       "options": [
@@ -72,23 +64,19 @@
 
     },
     {
-      "id": "exam2-q4",
-      "image": "../../assets/exam2/q4.png",
-      "text": "Bij welk toerental verbruik je de minste brandstof?",
+      "id": "exam3-q4",
+      "image": "../../assets/exam3/q4.png",
+      "text": "Mag je rijden met je airbags uitgeschakeld?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Bij toerental 1"
+          "label": "Ja"
         },
         {
           "id": "b",
-          "label": "Bij toerental 2"
-        },
-        {
-          "id": "c",
-          "label": "Bij toerental 3"
+          "label": "Nee"
         }
       ],
       "correct": "a",
@@ -96,33 +84,22 @@
       "reason": "Je verbrandt de minste brandstof bij een laag toerental."
     },
     {
-      "id": "exam2-q5",
-      "image": "../../assets/exam2/q5.png",
-      "text": "Hoelang is een rijbewijs B geldig?",
-      "type": "multiple",
+      "id": "exam3-q5",
+      "image": "../../assets/exam3/q5.png",
+      "text": "Je rijdt binnen de bebouwde kom. Hoe hard mag je hier maximaal rijden?(Km/u)",
+      "type": "input",
 
       "options": [
-        {
-          "id": "a",
-          "label": "4 jaar"
-        },
-        {
-          "id": "b",
-          "label": "8 jaar"
-        },
-        {
-          "id": "c",
-          "label": "10 jaar"
-        }
+
       ],
       "correct": "c",
       "category": "lanes",
       "reason": "Het rijbewijs B is 10 jaar geldig en dient daarna verlengd te worden. Na je 70e is dit geen 10, maar 5 jaar."
     },
     {
-      "id": "exam2-q6",
-      "image": "../../assets/exam2/q6.png",
-      "text": "Kun je hier een bromfietser op de rijbaan verwachten?",
+      "id": "exam3-q6",
+      "image": "../../assets/exam3/q6.png",
+      "text": "Is het wachten op hulp op deze manier vailig als je pech hebt?",
       "type": "multiple",
 
       "options": [
@@ -140,19 +117,19 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q7",
-      "image": "../../assets/exam2/q7.png",
-      "text": "Mag je hier doorrijden?",
+      "id": "exam3-q7",
+      "image": "../../assets/exam3/q7.png",
+      "text": "Wie mag er eerst?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "De Personenauto"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "De tram"
         }
       ],
       "correct": "b",
@@ -160,19 +137,23 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q8",
-      "image": "../../assets/exam2/q8.png",
-      "text": " Moet de auto de persoon op skates voor laten gaan?",
+      "id": "exam3-q8",
+      "image": "../../assets/exam3/q8.png",
+      "text": "Wat is hier het grootste risico?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "Dat de vrachtauto de bocht te ruim gaat nemen"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "Dat de witte auto de rode auto niet ziet"
+        },
+        {
+          "id": "c",
+          "label": "Dat de rode auto de witte auto niet ziet"
         }
       ],
       "correct": "b",
@@ -180,43 +161,36 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q9",
-      "image": "../../assets/exam2/q9.png",
-      "text": "Je wilt rechtdoor. Moet je de brandweerauto met optische- en geluidssignalen voor laten gaan? ",
-      "type": "multiple",
+      "id": "exam3-q9",
+      "image": "../../assets/exam3/q9.png",
+      "text": "Voor welke maximumsnelheid is deze weg ingericht?(Km/u)",
+      "type": "input",
 
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
       "correct": "a",
       "reason": "Een brandweer auto die optische- en geluidssignalen voert dien je altijd voorrang te verlenen.",
       "category": "lanes"
     },
     {
-      "id": "exam2-q10",
-      "image": "../../assets/exam2/q10.png",
-      "text": "Je rijdt hier op de snelweg en wil deze rijstrook blijven volgen. Wat kan je verwachten?",
+      "id": "exam3-q10",
+      "image": "../../assets/exam3/q10.png",
+      "text": "Waar moet je rekening mee houden als je op vakantie gaat met een dakkoffer?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Dat jouw rijstrook ophoudt en je een rijstrook naar links moet verschuiven"
+          "label": "Een dakkoffer verhoogt de luchtweerstand, waardoor de auto meer brandstof nodig heeft om dezelfde snelheid te behouden"
         },
         {
           "id": "b",
-          "label": "Dat jouw rijstrook over gaat in een afslag die je naar rechts moet nemen"
+          "label": "Een dakkoffer beinvloedt de gewichtsverdeling van de auto, wat zrogt voor extra slijtage aan de banden"
         },
         {
           "id": "c",
-          "label": "Dat de rijstrook links van je samen gaat met de rijstrook aan de andere kant van de berm"
+          "label": "Een dakkoffer maakt de auto minder aerodynamisch, wat het risico op oververhitting van de motor verhoogt"
         }
       ],
       "correct": "c",
@@ -224,19 +198,27 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q11",
-      "image": "../../assets/exam2/q11.png",
-      "text": "Mag je een motorfiets met pech slepen?",
-      "type": "multiple",
+      "id": "exam3-q11",
+      "image": "../../assets/exam3/q11.png",
+      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "type": "interactive-choice",
 
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "1"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "2"
+        },
+        {
+          "id": "c",
+          "label": "3"
+        },
+        {
+          "id": "d",
+          "label": "4"
         }
       ],
       "correct": "b",
@@ -244,19 +226,19 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q12",
-      "image": "../../assets/exam2/q12.png",
-      "text": "Moet je een douaneambte voor laten gaan waneer deze gele zwaailichten voert? ",
+      "id": "exam3-q12",
+      "image": "../../assets/exam3/q12.png",
+      "text": "Wat geeft dit signaleringsbord aan?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "Wegwerkzaamheden"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "Fileverkeer"
         }
       ],
       "correct": "b",
@@ -264,23 +246,19 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q13",
-      "image": "../../assets/exam2/q13.png",
-      "text": "Welke tijd moet je instellen op je parkeerschijf als je parkeert in een parkeerschijf zone?",
+      "id": "exam3-q13",
+      "image": "../../assets/exam3/q13.png",
+      "text": "Welk kruispunt heeft geen verkeerslichten, verkeersborden of verkeerstekens die de voorrang regelen?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Aanvangsttijd"
+          "label": "Een gelijkwaardig kruispunt"
         },
         {
           "id": "b",
-          "label": "Parkeerduur "
-        },
-        {
-          "id": "c",
-          "label": "Eindtijd"
+          "label": "Een ongelijkwaardig kruispunt "
         }
       ],
       "correct": "a",
@@ -288,9 +266,9 @@
       "reason": "Bij het parkeren in een blauwe zone wordt de pijl van de parkeerschijf gezet op het streepje dat volgt op het tijdstip van aankomst."
     },
     {
-      "id": "exam2-q14",
-      "image": "../../assets/exam2/q14.png",
-      "text": "Je wilt hier inhalen. Mag dat?",
+      "id": "exam3-q14",
+      "image": "../../assets/exam3/q14.png",
+      "text": "Je rijdt hier 30km/u. Mag dat?",
       "type": "multiple",
 
       "options": [
@@ -308,23 +286,23 @@
       "category": "lanes"
     },
     {
-      "id": "exam2-q15",
-      "image": "../../assets/exam2/q15.png",
-      "text": "Waar moet het derde, rode remlicht zitten?",
+      "id": "exam3-q15",
+      "image": "../../assets/exam3/q15.png",
+      "text": "Tijdens een alcoholcontrole worden twee bestuurders staande gehouden. Een ervaren bestuurderheeft 0,6 promille alcohol in zijn bloed. Een beginnende bestuurder heeft 0,2 promille alcohol in zijn bloed. Welke bestuurder is in overtreding?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Boven de achterruit"
+          "label": "Beide bestuurders"
         },
         {
           "id": "b",
-          "label": "Voor de bumper"
+          "label": "Alleen de beginnendee bestuurder"
         },
         {
           "id": "c",
-          "label": "Onder de kentekenplaat"
+          "label": "Alleen de ervaren bestuurder"
         }
       ],
       "correct": "a",
@@ -333,9 +311,9 @@
     },
 
     {
-      "id": "exam2-q16",
-      "image": "../../assets/exam2/q16.png",
-      "text": "Mag je deze weg inrijden?",
+      "id": "exam3-q16",
+      "image": "../../assets/exam3/q16.png",
+      "text": "Je staat hier geparkeerd zonder parkeerschijf. Mag dat?",
       "type": "multiple",
 
       "options": [
@@ -352,29 +330,33 @@
       "reason": "Dit is een inrijverbod dat niet geldt voor bussen en landbouwvoertuigen, maar dus wel voor jou."
     },
     {
-      "id": "exam2-q17",
-      "image": "../../assets/exam2/q17.png",
-      "text": "Welke volgafstand houd je aan voordat je gaat inhalen?",
+      "id": "exam3-q17",
+      "image": "../../assets/exam3/q17.png",
+      "text": "Waar kun je overstekende (spelende) kinderen verwachten?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "Bord A"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "Bord B"
+        },
+        {
+          "id": "c",
+          "label": "Beide borden"
         }
       ],
-      "correct": "2s",
+      "correct": "a",
       "reason": "Bij normale weersomstandigheden houd je altijd twee seconden volgafstand aan."
     },
     {
-      "id": "exam2-q18",
-      "image": "../../assets/exam2/q18.png",
-      "text": "Een 4-seizoensband heeft een minimale profieldiepte van:",
-      "type": "input",
+      "id": "exam3-q18",
+      "image": "../../assets/exam3/q18.png",
+      "text": "Mag je nu claxonneren?",
+      "type": "multiple",
 
       "options": [
         {
@@ -386,59 +368,13 @@
           "label": "Nee"
         }
       ],
-      "correct": " 1,6mm",
+      "correct": "b",
       "reason": "Dit is net als een zomerband 1,6 millimeter."
     },
     {
-      "id": "exam2-q19",
-      "image": "../../assets/exam2/q19.png",
-      "text": "Je bandenspanning is te laag. Waar moet je rekening mee houden?",
-      "type": "multiple",
-
-      "options": [
-        {
-          "id": "a",
-          "label": "Een hoger brandstofverbruik"
-        },
-        {
-          "id": "b",
-          "label": "Slechtere ligging op de weg"
-        },
-        {
-          "id": "c",
-          "label": "Beide"
-        }
-      ],
-      "correct": "c",
-      "reason": "Een te lage bandenspanning zorgt voor een hoger brandstofverbruik en vermindert de grip op de weg."
-    },
-    {
-      "id": "exam2-q20",
-      "image": "../../assets/exam2/q20.png",
-      "text": "Welk rijbewijs heb je nodig voor een motorvoertuig met meer dan 9 zitplaatsen?",
-      "type": "multiple",
-
-      "options": [
-        {
-          "id": "a",
-          "label": "Rijbewijs B"
-        },
-        {
-          "id": "b",
-          "label": "Rijbewijs C"
-        },
-        {
-          "id": "c",
-          "label": "Rijbewijs D"
-        }
-      ],
-      "correct": "c",
-      "reason": "Wil je een voertuig besturen met meer dan 9 zitplaatsen, dan heb je een rijbewijs D nodig."
-    },
-    {
-      "id": "exam2-q21",
-      "image": "../../assets/exam2/q21.png",
-      "text": "Mag je hier sneller dan 30 km/u gaan rijden?",
+      "id": "exam3-q19",
+      "image": "../../assets/exam3/q19.png",
+      "text": "Je rijdt hier met groot licht. Mag dat?",
       "type": "multiple",
 
       "options": [
@@ -452,12 +388,58 @@
         }
       ],
       "correct": "a",
+      "reason": "Een te lage bandenspanning zorgt voor een hoger brandstofverbruik en vermindert de grip op de weg."
+    },
+    {
+      "id": "exam3-q20",
+      "image": "../../assets/exam3/q20.png",
+      "text": "Waar mag je inhalen?",
+      "type": "multiple",
+
+      "options": [
+        {
+          "id": "a",
+          "label": "Situatie 1"
+        },
+        {
+          "id": "b",
+          "label": "Situatie 2"
+        },
+        {
+          "id": "c",
+          "label": "Beide situaties"
+        }
+      ],
+      "correct": "c",
+      "reason": "Wil je een voertuig besturen met meer dan 9 zitplaatsen, dan heb je een rijbewijs D nodig."
+    },
+    {
+      "id": "exam3-q21",
+      "image": "../../assets/exam3/q21.png",
+      "text": "Je staat buiten de bebouwde kom stil in de berm. Welk licht moet branden?",
+      "type": "multiple",
+
+      "options": [
+        {
+          "id": "a",
+          "label": "Je stadslicht"
+        },
+        {
+          "id": "b",
+          "label": "Je grootlicht"
+        },
+        {
+          "id": "c",
+          "label": "Je mistvoorlicht"
+        }
+      ],
+      "correct": "a",
       "reason": "Het verkeersbord geeft een adviessnelheid aan, harder dan 30km/u mag dus wel."
     },
     {
-      "id": "exam2-q22",
-      "image": "../../assets/exam2/q22.png",
-      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "id": "exam3-q22",
+      "image": "../../assets/exam3/q22.png",
+      "text": "Mag de trekker hier rijden?",
       "type": "multiple",
 
       "options": [
@@ -470,32 +452,36 @@
           "label": "Nee"
         }
       ],
-      "correct": "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
+      "correct": "a",
       "reason": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links."
     },
     {
-      "id": "exam2-q23",
-      "image": "../../assets/exam2/q23.png",
-      "text": "Je wilt rechtsaf. In welke situatie sta je het veiligst opgesteld?",
+      "id": "exam3-q23",
+      "image": "../../assets/exam3/q23.png",
+      "text": "Op welke rijstrook moet je rijden??",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Situatie A"
+          "label": "Rijstrook 1"
         },
         {
           "id": "b",
-          "label": "Situatie B"
+          "label": "Rijstrook 2"
+        },
+        {
+          "id": "c",
+          "label": "Rijstrook 3"
         }
       ],
       "correct": "Situatie A",
       "reason": "Je mag het overige verkeer niet hinderen."
     },
     {
-      "id": "exam2-q24",
-      "image": "../../assets/exam2/q24.png",
-      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "id": "exam3-q24",
+      "image": "../../assets/exam3/q24.png",
+      "text": "Je bent in een militaire colonne terecht gekomen. Moet je nu je waarschuwingslichten aanzetten?",
       "type": "multiple",
 
       "options": [
@@ -508,102 +494,102 @@
           "label": "Nee"
         }
       ],
-      "correct": " 1. Fietser, 2. Personenauto, 3. Motor",
+      "correct": "a",
       "reason": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt."
     },
     {
-      "id": "exam2-q25",
-      "image": "../../assets/exam2/q25.png",
-      "text": "Wat is het algemene alarmnummer wanneer elke seconde telt?",
-      "type": "multiple",
+      "id": "exam3-q25",
+      "image": "../../assets/exam3/q25.png",
+      "text": "Wat is de juiste volgorde van voor laten gaan?",
+      "type": "interactive-choice",
 
       "options": [
         {
           "id": "a",
-          "label": "100"
+          "label": "1"
         },
         {
           "id": "b",
-          "label": "112"
+          "label": "2"
         },
         {
           "id": "c",
-          "label": "0611"
+          "label": "3"
         }
       ],
       "correct": "b",
       "reason": "112 is het algemeen nummer voor de hulpdiensten in een noodsituatie."
     },
     {
-      "id": "exam2-q26",
-      "image": "../../assets/exam2/q26.png",
-      "text": "Wat of wie volg je hier op?",
+      "id": "exam3-q26",
+      "image": "../../assets/exam3/q26.png",
+      "text": "Je hebt per ongeluk de verkeerde brandstof getankt. Wat doeje?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "De verkeerslichten"
+          "label": "Je belt de pechdiensten en laat je auto naar een garage slepen"
         },
         {
           "id": "b",
-          "label": "De verkeersbordern / tekens"
+          "label": "Je rijdt naar de dichtsbijzijnde autogarage"
 
         },
         {
           "id": "c",
-          "label": "De verkeersregelaar"
+          "label": "Je laat de motor even aanstaan in stilstand zodat er ruimte in de tank komt om hem aan te vullen met de juiste brandstof"
         }
       ],
       "correct": "c",
       "reason": "Je bent verplicht de aanwijzingen van een verkeersregelaar op te volgen; deze gaan boven verkeerslichten en verkeerstekens."
     },
     {
-      "id": "exam2-q27",
-      "image": "../../assets/exam2/q27.png",
-      "text": "De politie heeft je een rijverbod opgelegd. Welk voertuig mag je besturen?",
+      "id": "exam3-q27",
+      "image": "../../assets/exam3/q27.png",
+      "text": "Wat doe je hier?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Alleen een fiets"
+          "label": "Je houdt je snelheid aan"
         },
         {
           "id": "b",
-          "label": "Geen enkel voertuig"
+          "label": "Je remt onmiddellijk af"
         },
         {
           "id": "c",
-          "label": "Alleen een fiets en een snorfiets"
+          "label": "Je past je snelheid aan"
         }
       ],
       "correct": "b",
       "reason": "Bij een rijverbod mag je geen enkel voertuig besturen. Ook geen fiets."
     },
     {
-      "id": "exam2-q28",
-      "image": "../../assets/exam2/q28.png",
-      "text": "Wat betekent dit verkeersbord?",
+      "id": "exam3-q28",
+      "image": "../../assets/exam3/q28.png",
+      "text": "De personenauto is 2800kg en de aanhangwagen 800kg. Mag je zo rijden met een rijbewijs B?",
       "type": "multiple",
 
       "options": [
         {
           "id": "a",
-          "label": "Einde maximumsnelheid"
+          "label": "Ja"
         },
         {
           "id": "b",
-          "label": "Einde adviessnelheid"
+          "label": "Nee"
         }
       ],
       "correct": "b",
       "reason": "De adviessnelheid van 50 km/u is niet langer geldig."
     },
     {
-      "id": "exam2-q29",
-      "image": "../../assets/exam2/q29.png",
-      "text": "Mag je hier stilstaan om te bellen?",
+      "id": "exam3-q29",
+      "image": "../../assets/exam3/q29.png",
+      "text": "Mag je, als je op je 17e een autorijbewijs hebt, ook op een bromfiets rijden?",
       "type": "multiple",
 
       "options": [
@@ -620,9 +606,9 @@
       "reason": "Op een vluchthaven mag je niet parkeren of stilstaan."
     },
     {
-      "id": "exam2-q30",
-      "image": "../../assets/exam2/q30.png",
-      "text": "Bij welk bord mag je een vrachtauto inhalen?",
+      "id": "exam3-q30",
+      "image": "../../assets/exam3/q30.png",
+      "text": "Je wilt ?",
       "type": "multiple",
 
       "options": [
@@ -643,8 +629,8 @@
       "reason": "Bij verkeersbord B mogen auto's, motoren en vrachtauto's elkaar niet inhalen op de weg."
     },
     {
-      "id": "exam2-q31",
-      "image": "../../assets/exam2/q31.png",
+      "id": "exam3-q31",
+      "image": "../../assets/exam3/q31.png",
       "text": "Sta je hier goed als je linksaf wilt slaan?",
       "type": "multiple",
 
@@ -662,8 +648,8 @@
       "reason": "Als bestuurder dien je indien mogelijk altijd zoveel mogelijk rechts voor te sorteren."
     },
     {
-      "id": "exam2-q32",
-      "image": "../../assets/exam2/q32.png",
+      "id": "exam3-q32",
+      "image": "../../assets/exam3/q32.png",
       "text": "Verlaat je hier de autosnelweg?",
       "type": "multiple",
 
@@ -681,8 +667,8 @@
       "reason": "Je verlaat hier de autosnelweg via afrit 7 en vervolgt de N470."
     },
     {
-      "id": "exam2-q33",
-      "image": "../../assets/exam2/q33.png",
+      "id": "exam3-q33",
+      "image": "../../assets/exam3/q33.png",
       "text": "Welk bord geeft aan dat je op een voorrangsweg rijdt?",
       "type": "multiple",
 
@@ -704,8 +690,8 @@
       "reason": "De vorm van een voorrangsbord is ruitvormig."
     },
     {
-      "id": "exam2-q34",
-      "image": "../../assets/exam2/q34.png",
+      "id": "exam3-q34",
+      "image": "../../assets/exam3/q34.png",
       "text": "Gebruikt een auto met een volle dakkoffer extra brandstof?",
       "type": "multiple",
 
@@ -723,8 +709,8 @@
       "reason": "De auto wordt zwaarder en verbruikt daardoor ook meer brandstof."
     },
     {
-      "id": "exam2-q35",
-      "image": "../../assets/exam2/q35.png",
+      "id": "exam3-q35",
+      "image": "../../assets/exam3/q35.png",
       "text": "Welk symbool heeft te maken met het oliesysteem?",
       "type": "multiple",
 
@@ -748,8 +734,8 @@
 
     },
     {
-      "id": "exam2-q36",
-      "image": "../../assets/exam2/q36.png",
+      "id": "exam3-q36",
+      "image": "../../assets/exam3/q36.png",
       "text": "Ben je ter controle verplicht je autopapieren aan de de agent af te geven?",
       "type": "multiple",
 
@@ -767,8 +753,8 @@
       "reason": "Als je met je auto gaat rijden, moet je jouw rijbewijs en kentekenbewijs altijd bij je hebben."
     },
     {
-      "id": "exam2-q37",
-      "image": "../../assets/exam2/q37.png",
+      "id": "exam3-q37",
+      "image": "../../assets/exam3/q37.png",
       "text": "Wat betekenen de schuine witte strepen op de weg?",
       "type": "multiple",
 
@@ -790,8 +776,8 @@
       "reason": "Een verdrijvingsvlak is een gedeelte op de rijbaan dat gemarkeerd is met schuine strepen waar bestuurders niet overheen mogen rijden."
      },
     {
-      "id": "exam2-q38",
-      "image": "../../assets/exam2/q38.png",
+      "id": "exam3-q38",
+      "image": "../../assets/exam3/q38.png",
       "text": "Wat mag je doen wanneer je wordt verblind door een tegenligger die zijn groot licht aan heeft?",
       "type": "multiple",
 
@@ -809,8 +795,8 @@
       "reason": "Als je wordt verblind door een voertuig dat groot licht voert, mag je deze waarschuwen met licht-en geluidssignalen."
     },
     {
-      "id": "exam2-q39",
-      "image": "../../assets/exam2/q39.png",
+      "id": "exam3-q39",
+      "image": "../../assets/exam3/q39.png",
       "text": "Kun je hier bromfietsers op de rijbaan verwachten?",
       "type": "multiple",
 
@@ -828,8 +814,8 @@
       "reason": "Bromfietsers moeten in dit geval op het verplichte fiets/bromfietspad rijden, die herken je aan het verkeersbord."
     },
     {
-      "id": "exam2-q40",
-      "image": "../../assets/exam2/q40.png",
+      "id": "exam3-q40",
+      "image": "../../assets/exam3/q40.png",
       "type": "input",
       "text": "Je staat met pech langs de snelweg. Op hoeveel meter afstand plaats je de gevarendriehoek?",
 
@@ -848,8 +834,8 @@
       "reason": "Heb je pech en je wilt een gevarendriehoek plaatsen? Zorg er dan voor dat je die 30 meter achter d﻿e auto plaatst. Een gevarendriehoek is overigens niet verplicht, maar natuurlijk wel zo veilig!"
     },
     {
-      "id": "exam2-q41",
-      "image": "../../assets/exam2/q41.png",
+      "id": "exam3-q41",
+      "image": "../../assets/exam3/q41.png",
       "text": "Je rijdt op de middelste rijstrook. Mag dat?",
       "type": "multiple",
 
@@ -867,8 +853,8 @@
       "reason": "Als bestuurder is je plaats op de weg zoveel mogelijk rechts. De twee rechterrijstroken zijn afgesloten."
     },
     {
-      "id": "exam2-q42",
-      "image": "../../assets/exam2/q42.png",
+      "id": "exam3-q42",
+      "image": "../../assets/exam3/q42.png",
       "text": "Je rijdt met mist. Je kunt de twee volgende hectometerpaaltjes nog zien. Mag je het mistachterlicht aandoen?",
       "type": "multiple",
 
@@ -886,8 +872,8 @@
       "reason": "Het mistachterlicht mag alleen worden gebruikt bij mist als het zicht minder is dan 50 meter."
     },
     {
-      "id": "exam2-q43",
-      "image": "../../assets/exam2/q43.png",
+      "id": "exam3-q43",
+      "image": "../../assets/exam3/q43.png",
       "text": "Waar waarschuwt dit bord je voor?",
       "type": "multiple",
 
@@ -909,8 +895,8 @@
       "reason": "Dit is een vooraanduiding van overstekende en/ of spelende kinderen."
     },
     {
-      "id": "exam2-q44",
-      "image": "../../assets/exam2/q44.png",
+      "id": "exam3-q44",
+      "image": "../../assets/exam3/q44.png",
       "text": "Bij welk bord mag je laden en lossen?",
       "type": "multiple",
 
@@ -928,8 +914,8 @@
       "reason": "Aan de kant van de weg waar dit bord is geplaatst, mag je niet parkeren. Je mag hier wel passagiers laten in- of uitstappen of goederen laden of lossen."
     },
     {
-      "id": "exam2-q45",
-      "image": "../../assets/exam2/q45.png",
+      "id": "exam3-q45",
+      "image": "../../assets/exam3/q45.png",
       "text": "Moet je de voetgangers hier voor laten gaan bij het oversteken?",
       "type": "multiple",
 
@@ -947,8 +933,8 @@
       "reason": "Er is hier een platform waar voetgangers bij het uitstappen veilig kunnen wachten tot ze kunnen oversteken. Je hoeft ze in dit geval geen voorrang te geven."
     },
     {
-      "id": "exam2-q46",
-      "image": "../../assets/exam2/q46.png",
+      "id": "exam3-q46",
+      "image": "../../assets/exam3/q46.png",
       "text": "Je wilt de weg naar links blijven volgen. Moet je de snorfietser voor laten gaan?",
       "type": "multiple",
 
@@ -966,8 +952,8 @@
       "reason": "Het onderbord geeft aan dat je op een voorrangsbocht rijdt; je hebt dus voorrang."
     },
     {
-      "id": "exam2-q47",
-      "image": "../../assets/exam2/q47.png",
+      "id": "exam3-q47",
+      "image": "../../assets/exam3/q47.png",
       "text": "Mag je zo gaan rijden?",
       "type": "multiple",
 
@@ -985,8 +971,8 @@
       "reason": "Iedereen moet een eigen autogordel gebruiken en over een eigen zitplaats beschikken."
     },
     {
-      "id": "exam2-q48",
-      "image": "../../assets/exam2/q48.png",
+      "id": "exam3-q48",
+      "image": "../../assets/exam3/q48.png",
       "text": "Je wilt de autosnelweg oprijden. Mag je nu al richting aangeven?",
       "type": "multiple",
 
@@ -1004,8 +990,8 @@
       "reason": "Je geeft altijd en overal je richting aan maar alleen als het veilig kan. Als je nu je richting aangeeft is dat te vroeg om in te schatten voor het verkeer achter je wanneer je daadwerkelijk gaat invoegen."
     },
     {
-      "id": "exam2-q49",
-      "image": "../../assets/exam2/q49.png",
+      "id": "exam3-q49",
+      "image": "../../assets/exam3/q49.png",
       "text": "Wie moet je voor laten gaan bij het wegrijden?",
       "type": "multiple",
 
@@ -1027,8 +1013,8 @@
       "reason": "Wegrijden vanuit stilstand is een bijzondere manoeuvre en dan dien je alle weggebruikers voor te laten gaan."
     },
     {
-      "id": "exam2-q50",
-      "image": "../../assets/exam2/q50.png",
+      "id": "exam3-q50",
+      "image": "../../assets/exam3/q50.png",
       "text": "Je wilt aan de linkerkant file-parkeren. Moet je de voetganger voor laten gaan?",
       "type": "multiple",
 
