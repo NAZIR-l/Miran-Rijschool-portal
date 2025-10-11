@@ -77,12 +77,8 @@ export default defineComponent({
     });
     const progressPercent = computed(() => Math.round(practiceProgress.value * 100));
 
-    const currentPackage = ref({
-      name: 'deluxe',
-      expires: '26-10-25 14:07',
-      daysUsed: 10,
-      totalDays: 31,
-    });
+    const currentPackage = ref({ name: '-', expires: '-', daysUsed: 0, totalDays: 0 })
+    const myPrograms = ref([])
     const daysLeft = computed(() => {
       const total = currentPackage.value.totalDays || 0;
       const used = currentPackage.value.daysUsed || 0;
@@ -107,13 +103,22 @@ export default defineComponent({
         } else {
           username.value = 'User';
         }
-      } catch (e) {
-        // If unauthorized, you may redirect to login page of website
-        // router.push('/login');
-      }
+      } catch (e) {}
+
+      try {
+        const res2 = await api.get('/programs/me/list')
+        myPrograms.value = res2?.data || []
+        if (myPrograms.value.length > 0) {
+          const first = myPrograms.value[0]
+          currentPackage.value.name = first.name || 'program'
+          currentPackage.value.expires = '-'
+          currentPackage.value.daysUsed = 0
+          currentPackage.value.totalDays = 0
+        }
+      } catch (_) {}
     });
 
-    return { username, practice, practiceProgress, progressPercent, currentPackage, daysLeft, goto };
+    return { username, practice, practiceProgress, progressPercent, currentPackage, daysLeft, goto, myPrograms };
   },
 });
 </script>

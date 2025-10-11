@@ -1,6 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+import { Cookies } from 'quasar'
 
 /*
  * If not building with SSR mode, you can
@@ -24,6 +25,21 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.config.js -> build -> vueRouterMode
     // quasar.config.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
+  })
+
+  // Global auth guard: redirect unauthenticated users to /login
+  Router.beforeEach((to) => {
+    // Allow login route regardless of auth
+    if (to.path === '/login') {
+      return true
+    }
+    const token = Cookies.get('auth_token')
+    if (!token) {
+      // send unauthenticated users to the external login page
+      try { window.location.assign('https://main.d1458ibk40zvbh.amplifyapp.com/login') } catch (_) {}
+      return false
+    }
+    return true
   })
 
   return Router

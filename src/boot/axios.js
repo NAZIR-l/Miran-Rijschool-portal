@@ -19,6 +19,22 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error?.response?.status
+    if (status === 401 || status === 403) {
+      // Clear token and send user to login page
+      try { Cookies.remove('auth_token', { path: '/' }) } catch (_) {}
+      // Avoid infinite loops by using hard navigation
+      try {
+        window.location.assign('https://main.d1458ibk40zvbh.amplifyapp.com/login')
+      } catch (_) {}
+    }
+    return Promise.reject(error)
+  }
+)
+
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
 
