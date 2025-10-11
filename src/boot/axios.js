@@ -8,7 +8,7 @@ import { Cookies } from 'quasar'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'http://localhost:3001' })
+const api = axios.create({ baseURL: 'https://api.miranrijschool.nl/' })
 
 api.interceptors.request.use((config) => {
   const token = Cookies.get('auth_token')
@@ -18,6 +18,22 @@ api.interceptors.request.use((config) => {
   }
   return config
 })
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error?.response?.status
+    if (status === 401 || status === 403) {
+      // Clear token and send user to login page
+      try { Cookies.remove('auth_token', { path: '/' }) } catch (_) {}
+      // Avoid infinite loops by using hard navigation
+      try {
+        window.location.assign('https://leren.miranrijschool.nl/login')
+      } catch (_) {}
+    }
+    return Promise.reject(error)
+  }
+)
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

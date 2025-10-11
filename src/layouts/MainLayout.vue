@@ -262,11 +262,13 @@
           >
             <q-icon name="receipt" size="18px" />
             <span>{{ $t("nav.orders") }}</span>
-          </li>
-          <li class="menu-item logout">
+        </li>
+
+          <li class="menu-item logout" @click="handleLogout">
             <q-icon name="logout" size="18px" />
-            <span>{{ $t("nav.logout") }}</span>
+            <span>{{ $t('nav.logout') }}</span>
           </li>
+
         </ul>
       </nav>
     </q-drawer>
@@ -352,7 +354,7 @@
                 <q-icon name="receipt" size="18px" />
                 <span>{{ $t("nav.orders") }}</span>
               </li>
-              <li class="menu-item logout">
+              <li class="menu-item logout" @click="handleLogout">
                 <q-icon name="logout" size="18px" />
                 <span>{{ $t("nav.logout") }}</span>
               </li>
@@ -437,6 +439,8 @@ import { defineComponent, ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import HeaderLangSwitcher from "src/components/HeaderLangSwitcher.vue";
 import { useNotifications } from "src/composables/useNotifications.js";
+import { api } from "src/boot/axios.js";
+import { Cookies } from "quasar";
 
 export default defineComponent({
   name: "MainLayout",
@@ -485,6 +489,19 @@ export default defineComponent({
       navigate("/support");
     }
 
+    async function handleLogout() {
+      try {
+        try {
+          await api.post("/auth/logout");
+        } catch (_) {}
+        Cookies.remove("auth_token", { path: "/" });
+        window.location.assign('/')
+      } finally {
+        isDrawerOpen.value = false;
+        redirect('/')
+      }
+    }
+
     return {
       isMenuOpen,
       isPakkettenOpen,
@@ -508,6 +525,7 @@ export default defineComponent({
       refreshNotifications,
       viewAllNotifications,
       isExamMode,
+      handleLogout,
     };
   },
 });
