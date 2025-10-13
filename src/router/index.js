@@ -28,19 +28,19 @@ export default route(function (/* { store, ssrContext } */) {
   })
 
   // Global auth guard: redirect unauthenticated users to /login
-  // Router.beforeEach((to) => {
-  //   // Allow login route regardless of auth
-  //   if (to.path === '/login') {
-  //     return true
-  //   }
-  //   const token = Cookies.get('auth_token')
-  //   if (!token) {
-  //     // send unauthenticated users to the external login page
-  //     try { window.location.assign('http://localhost:8081/login') } catch (_) {}
-  //     return false
-  //   }
-  //   return true
-  // })
+  Router.beforeEach((to) => {
+    // Allow login route regardless of auth
+    if (to.path === '/login') {
+      return true
+    }
+    const token = Cookies.get('auth_token')
+    if (!token) {
+      // send unauthenticated users to the external login page
+      try { window.location.assign('http://localhost:8081/login') } catch (_) {}
+      return false
+    }
+    return true
+  })
 
   return Router
 })
