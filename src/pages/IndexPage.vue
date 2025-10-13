@@ -21,7 +21,7 @@
         </div>
 
         <!-- Overview -->
-        <div class="dash-card overview-card d-col-6">
+        <!-- <div class="dash-card overview-card d-col-6">
           <div class="card-title with-badge">
             <span>{{ $t('dashboard.overview') }}</span>
             <q-chip color="green-6" text-color="white" size="sm">{{ currentPackage.name }}</q-chip>
@@ -41,10 +41,10 @@
             <q-btn flat color="primary" no-caps icon="person" :label="$t('dashboard.quick_account')" @click="goto('/profile-purchases')" />
             <q-btn flat color="primary" no-caps icon="receipt" :label="$t('dashboard.quick_orders')" @click="goto('/orders')" />
           </div>
-        </div>
+        </div> -->
 
         <!-- Progress -->
-        <div class="dash-card progress-card d-col-6">
+        <!-- <div class="dash-card progress-card d-col-6">
           <div class="card-title">{{ $t('dashboard.progress') }}</div>
           <div class="muted">{{ $t('dashboard.exams_attempted') }}</div>
           <div class="progress-line">
@@ -53,7 +53,7 @@
           </div>
           <q-linear-progress :value="practiceProgress" color="primary" track-color="grey-3" rounded class="q-mt-sm" />
           <div class="hint">{{ $t('dashboard.hint') }}</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </q-page>
@@ -106,7 +106,7 @@ export default defineComponent({
       } catch (e) {}
 
       try {
-        const res2 = await api.get('/programs/me/list')
+        const res2 = await api.get('/exams/me/list')
         myPrograms.value = res2?.data || []
         if (myPrograms.value.length > 0) {
           const first = myPrograms.value[0]

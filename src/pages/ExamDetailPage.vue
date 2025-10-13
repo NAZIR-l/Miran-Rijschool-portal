@@ -48,7 +48,7 @@ export default defineComponent({
     async function load() {
       try {
         const id = route.params.id
-        const res = await api.get(`/programs/${id}`)
+        const res = await api.get(`/exams/me/${id}`)
         program.value = res?.data || null
       } catch (_) {}
     }
