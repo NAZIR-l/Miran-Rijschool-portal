@@ -7,6 +7,10 @@
           <div class="logo-container">
             <img src="../assets/Logo-test1.png" alt="Logo" class="header-logo" />
           </div>
+          <div class="exam-info">
+            <h1 class="exam-title">{{ examInfo.title }}</h1>
+            <p class="exam-subtitle">{{ $t('exam_run.exam_subtitle', { total: examInfo.totalQuestions }) }}</p>
+          </div>
         </div>
 
         <div class="header-center">
@@ -62,6 +66,10 @@
         </div>
         <div class="progress-text">
           {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
+        </div>
+        <!-- Debug info (remove in production) -->
+        <div class="debug-info" v-if="process.env.NODE_ENV === 'development'">
+          <small>Exam ID: {{ examId }} | Questions: {{ questions.length }} | Current: {{ indexDisplay }}</small>
         </div>
       </div>
     </div>
@@ -410,24 +418,36 @@ function resolveAsset(inputPath, examId) {
 
     const raw = String(inputPath).trim().replace(/\\/g, '/')
     const fileName = raw.split('/').pop()
+    const normalizedExamId = parseInt(examId) || 1
+
+    console.log(`Resolving asset: ${inputPath} for exam ${normalizedExamId}`)
 
     const allAssets = assetsCtx.keys()
+    console.log(`Available assets:`, allAssets.slice(0, 10)) // Log first 10 for debugging
 
-    const expectedPath = `./exam${examId}/${fileName}`
+    // Try exact path first
+    const expectedPath = `./exam${normalizedExamId}/${fileName}`
     let foundAsset = allAssets.find(p => p === expectedPath)
 
     if (!foundAsset) {
-      foundAsset = allAssets.find(p => p.includes(`exam${examId}/`) && p.endsWith(fileName))
+      // Try with exam folder pattern
+      foundAsset = allAssets.find(p => p.includes(`exam${normalizedExamId}/`) && p.endsWith(fileName))
     }
 
     if (!foundAsset) {
+      // Try just the filename in any exam folder
       foundAsset = allAssets.find(p => p.endsWith(fileName))
     }
 
     if (foundAsset) {
+      console.log(`Found asset: ${foundAsset}`)
       const mod = assetsCtx(foundAsset)
-      return mod && mod.default ? mod.default : mod
+      const resolved = mod && mod.default ? mod.default : mod
+      console.log(`Resolved asset URL:`, resolved)
+      return resolved
     }
+
+    console.warn(`Asset not found: ${fileName} for exam ${normalizedExamId}`)
     return ''
   } catch (e) {
     console.error('Asset resolution error:', inputPath, e)
@@ -437,16 +457,37 @@ function resolveAsset(inputPath, examId) {
 
 function loadExamDataById(id) {
   try {
-    const file = `./exam${id}.json`
+    // Normalize exam ID to ensure it's a valid number
+    const examId = parseInt(id) || 1
+    const file = `./exam${examId}.json`
+
+    console.log(`Loading exam data for ID: ${examId}, file: ${file}`)
+
     const mod = examsCtx(file)
-    return mod && mod.default ? mod.default : mod
+    const examData = mod && mod.default ? mod.default : mod
+
+    console.log(`Loaded exam data:`, {
+      id: examData.id,
+      title: examData.title,
+      questionsCount: examData.questions?.length || 0
+    })
+
+    return examData
   } catch (e) {
-    console.error('Error loading exam json:', e)
+    console.error(`Error loading exam ${id}:`, e)
+
+    // Fallback to exam1 if the requested exam doesn't exist
     try {
-      const fb = examsCtx('./exam1.json')
-      return fb && fb.default ? fb.default : fb
-    } catch (_) {
-      return { questions: [] }
+      console.log('Falling back to exam1.json')
+      const fallback = examsCtx('./exam1.json')
+      return fallback && fallback.default ? fallback.default : fallback
+    } catch (fallbackError) {
+      console.error('Failed to load fallback exam:', fallbackError)
+      return {
+        id: 'exam1',
+        title: 'Default Exam',
+        questions: []
+      }
     }
   }
 }
@@ -465,14 +506,32 @@ export default defineComponent({
     const raw = (data && data.questions ? data.questions : []).slice(0, 50)
 
     const questions = ref(
-      raw.map((q, idx) => ({
+      raw.map((q, idx) => {
+        const processedQuestion = {
           ...q,
           rawImage: q.image || '',
-        image: q.image ? resolveAsset(q.image, examId) : ''
-      }))
+          image: q.image ? resolveAsset(q.image, examId) : ''
+        }
+
+        console.log(`Processing question ${idx + 1}:`, {
+          id: processedQuestion.id,
+          rawImage: processedQuestion.rawImage,
+          resolvedImage: processedQuestion.image,
+          hasText: !!processedQuestion.text
+        })
+
+        return processedQuestion
+      })
     )
 
     console.log('🎯 Final processed questions for exam', examId, ':', questions.value)
+
+    // Exam information
+    const examInfo = computed(() => ({
+      id: data.id || `exam${examId}`,
+      title: data.title || `Exam ${examId}`,
+      totalQuestions: questions.value.length
+    }))
 
     // State management
     function getDefaultSelection(question) {
@@ -503,9 +562,12 @@ export default defineComponent({
       console.log('🎯 Current question:', {
         index: index.value,
         exam: examId,
+        questionId: question.id,
         rawImage: question.rawImage,
-        image: question.image,
-        hasImage: !!question.image
+        resolvedImage: question.image,
+        hasImage: !!question.image,
+        textLength: question.text?.length || 0,
+        optionsCount: question.options?.length || 0
       })
 
       return question
@@ -701,6 +763,7 @@ export default defineComponent({
 
     return {
       examId,
+      examInfo,
       questions,
       index,
       current,
@@ -793,6 +856,40 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.exam-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exam-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.exam-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+  font-weight: 500;
+}
+
+.debug-info {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
 }
 
 .logo-container {
