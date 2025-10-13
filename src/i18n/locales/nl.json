@@ -169,6 +169,30 @@
     "image_not_available": "Afbeelding niet beschikbaar",
     "progress_of": "Vraag {current} van {total}"
   },
+  "exam_results": {
+    "passed_title": "Gefeliciteerd!",
+    "failed_title": "Helaas!",
+    "result_subtitle": "Je bent {score} van de {total} vragen goed voor oefenexamen {examId}",
+    "correct": "Goed",
+    "total_questions": "Totaal vragen",
+    "correct_answers": "Juiste antwoorden",
+    "incorrect_answers": "Foute antwoorden",
+    "time_taken": "Tijd genomen",
+    "retake_exam": "Examen opnieuw",
+    "next_exam": "Volgende examen",
+    "view_answers": "Bekijk antwoorden"
+  },
+  "exam_answers": {
+    "title": "Antwoorden voor examen {examId}",
+    "subtitle": "Bekijk je antwoorden en de juiste oplossingen",
+    "question": "Vraag",
+    "your_answer": "Jouw antwoord",
+    "correct_answer": "Juiste antwoord",
+    "explanation": "Uitleg",
+    "no_answer": "Geen antwoord gegeven",
+    "retake_exam": "Examen opnieuw",
+    "back_to_results": "Terug naar resultaten"
+  },
   "dashboard": {
     "welcome_back": "Welkom terug",
     "ready": "Klaar om verder te leren? Ga door waar je was gebleven.",

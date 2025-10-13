@@ -5,7 +5,7 @@ const routes = [
     path: '',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'login', name: 'Login', component: () => import('pages/LoginPage.vue'), meta: { hideSidebar: true } },
+      // { path: 'login', name: 'Login', component: () => import('pages/LoginPage.vue'), meta: { hideSidebar: true } },
       { path: '', name: 'Dashboard', component: () => import('pages/IndexPage.vue') },
       { path: 'practice-exams', name: 'PracticeExams', component: () => import('pages/PracticeExamsPage.vue') },
       { path: 'downloads', name: 'Downloads', component: () => import('pages/DownloadsPage.vue') },
@@ -21,6 +21,8 @@ const routes = [
       { path: 'payment/return', name: 'PaymentReturn', component: () => import('pages/PaymentReturnPage.vue'), meta: { hideSidebar: true } },
       { path: 'exam/:id', name: 'ExamIntro', component: () => import('pages/ExamIntroPage.vue'), meta: { hideSidebar: true } },
       { path: 'exam/:id/run', name: 'ExamRun', component: () => import('pages/ExamRunPage.vue'), meta: { hideSidebar: true } },
+      { path: 'exam/:id/results', name: 'ExamResults', component: () => import('pages/ExamResultsPage.vue'), meta: { hideSidebar: true } },
+      { path: 'exam/:id/answers', name: 'ExamAnswers', component: () => import('pages/ExamAnswersPage.vue'), meta: { hideSidebar: true } },
       // { path: 'exam/:id/overview', name: 'ExamOverview', component: () => import('pages/ExamOverviewPage.vue'), meta: { hideSidebar: true } },
       // { path: '/contenfsdfst'sd, component: () => import('pages/content.vue') }
 

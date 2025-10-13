@@ -190,6 +190,30 @@
     "image_not_available": "Image not available",
     "progress_of": "Question {current} of {total}"
   },
+  "exam_results": {
+    "passed_title": "Congratulations!",
+    "failed_title": "Unfortunately!",
+    "result_subtitle": "You got {score} out of {total} questions correct for practice exam {examId}",
+    "correct": "Correct",
+    "total_questions": "Total questions",
+    "correct_answers": "Correct answers",
+    "incorrect_answers": "Incorrect answers",
+    "time_taken": "Time taken",
+    "retake_exam": "Retake exam",
+    "next_exam": "Next exam",
+    "view_answers": "View answers"
+  },
+  "exam_answers": {
+    "title": "Answers for exam {examId}",
+    "subtitle": "Review your answers and the correct solutions",
+    "question": "Question",
+    "your_answer": "Your answer",
+    "correct_answer": "Correct answer",
+    "explanation": "Explanation",
+    "no_answer": "No answer given",
+    "retake_exam": "Retake exam",
+    "back_to_results": "Back to results"
+  },
   "support": {
     "title": "Support & Help",
     "sub": "We’re here to help. Choose a quick option or browse FAQs.",

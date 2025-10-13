@@ -22,8 +22,8 @@
         }
       ],
       "correct": "c",
-      "reason": "Een gedraaide gordel verdeelt de krachten bij een botsing niet goed, waardoor de kans op letsel toeneemt. Daarnaast vergroot het de kans op snijwonden.",
-      "category": "lanes"
+      "reason": "Een gedraaide gordel verdeelt de krachten bij een botsing niet goed, waardoor de kans op letsel toeneemt. Daarnaast vergroot het de kans op snijwonden."
+
     },
     {
       "id": "exam2-q2",
@@ -46,7 +46,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "De dode hoek is het gebied rondom een voertuig dat niet zichtbaar is voor de bestuurder, zelfs niet via de zij- of binnenspiegels. Dit vormt een risico bij bijvoorbeeld het wisselen van rijstrook en afslaan, vooral voor kwetsbare weggebruikers zoals fietsers en voetgangers. Dode hoeken worden ook wel blinde hoeken genoemd."
 
     },
@@ -67,7 +66,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason": "Zorg ervoor dat puin, zoals los zand of bladeren in de aanhangwagen altijd bedekt is."
 
     },
@@ -92,7 +90,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Je verbrandt de minste brandstof bij een laag toerental."
     },
     {
@@ -116,7 +113,6 @@
         }
       ],
       "correct": "c",
-      "category": "lanes",
       "reason": "Het rijbewijs B is 10 jaar geldig en dient daarna verlengd te worden. Na je 70e is dit geen 10, maar 5 jaar."
     },
     {
@@ -136,9 +132,8 @@
         }
       ],
       "correct": "a",
-      "reason":"De maximumsnelheid van een bromfiets op de rijbaan buiten de bebouwde kom is: 45 km/u. Dit is snel genoeg om op een weg te mogen rijden waar je maximaal 60 km/u per uur mag rijden.",
-      "category": "lanes"
-    },
+      "reason":"De maximumsnelheid van een bromfiets op de rijbaan buiten de bebouwde kom is: 45 km/u. Dit is snel genoeg om op een weg te mogen rijden waar je maximaal 60 km/u per uur mag rijden."
+        },
     {
       "id": "exam2-q7",
       "image": "../../assets/exam2/q7.png",
@@ -156,8 +151,8 @@
         }
       ],
       "correct": "b",
-      "reason" :"Knipperend rood licht bij een treinspoor geeft aan dat er een trein aankomt, dus je mag dan niet doorrijden.",
-      "category": "lanes"
+      "reason" :"Knipperend rood licht bij een treinspoor geeft aan dat er een trein aankomt, dus je mag dan niet doorrijden."
+
     },
     {
       "id": "exam2-q8",
@@ -176,9 +171,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Nee, een persoon op skates valt onder een voetganger en niet onder een bestuurder. Enkel bestuurders van rechts hebben voorrang.",
-      "category": "lanes"
-    },
+      "reason": "Nee, een persoon op skates valt onder een voetganger en niet onder een bestuurder. Enkel bestuurders van rechts hebben voorrang."    },
     {
       "id": "exam2-q9",
       "image": "../../assets/exam2/q9.png",
@@ -196,9 +189,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Een brandweer auto die optische- en geluidssignalen voert dien je altijd voorrang te verlenen.",
-      "category": "lanes"
-    },
+      "reason": "Een brandweer auto die optische- en geluidssignalen voert dien je altijd voorrang te verlenen."    },
     {
       "id": "exam2-q10",
       "image": "../../assets/exam2/q10.png",
@@ -220,9 +211,7 @@
         }
       ],
       "correct": "c",
-      "reason": "Dit is een taper-aansluiting. De rijstroken aan weerszijden van de berm versmallen tot één rijstrook, dat is dus de rijstrook die links van jou ligt en die waar de vrachtwagen op rijdt. Jouw rijstrook blijft gewoon bestaan en je kan hier blijven rijden.",
-      "category": "lanes"
-    },
+      "reason": "Dit is een taper-aansluiting. De rijstroken aan weerszijden van de berm versmallen tot één rijstrook, dat is dus de rijstrook die links van jou ligt en die waar de vrachtwagen op rijdt. Jouw rijstrook blijft gewoon bestaan en je kan hier blijven rijden."    },
     {
       "id": "exam2-q11",
       "image": "../../assets/exam2/q11.png",
@@ -240,9 +229,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Met een motorvoertuig mag geen tweewielig motorvoertuig worden gesleept.",
-      "category": "lanes"
-    },
+      "reason": "Met een motorvoertuig mag geen tweewielig motorvoertuig worden gesleept."    },
     {
       "id": "exam2-q12",
       "image": "../../assets/exam2/q12.png",
@@ -260,9 +247,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Dit hoeft niet, want de zwaailichten van de douane zijn geel en niet blauw. Enkel blauwe zwaailichten moet je voor laten gaan.",
-      "category": "lanes"
-    },
+      "reason": "Dit hoeft niet, want de zwaailichten van de douane zijn geel en niet blauw. Enkel blauwe zwaailichten moet je voor laten gaan."    },
     {
       "id": "exam2-q13",
       "image": "../../assets/exam2/q13.png",
@@ -284,7 +269,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Bij het parkeren in een blauwe zone wordt de pijl van de parkeerschijf gezet op het streepje dat volgt op het tijdstip van aankomst."
     },
     {
@@ -304,9 +288,7 @@
         }
       ],
       "correct": "b",
-      "reason": "In deze situatie mogen motorvoertuigen elkaar onderling niet inhalen.",
-      "category": "lanes"
-    },
+      "reason": "In deze situatie mogen motorvoertuigen elkaar onderling niet inhalen."    },
     {
       "id": "exam2-q15",
       "image": "../../assets/exam2/q15.png",
@@ -328,9 +310,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Een derde remlicht is verplicht en die zit boven de achterruit.",
-      "category": "lanes"
-    },
+      "reason": "Een derde remlicht is verplicht en die zit boven de achterruit."    },
 
     {
       "id": "exam2-q16",
@@ -458,17 +438,10 @@
       "id": "exam2-q22",
       "image": "../../assets/exam2/q22.png",
       "text": "Wat is de juiste volgorde van voor laten gaan?",
-      "type": "multiple",
+      "type": "interactive-choice",
 
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
       "correct": "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
       "reason": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links."
@@ -496,17 +469,10 @@
       "id": "exam2-q24",
       "image": "../../assets/exam2/q24.png",
       "text": "Wat is de juiste volgorde van voor laten gaan?",
-      "type": "multiple",
+      "type": "interactive-choice",
 
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
       "correct": " 1. Fietser, 2. Personenauto, 3. Motor",
       "reason": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt."
@@ -700,7 +666,7 @@
           "label": "c"
         }
       ],
-      "correct": "B",
+      "correct": "b",
       "reason": "De vorm van een voorrangsbord is ruitvormig."
     },
     {
@@ -786,7 +752,7 @@
           "label": "Redreesserstrook - je mag op deze strook uitvoegen"
         }
       ],
-      "correct": "Verdrijvingsvlak - je mag daar niet op rijden",
+      "correct": "b",
       "reason": "Een verdrijvingsvlak is een gedeelte op de rijbaan dat gemarkeerd is met schuine strepen waar bestuurders niet overheen mogen rijden."
      },
     {
@@ -831,17 +797,10 @@
       "id": "exam2-q40",
       "image": "../../assets/exam2/q40.png",
       "type": "input",
-      "text": "Je staat met pech langs de snelweg. Op hoeveel meter afstand plaats je de gevarendriehoek?",
+      "text": "Je staat met pech langs de snelweg. Op hoeveel meter afstand plaats je de gevarendriehoek?(meter)",
 
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
 
       "correct": "30 metter",
@@ -924,7 +883,7 @@
           "label": "Bord B"
         }
       ],
-      "correct": "Bord B",
+      "correct": "b",
       "reason": "Aan de kant van de weg waar dit bord is geplaatst, mag je niet parkeren. Je mag hier wel passagiers laten in- of uitstappen of goederen laden of lossen."
     },
     {

@@ -758,6 +758,32 @@ export default defineComponent({
 
     function submitExam() {
       console.log('📝 Examen submitted for exam', examId, ':', answers.value)
+
+      // Save exam data and answers to localStorage
+      try {
+        // Save exam data
+        localStorage.setItem(`exam_${examId}_data`, JSON.stringify({
+          id: examId,
+          title: examInfo.value.title,
+          questions: questions.value
+        }))
+
+        // Save user answers
+        localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers.value))
+
+        // Save timing data
+        const timingData = {
+          start: new Date().toISOString(),
+          end: new Date().toISOString()
+        }
+        localStorage.setItem(`exam_${examId}_timing`, JSON.stringify(timingData))
+
+        console.log('✅ Exam data saved successfully')
+      } catch (error) {
+        console.error('❌ Error saving exam data:', error)
+      }
+
+      // Navigate to results page
       router.push(`/exam/${examId}/results`)
     }
 

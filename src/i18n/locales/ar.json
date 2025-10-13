@@ -192,6 +192,30 @@
     "image_not_available": "الصورة غير متاحة",
     "progress_of": "سؤال {current} من {total}"
   },
+  "exam_results": {
+    "passed_title": "تهانينا!",
+    "failed_title": "للأسف!",
+    "result_subtitle": "لقد أجبت بشكل صحيح على {score} من أصل {total} سؤال في الامتحان التجريبي {examId}",
+    "correct": "صحيح",
+    "total_questions": "إجمالي الأسئلة",
+    "correct_answers": "الإجابات الصحيحة",
+    "incorrect_answers": "الإجابات الخاطئة",
+    "time_taken": "الوقت المستغرق",
+    "retake_exam": "إعادة الامتحان",
+    "next_exam": "الامتحان التالي",
+    "view_answers": "عرض الإجابات"
+  },
+  "exam_answers": {
+    "title": "إجابات الامتحان {examId}",
+    "subtitle": "راجع إجاباتك والحلول الصحيحة",
+    "question": "سؤال",
+    "your_answer": "إجابتك",
+    "correct_answer": "الإجابة الصحيحة",
+    "explanation": "التفسير",
+    "no_answer": "لم يتم إعطاء إجابة",
+    "retake_exam": "إعادة الامتحان",
+    "back_to_results": "العودة إلى النتائج"
+  },
   "support": {
     "title": "الدعم والمساعدة",
     "sub": "نحن هنا لمساعدتك. اختر خياراً سريعاً أو تصفح الأسئلة الشائعة.",

@@ -9,7 +9,7 @@
       </div>
     </div>
   </q-page>
-  
+
 </template>
 
 <script>

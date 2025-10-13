@@ -32,7 +32,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason": "Rijbanen met de aanduiding 'BUS' of 'LIJNBUS' worden busbanen genoemd. Als automobilist mag je daar niet rijden."
     },
     {
       "id": "exam1-q2",
@@ -62,7 +63,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "De grens voor het dragen van een driepuntsgordel ligt op 1,35 meter; daaronder moet gebruik worden gemaakt van een goedgekeurd kinderbeveiligingssysteem, zoals een zitverhoger of een kinderzitje."
     },
     {
       "id": "exam1-q3",
@@ -80,7 +82,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Het eerste militaire voertuig is je nog niet gepasseerd en je komt van rechts, dus jij hebt voorrang."
     },
     {
       "id": "exam1-q4",
@@ -98,7 +101,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason": "Rijd je hier door dan blokkeer je de kruisende weg door de file voor je, en dat mag nooit."
     },
     {
       "id": "exam1-q5",
@@ -120,7 +124,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "De rijbaan is het gedeelte van de weg dat bestemd is voor rijdende voertuigen."
     },
     {
       "id": "exam1-q6",
@@ -141,7 +146,8 @@
           "label": "Een band die gevuld is met stikstof"
         }
       ],
-      "correct": "b",
+      "correct": "c",
+      "reason": "Er wordt een groen ventieldopje gebruikt als de band gevuld is met stikstof.",
       "category": "lanes"
     },
     {
@@ -163,7 +169,8 @@
           "label": "je ridjt door en neemt de afslag voor de grijze auto omdat jij eerst mag"
         }
       ],
-      "correct": "b",
+      "correct": "a",
+      "reason": "Rijd je door naar het middenstuk, dan zal je een deel van de weg blokkeren met jouw aanhangwagen. Dit is verboden. Daarnaast heb jij ook geen voorrang, dus wacht je achter de haaientanden totdat de grijze auto is afgeslagen.",
       "category": "lanes"
     },
     {
@@ -181,8 +188,9 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "a",
+      "category": "lanes",
+      "reason": "Je kentekenplaat moet ten alle tijde goed zichtbaar en leesbaar zijn."
     },
     {
       "id": "exam1-q9",
@@ -200,7 +208,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen."
     },
     {
       "id": "exam1-q10",
@@ -218,12 +227,13 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Bestuurders op een onverharde weg moeten voorrang verlenen aan bestuurders op een verharde weg."
     },
     {
       "id": "exam1-q11",
       "image": "../../assets/exam1/q11.png",
-      "text": "je wilt linsaf. Moet je stoppen?",
+      "text": "je wilt linksaf. Moet je stoppen?",
       "type": "multiple",
       "options": [
         {
@@ -235,8 +245,9 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "a",
+      "category": "lanes",
+      "reason" : "Zie de armen van de verkeersregelaar als slagbomen: die staan nu naar beneden voor jou. Alleen bestuurders op de kruisende weg mogen nu doorrijden."
     },
     {
       "id": "exam1-q12",
@@ -257,30 +268,21 @@
           "label": "Bestuurders en voetgangers"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "c",
+      "category": "lanes",
+      "reason": "Het in- en uitstappen worden samen als één bijzondere verrichting beschouwd, waarbij je alle weggebruikers voor moet laten gaan."
     },
     {
       "id": "exam1-q13",
       "image": "../../assets/exam1/q13.png",
-      "text": "Wat os je toegestane maximumsnelheid op deze weg?",
-      "type": "multiple",
+      "text": "Wat is je toegestane maximumsnelheid op deze weg?(Km/u)",
+      "type": "input",
       "options": [
-        {
-          "id": "a",
-          "label": "Alleen voetgangers"
-        },
-        {
-          "id": "b",
-          "label": "Alleen bestuurders"
-        },
-        {
-          "id": "c",
-          "label": "Bestuurders en voetgangers"
-        }
+
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Met een aanhangwagen is de maximumsnelheid op de autosnelweg 90 km/u."
     },
     {
       "id": "exam1-q14",
@@ -301,8 +303,9 @@
           "label": "Je nadert een gevaarlijk kruispunt"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "c",
+      "category": "lanes",
+      "reason": "Dit verkeersbord waarschuwt voor het naderen van een gevaarlijk kruispunt. De driehoekige vorm met de punt omhoog duidt op een waarschuwingsbord."
     },
     {
       "id": "exam1-q15",
@@ -320,7 +323,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Met een landbouwvoertuig mag je binnen de bebouwde kom maximaal 25 kilometer per uur rijden."
     },
     {
       "id": "exam1-q16",
@@ -333,8 +337,9 @@
           "label": "Ja"
         },
         {
-          "id": "b",
-          "label": "Nee"
+          "id": "a",
+          "label": "Nee",
+          "reason": "Bestuurders van motorvoertuigen zijn verplicht om richting aan te geven bij een zijdelingse verplaatsing."
         }
       ],
       "correct": "b",
@@ -360,7 +365,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason": "De bovenkant van de hoofdsteun moet gelijk zijn aan de bovenkant van je hoofd. Zo wordt je hoofd bij een botsing goed en stevig opgevangen."
     },
     {
       "id": "exam1-q18",
@@ -378,7 +384,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Het is veiliger om de tunnel uit te rijden en de auto daarna direct aan de kant te zetten."
     },
     {
       "id": "exam1-q19",
@@ -386,25 +393,11 @@
       "text": "Wat is de juiste volgorde van voor laten gaan?",
       "type": "multiple",
       "options": [
-        {
-          "id": "a",
-          "label": "1 - 2 - 3"
-        },
-        {
-          "id": "b",
-          "label": "2 - 1 - 3"
-        },
-        {
-          "id": "c",
-          "label": "3 - 2 - 1"
-        },
-        {
-          "id": "d",
-          "label": "2 - 3 - 1"
-        }
+
       ],
-      "correct": "a",
-      "category": "voorrang"
+      "correct": " 1. Witte personenauto, 2. Fietser, 3. Motor",
+      "category": "voorrang",
+      "reason" :  "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3)."
     },
     {
       "id": "exam1-q20",
@@ -422,6 +415,7 @@
         }
       ],
       "correct": "b",
+      "reason":"Vlak voor of op een zebrapad mag je andere bestuurders niet inhalen.",
       "category": "lanes"
     },
     {
@@ -439,8 +433,9 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "a",
+      "category": "lanes",
+      "reason" : "Na een minuut stilstaan moet je de motor uitschakelen. Dus bij een openstaande brug zet jij de motor uit."
     },
     {
       "id": "exam1-q22",
@@ -458,7 +453,8 @@
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "category": "lanes",
+      "reason" : "Buiten de bebouwde kom hoef je een bus die de halte verlaat geen voorrang te verlenen. Dit herken je aan de strepen op het wegdek. Deze geven aan dat je op een 80km/u weg rijdt "
     },
     {
       "id": "exam1-q23",
@@ -475,8 +471,9 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "category": "lanes"
+      "correct": "a",
+      "category": "lanes",
+      "reason": "Omdat de fietsstrook onderbroken strepen heeft, mag je in deze situatie de afslaande auto rechts inhalen, mits je geen fietsers hindert."
     },
     {
       "id": "exam1-q24",
@@ -497,7 +494,8 @@
           "label": "Er is geen verschil"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Een speed-pedelec, ook wel high speed e-bike genoemd, gaat sneller dan een gewone e-bike. Voor de speed-pedelec gelden dan ook de bromfietsregels."
     },
     {
       "id": "exam1-q25",
@@ -514,7 +512,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Als je een rotonde verlaat, moet je alle weggebruikers die de rotonde nog vervolgen voorlaten. De voetganger blijft de rotonde volgen."
     },
     {
       "id": "exam1-q26",
@@ -535,7 +534,8 @@
           "label": "Door met een warme motor weg te rijden"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Door snel op te schakelen en in een hoge versnelling te rijden, rijd je zuinig."
     },
     {
       "id": "exam1-q27",
@@ -552,7 +552,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Op deze éénrichtingsweg kun je geen motorvoertuigen vanuit de tegengestelde richting verwachten."
     },
     {
       "id": "exam1-q28",
@@ -573,7 +574,8 @@
           "label": "Verleen voorrang aan bestuurders op de kruisende weg"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" : "Dit verkeersbord geeft aan dat je op een voorrangsweg rijdt."
     },
     {
       "id": "exam1-q29",
@@ -602,7 +604,8 @@
           }
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" : "Je mag deze milieuzone alleen inrijden als je voertuig een emissieklasse van 4 of hoger heeft. Hoe hoger de emissieklasse, hoe schoner het voertuig. Emissieklasse 3 is dus niet schoon genoeg om deze zone in te mogen."
     },
     {
       "id": "exam1-q30",
@@ -619,24 +622,19 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Een T-splitsing of Y-splitsing zonder voorrangsborden of verkeerstekens is gewoon gelijkwaardig; de gebruikelijke voorrangsregels blijven daar van kracht."
     },
     {
       "id": "exam1-q31",
       "image": "../../assets/exam1/q31.png",
-      "text": "Mistlichten aan de voorkant mogen gevoerd worden bij mist, regen of sneeuwval als het zicht minder is dan?",
+      "text": "Mistlichten aan de voorkant mogen gevoerd worden bij mist, regen of sneeuwval als het zicht minder is dan?(meter)",
       "type": "input",
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
-      "correct": "b"
+      "correct": "200 meter",
+      "reason": "Het mistlicht aan de voorkant mag je alleen gebruiken als het zicht door mist, sneeuwval of regen minder is dan 200 meter."
     },
     {
       "id": "exam1-q32",
@@ -653,7 +651,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Rij bij slecht weer uit veiligheid langzamer dan de maximumsnelheid."
     },
     {
       "id": "exam1-q33",
@@ -670,24 +669,19 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Het verkeersbord geeft een doodlopende weg aan, maar inrijden is wel toegestaan."
     },
     {
       "id": "exam1-q34",
       "image": "../../assets/exam1/q34.png",
-      "text": "Ho snel mag je hier rijden?",
-      "type": "input-km",
+      "text": "Hoe snel ma g je hier rijden?(Km/u)",
+      "type": "input",
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
-      "correct": "b"
+      "correct": "50 km/u",
+      "reason": "Je rijdt binnen de bebouwde kom, waar de maximumsnelheid voor auto’s en motoren 50 km/u is."
     },
     {
       "id": "exam1-q35",
@@ -704,7 +698,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "De bestuurder nadert hier een stopbord. Bij een stopbord ben je altijd verplicht te stoppen, ook als er geen andere weggebruikers in zicht zijn."
     },
     {
       "id": "exam1-q36",
@@ -721,7 +716,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" : "Het kenteken moet te allen tijde goed leesbaar zijn."
     },
     {
       "id": "exam1-q37",
@@ -742,7 +738,8 @@
           "label": "Bij meer dan 0,5 promille"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason" : "Een rijverbod wordt opgelegd aan beginnende bestuurders met een alcoholgehalte vanaf 0,2 promille."
     },
     {
       "id": "exam1-q38",
@@ -759,24 +756,18 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Één kruis staat voor enkel spoor."
     },
     {
       "id": "exam1-q39",
       "image": "../../assets/exam1/q39.png",
       "text": "Wie mag er als eerst?",
-      "type": "multiple",
+      "type": "interactive-choice",
       "options": [
-        {
-          "id": "a",
-          "label": "1"
-        },
-        {
-          "id": "b",
-          "label": "2"
-        }
+
       ],
-      "correct": "b"
+      "correct": "1. Tram, 2. Auto"
     },
     {
       "id": "exam1-q40",
@@ -797,7 +788,8 @@
           "label": "Je geeft gas bij"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason": "Bij aquaplaning is het belangrijk om weer grip op de weg te krijgen. Dat doe je door geleidelijk je snelheid te verlagen."
     },
     {
       "id": "exam1-q41",
@@ -814,7 +806,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" : "Op een fietsstrook is het niet toegestaan om stil te staan."
     },
     {
       "id": "exam1-q42",
@@ -835,7 +828,8 @@
           "label": "Bestuurders van een motorvoertuigen en niet-motorvoertuigen "
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Met 'verkeer' bedoelen we iedereen die aan het verkeer deelneemt; dit omvat alle weggebruikers."
     },
     {
       "id": "exam1-q43",
@@ -852,7 +846,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason" : "Grootlicht mag je voeren als het nacht is en je niemand verblindt."
     },
     {
       "id": "exam1-q44",
@@ -869,7 +864,10 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Laden en lossen is toegestaan binnen een woonerf buiten de parkeervakken."
+
+
     },
     {
       "id": "exam1-q45",
@@ -890,24 +888,19 @@
           "label": "Snelheid verminderen en zoveel mogelijk rechts rijden"
         }
       ],
-      "correct": "b"
+      "correct": "c",
+      "reason": "Het is veilig om je snelheid te verminderen en zoveel mogelijk rechts te rijden bij een tegenligger die inhaalt op jouw weghelft."
     },
     {
       "id": "exam1-q46",
       "image": "../../assets/exam1/q46.png",
       "text": "Wat is de juiste volgorde van voor laten gaan?",
-      "type": "input",
+      "type": "interactive-choice",
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+
       ],
-      "correct": "b"
+      "correct": "Het juiste antwoord: 1. Motor, 2. Auto, 3. Bromfiets",
+      "reason": "De auto komt van rechts ten opzichte van de bromfiets. Echter, de auto slaat af naar dezelfde weg als de motor, waarbij de motor de korte bocht heeft. Daarom gaat de motor eerst, gevolgd door de auto, en als laatste de bromfiets."
     },
     {
       "id": "exam1-q47",
@@ -924,7 +917,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "a",
+      "reason" : "Je mag niet buiten de parkeervakken parkeren aan de kant van de weg waar dit verkeersbord staat."
     },
     {
       "id": "exam1-q48",
@@ -945,29 +939,31 @@
           "label": "Je zet je mistlicht aan, omdat het zicht door het tegenlicht van de zon voor tegenliggers minder dan 50 meter kan zijn"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" : "Je voert je dimlicht; daarmee zorg je dat je beter zichtbaar bent. Groot licht mag je overdag niet gebruiken en ook niet bij tegenliggend verkeer. Mistlicht gebruik je alleen bij extreem slecht zicht, tot maximaal 50 meter."
     },
     {
       "id": "exam1-q49",
       "image": "../../assets/exam1/q49.png",
-      "text": "Je neemt de derd afslag. Waar geef je richting aan naar rechts?",
+      "text": "Je neemt de derde afslag. Waar geef je richting aan naar rechts?",
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": "Punt A"
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": "Punt B"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason": "Vlak voordat je afslaat geef je je richting aan."
     },
     {
       "id": "exam1-q50",
       "image": "../../assets/exam1/q50.png",
-      "text": "Je neemt de derd afslag. Sorteer je zo goed voor?",
+      "text": "Je neemt de derde afslag. Sorteer je zo goed voor?",
       "type": "multiple",
       "options": [
         {
@@ -979,7 +975,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b"
+      "correct": "b",
+      "reason" :"Omdat je de derde afslag wilt nemen zul je op de linkerrijstrook moeten voorsorteren."
     }
   ]
 }
