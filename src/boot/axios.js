@@ -8,7 +8,7 @@ import { Cookies } from 'quasar'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.miranrijschool.nl/' })
+const api = axios.create({ baseURL: 'https://api.miranrijschool.nl' })
 
 api.interceptors.request.use((config) => {
   const token = Cookies.get('auth_token')
@@ -28,7 +28,7 @@ api.interceptors.response.use(
       try { Cookies.remove('auth_token', { path: '/' }) } catch (_) {}
       // Avoid infinite loops by using hard navigation
       try {
-        window.location.assign('https://leren.miranrijschool.nl/login')
+        window.location.assign('http://localhost:8081/login')
       } catch (_) {}
     }
     return Promise.reject(error)

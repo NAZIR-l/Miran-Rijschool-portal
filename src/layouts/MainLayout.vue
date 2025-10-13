@@ -198,13 +198,23 @@
       <nav>
         <ul class="nav-list">
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/') }]"
             @click="navigate('/')"
           >
             <q-icon name="dashboard" size="18px" />
             <span>{{ $t("nav.dashboard") }}</span>
           </li>
+          <!-- <li
+            v-if="hasActivePrograms"
+            :class="['menu-item', { active: isActive('/my-programs') }]"
+            @click="navigate('/my-programs')"
+          >
+            <q-icon name="school" size="18px" />
+            <span>{{ $t("nav.my-programs") }}</span>
+          </li> -->
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/practice-exams') }]"
             @click="navigate('/practice-exams')"
           >
@@ -212,6 +222,7 @@
             <span>{{ $t("nav.practice-exams") }}</span>
           </li>
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/signals') }]"
             @click="navigate('/signals')"
           >
@@ -219,6 +230,7 @@
             <span>{{ $t("nav.signals") }}</span>
           </li>
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/downloads') }]"
             @click="navigate('/downloads')"
           >
@@ -234,6 +246,7 @@
                 <span class="badge">1</span>
               </li> -->
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/profile-purchases') }]"
             @click="navigate('/profile-purchases')"
           >
@@ -242,6 +255,7 @@
           </li>
 
           <li
+            v-if="hasActivePrograms"
             :class="['menu-item', { active: isActive('/support') }]"
             @click="navigate('/support')"
           >
@@ -249,8 +263,8 @@
             <span>{{ $t("nav.support") }}</span>
           </li>
           <li
-            :class="['menu-item', { active: isActive('/packages') }]"
-            @click="navigate('/packages')"
+            :class="['menu-item', { active: isActive('/courses') }]"
+            @click="navigate('/courses')"
           >
             <q-icon name="inventory_2" size="18px" />
             <span>{{ $t("nav.packages") }}</span>
@@ -262,20 +276,23 @@
           >
             <q-icon name="receipt" size="18px" />
             <span>{{ $t("nav.orders") }}</span>
-        </li>
+          </li>
 
           <li class="menu-item logout" @click="handleLogout">
             <q-icon name="logout" size="18px" />
-            <span>{{ $t('nav.logout') }}</span>
+            <span>{{ $t("nav.logout") }}</span>
           </li>
-
         </ul>
       </nav>
     </q-drawer>
 
     <!-- ================= PAGE CONTENT ================= -->
     <q-page-container>
+      <div v-if="loading" class="card-body text-center q-pa-xl">
+        <q-spinner color="primary" size="50px" />
+      </div>
       <div
+        v-else
         class="layout-wrap app-container"
         :class="{ 'drawer-open': isDrawerOpen }"
       >
@@ -286,13 +303,23 @@
           <nav>
             <ul class="nav-list">
               <li
+                v-if="hasActivePrograms"
                 :class="['menu-item', { active: isActive('/') }]"
                 @click="navigate('/')"
               >
                 <q-icon name="dashboard" size="18px" />
                 <span>{{ $t("nav.dashboard") }}</span>
               </li>
+              <!-- <li
+                v-if="hasActivePrograms"
+                :class="['menu-item', { active: isActive('/my-programs') }]"
+                @click="navigate('/my-programs')"
+              >
+                <q-icon name="school" size="18px" />
+                <span>{{ $t("nav.my-programs") }}</span>
+              </li> -->
               <li
+                v-if="hasActivePrograms"
                 :class="['menu-item', { active: isActive('/practice-exams') }]"
                 @click="navigate('/practice-exams')"
               >
@@ -300,6 +327,7 @@
                 <span>{{ $t("nav.practice-exams") }}</span>
               </li>
               <li
+                v-if="hasActivePrograms"
                 :class="['menu-item', { active: isActive('/signals') }]"
                 @click="navigate('/signals')"
               >
@@ -307,6 +335,7 @@
                 <span>{{ $t("nav.signals") }}</span>
               </li>
               <li
+                v-if="hasActivePrograms"
                 :class="['menu-item', { active: isActive('/downloads') }]"
                 @click="navigate('/downloads')"
               >
@@ -322,6 +351,7 @@
                 <span class="badge">1</span>
               </li> -->
               <li
+                v-if="hasActivePrograms"
                 :class="[
                   'menu-item',
                   { active: isActive('/profile-purchases') },
@@ -333,6 +363,7 @@
               </li>
 
               <li
+                v-if="hasActivePrograms"
                 :class="['menu-item', { active: isActive('/support') }]"
                 @click="navigate('/support')"
               >
@@ -340,8 +371,8 @@
                 <span>{{ $t("nav.support") }}</span>
               </li>
               <li
-                :class="['menu-item', { active: isActive('/packages') }]"
-                @click="navigate('/packages')"
+                :class="['menu-item', { active: isActive('/courses') }]"
+                @click="navigate('/courses')"
               >
                 <q-icon name="inventory_2" size="18px" />
                 <span>{{ $t("nav.packages") }}</span>
@@ -365,29 +396,18 @@
           <div class="content-container">
             <div class="page-header"></div>
             <router-view />
-            <!-- Content footer inside page content -->
             <footer class="footer-wrap">
               <div class="footer-top">
                 <div class="footer-col brand">
+                  <div class="image-container">
                   <img
                     src="../assets/Logo-test1.png"
                     alt="Theorie Toppers"
                     class="footer-logo"
-                  />
-                  <p class="tagline">Learn smarter. Pass faster.</p>
-                  <div class="socials">
-                    <div class="social-link">
-                      <q-icon name="chat" size="18px" />
-                      <span>WhatsApp: 06 18 99 20</span>
-                    </div>
-                    <a
-                      class="social-link"
-                      href="mailto:69slagen@theorietoppers.nl"
-                    >
-                      <q-icon name="email" size="18px" />
-                      <span>69slagen@theorietoppers.nl</span>
-                    </a>
+                    />
                   </div>
+                  <p class="tagline">Learn smarter. Pass faster.</p>
+                
                 </div>
 
                 <div class="footer-col contact">
@@ -409,15 +429,6 @@
                     </li>
                   </ul>
                 </div>
-
-                <div class="footer-col hours">
-                  <div class="col-title">Opening hours</div>
-                  <ul class="list">
-                    <li><span>Mon - Fri</span><span>09:00 – 17:30</span></li>
-                    <li><span>Sat</span><span>11:00 – 16:00</span></li>
-                    <li><span>Sun</span><span>Closed</span></li>
-                  </ul>
-                </div>
               </div>
 
               <div class="footer-bottom">
@@ -435,7 +446,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import HeaderLangSwitcher from "src/components/HeaderLangSwitcher.vue";
 import { useNotifications } from "src/composables/useNotifications.js";
@@ -452,8 +463,11 @@ export default defineComponent({
     const email = ref("");
     const router = useRouter();
     const currentRoute = useRoute();
+    const loading = ref(true);
     const currentTitle = computed(() => currentRoute.meta?.title || "");
     const isExamMode = computed(() => currentRoute.meta?.hideSidebar === true);
+    const userPrograms = ref([]);
+    const hasActivePrograms = computed(() => userPrograms.value.length > 0);
     function navigate(path) {
       try {
         router.push(path);
@@ -489,16 +503,33 @@ export default defineComponent({
       navigate("/support");
     }
 
+    async function fetchUserPrograms() {
+      try {
+        loading.value = true;
+        const response = await api.get("/exams/my-courses");
+        userPrograms.value = response.data || [];
+      } catch (error) {
+        // User might not be authenticated or no programs available
+        userPrograms.value = [];
+      } finally {
+        loading.value = false;
+      }
+    }
+
+    onMounted(() => {
+      fetchUserPrograms();
+    });
+
     async function handleLogout() {
       try {
         try {
           await api.post("/auth/logout");
         } catch (_) {}
         Cookies.remove("auth_token", { path: "/" });
-        window.location.assign('/')
+        window.location.assign("/");
       } finally {
         isDrawerOpen.value = false;
-        redirect('/')
+        redirect("/");
       }
     }
 
@@ -526,6 +557,9 @@ export default defineComponent({
       viewAllNotifications,
       isExamMode,
       handleLogout,
+      // User Programs
+      hasActivePrograms,
+      loading,
     };
   },
 });
@@ -564,7 +598,7 @@ export default defineComponent({
   gap: 12px;
 }
 .logo-container {
-  max-width: 150px;
+  max-width: 180px;
 }
 .logo {
   width: 100%;
@@ -689,6 +723,7 @@ export default defineComponent({
 
 .layout-wrap {
   display: flex;
+  padding: 0 24px;
   gap: 24px;
 }
 .layout-wrap.drawer-open {
@@ -873,10 +908,17 @@ export default defineComponent({
 /* New professional footer styles */
 .footer-top {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr ;
   gap: 24px;
   padding: 32px 0 16px;
   border-top: 1px solid #eef2f7;
+}
+.image-container{
+  width: 100px;          /* size of the div */
+  height: 60px;
+  display: flex;          /* center the image */
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-col .col-title {
@@ -889,8 +931,14 @@ export default defineComponent({
   color: #475569;
 }
 
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .footer-logo {
-  height: 80px;
+  height: 50px;
   width: auto;
   margin-bottom: 10px;
 }
