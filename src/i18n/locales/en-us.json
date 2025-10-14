@@ -4,6 +4,12 @@
   "contact": "Contact Us",
   "is_required": "is required",
   "language": "Language",
+  "common": {
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
   "header": {
     "hello": "Hello,"
   },
@@ -140,6 +146,11 @@
     "all_courses": "All Courses",
     "loading": "Loading exams...",
     "no_exams": "No exams available",
+    "no_enrolled_courses": "No Enrolled Courses",
+    "no_enrolled_courses_text": "You need to enroll in a course first to access practice exams.",
+    "browse_courses": "Browse Courses",
+    "load_error": "Failed to load data. Please try again.",
+    "load_exams_error": "Failed to load exams. Please try again.",
     "status": {
       "new": "New exam",
       "in_progress": "In progress",
@@ -204,9 +215,9 @@
     "exam_subtitle": "{total} questions"
   },
   "exam_results": {
-    "passed_title": "Congratulations!",
-    "failed_title": "Unfortunately!",
-    "result_subtitle": "You got {score} out of {total} questions correct for practice exam {examId}",
+    "passed_title": "Congratulations! You passed!",
+    "failed_title": "Unfortunately! You failed",
+    "result_subtitle": "You answered {score} out of {total} questions correctly",
     "correct": "Correct",
     "total_questions": "Total questions",
     "correct_answers": "Correct answers",
@@ -214,7 +225,8 @@
     "time_taken": "Time taken",
     "retake_exam": "Retake exam",
     "next_exam": "Next exam",
-    "view_answers": "View answers"
+    "view_answers": "View answers",
+    "load_error": "Failed to load results. Using cache..."
   },
   "exam_answers": {
     "title": "Answers for exam {examId}",
@@ -225,7 +237,8 @@
     "explanation": "Explanation",
     "no_answer": "No answer given",
     "retake_exam": "Retake exam",
-    "back_to_results": "Back to results"
+    "back_to_results": "Back to results",
+    "loading": "Loading answers..."
   },
   "support": {
     "title": "Support & Help",

@@ -4,6 +4,12 @@
   "contact": "تواصل معنا",
   "is_required": "مطلوب",
   "language": "اللغة",
+  "common": {
+    "back": "رجوع",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح"
+  },
   "header": {
     "hello": "مرحباً،"
   },
@@ -141,6 +147,11 @@
     "all_courses": "جميع الدورات",
     "loading": "تحميل الامتحانات...",
     "no_exams": "لا توجد امتحانات متاحة",
+    "no_enrolled_courses": "لا توجد دورات مسجلة",
+    "no_enrolled_courses_text": "تحتاج إلى التسجيل في دورة أولاً للوصول إلى الامتحانات التجريبية.",
+    "browse_courses": "تصفح الدورات",
+    "load_error": "فشل تحميل البيانات. يرجى المحاولة مرة أخرى.",
+    "load_exams_error": "فشل تحميل الامتحانات. يرجى المحاولة مرة أخرى.",
     "status": {
       "new": "امتحان جديد",
       "in_progress": "قيد التنفيذ",
@@ -206,9 +217,9 @@
     "exam_subtitle": "{total} سؤال"
   },
   "exam_results": {
-    "passed_title": "تهانينا!",
-    "failed_title": "للأسف!",
-    "result_subtitle": "لقد أجبت بشكل صحيح على {score} من أصل {total} سؤال في الامتحان التجريبي {examId}",
+    "passed_title": "تهانينا! لقد نجحت!",
+    "failed_title": "للأسف! لقد رسبت",
+    "result_subtitle": "لقد أجبت بشكل صحيح على {score} من أصل {total} سؤال",
     "correct": "صحيح",
     "total_questions": "إجمالي الأسئلة",
     "correct_answers": "الإجابات الصحيحة",
@@ -216,7 +227,8 @@
     "time_taken": "الوقت المستغرق",
     "retake_exam": "إعادة الامتحان",
     "next_exam": "الامتحان التالي",
-    "view_answers": "عرض الإجابات"
+    "view_answers": "عرض الإجابات",
+    "load_error": "فشل تحميل النتائج. استخدام ذاكرة التخزين المؤقت..."
   },
   "exam_answers": {
     "title": "إجابات الامتحان {examId}",
@@ -227,7 +239,8 @@
     "explanation": "التفسير",
     "no_answer": "لم يتم إعطاء إجابة",
     "retake_exam": "إعادة الامتحان",
-    "back_to_results": "العودة إلى النتائج"
+    "back_to_results": "العودة إلى النتائج",
+    "loading": "جاري تحميل الإجابات..."
   },
   "support": {
     "title": "الدعم والمساعدة",

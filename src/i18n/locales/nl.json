@@ -4,6 +4,12 @@
   "contact": "Contact",
   "is_required": "is verplicht",
   "language": "Taal",
+  "common": {
+    "back": "Terug",
+    "loading": "Laden...",
+    "error": "Fout",
+    "success": "Succes"
+  },
   "header": {
     "hello": "Hallo,"
   },
@@ -122,6 +128,8 @@
     "no_enrolled_courses": "Geen Ingeschreven Cursussen",
     "no_enrolled_courses_text": "Je moet je eerst inschrijven voor een cursus om toegang te krijgen tot oefenexamens.",
     "browse_courses": "Bekijk Cursussen",
+    "load_error": "Kan gegevens niet laden. Probeer het opnieuw.",
+    "load_exams_error": "Kan examens niet laden. Probeer het opnieuw.",
     "status": {
       "new": "Nieuw examen",
       "in_progress": "Bezig",
@@ -186,9 +194,9 @@
     "exam_subtitle": "{total} vragen"
   },
   "exam_results": {
-    "passed_title": "Gefeliciteerd!",
-    "failed_title": "Helaas!",
-    "result_subtitle": "Je bent {score} van de {total} vragen goed voor oefenexamen {examId}",
+    "passed_title": "Gefeliciteerd! Je bent geslaagd!",
+    "failed_title": "Helaas! Je bent gezakt",
+    "result_subtitle": "Je hebt {score} van de {total} vragen goed beantwoord",
     "correct": "Goed",
     "total_questions": "Totaal vragen",
     "correct_answers": "Juiste antwoorden",
@@ -196,7 +204,8 @@
     "time_taken": "Tijd genomen",
     "retake_exam": "Examen opnieuw",
     "next_exam": "Volgende examen",
-    "view_answers": "Bekijk antwoorden"
+    "view_answers": "Bekijk antwoorden",
+    "load_error": "Kan resultaten niet laden. Gebruik cache..."
   },
   "exam_answers": {
     "title": "Antwoorden voor examen {examId}",
@@ -207,7 +216,8 @@
     "explanation": "Uitleg",
     "no_answer": "Geen antwoord gegeven",
     "retake_exam": "Examen opnieuw",
-    "back_to_results": "Terug naar resultaten"
+    "back_to_results": "Terug naar resultaten",
+    "loading": "Antwoorden laden..."
   },
   "dashboard": {
     "welcome_back": "Welkom terug",

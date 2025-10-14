@@ -138,7 +138,7 @@
                       color="primary"
                       icon="play_arrow"
                       :label="$t('profilePurchases.startPractice')"
-                      @click="startPractice"
+                      @click="startPractice(program.course?.id)"
                       no-caps
                       class="action-btn"
                     />
@@ -494,14 +494,14 @@
             @click="detailsDialog = false"
             no-caps
           />
-          <!-- <q-btn
+          <q-btn
             unelevated
             :label="$t('profilePurchases.startPractice')"
             color="primary"
             icon="play_arrow"
             @click="startPracticeFromDialog"
             no-caps
-          /> -->
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -703,13 +703,21 @@ export default defineComponent({
       detailsDialog.value = true;
     }
 
-    function startPractice() {
-      router.push("/practice-exams");
+    function startPractice(courseId) {
+      if (courseId) {
+        router.push({
+          path: "/practice-exams",
+          query: { courseId: courseId }
+        });
+      } else {
+        router.push("/practice-exams");
+      }
     }
 
     function startPracticeFromDialog() {
       detailsDialog.value = false;
-      startPractice();
+      const courseId = selectedProgram.value?.course?.id;
+      startPractice(courseId);
     }
 
     function goToPackages() {

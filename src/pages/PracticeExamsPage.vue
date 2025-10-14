@@ -102,7 +102,7 @@
 
 <script>
 import { defineComponent, ref, onMounted, computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import { useI18n } from "vue-i18n";
@@ -111,9 +111,9 @@ export default defineComponent({
   name: "PracticeExamsPage",
   setup() {
     const router = useRouter();
+    const route = useRoute();
     const $q = useQuasar();
     const { locale, t } = useI18n();
-    const allExams = ref([]);
     const exams = ref([]);
     const courses = ref([]);
     const loading = ref(true);
@@ -150,29 +150,68 @@ export default defineComponent({
       }
     }
 
-    // Fetch exams from API
+    // Fetch exams by course ID from API
+    async function fetchExamsByCourseId(courseId) {
+      try {
+        loading.value = true;
+        console.log('Fetching exams for course:', courseId);
+        
+        const response = await api.get(`/exams/courses/${courseId}/exams`);
+        exams.value = response.data || [];
+        
+        console.log('Loaded exams for course:', courseId, exams.value.length);
+      } catch (error) {
+        console.error("Failed to fetch exams for course:", error);
+        $q.notify({
+          type: "negative",
+          message: t('practice.load_exams_error') || "Failed to load exams. Please try again.",
+          position: "top",
+        });
+        exams.value = [];
+      } finally {
+        loading.value = false;
+      }
+    }
+
+    // Fetch exams - initialize with course from query or first course
     async function fetchExams() {
       try {
         loading.value = true;
         
-        // Fetch both courses and exams
+        // Fetch user's courses first
         const userCourses = await fetchCourses();
-        const response = await api.get("/exams/list");
-        allExams.value = response.data || [];
         
-        // Set first course as default if available
         if (userCourses.length > 0) {
-          selectedCourse.value = userCourses[0].id;
-          // Filter exams by first course
-          exams.value = allExams.value.filter(exam => exam.courseId === userCourses[0].id);
+          // Check if courseId is provided in query params
+          const queryCourseId = route.query.courseId;
+          
+          if (queryCourseId) {
+            // Verify the course exists in user's enrolled courses
+            const courseExists = userCourses.find(c => c.id === queryCourseId);
+            
+            if (courseExists) {
+              selectedCourse.value = queryCourseId;
+              await fetchExamsByCourseId(queryCourseId);
+              console.log('Loaded exams for course from query:', queryCourseId);
+            } else {
+              // Course not found in user's courses, use first course
+              console.warn('Course from query not found in enrolled courses, using first course');
+              selectedCourse.value = userCourses[0].id;
+              await fetchExamsByCourseId(userCourses[0].id);
+            }
+          } else {
+            // No query param, use first course
+            selectedCourse.value = userCourses[0].id;
+            await fetchExamsByCourseId(userCourses[0].id);
+          }
         } else {
-          exams.value = allExams.value;
+          exams.value = [];
         }
       } catch (error) {
-        console.error("Failed to fetch exams:", error);
+        console.error("Failed to initialize exams:", error);
         $q.notify({
           type: "negative",
-          message: "Failed to load exams. Please try again.",
+          message: t('practice.load_error') || "Failed to load data. Please try again.",
           position: "top",
         });
       } finally {
@@ -202,9 +241,9 @@ export default defineComponent({
     });
 
     // Filter exams by selected course
-    function filterExamsByCourse(courseId) {
+    async function filterExamsByCourse(courseId) {
       if (courseId) {
-        exams.value = allExams.value.filter(exam => exam.courseId === courseId);
+        await fetchExamsByCourseId(courseId);
       } else {
         exams.value = [];
       }

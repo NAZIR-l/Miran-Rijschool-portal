@@ -1,6 +1,12 @@
 <template>
   <q-page class="exam-results-page">
-    <div class="results-container">
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-container">
+      <q-spinner color="primary" size="80px" />
+      <p class="loading-text">Loading results...</p>
+    </div>
+
+    <div v-else class="results-container">
       <!-- Results Header -->
       <div class="results-header">
         <div class="result-icon">
@@ -80,7 +86,7 @@
           @click="retakeExam"
         >
           <q-icon name="refresh" class="q-mr-sm" />
-          {{ $t('exam_results.retake_exam') }}
+          <q-tooltip>{{ $t('exam_results.retake_exam') }}</q-tooltip>
         </q-btn>
 
         <q-btn
@@ -90,7 +96,7 @@
           @click="nextExam"
         >
           <q-icon name="arrow_forward" class="q-mr-sm" />
-          {{ $t('exam_results.next_exam') }}
+          <q-tooltip>{{ $t('exam_results.next_exam') }}</q-tooltip>
         </q-btn>
       </div>
 
@@ -103,7 +109,7 @@
           @click="viewAnswers"
         >
           <q-icon name="visibility" class="q-mr-sm" />
-          {{ $t('exam_results.view_answers') }}
+          <q-tooltip>{{ $t('exam_results.view_answers') }}</q-tooltip>
         </q-btn>
       </div>
     </div>
@@ -113,63 +119,133 @@
 <script>
 import { defineComponent, computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { api } from 'boot/axios'
+import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ExamResultsPage',
   setup() {
     const route = useRoute()
     const router = useRouter()
+    const $q = useQuasar()
+    const { t: $t, locale } = useI18n()
 
-    // Get exam data from route params or localStorage
+    // Get exam and attempt IDs from route params
     const examId = route.params.id || '1'
+    const attemptId = route.params.attemptId || null
+    const attemptData = ref(null)
     const examData = ref(null)
     const userAnswers = ref([])
     const examQuestions = ref([])
-    const timeStarted = ref(null)
-    const timeEnded = ref(null)
+    const loading = ref(true)
 
-    // Load exam data and user answers
+    // Load exam data and results
     onMounted(() => {
-      loadExamData()
-      loadUserAnswers()
+      if (attemptId) {
+        loadFromBackend()
+      } else {
+        // Fallback to localStorage
+        loadFromLocalStorage()
+      }
     })
 
-    function loadExamData() {
+    async function loadFromBackend() {
       try {
-        // Try to load exam data from localStorage or API
+        loading.value = true
+        const response = await api.get(`/exams/attempts/${attemptId}/details`)
+        attemptData.value = response.data
+        
+        // Process exam data with localized title
+        const exam = response.data.exam
+        let examTitle = exam.title
+        if (typeof examTitle === 'object') {
+          examTitle = examTitle[locale.value] || examTitle.nl || examTitle.en || `Exam ${examId}`
+        }
+        examData.value = { ...exam, title: examTitle }
+        
+        // Process multilingual questions
+        examQuestions.value = (response.data.exam.questions || []).map(q => {
+          // Process question text
+          let text = q.text
+          if (typeof text === 'object') {
+            text = text[locale.value] || text.nl || text.en || ''
+          }
+          
+          // Process question options
+          const options = Array.isArray(q.options) 
+            ? q.options.map(opt => {
+                let label = opt.label
+                if (typeof label === 'object') {
+                  label = label[locale.value] || label.nl || label.en || ''
+                }
+                return { ...opt, label }
+              })
+            : []
+          
+          // Process explanation
+          let explanation = q.explanation
+          if (typeof explanation === 'object') {
+            explanation = explanation[locale.value] || explanation.nl || explanation.en || ''
+          }
+          
+          return { ...q, text, options, explanation }
+        })
+        
+        // Extract user answers from attempt data
+        userAnswers.value = examQuestions.value.map((question) => {
+          const answer = response.data.answers.find(a => a.questionId === question.id)
+          return answer ? answer.selectedAnswer : null
+        })
+
+        console.log('✅ Loaded exam results from backend:', response.data)
+      } catch (error) {
+        console.error('❌ Error loading exam results:', error)
+        $q.notify({
+          type: 'negative',
+          message: $t('exam_results.load_error') || 'Failed to load exam results. Loading from cache...',
+          position: 'top'
+        })
+        // Fallback to localStorage
+        loadFromLocalStorage()
+      } finally {
+        loading.value = false
+      }
+    }
+
+    function loadFromLocalStorage() {
+      try {
+        // Try to load exam data from localStorage
         const storedData = localStorage.getItem(`exam_${examId}_data`)
         if (storedData) {
           examData.value = JSON.parse(storedData)
           examQuestions.value = examData.value.questions || []
         }
-      } catch (error) {
-        console.error('Error loading exam data:', error)
-      }
-    }
 
-    function loadUserAnswers() {
-      try {
         const storedAnswers = localStorage.getItem(`exam_${examId}_answers`)
         if (storedAnswers) {
           userAnswers.value = JSON.parse(storedAnswers)
         }
 
-        // Load timing data
-        const timeData = localStorage.getItem(`exam_${examId}_timing`)
-        if (timeData) {
-          const timing = JSON.parse(timeData)
-          timeStarted.value = timing.start
-          timeEnded.value = timing.end
-        }
+        loading.value = false
       } catch (error) {
-        console.error('Error loading user answers:', error)
+        console.error('Error loading from localStorage:', error)
+        loading.value = false
       }
     }
 
     // Calculate results
-    const totalQuestions = computed(() => examQuestions.value.length)
+    const totalQuestions = computed(() => {
+      if (attemptData.value) {
+        return attemptData.value.totalQuestions
+      }
+      return examQuestions.value.length
+    })
 
     const correctAnswers = computed(() => {
+      if (attemptData.value) {
+        return attemptData.value.correctAnswers
+      }
       return examQuestions.value.reduce((count, question, index) => {
         const userAnswer = userAnswers.value[index]
         return userAnswer === question.correct ? count + 1 : count
@@ -178,29 +254,39 @@ export default defineComponent({
 
     const incorrectAnswers = computed(() => totalQuestions.value - correctAnswers.value)
 
-    const score = computed(() => correctAnswers.value)
+    const score = computed(() => {
+      if (attemptData.value) {
+        return attemptData.value.score
+      }
+      return correctAnswers.value
+    })
 
     const scorePercentage = computed(() => {
       if (totalQuestions.value === 0) return 0
       return Math.round((correctAnswers.value / totalQuestions.value) * 100)
     })
 
-    const isPassed = computed(() => scorePercentage.value >= 70) // 70% passing grade
+    const isPassed = computed(() => {
+      if (attemptData.value) {
+        return attemptData.value.passed
+      }
+      return scorePercentage.value >= 70 // 70% passing grade
+    })
 
     const resultIcon = computed(() => isPassed.value ? 'thumb_up' : 'thumb_down')
     const resultIconColor = computed(() => isPassed.value ? 'positive' : 'negative')
 
     const resultTitle = computed(() => {
       return isPassed.value
-        ? this.$t('exam_results.passed_title')
-        : this.$t('exam_results.failed_title')
+        ? $t('exam_results.passed_title')
+        : $t('exam_results.failed_title')
     })
 
     const resultSubtitle = computed(() => {
-      return this.$t('exam_results.result_subtitle', {
-        examId: examId,
+      return $t('exam_results.result_subtitle', {
         score: score.value,
-        total: totalQuestions.value
+        total: totalQuestions.value,
+        examId: examId
       })
     })
 
@@ -212,16 +298,12 @@ export default defineComponent({
     })
 
     const timeTaken = computed(() => {
-      if (!timeStarted.value || !timeEnded.value) return '00:00'
-
-      const start = new Date(timeStarted.value)
-      const end = new Date(timeEnded.value)
-      const diff = end - start
-
-      const minutes = Math.floor(diff / 60000)
-      const seconds = Math.floor((diff % 60000) / 1000)
-
-      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+      if (attemptData.value && attemptData.value.timeSpentSeconds) {
+        const minutes = Math.floor(attemptData.value.timeSpentSeconds / 60)
+        const seconds = attemptData.value.timeSpentSeconds % 60
+        return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+      }
+      return '00:00'
     })
 
     // Navigation functions
@@ -246,14 +328,21 @@ export default defineComponent({
 
     function viewAnswers() {
       // Navigate to answers review page
-      router.push(`/exam/${examId}/answers`)
+      if (attemptId) {
+        router.push(`/exam/${examId}/answers/${attemptId}`)
+      } else {
+        router.push(`/exam/${examId}/answers`)
+      }
     }
 
     return {
       examId,
+      attemptId,
+      attemptData,
       examData,
       userAnswers,
       examQuestions,
+      loading,
       totalQuestions,
       correctAnswers,
       incorrectAnswers,
@@ -277,15 +366,32 @@ export default defineComponent({
 <style scoped>
 .exam-results-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  /* background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); */
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 24px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0;
+}
+
 .results-container {
-  max-width: 800px;
+  /* max-width: 800px; */
   width: 100%;
   background: white;
   border-radius: 20px;

@@ -1,6 +1,12 @@
 <template>
   <q-page class="exam-answers-page">
-    <div class="answers-container">
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-container">
+      <q-spinner color="primary" size="80px" />
+      <p class="loading-text">{{ $t('exam_answers.loading') || 'Loading answers...' }}</p>
+    </div>
+
+    <div v-else class="answers-container">
       <!-- Header -->
       <div class="answers-header">
         <div class="header-content">
@@ -15,8 +21,8 @@
               <q-tooltip>{{ $t('common.back') }}</q-tooltip>
             </q-btn>
           </div>
-          <div class="header-title">
-            <h1>{{ $t('exam_answers.title', { examId: examId }) }}</h1>
+          <div class="header-titles">
+            <h1 class="text-h1">{{ $t('exam_answers.title')}}</h1>
             <p>{{ $t('exam_answers.subtitle') }}</p>
           </div>
         </div>
@@ -50,11 +56,9 @@
 
             <div class="question-image" v-if="question.image">
               <q-img
-                :src="question.image"
-                ratio="16/9"
+                src="../assets/exam1/q1.png"
                 class="answer-image"
-                fit="contain"
-              >
+              >           
                 <template v-slot:error>
                   <div class="image-error">
                     <q-icon name="image_not_supported" size="48px" color="grey-4" />
@@ -79,13 +83,13 @@
               </div>
             </div>
 
-            <div class="explanation" v-if="question.reason">
+            <div class="explanation" v-if="question.explanation">
               <div class="explanation-label">
                 <q-icon name="info" size="sm" />
                 {{ $t('exam_answers.explanation') }}
               </div>
               <div class="explanation-text">
-                {{ question.reason }}
+                {{ question.explanation }}
               </div>
             </div>
           </div>
@@ -101,7 +105,7 @@
           @click="retakeExam"
         >
           <q-icon name="refresh" class="q-mr-sm" />
-          {{ $t('exam_answers.retake_exam') }}
+          <q-tooltip>{{ $t('exam_answers.retake_exam') }}</q-tooltip>
         </q-btn>
 
         <q-btn
@@ -110,7 +114,7 @@
           @click="goToResults"
         >
           <q-icon name="assessment" class="q-mr-sm" />
-          {{ $t('exam_answers.back_to_results') }}
+          <q-tooltip>{{ $t('exam_answers.back_to_results') }}</q-tooltip>
         </q-btn>
       </div>
     </div>
@@ -120,43 +124,127 @@
 <script>
 import { defineComponent, computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { api } from 'boot/axios'
+import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ExamAnswersPage',
   setup() {
     const route = useRoute()
     const router = useRouter()
+    const $q = useQuasar()
+    const { locale } = useI18n()
 
     const examId = route.params.id || '1'
+    const attemptId = route.params.attemptId || null
+    const attemptData = ref(null)
     const examData = ref(null)
     const userAnswers = ref([])
     const examQuestions = ref([])
+    const loading = ref(true)
 
     onMounted(() => {
-      loadExamData()
-      loadUserAnswers()
+      if (attemptId) {
+        loadFromBackend()
+      } else {
+        loadFromLocalStorage()
+      }
     })
 
-    function loadExamData() {
+    async function loadFromBackend() {
+      try {
+        loading.value = true
+        const response = await api.get(`/exams/attempts/${attemptId}/details`)
+        attemptData.value = response.data
+        examData.value = response.data.exam
+        examQuestions.value = response.data.exam.questions || []
+        
+        // Process multilingual text
+        examQuestions.value = examQuestions.value.map(q => {
+          let text = q.text
+          if (typeof text === 'object') {
+            text = text[locale.value] || text.nl || text.en || ''
+          }
+          
+          // Process options
+          const options = Array.isArray(q.options) 
+            ? q.options.map(opt => {
+                let label = opt.label
+                if (typeof label === 'object') {
+                  label = label[locale.value] || label.nl || label.en || ''
+                }
+                return { ...opt, label }
+              })
+            : []
+          
+          return { ...q, text, options }
+        })
+        
+        // Extract user answers from attempt data
+        userAnswers.value = examQuestions.value.map((question) => {
+          const answer = response.data.answers.find(a => a.questionId === question.id)
+          return answer ? answer.selectedAnswer : null
+        })
+
+        console.log('✅ Loaded exam answers from backend')
+      } catch (error) {
+        console.error('❌ Error loading exam answers:', error)
+        $q.notify({
+          type: 'negative',
+          message: 'Failed to load exam answers. Loading from cache...',
+          position: 'top'
+        })
+        loadFromLocalStorage()
+      } finally {
+        loading.value = false
+      }
+    }
+
+    function getimage(image) {
+      return `../assets/${image}`
+    }
+    function loadFromLocalStorage() {
       try {
         const storedData = localStorage.getItem(`exam_${examId}_data`)
         if (storedData) {
           examData.value = JSON.parse(storedData)
-          examQuestions.value = examData.value.questions || []
+          
+          // Process multilingual questions from localStorage
+          examQuestions.value = (examData.value.questions || []).map(q => {
+            let text = q.text
+            if (typeof text === 'object') {
+              text = text[locale.value] || text.nl || text.en || ''
+            }
+            
+            const options = Array.isArray(q.options) 
+              ? q.options.map(opt => {
+                  let label = opt.label
+                  if (typeof label === 'object') {
+                    label = label[locale.value] || label.nl || label.en || ''
+                  }
+                  return { ...opt, label }
+                })
+              : []
+            
+            let explanation = q.explanation
+            if (typeof explanation === 'object') {
+              explanation = explanation[locale.value] || explanation.nl || explanation.en || ''
+            }
+            
+            return { ...q, text, options, explanation }
+          })
         }
-      } catch (error) {
-        console.error('Error loading exam data:', error)
-      }
-    }
 
-    function loadUserAnswers() {
-      try {
         const storedAnswers = localStorage.getItem(`exam_${examId}_answers`)
         if (storedAnswers) {
           userAnswers.value = JSON.parse(storedAnswers)
         }
+
+        loading.value = false
       } catch (error) {
-        console.error('Error loading user answers:', error)
+        console.error('Error loading from localStorage:', error)
+        loading.value = false
       }
     }
 
@@ -170,19 +258,23 @@ export default defineComponent({
       const question = examQuestions.value[questionIndex]
       const userAnswer = userAnswers.value[questionIndex]
 
+      if (!userAnswer) {
+        return $t('exam_answers.no_answer')
+      }
+
       if (question.type === 'multiple' || question.type === 'dropdown') {
-        const option = question.options.find(opt => opt.id === userAnswer)
+        const option = question.options?.find(opt => opt.id === userAnswer)
         return option ? option.label : userAnswer
       }
 
-      return userAnswer || $t('exam_answers.no_answer')
+      return userAnswer
     }
 
     function getCorrectAnswer(questionIndex) {
       const question = examQuestions.value[questionIndex]
 
       if (question.type === 'multiple' || question.type === 'dropdown') {
-        const option = question.options.find(opt => opt.id === question.correct)
+        const option = question.options?.find(opt => opt.id === question.correct)
         return option ? option.label : question.correct
       }
 
@@ -198,18 +290,26 @@ export default defineComponent({
     }
 
     function goToResults() {
-      router.push(`/exam/${examId}/results`)
+      if (attemptId) {
+        router.push(`/exam/${examId}/results/${attemptId}`)
+      } else {
+        router.push(`/exam/${examId}/results`)
+      }
     }
 
     return {
       examId,
+      attemptId,
+      attemptData,
       examData,
       userAnswers,
       examQuestions,
+      loading,
       isCorrect,
       getUserAnswer,
       getCorrectAnswer,
       goBack,
+      getimage,
       retakeExam,
       goToResults
     }
@@ -222,6 +322,23 @@ export default defineComponent({
   min-height: 100vh;
   background: #f8fafc;
   padding: 20px;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 24px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0;
 }
 
 .answers-container {
@@ -243,14 +360,15 @@ export default defineComponent({
   gap: 16px;
 }
 
-.header-title h1 {
+.text-h1 {
   font-size: 24px;
   font-weight: 700;
   color: #1e293b;
+  line-height: 1rem;
   margin: 0 0 8px 0;
 }
 
-.header-title p {
+.header-titles p {
   color: #64748b;
   margin: 0;
   font-size: 16px;
@@ -312,6 +430,17 @@ export default defineComponent({
 
 .answer-image {
   max-height: 300px;
+  height: 300px;
+  width: 100%;
+  /* object-fit: contain; */
+}
+.answer-image img{
+  object-fit: fill !important;
+
+}
+.q-img__image{
+  object-fit: fill !important;
+
 }
 
 .answers-comparison {

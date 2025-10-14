@@ -18,6 +18,10 @@ html {
   max-width: 1900px;
 }
 
+.answer-image img{
+  object-fit: fill !important;
+
+}
 /* Home page background helper */
 .home-bg {
   background: var(--page-bg);

@@ -850,35 +850,58 @@ export default defineComponent({
       submitExam()
     }
 
-    function submitExam() {
+    async function submitExam() {
       console.log('📝 Examen submitted for exam', examId, ':', answers.value)
 
-      // Save exam data and answers to localStorage
       try {
-        // Save exam data
-        localStorage.setItem(`exam_${examId}_data`, JSON.stringify({
-          id: examId,
-          title: examInfo.value.title,
-          questions: questions.value
-        }))
+        // Calculate time spent (30 minutes - remaining time)
+        const timeSpentSeconds = (30 * 60) - remaining.value
 
-        // Save user answers
-        localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers.value))
+        // Submit to backend
+        const response = await api.post('/exams/submit', {
+          examId: examId,
+          answers: answers.value,
+          timeSpentSeconds: timeSpentSeconds
+        })
 
-        // Save timing data
-        const timingData = {
-          start: new Date().toISOString(),
-          end: new Date().toISOString()
-        }
-        localStorage.setItem(`exam_${examId}_timing`, JSON.stringify(timingData))
+        const attemptId = response.data.id
+        console.log('✅ Exam submitted successfully, attempt ID:', attemptId)
 
-        console.log('✅ Exam data saved successfully')
+        // Navigate to results page with attempt ID
+        router.push(`/exam/${examId}/results/${attemptId}`)
       } catch (error) {
-        console.error('❌ Error saving exam data:', error)
-      }
+        console.error('❌ Error submitting exam:', error)
+        
+        // Fallback: Save to localStorage if API fails
+        try {
+          localStorage.setItem(`exam_${examId}_data`, JSON.stringify({
+            id: examId,
+            title: examInfo.value.title,
+            questions: questions.value
+          }))
+          localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers.value))
+          
+          const timingData = {
+            start: new Date().toISOString(),
+            end: new Date().toISOString()
+          }
+          localStorage.setItem(`exam_${examId}_timing`, JSON.stringify(timingData))
+          
+          console.log('⚠️ Saved to localStorage as fallback')
+        } catch (storageError) {
+          console.error('❌ Error saving to localStorage:', storageError)
+        }
 
-      // Navigate to results page
-      router.push(`/exam/${examId}/results`)
+        // Show error notification
+        $q.notify({
+          type: 'negative',
+          message: 'Failed to submit exam. Please try again.',
+          position: 'top'
+        })
+
+        // Navigate to results page anyway (will use localStorage)
+        router.push(`/exam/${examId}/results`)
+      }
     }
 
     return {

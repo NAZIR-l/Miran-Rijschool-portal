@@ -22,7 +22,9 @@ const routes = [
       { path: 'exam/:id', name: 'ExamIntro', component: () => import('pages/ExamIntroPage.vue'), meta: { hideSidebar: true } },
       { path: 'exam/:id/run', name: 'ExamRun', component: () => import('pages/ExamRunPage.vue'), meta: { hideSidebar: true } },
       { path: 'exam/:id/results', name: 'ExamResults', component: () => import('pages/ExamResultsPage.vue'), meta: { hideSidebar: true } },
+      { path: 'exam/:id/results/:attemptId', name: 'ExamResultsWithAttempt', component: () => import('pages/ExamResultsPage.vue'), meta: { hideSidebar: true } },
       { path: 'exam/:id/answers', name: 'ExamAnswers', component: () => import('pages/ExamAnswersPage.vue'), meta: { hideSidebar: true } },
+      { path: 'exam/:id/answers/:attemptId', name: 'ExamAnswersWithAttempt', component: () => import('pages/ExamAnswersPage.vue'), meta: { hideSidebar: true } },
       // { path: 'exam/:id/overview', name: 'ExamOverview', component: () => import('pages/ExamOverviewPage.vue'), meta: { hideSidebar: true } },
       // { path: '/contenfsdfst'sd, component: () => import('pages/content.vue') }
 
