@@ -32,7 +32,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason": "Rijbanen met de aanduiding 'BUS' of 'LIJNBUS' worden busbanen genoemd. Als automobilist mag je daar niet rijden."
     },
     {
@@ -63,7 +62,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "De grens voor het dragen van een driepuntsgordel ligt op 1,35 meter; daaronder moet gebruik worden gemaakt van een goedgekeurd kinderbeveiligingssysteem, zoals een zitverhoger of een kinderzitje."
     },
     {
@@ -82,7 +80,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Het eerste militaire voertuig is je nog niet gepasseerd en je komt van rechts, dus jij hebt voorrang."
     },
     {
@@ -101,7 +98,7 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
+
       "reason": "Rijd je hier door dan blokkeer je de kruisende weg door de file voor je, en dat mag nooit."
     },
     {
@@ -124,7 +121,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "De rijbaan is het gedeelte van de weg dat bestemd is voor rijdende voertuigen."
     },
     {
@@ -147,9 +143,7 @@
         }
       ],
       "correct": "c",
-      "reason": "Er wordt een groen ventieldopje gebruikt als de band gevuld is met stikstof.",
-      "category": "lanes"
-    },
+      "reason": "Er wordt een groen ventieldopje gebruikt als de band gevuld is met stikstof."    },
     {
       "id": "exam1-q7",
       "image": "../../assets/exam1/q7.png",
@@ -189,7 +183,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Je kentekenplaat moet ten alle tijde goed zichtbaar en leesbaar zijn."
     },
     {
@@ -208,7 +201,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen."
     },
     {
@@ -227,7 +219,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Bestuurders op een onverharde weg moeten voorrang verlenen aan bestuurders op een verharde weg."
     },
     {
@@ -246,7 +237,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason" : "Zie de armen van de verkeersregelaar als slagbomen: die staan nu naar beneden voor jou. Alleen bestuurders op de kruisende weg mogen nu doorrijden."
     },
     {
@@ -269,7 +259,6 @@
         }
       ],
       "correct": "c",
-      "category": "lanes",
       "reason": "Het in- en uitstappen worden samen als één bijzondere verrichting beschouwd, waarbij je alle weggebruikers voor moet laten gaan."
     },
     {
@@ -281,7 +270,6 @@
 
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Met een aanhangwagen is de maximumsnelheid op de autosnelweg 90 km/u."
     },
     {
@@ -304,7 +292,6 @@
         }
       ],
       "correct": "c",
-      "category": "lanes",
       "reason": "Dit verkeersbord waarschuwt voor het naderen van een gevaarlijk kruispunt. De driehoekige vorm met de punt omhoog duidt op een waarschuwingsbord."
     },
     {
@@ -323,7 +310,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Met een landbouwvoertuig mag je binnen de bebouwde kom maximaal 25 kilometer per uur rijden."
     },
     {
@@ -338,12 +324,12 @@
         },
         {
           "id": "a",
-          "label": "Nee",
-          "reason": "Bestuurders van motorvoertuigen zijn verplicht om richting aan te geven bij een zijdelingse verplaatsing."
+          "label": "Nee"
         }
       ],
       "correct": "b",
-      "category": "lanes"
+      "reason": "Bestuurders van motorvoertuigen zijn verplicht om richting aan te geven bij een zijdelingse verplaatsing."
+
     },
     {
       "id": "exam1-q17",
@@ -365,7 +351,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason": "De bovenkant van de hoofdsteun moet gelijk zijn aan de bovenkant van je hoofd. Zo wordt je hoofd bij een botsing goed en stevig opgevangen."
     },
     {
@@ -384,7 +369,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Het is veiliger om de tunnel uit te rijden en de auto daarna direct aan de kant te zetten."
     },
     {
@@ -396,7 +380,6 @@
 
       ],
       "correct": " 1. Witte personenauto, 2. Fietser, 3. Motor",
-      "category": "voorrang",
       "reason" :  "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3)."
     },
     {
@@ -415,9 +398,7 @@
         }
       ],
       "correct": "b",
-      "reason":"Vlak voor of op een zebrapad mag je andere bestuurders niet inhalen.",
-      "category": "lanes"
-    },
+      "reason":"Vlak voor of op een zebrapad mag je andere bestuurders niet inhalen."    },
     {
       "id": "exam1-q21",
       "image": "../../assets/exam1/q21.png",
@@ -434,7 +415,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason" : "Na een minuut stilstaan moet je de motor uitschakelen. Dus bij een openstaande brug zet jij de motor uit."
     },
     {
@@ -453,7 +433,6 @@
         }
       ],
       "correct": "b",
-      "category": "lanes",
       "reason" : "Buiten de bebouwde kom hoef je een bus die de halte verlaat geen voorrang te verlenen. Dit herken je aan de strepen op het wegdek. Deze geven aan dat je op een 80km/u weg rijdt "
     },
     {
@@ -472,7 +451,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Omdat de fietsstrook onderbroken strepen heeft, mag je in deze situatie de afslaande auto rechts inhalen, mits je geen fietsers hindert."
     },
     {

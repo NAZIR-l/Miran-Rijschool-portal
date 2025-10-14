@@ -18,7 +18,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Een gedraaide gordel verdeelt de krachten bij een botsing niet goed, waardoor de kans op letsel toeneemt. Daarnaast vergroot het de kans op snijwonden.",
+      "reason": "Op een voorrangsweg binnen de bebouwde kom mag je jouw stadslichten voeren als je geparkeerd staat.",
       "category": "lanes"
     },
     {
@@ -38,8 +38,7 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
-      "reason": "De dode hoek is het gebied rondom een voertuig dat niet zichtbaar is voor de bestuurder, zelfs niet via de zij- of binnenspiegels. Dit vormt een risico bij bijvoorbeeld het wisselen van rijstrook en afslaan, vooral voor kwetsbare weggebruikers zoals fietsers en voetgangers. Dode hoeken worden ook wel blinde hoeken genoemd."
+      "reason": "Een persoon dat zich met een voorwerp voortbeweegt wordt gezien als een voetganger."
 
     },
     {
@@ -51,9 +50,8 @@
       "options": [
 
       ],
-      "correct": "b",
-      "category": "lanes",
-      "reason": "Zorg ervoor dat puin, zoals los zand of bladeren in de aanhangwagen altijd bedekt is."
+      "correct": "1. Fietser, 2. Rode personenauto, 3. Witte personenauto",
+      "reason": "De fietser rijdt rechtdoor op dezelfde weg waar de witte- en de rode auto's willen afslaan. De fietser (1) heeft voorrang op de afslaande auto's. De rode auto (2) maakt de korte bocht dus heeft voorrang op de witte auto (3) die de lange bocht maakt."
 
     },
     {
@@ -65,9 +63,8 @@
       "options": [
 
       ],
-      "correct": "b",
-      "category": "lanes",
-      "reason": "Zorg ervoor dat puin, zoals los zand of bladeren in de aanhangwagen altijd bedekt is."
+      "correct": " 1. bus, 2. voetganger, 3. personenauto",
+      "reason": "De bus (1) rijdt op een voorrangsweg. De auto staat achter haaientanden. De voetganger (2) gaat rechtdoor op dezelfde weg als de auto en heeft hierdoor voorrang op de auto (3) die wilt afslaan."
 
     },
 
@@ -92,9 +89,8 @@
         }
 
       ],
-      "correct": "c",
-      "category": "lanes",
-      "reason": "Het rijbewijs B is 10 jaar geldig en dient daarna verlengd te worden. Na je 70e is dit geen 10, maar 5 jaar."
+      "correct": "a",
+      "reason": "Wanneer de woorden 'STOP' of 'VOLG' op de lichtkrant van een politieauto verschijnen en deze voor je gaat rijden, moet je het dienstvoertuig volgen. Het is verplicht om deze aanwijzingen op te volgen."
     },
     {
       "id": "exam6-q6",
@@ -112,8 +108,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "a",
-      "reason":"De maximumsnelheid van een bromfiets op de rijbaan buiten de bebouwde kom is: 45 km/u. Dit is snel genoeg om op een weg te mogen rijden waar je maximaal 60 km/u per uur mag rijden.",
+      "correct": "b",
+      "reason":"Het is verboden twee kentekenplaten onder elkaar voeren.",
       "category": "lanes"
     },
     {
@@ -133,8 +129,8 @@
         }
 
       ],
-      "correct": "b",
-      "reason" :"Knipperend rood licht bij een treinspoor geeft aan dat er een trein aankomt, dus je mag dan niet doorrijden.",
+      "correct": "a",
+      "reason" :"De langere onderbroken strepen op het wegdek geven aan dat er een verandering plaats zal vinden.",
       "category": "lanes"
     },
     {
@@ -157,8 +153,8 @@
           "label": "De airco"
         }
       ],
-      "correct": "b",
-      "reason": "Nee, een persoon op skates valt onder een voetganger en niet onder een bestuurder. Enkel bestuurders van rechts hebben voorrang.",
+      "correct": "c",
+      "reason": "De airco verbruikt veel energie, omdat de compressor hard moet werken om warme lucht af te koelen. Dit kost extra brandstof of batterijvermogen.",
       "category": "lanes"
     },
     {
@@ -178,9 +174,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "a",
-      "reason": "Een brandweer auto die optische- en geluidssignalen voert dien je altijd voorrang te verlenen.",
-      "category": "lanes"
+      "correct": "b",
+      "reason": "Je mag de helm van een gewonde bij een ongeluk niet afdoen, om te voorkomen dat je mogelijk letsel aan het hoofd of de nek verergert.."
     },
     {
       "id": "exam6-q10",
@@ -191,8 +186,8 @@
       "options": [
 
       ],
-      "correct": "c",
-      "reason": "Dit is een taper-aansluiting. De rijstroken aan weerszijden van de berm versmallen tot één rijstrook, dat is dus de rijstrook die links van jou ligt en die waar de vrachtwagen op rijdt. Jouw rijstrook blijft gewoon bestaan en je kan hier blijven rijden.",
+      "correct": "80 Km/u",
+      "reason": "Dit bordje geeft aan dat je op een 80 km/u-weg, ook wel N-weg rijdt. Deze wegen bevinden zich buiten de bebouwde kom.",
       "category": "lanes"
     },
     {
@@ -217,9 +212,8 @@
 
 
       ],
-      "correct": "b",
-      "reason": "Met een motorvoertuig mag geen tweewielig motorvoertuig worden gesleept.",
-      "category": "lanes"
+      "correct": "a",
+      "reason": "Wanneer er een dier de weg op springt voor je auto, dan is het veiliger om af te remmen in plaats van uit te wijken. Door uit te wijken kan je mogelijk een botsing met een andere auto veroorzaken. Bij grootlicht kan het hert schrikken en blijven staan."
     },
     {
       "id": "exam6-q12",
@@ -237,9 +231,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "reason": "Dit hoeft niet, want de zwaailichten van de douane zijn geel en niet blauw. Enkel blauwe zwaailichten moet je voor laten gaan.",
-      "category": "lanes"
+      "correct": "a",
+      "reason": "De plaats van de streep wordt zo gekozen dat bestuurders tijdens de stop een goed overzicht hebben op de kruising, je moet dus ook altijd voor de streep stoppen.."
     },
     {
       "id": "exam6-q13",
@@ -258,8 +251,7 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
-      "reason": "Bij het parkeren in een blauwe zone wordt de pijl van de parkeerschijf gezet op het streepje dat volgt op het tijdstip van aankomst."
+      "reason": "Er geldt een uitzondering op de voorrangsregel voor bestuurders die van een onverharde weg komen. Als je vanaf een onverharde weg een verharde weg oprijdt, moet je altijd voorrang verlenen aan het kruisende verkeer op de verharde weg – ook als je van rechts komt."
     },
     {
       "id": "exam6-q14",
@@ -277,10 +269,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "reason": "In deze situatie mogen motorvoertuigen elkaar onderling niet inhalen.",
-      "category": "lanes"
-    },
+      "correct": "a",
+      "reason": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang."    },
     {
       "id": "exam6-q15",
       "image": "../../assets/exam6/q15.png",
@@ -298,7 +288,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Een derde remlicht is verplicht en die zit boven de achterruit.",
+      "reason": "Je mag inhalen bij onderbroken strepen aan jouw zijde van de weg.",
       "category": "lanes"
     },
 
@@ -322,8 +312,8 @@
           "label": "Naast de stoel van de bestuurder"
         }
       ],
-      "correct": "b",
-      "reason": "Dit is een inrijverbod dat niet geldt voor bussen en landbouwvoertuigen, maar dus wel voor jou."
+      "correct": "c",
+      "reason": "Naast de stoel van de bestuurder, zo is de veiligheidshamer direct binnen handbereik."
     },
     {
       "id": "exam6-q17",
@@ -341,8 +331,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "a",
-      "reason": "Bij normale weersomstandigheden houd je altijd twee seconden volgafstand aan."
+      "correct": "b",
+      "reason": "Je mag alleen gebruik maken van de vluchtstrook als je autopech hebt of in geval van nood."
     },
     {
       "id": "exam6-q18",
@@ -365,7 +355,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Dit is net als een zomerband 1,6 millimeter."
+      "reason": "Alleen bij een gevaarlijke situatie mag je claxonneren om te waarschuwen."
     },
     {
       "id": "exam6-q19",
@@ -387,8 +377,8 @@
           "label": "Splitsing A en B"
         }
       ],
-      "correct": "a",
-      "reason": "Een te lage bandenspanning zorgt voor een hoger brandstofverbruik en vermindert de grip op de weg."
+      "correct": "b",
+      "reason": "Bij een verplicht rijrichtingsbord kan je overal verkeer vandaan verwachten. Bij een eenrichtingsweg (bord A) kan dat niet."
     },
     {
       "id": "exam6-q20",
@@ -411,7 +401,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Wil je een voertuig besturen met meer dan 9 zitplaatsen, dan heb je een rijbewijs D nodig."
+      "reason": "Bij dit bord moeten bestuurders volledig tot stilstand komen en voorrang verlenen aan bestuurders op de kruisende weg."
     },
     {
       "id": "exam6-q21",
@@ -442,7 +432,7 @@
         }
       ],
       "correct": "a",
-      "reason": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links."
+      "reason": "Als bestuurder of passagier dien je voor het uitstappen alle weggebruikers voorrang te verlenen."
     },
     {
       "id": "exam6-q23",
@@ -460,8 +450,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "Situatie A",
-      "reason": "Je mag het overige verkeer niet hinderen."
+      "correct": "a",
+      "reason": "De minimale snelheid die een motorvoertuig moet kunnen rijden om op een autosnelweg te mogen rijden is 60 km/u."
     },
     {
       "id": "exam6-q24",
@@ -484,7 +474,7 @@
         }
       ],
       "correct": "a",
-      "reason": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt."
+      "reason": "Het blauwe lampje bij A is het controlelampje voor groot licht, B geeft dimlicht aan en C is het controlelampje voor de markeringslichten."
     },
     {
       "id": "exam6-q25",
@@ -506,8 +496,8 @@
           "label": "Zowel links als rechts"
         }
       ],
-      "correct": "b",
-      "reason": "112 is het algemeen nummer voor de hulpdiensten in een noodsituatie."
+      "correct": "c",
+      "reason": "Je mag in een file met meerdere banen in dezelfde rijrichting de file rechts en links inhalen."
     },
     {
       "id": "exam6-q26",
@@ -525,8 +515,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "c",
-      "reason": "Je bent verplicht de aanwijzingen van een verkeersregelaar op te volgen; deze gaan boven verkeerslichten en verkeerstekens."
+      "correct": "a",
+      "reason": "In-en uitstappen wordt als een bijzondere manoeuvre gezien. Je moet voor het verrichten van een bijzondere verrichting alle weggebruikers voor laten gaan."
     },
     {
       "id": "exam6-q27",
@@ -545,7 +535,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Bij een rijverbod mag je geen enkel voertuig besturen. Ook geen fiets."
+      "reason": "De grens voor het dragen van een driepuntsgordel ligt op 1,35 meter. Daaronder moet gebruik worden gemaakt van een kinderbeveiligingssysteem, zoals een kinderzitje of verhoger."
     },
     {
       "id": "exam6-q28",
@@ -568,7 +558,7 @@
         }
       ],
       "correct": "b",
-      "reason": "De adviessnelheid van 50 km/u is niet langer geldig."
+      "reason": "Dimlicht is verplicht bij slecht zicht, zoals bij schemering of op onverlichte wegen. Stadslicht dient alleen als parkeerlicht of in combinatie met ander licht. Groot licht mag je niet gebruiken bij schemering. Alleen in de nacht."
     },
     {
       "id": "exam6-q29",
@@ -586,8 +576,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "reason": "Op een vluchthaven mag je niet parkeren of stilstaan."
+      "correct": "a",
+      "reason": "De volgauto's van de rouwstoet kan je zien als een tegenligger. En ook zij hebben dan groen licht. En dan geldt de regel, korte bocht gaat voor lange bocht."
     },
     {
       "id": "exam6-q30",
@@ -609,7 +599,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Bij pech op een snelweg met open spitsstrook is veiligheid het belangrijkst. Eerst de auto zo rechts mogelijk parkeren, dan alarmlichten aan, en direct achter de vangrail gaan staan voor bescherming tegen het verkeer, daarna pas 112 bellen."
+      "reason": "In geval van nood of pech op de autosnelweg moet je de auto altijd verlaten en achter de vangrails plaats nemen."
     },
     {
       "id": "exam6-q31",
@@ -627,7 +617,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Volgens de Nederlandse wet moet een aanhangwagen een eigen kenteken hebben als zijn toegestane maximummassa meer dan 750 kg bedraagt. Aanhangwagens tot 750 kg gebruiken het kenteken van het trekkende voertuig."
+      "reason": "Een aanhangwagen of caravan heeft een eigen kenteken nodig als deze zwaarder is dan 750 kilo."
     },
     {
       "id": "exam6-q32",
@@ -649,8 +639,8 @@
           "label": "Het nieuwe asfalt zorgt voor een gladdere weg dus minder grip"
         }
       ],
-      "correct": "a",
-      "reason": "Je verlaat hier de autosnelweg via afrit 7 en vervolgt de N470."
+      "correct": "c",
+      "reason": "Bij een nieuw wegdek zou je verwachten dat de grip direct goed is, maar dat klopt niet. Nieuw asfalt moet eerst ingereden worden voordat het stroever wordt en meer grip biedt. In het begin kan het dus nog glad zijn, waardoor je minder grip hebt."
     },
     {
       "id": "exam6-q33",
@@ -669,7 +659,7 @@
         }
       ],
       "correct": "a",
-      "reason": "De vorm van een voorrangsbord is ruitvormig."
+      "reason": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang."
     },
     {
       "id": "exam6-q34",
@@ -691,8 +681,8 @@
           "label": "Laden of lossen"
         }
       ],
-      "correct": "a",
-      "reason": "De auto wordt zwaarder en verbruikt daardoor ook meer brandstof."
+      "correct": "c",
+      "reason": "Een gele onderbroken streep op de stoeprand betekent 'niet parkeren'. Laden en lossen is wel toegestaan."
     },
     {
       "id": "exam6-q35",
@@ -711,7 +701,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Een rood brandend olielampje geeft een laag oliepeil aan."
+      "reason": "Met een aanhangwagen is je maximum snelheid op de autoweg 90 km/u."
 
 
     },
@@ -732,7 +722,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Als je met je auto gaat rijden, moet je jouw rijbewijs en kentekenbewijs altijd bij je hebben."
+      "reason": "Je mag met je voertuig wel parkeren of stilstaan aan de andere zijde dan waar het parkeerverbod-bord is geplaatst."
     },
     {
       "id": "exam6-q37",
@@ -750,8 +740,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "reason": "Een verdrijvingsvlak is een gedeelte op de rijbaan dat gemarkeerd is met schuine strepen waar bestuurders niet overheen mogen rijden."
+      "correct": "a",
+      "reason": "Je rijdt op nu de meest rechterrijstrook die richting jouw bestemming gaat."
      },
     {
       "id": "exam6-q38",
@@ -769,8 +759,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "a",
-      "reason": "Als je wordt verblind door een voertuig dat groot licht voert, mag je deze waarschuwen met licht-en geluidssignalen."
+      "correct": "b",
+      "reason": "Bij een ontzegging van je rijbevoegdheid mag je geen voertuigen besturen waarvoor een rijbewijs vereist is. Voor een Speed-pedelec heb je een rijbewijs AM nodig."
     },
     {
       "id": "exam6-q39",
@@ -793,7 +783,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Bromfietsers moeten in dit geval op het verplichte fiets/bromfietspad rijden, die herken je aan het verkeersbord."
+      "reason": "De weggebruiker moet zijn snelheid en rijgedrag aanpassen en alert zijn voor de zijwind."
     },
     {
       "id": "exam6-q40",
@@ -832,7 +822,7 @@
         }
       ],
       "correct": "a",
-      "reason": "Als bestuurder is je plaats op de weg zoveel mogelijk rechts. De twee rechterrijstroken zijn afgesloten."
+      "reason": "Je dient altijd je richting aan te geven als je verandert van rijrichting."
     },
     {
       "id": "exam6-q42",
@@ -851,7 +841,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Het mistachterlicht mag alleen worden gebruikt bij mist als het zicht minder is dan 50 meter."
+      "reason": "cOp een woonerf gelden de gewone voorrangsregels. Fietsers en voetgangers hebben dus geen voorrang als ze je kruisen."
     },
     {
       "id": "exam6-q43",
@@ -870,7 +860,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Dit is een vooraanduiding van overstekende en/ of spelende kinderen."
+      "reason": "Anders dan bij andere waarschuwingssymbolen, is het bij het ABS symbool niet noodzakelijk om direct te stoppen als deze rood is. Het is wel belangrijk om langs de garage te gaan."
     },
     {
       "id": "exam6-q44",
@@ -892,8 +882,8 @@
           "label": "4mm"
         }
       ],
-      "correct": "b",
-      "reason": "Aan de kant van de weg waar dit bord is geplaatst, mag je niet parkeren. Je mag hier wel passagiers laten in- of uitstappen of goederen laden of lossen."
+      "correct": "a",
+      "reason": "De minimale profieldiepte van zomerbanden is 1,6 mm. Onvoldoende profieldiepte zorgt voor minder grip op het wegdek, wat het risico op slippen en aquaplaning vergroot."
     },
     {
       "id": "exam6-q45",
@@ -911,8 +901,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "b",
-      "reason": "Er is hier een platform waar voetgangers bij het uitstappen veilig kunnen wachten tot ze kunnen oversteken. Je hoeft ze in dit geval geen voorrang te geven."
+      "correct": "a",
+      "reason": "Bij een blokmarkering mag je rechts inhalen."
     },
     {
       "id": "exam6-q46",
@@ -931,7 +921,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Het onderbord geeft aan dat je op een voorrangsbocht rijdt; je hebt dus voorrang."
+      "reason": "Je bent verplicht altijd je rijbewijs bij je te hebben als je een motorrijtuig bestuurt waar je een rijbewijs voor nodig hebt. Een kopie of een foto in plaats van het origineel is niet rechtsgeldig."
     },
     {
       "id": "exam6-q47",
@@ -950,7 +940,7 @@
         }
       ],
       "correct": "b",
-      "reason": "Iedereen moet een eigen autogordel gebruiken en over een eigen zitplaats beschikken."
+      "reason": "Je hebt hier te maken met een opstopping. Rijd je ondanks het groene licht toch door, dan bestaat er een kans dat je stil komt te staan midden op de weg. Dit is gevaarlijk."
     },
     {
       "id": "exam6-q48",
@@ -972,8 +962,8 @@
           "label": "Deel 1 en 2"
         }
       ],
-      "correct": "b",
-      "reason": "Je geeft altijd en overal je richting aan maar alleen als het veilig kan. Als je nu je richting aangeeft is dat te vroeg om in te schatten voor het verkeer achter je wanneer je daadwerkelijk gaat invoegen."
+      "correct": "a",
+      "reason": "Dode hoeken zijn de gebieden rond een voertuig die de bestuurder vanuit zijn positie niet kan zien via de spiegels."
     },
     {
       "id": "exam6-q49",
@@ -995,8 +985,8 @@
           "label": "Dat is afhankelijk van de situatie na het kruispunt"
         }
       ],
-      "correct": "a",
-      "reason": "Wegrijden vanuit stilstand is een bijzondere manoeuvre en dan dien je alle weggebruikers voor te laten gaan."
+      "correct": "c",
+      "reason": "In geval je na het afslaan direct naar links moet afslaan sta je zo goed voorgesorteerd. Moet je na het afslaan rechtdoor dan moet je voorsorteren op de rechterrijstrook."
     },
     {
       "id": "exam6-q50",
@@ -1018,8 +1008,8 @@
           "label": "ABS"
         }
       ],
-      "correct": "a",
-      "reason": "Je voert een bijzondere manoeuvre dus dien je alle overige weggebruikers voor te laten."
+      "correct": "b",
+      "reason": "Als dit symbool wordt getoond is staat de start-stop functie in werking."
     }
   ]
 }

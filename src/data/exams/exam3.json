@@ -35,7 +35,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Laden en lossen is toegestaan buiten de parkeervakken."
     },
     {
@@ -55,7 +54,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "De blauwe auto is de blokmarkering voorbij. Aangezien jullie beide een andere richting uitgaan, is het hier toegestaan om via rechts in te halen."
 
     },
@@ -76,7 +74,6 @@
         }
       ],
       "correct": "a",
-      "category": "lanes",
       "reason": "Airbags zijn aanwezig in de auto voor je veiligheid, maar ze zijn in Nederland niet verplicht."
     },
     {
@@ -88,8 +85,8 @@
       "options": [
 
       ],
-      "correct": "c",
-      "category": "Dit bord geeft een adviessnelheid aan, het is dus geen verplichte snelheid. Je rijdt binnen de bebouwde kom en daar is de maximumsnelheid 50 km/u."
+      "correct": "50 Km/u",
+      "reason": "Dit bord geeft een adviessnelheid aan, het is dus geen verplichte snelheid. Je rijdt binnen de bebouwde kom en daar is de maximumsnelheid 50 km/u."
     },
     {
       "id": "exam3-q6",
@@ -108,8 +105,8 @@
         }
       ],
       "correct": "b",
-      "reason":"Het wachten op hulpdiensten dien je op de snelweg altijd achter de vangrails te doen.",
-      "category": "lanes"
+      "reason":"Het wachten op hulpdiensten dien je op de snelweg altijd achter de vangrails te doen."
+
     },
     {
       "id": "exam3-q7",
@@ -150,8 +147,8 @@
         }
       ],
       "correct": "b",
-      "reason": "De vrachtauto blokkeert het zicht van de kruisende weg.",
-      "category": "lanes"
+      "reason": "De vrachtauto blokkeert het zicht van de kruisende weg."
+
     },
     {
       "id": "exam3-q9",
@@ -185,8 +182,8 @@
         }
       ],
       "correct": "a",
-      "reason": "Een dakkoffer verhoogt de luchtweerstand waardoor de auto harder moet werken om te rijden, dit kost dus meer energieverbruik en dus meer brandstof.",
-      "category": "lanes"
+      "reason": "Een dakkoffer verhoogt de luchtweerstand waardoor de auto harder moet werken om te rijden, dit kost dus meer energieverbruik en dus meer brandstof."
+
     },
     {
       "id": "exam3-q11",
@@ -195,27 +192,10 @@
       "type": "interactive-choice",
 
       "options": [
-        {
-          "id": "a",
-          "label": "1"
-        },
-        {
-          "id": "b",
-          "label": "2"
-        },
-        {
-          "id": "c",
-          "label": "3"
-        },
-        {
-          "id": "d",
-          "label": "4"
-        }
+
       ],
-      "correct": "b",
-      "reason": "Met een motorvoertuig mag geen tweewielig motorvoertuig worden gesleept.",
-      "category": "lanes"
-    },
+      "correct": " 1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
+      "reason": "De fietser rijdt op een voorrangsweg rechtdoor op dezelfde weg waar de auto wilt afslaan. De fietser (1) heeft voorrang op de witte auto (2). De rode- en paarse bromfiets staan achter haaientanden op dezelfde weg. De paarse bromfiets (3) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande rode bromfiets (4)."    },
     {
       "id": "exam3-q12",
       "image": "../../assets/exam3/q12.png",
@@ -233,8 +213,8 @@
         }
       ],
       "correct": "b",
-      "reason": "De oranje markering op het signaleringsbord geeft file verkeer aan.",
-      "category": "lanes"
+      "reason": "De oranje markering op het signaleringsbord geeft file verkeer aan."
+
     },
     {
       "id": "exam3-q13",
@@ -497,8 +477,8 @@
       "options": [
 
       ],
-      "correct": "1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
-      "reason": "De fietser rijdt op een voorrangsweg rechtdoor op dezelfde weg waar de auto wilt afslaan. De fietser (1) heeft voorrang op de witte auto (2). De rode- en paarse bromfiets staan achter haaientanden op dezelfde weg. De paarse bromfiets (3) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande rode bromfiets (4)."
+      "correct": "Witte personenauto, 2. Ruiter, 3. Fietser",
+      "reason": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang. De witte personenauto (1) komt van rechts voor de ruiter. De ruiter (2) komt van rechts voor de fietser. De fietser (3) gaat als laatst."
     },
     {
       "id": "exam3-q26",
@@ -544,8 +524,8 @@
           "label": "Je past je snelheid aan"
         }
       ],
-      "correct": "b",
-      "reason": "Bij een rijverbod mag je geen enkel voertuig besturen. Ook geen fiets."
+      "correct": "c",
+      "reason": "Je dient je snelheid aan te passen vanwege een glad weggedeelte door werkzaamheden, olie of regen."
     },
     {
       "id": "exam3-q28",
@@ -645,7 +625,7 @@
     {
       "id": "exam3-q33",
       "image": "../../assets/exam3/q33.png",
-      "text": "Mage je hier stoppen om een passagier uit te laten stappen?",
+      "text": "Mag je hier stoppen om een passagier uit te laten stappen?",
       "type": "multiple",
 
       "options": [
@@ -658,8 +638,8 @@
           "label": "Nee"
         }
       ],
-      "correct": "a",
-      "reason": "De vorm van een voorrangsbord is ruitvormig."
+      "correct": "b",
+      "reason": "Op of naast een fietsstrook mag je niet stilstaan of parkeren."
     },
     {
       "id": "exam3-q34",
@@ -678,7 +658,7 @@
         }
       ],
       "correct": "a",
-      "reason": "De auto wordt zwaarder en verbruikt daardoor ook meer brandstof."
+      "reason": "Dit is een veilige plek waar je het overige verkeer niet in de weg staat."
     },
     {
       "id": "exam3-q35",
@@ -799,8 +779,8 @@
         }
       ],
 
-      "correct": "30 metter",
-      "reason": "Heb je pech en je wilt een gevarendriehoek plaatsen? Zorg er dan voor dat je die 30 meter achter d﻿e auto plaatst. Een gevarendriehoek is overigens niet verplicht, maar natuurlijk wel zo veilig!"
+      "correct": "b",
+      "reason": "Je dient bij het inhalen ongeveer een arm lengte afstand te bewaren."
     },
     {
       "id": "exam3-q41",
