@@ -20,7 +20,8 @@ export default defineComponent({
   setup() {
     function loginWithGoogle() {
       // Begin OAuth flow on backend
-      const backendBase = 'https://api.miranrijschool.nl'
+      const baseURL = process.env.API_URL
+      const backendBase = baseURL
       window.location.assign(`${backendBase}/auth/google`)
     }
     return { loginWithGoogle }

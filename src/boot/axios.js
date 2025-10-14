@@ -8,7 +8,8 @@ import { Cookies } from 'quasar'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.miranrijschool.nl' })
+const baseURL = process.env.API_URL
+const api = axios.create({ baseURL: baseURL })
 
 api.interceptors.request.use((config) => {
   const token = Cookies.get('auth_token')

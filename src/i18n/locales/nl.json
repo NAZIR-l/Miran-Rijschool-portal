@@ -115,6 +115,13 @@
   ,
   "practice": {
     "title": "Oefenexamens",
+    "filter_by_course": "Filteren op cursus",
+    "all_courses": "Alle Cursussen",
+    "loading": "Examens laden...",
+    "no_exams": "Geen examens beschikbaar",
+    "no_enrolled_courses": "Geen Ingeschreven Cursussen",
+    "no_enrolled_courses_text": "Je moet je eerst inschrijven voor een cursus om toegang te krijgen tot oefenexamens.",
+    "browse_courses": "Bekijk Cursussen",
     "status": {
       "new": "Nieuw examen",
       "in_progress": "Bezig",
@@ -160,6 +167,14 @@
     "overview_current": "Huidige vraag",
     "overview_answered": "Beantwoord",
     "overview_flagged": "Gemarkeerd",
+    "loading": "Examen laden...",
+    "no_questions": "Geen vragen beschikbaar",
+    "go_back": "Terug",
+    "enter_answer": "Vul je antwoord in",
+    "type_answer": "Typ je antwoord",
+    "select_answer": "Selecteer je antwoord",
+    "choose_option": "Kies een optie",
+    "answer_hint": "Typ je antwoord en druk op volgende",
     "exit": {
       "title": "Examen verlaten?",
       "message": "Weet u zeker dat u het examen wilt verlaten? Uw voortgang wordt niet opgeslagen.",
@@ -167,7 +182,8 @@
       "stop": "Examen stoppen"
     },
     "image_not_available": "Afbeelding niet beschikbaar",
-    "progress_of": "Vraag {current} van {total}"
+    "progress_of": "Vraag {current} van {total}",
+    "exam_subtitle": "{total} vragen"
   },
   "exam_results": {
     "passed_title": "Gefeliciteerd!",

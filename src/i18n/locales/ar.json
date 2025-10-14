@@ -137,6 +137,10 @@
   ,
   "practice": {
     "title": "الامتحانات التجريبية",
+    "filter_by_course": "تصفية حسب الدورة",
+    "all_courses": "جميع الدورات",
+    "loading": "تحميل الامتحانات...",
+    "no_exams": "لا توجد امتحانات متاحة",
     "status": {
       "new": "امتحان جديد",
       "in_progress": "قيد التنفيذ",
@@ -183,6 +187,14 @@
     "overview_current": "السؤال الحالي",
     "overview_answered": "مُجاب",
     "overview_flagged": "مُعلّم",
+    "loading": "تحميل الامتحان...",
+    "no_questions": "لا توجد أسئلة متاحة",
+    "go_back": "عودة",
+    "enter_answer": "أدخل إجابتك",
+    "type_answer": "اكتب إجابتك",
+    "select_answer": "اختر إجابتك",
+    "choose_option": "اختر خياراً",
+    "answer_hint": "اكتب إجابتك واضغط على التالي",
     "exit": {
       "title": "مغادرة الامتحان؟",
       "message": "هل أنت متأكد أنك تريد مغادرة الامتحان؟ لن يتم حفظ تقدمك.",
@@ -190,7 +202,8 @@
       "stop": "إيقاف الامتحان"
     },
     "image_not_available": "الصورة غير متاحة",
-    "progress_of": "سؤال {current} من {total}"
+    "progress_of": "سؤال {current} من {total}",
+    "exam_subtitle": "{total} سؤال"
   },
   "exam_results": {
     "passed_title": "تهانينا!",

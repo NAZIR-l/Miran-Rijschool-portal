@@ -3,7 +3,7 @@ import ar from "./locales/ar.json";
 import nl from "./locales/nl.json";
 
 export default {
-  "en-US": enUS,
+  "en": enUS,
   ar: ar,
   nl: nl,
 };

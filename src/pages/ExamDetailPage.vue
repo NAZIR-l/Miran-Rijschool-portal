@@ -48,9 +48,12 @@ export default defineComponent({
     async function load() {
       try {
         const id = route.params.id
-        const res = await api.get(`/exams/me/${id}`)
+        // This endpoint is for course details, not exam attempts
+        const res = await api.get(`/exams/courses/${id}`)
         program.value = res?.data || null
-      } catch (_) {}
+      } catch (error) {
+        console.error('Failed to load course:', error)
+      }
     }
 
     async function startPayment() {
@@ -60,7 +63,11 @@ export default defineComponent({
         const res = await api.post(`/payments/enroll/${id}`)
         const checkoutUrl = res?.data?.checkoutUrl
         if (checkoutUrl) window.location.assign(checkoutUrl)
-      } catch (_) {} finally { loading.value = false }
+      } catch (error) {
+        console.error('Payment failed:', error)
+      } finally { 
+        loading.value = false 
+      }
     }
 
     onMounted(load)

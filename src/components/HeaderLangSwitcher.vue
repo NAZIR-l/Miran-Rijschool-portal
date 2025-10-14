@@ -32,7 +32,7 @@ export default defineComponent({
     const $q = useQuasar()
     const current = ref(locale.value)
     const options = [
-      { value: 'en-US', label: 'English', flag: '🇬🇧' },
+      { value: 'en', label: 'English', flag: '🇬🇧' },
       { value: 'ar', label: 'العربية', flag: '🇸🇦' },
       { value: 'nl', label: 'Nederlands', flag: '🇳🇱' }
     ]
@@ -40,7 +40,7 @@ export default defineComponent({
 
     function setLanguage(lang) {
       import(
-        /* webpackInclude: /(ar|en-US|nl)\.js$/ */
+        /* webpackInclude: /(ar|en|nl)\.js$/ */
         'quasar/lang/' + lang
       ).then(mod => {
         const qlang = mod.default

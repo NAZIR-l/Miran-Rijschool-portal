@@ -4,7 +4,7 @@ import messages from 'src/i18n'
 
 export default boot(({ app }) => {
   // Pull locale from cookie if available
-  let startLocale = "en-US";
+  let startLocale = "en";
   try {
     const q = app.config.globalProperties.$q
     if (q?.cookies?.has('locale')) startLocale = q.cookies.get('locale') || startLocale

@@ -6,7 +6,7 @@ export default async ({ app, ssrContext }) => {
 
   try {
     await import(
-      /* webpackInclude: /(ar|en-US).js$/ */
+      /* webpackInclude: /(ar|en).js$/ */
       "quasar/lang/" + langIso
     ).then((lang) => {
       Quasar.lang.set(lang.default, ssrContext);

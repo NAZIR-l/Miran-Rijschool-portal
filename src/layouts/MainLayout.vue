@@ -915,7 +915,6 @@ export default defineComponent({
 }
 .image-container{
   width: 100px;          /* size of the div */
-  height: 60px;
   display: flex;          /* center the image */
   justify-content: center;
   align-items: center;

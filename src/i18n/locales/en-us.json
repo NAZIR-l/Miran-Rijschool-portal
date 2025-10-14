@@ -136,6 +136,10 @@
   ,
   "practice": {
     "title": "Practice exams",
+    "filter_by_course": "Filter by Course",
+    "all_courses": "All Courses",
+    "loading": "Loading exams...",
+    "no_exams": "No exams available",
     "status": {
       "new": "New exam",
       "in_progress": "In progress",
@@ -173,7 +177,7 @@
     "time_left": "Remaining time",
     "mark": "Mark",
     "overview": "Overview",
-    "question": "Vraag",
+    "question": "Question",
     "next": "Next question",
     "previous": "Previous",
     "finish": "Finish exam",
@@ -181,6 +185,14 @@
     "overview_current": "Current question",
     "overview_answered": "Answered",
     "overview_flagged": "Flagged",
+    "loading": "Loading exam...",
+    "no_questions": "No questions available",
+    "go_back": "Go Back",
+    "enter_answer": "Enter your answer",
+    "type_answer": "Type your answer",
+    "select_answer": "Select your answer",
+    "choose_option": "Choose an option",
+    "answer_hint": "Type your answer and press next",
     "exit": {
       "title": "Leave exam?",
       "message": "Are you sure you want to leave the exam? Your progress will not be saved.",
@@ -188,7 +200,8 @@
       "stop": "Stop Exam"
     },
     "image_not_available": "Image not available",
-    "progress_of": "Question {current} of {total}"
+    "progress_of": "Question {current} of {total}",
+    "exam_subtitle": "{total} questions"
   },
   "exam_results": {
     "passed_title": "Congratulations!",

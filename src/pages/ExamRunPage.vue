@@ -1,5 +1,13 @@
 <template>
   <q-page class="exam-run-page q-page-container no-select" @dragover.prevent @drop.prevent>
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-container">
+      <q-spinner color="primary" size="80px" />
+      <p class="loading-text">{{  'Loading exam...' }}</p>
+    </div>
+
+    <!-- Exam Content -->
+    <div v-else-if="questions.length > 0">
     <!-- Header -->
     <header class="exam-header">
       <div class="header-content">
@@ -67,10 +75,10 @@
         <div class="progress-text">
           {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
         </div>
-        <!-- Debug info (remove in production) -->
-        <div class="debug-info" v-if="process.env.NODE_ENV === 'development'">
+        <!-- Debug info (uncomment if needed) -->
+        <!-- <div class="debug-info">
           <small>Exam ID: {{ examId }} | Questions: {{ questions.length }} | Current: {{ indexDisplay }}</small>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -232,7 +240,7 @@
                           :placeholder="$t('exam_run.enter_answer')"
                           :maxlength="200"
                           counter
-                          :label="$t('exam_run.type_answer')"
+                          :label="current.category || $t('exam_run.type_answer')"
                         >
                           <template v-slot:prepend>
                             <q-icon name="edit" class="input-icon" />
@@ -396,42 +404,60 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    </div>
+
+    <!-- No Questions State -->
+    <div v-else class="empty-state">
+      <q-icon name="quiz" size="80px" color="grey-4" />
+      <h3>{{ $t('exam_run.no_questions') || 'No questions available' }}</h3>
+      <q-btn color="primary" outline @click="() => router.back()">
+        {{ $t('exam_run.go_back') || 'Go Back' }}
+      </q-btn>
+    </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent, computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { api } from 'boot/axios'
+import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 
 const assetsCtx = require.context('../assets', true, /(png|jpe?g|webp|svg|gif)$/)
-const examsCtx = require.context('../data/exams', false, /\.json$/)
 
 function normalizeExamId(rawId) {
-  const str = String(rawId ?? '').trim()
-  const match = str.match(/(\d+)/)
-  return match ? match[1] : '1'
+  // const str = String(rawId ?? '').trim()
+  // const match = str.match(/(\d+)/)
+  // return match ? match[1] : '1'
 }
 
-function resolveAsset(inputPath, examId) {
+function resolveAsset(inputPath, examCode) {
   try {
     if (!inputPath) return ''
 
     const raw = String(inputPath).trim().replace(/\\/g, '/')
     const fileName = raw.split('/').pop()
-    const normalizedExamId = parseInt(examId) || 1
+    
+    // Extract exam number from code (e.g., 'exam-1' -> '1')
+    let examNumber = '1'
+    if (examCode) {
+      const match = String(examCode).match(/exam-?(\d+)/)
+      examNumber = match ? match[1] : '1'
+    }
 
-    console.log(`Resolving asset: ${inputPath} for exam ${normalizedExamId}`)
+    console.log(`Resolving asset: ${inputPath} for exam ${examCode} (number: ${examNumber})`)
 
     const allAssets = assetsCtx.keys()
     console.log(`Available assets:`, allAssets.slice(0, 10)) // Log first 10 for debugging
 
-    // Try exact path first
-    const expectedPath = `./exam${normalizedExamId}/${fileName}`
+    // Try exact path first (from the image field, like 'exam1/q1.png')
+    const expectedPath = `./${raw}`
     let foundAsset = allAssets.find(p => p === expectedPath)
 
     if (!foundAsset) {
       // Try with exam folder pattern
-      foundAsset = allAssets.find(p => p.includes(`exam${normalizedExamId}/`) && p.endsWith(fileName))
+      foundAsset = allAssets.find(p => p.includes(`exam${examNumber}/`) && p.endsWith(fileName))
     }
 
     if (!foundAsset) {
@@ -447,7 +473,7 @@ function resolveAsset(inputPath, examId) {
       return resolved
     }
 
-    console.warn(`Asset not found: ${fileName} for exam ${normalizedExamId}`)
+    console.warn(`Asset not found: ${fileName} for exam ${examCode}`)
     return ''
   } catch (e) {
     console.error('Asset resolution error:', inputPath, e)
@@ -455,39 +481,40 @@ function resolveAsset(inputPath, examId) {
   }
 }
 
-function loadExamDataById(id) {
+async function loadExamDataById(id) {
   try {
-    // Normalize exam ID to ensure it's a valid number
-    const examId = parseInt(id) || 1
-    const file = `./exam${examId}.json`
+    console.log(`Loading exam data for ID: ${id} from API`)
 
-    console.log(`Loading exam data for ID: ${examId}, file: ${file}`)
+    // Check if it's a UUID (contains dashes) or a number
+    const isUUID = id && id.includes && id.includes('-')
+    
+    // Use the appropriate endpoint
+    const endpoint = isUUID ? `/exams/detail/${id}` : `/exams/number/${id}`
+    
+    // Fetch exam data from backend API
+    const response = await api.get(endpoint)
+    const examData = response.data
 
-    const mod = examsCtx(file)
-    const examData = mod && mod.default ? mod.default : mod
-
-    console.log(`Loaded exam data:`, {
+    console.log(`Loaded exam data from API:`, {
       id: examData.id,
+      code: examData.code,
       title: examData.title,
       questionsCount: examData.questions?.length || 0
     })
 
     return examData
   } catch (e) {
-    console.error(`Error loading exam ${id}:`, e)
+    console.error(`Error loading exam ${id} from API:`, e)
 
-    // Fallback to exam1 if the requested exam doesn't exist
-    try {
-      console.log('Falling back to exam1.json')
-      const fallback = examsCtx('./exam1.json')
-      return fallback && fallback.default ? fallback.default : fallback
-    } catch (fallbackError) {
-      console.error('Failed to load fallback exam:', fallbackError)
-      return {
-        id: 'exam1',
-        title: 'Default Exam',
-        questions: []
-      }
+    // Return empty exam structure if API fails
+    return {
+      id: id,
+      code: `exam-${id}`,
+      title: { nl: 'Examen', en: 'Exam', ar: 'امتحان' },
+      questions: [],
+      durationMinutes: 30,
+      passingScore: 44,
+      totalPoints: 50
     }
   }
 }
@@ -497,41 +524,40 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const router = useRouter()
+    const $q = useQuasar()
+    const { locale } = useI18n()
     const examParam = route.params.id || '1'
-    const examId = normalizeExamId(examParam)
+    const examId = examParam
 
     console.log('🚀 Starting exam:', examId)
 
-    const data = loadExamDataById(examId)
-    const raw = (data && data.questions ? data.questions : []).slice(0, 50)
-
-    const questions = ref(
-      raw.map((q, idx) => {
-        const processedQuestion = {
-          ...q,
-          rawImage: q.image || '',
-          image: q.image ? resolveAsset(q.image, examId) : ''
-        }
-
-        console.log(`Processing question ${idx + 1}:`, {
-          id: processedQuestion.id,
-          rawImage: processedQuestion.rawImage,
-          resolvedImage: processedQuestion.image,
-          hasText: !!processedQuestion.text
-        })
-
-        return processedQuestion
-      })
-    )
-
-    console.log('🎯 Final processed questions for exam', examId, ':', questions.value)
+    // State for exam data
+    const examData = ref(null)
+    const loading = ref(true)
+    const questions = ref([])
 
     // Exam information
-    const examInfo = computed(() => ({
-      id: data.id || `exam${examId}`,
-      title: data.title || `Exam ${examId}`,
-      totalQuestions: questions.value.length
-    }))
+    const examInfo = computed(() => {
+      if (!examData.value) {
+        return {
+          id: `exam${examId}`,
+          title: `Exam ${examId}`,
+          totalQuestions: 0
+        }
+      }
+
+      // Get localized title
+      let title = examData.value.title
+      if (typeof title === 'object') {
+        title = title[locale.value] || title.nl || title.en || `Exam ${examId}`
+      }
+
+      return {
+        id: examData.value.id || `exam${examId}`,
+        title: title,
+        totalQuestions: questions.value.length
+      }
+    })
 
     // State management
     function getDefaultSelection(question) {
@@ -559,6 +585,23 @@ export default defineComponent({
         imageCaption: ''
       }
 
+      // Process localized text
+      let text = question.text
+      if (typeof text === 'object') {
+        text = text[locale.value] || text.nl || text.en || ''
+      }
+
+      // Process localized options
+      const options = Array.isArray(question.options) 
+        ? question.options.map(opt => {
+            let label = opt.label
+            if (typeof label === 'object') {
+              label = label[locale.value] || label.nl || label.en || ''
+            }
+            return { ...opt, label }
+          })
+        : []
+
       console.log('🎯 Current question:', {
         index: index.value,
         exam: examId,
@@ -566,11 +609,15 @@ export default defineComponent({
         rawImage: question.rawImage,
         resolvedImage: question.image,
         hasImage: !!question.image,
-        textLength: question.text?.length || 0,
-        optionsCount: question.options?.length || 0
+        textLength: text?.length || 0,
+        optionsCount: options?.length || 0
       })
 
-      return question
+      return {
+        ...question,
+        text,
+        options
+      }
     })
 
     const currentImage = computed(() => {
@@ -620,10 +667,57 @@ export default defineComponent({
       }
     }
 
+    // Load exam data
+    async function loadExam() {
+      try {
+        loading.value = true
+        const data = await loadExamDataById(examId)
+        examData.value = data
+
+        // Process questions
+        const raw = (data && data.questions ? data.questions : []).slice(0, 50)
+        questions.value = raw.map((q, idx) => {
+          const processedQuestion = {
+            ...q,
+            rawImage: q.image || '',
+            image: q.image ? resolveAsset(q.image, data.code) : ''
+          }
+
+          console.log(`Processing question ${idx + 1}:`, {
+            id: processedQuestion.id,
+            rawImage: processedQuestion.rawImage,
+            resolvedImage: processedQuestion.image,
+            hasText: !!processedQuestion.text,
+            examCode: data.code
+          })
+
+          return processedQuestion
+        })
+
+        console.log('🎯 Loaded questions for exam', data.code, '(', examId, '):', questions.value.length)
+
+        // Initialize answers array
+        answers.value = questions.value.map(() => null)
+        selected.value = getDefaultSelection(questions.value[0] || null)
+      } catch (error) {
+        console.error('Failed to load exam:', error)
+        $q.notify({
+          type: 'negative',
+          message: 'Failed to load exam. Please try again.',
+          position: 'top'
+        })
+      } finally {
+        loading.value = false
+      }
+    }
+
     // Timer (30 min)
     const remaining = ref(30 * 60)
     let timer
     onMounted(() => {
+      // Load exam data first
+      loadExam()
+
       timer = setInterval(() => {
         remaining.value = Math.max(remaining.value - 1, 0)
         if (remaining.value === 0) {
@@ -790,6 +884,8 @@ export default defineComponent({
     return {
       examId,
       examInfo,
+      examData,
+      loading,
       questions,
       index,
       current,
@@ -833,6 +929,41 @@ export default defineComponent({
   padding: 16px;
   display: flex;
   flex-direction: column;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 24px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 20px;
+  text-align: center;
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
 }
 
 /* Disable text selection on page, allow in inputs */

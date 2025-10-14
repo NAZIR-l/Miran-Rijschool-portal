@@ -6,7 +6,7 @@
           <q-item-label>العربية</q-item-label>
         </q-item-section>
       </q-item>
-      <q-item clickable v-close-popup @click="lang = 'en-US'" :class="{ ActiveLang: lang === 'en-US' }">
+      <q-item clickable v-close-popup @click="lang = 'en'" :class="{ ActiveLang: lang === 'en' }">
         <q-item-section>
           <q-item-label>English</q-item-label>
         </q-item-section>
@@ -26,7 +26,7 @@ import { useI18n } from "vue-i18n";
 import languages from "quasar/lang/index.json";
 
 const appLanguages = languages.filter(lang =>
-  ["ar", "en-US", "nl"].includes(lang.isoName)
+  ["ar", "en", "nl"].includes(lang.isoName)
 );
 $(".English").hide();
 export default {
@@ -64,7 +64,7 @@ export default {
     lang(lang) {
       // dynamic import, so loading on demand onlyFDSAF
       import(
-        /* webpackInclude: /(ar|en-US|nl)\.js$/ */
+        /* webpackInclude: /(ar|en|nl)\.js$/ */
         "quasar/lang/" + lang
       ).then(lang => {
         this.$q.lang.set(lang.default);

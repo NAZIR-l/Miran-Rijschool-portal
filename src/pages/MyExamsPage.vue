@@ -226,8 +226,18 @@ export default defineComponent({
     async function fetchPrograms() {
       try {
         loading.value = true
-        const response = await api.get('/exams/me')
-        allPrograms.value = response.data
+        // Use the my-enrollments endpoint to get user's course enrollments
+        const response = await api.get('/exams/my-enrollments')
+        
+        // Map the enrollment data to match the expected format
+        allPrograms.value = response.data.map(enrollment => ({
+          id: enrollment.id,
+          status: enrollment.status,
+          createdAt: enrollment.enrolledAt || enrollment.createdAt,
+          expiresAt: enrollment.expiresAt,
+          progress: enrollment.progress,
+          course: enrollment.course
+        }))
       } catch (error) {
         console.error('Failed to fetch programs:', error)
         $q.notify({
