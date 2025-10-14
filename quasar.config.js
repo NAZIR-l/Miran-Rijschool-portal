@@ -50,7 +50,7 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       env: {
-        API_URL: process.env.API_URL || 'http://localhost:3001',
+        API_URL: process.env.API_URL || 'https://api.miranrijschool.nl',
       },
 
       // transpile: false,

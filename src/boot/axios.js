@@ -29,7 +29,7 @@ api.interceptors.response.use(
       try { Cookies.remove('auth_token', { path: '/' }) } catch (_) {}
       // Avoid infinite loops by using hard navigation
       try {
-        window.location.assign('http://localhost:8081/login')
+        window.location.assign('https://miranrijschool.nl/login')
       } catch (_) {}
     }
     return Promise.reject(error)

@@ -36,7 +36,7 @@ export default route(function (/* { store, ssrContext } */) {
     const token = Cookies.get('auth_token')
     if (!token) {
       // send unauthenticated users to the external login page
-      try { window.location.assign('http://localhost:8081/login') } catch (_) {}
+      try { window.location.assign('https://miranrijschool.nl/login') } catch (_) {}
       return false
     }
     return true
