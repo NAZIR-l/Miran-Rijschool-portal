@@ -407,7 +407,7 @@
                     />
                   </div>
                   <p class="tagline">Learn smarter. Pass faster.</p>
-                
+
                 </div>
 
                 <div class="footer-col contact">
@@ -419,12 +419,13 @@
                     </li>
                     <li>
                       <q-icon name="chat" size="16px" />
-                      <span>WhatsApp: 06 18 99 20</span>
+                      <span>WhatsApp:                 +31 6 86300588
+                      </span>
                     </li>
                     <li>
                       <q-icon name="mail" size="16px" />
-                      <a href="mailto:69slagen@theorietoppers.nl"
-                        >69slagen@theorietoppers.nl</a
+                      <a href="mailto:info@miranrijschool.nl"
+                        >info@miranrijschool.nl</a
                       >
                     </li>
                   </ul>
@@ -432,7 +433,8 @@
               </div>
 
               <div class="footer-bottom">
-                <div class="copy">© 2025 Theorie Toppers</div>
+                <div class="copy">© 2025 Miran Rijscool
+                </div>
                 <div class="footer-links">
                   <span>Terms and Conditions</span>
                 </div>
