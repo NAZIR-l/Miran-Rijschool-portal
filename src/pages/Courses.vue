@@ -3,14 +3,14 @@
     <!-- Main Category Toggle -->
     <div class="category-toggle-wrapper">
       <div class="category-toggle">
-        <button 
+        <button
           :class="['toggle-btn', { active: viewMode === 'lessons' }]"
           @click="viewMode = 'lessons'"
         >
           <q-icon name="directions_car" size="24px" />
           <span>{{ t('packages.driving_lessons') }}</span>
         </button>
-        <button 
+        <button
           :class="['toggle-btn', { active: viewMode === 'exams' }]"
           @click="viewMode = 'exams'"
         >
@@ -64,7 +64,7 @@
             v-ripple
           >
             <div v-if="i === 1" class="badge">{{ t('packages.retake_note') }}</div>
-         
+
             <div class="card-body">
               <div class="title-row">
                 <q-radio v-model="selected" :val="`${tab}-${i}`" color="primary" size="md" />
@@ -223,9 +223,9 @@ import { useRouter } from "vue-router";
 import { Cookies } from "quasar";
 
 // Import exam package images
-import liteImage from "../assets/lite.png";
-import deluxImage from "../assets/delux.png";
-import premiumImage from "../assets/premium.png";
+import liteImage from "../assets/assets/lite.png";
+import deluxImage from "../assets/assets/delux.png";
+import premiumImage from "../assets/assets/premium.png";
 
 export default defineComponent({
   name: "RijlesPakketten",
@@ -323,11 +323,11 @@ export default defineComponent({
       const variants = ["variant-blue", "variant-blue", "variant-blue", "variant-blue"];
       return variants[i % variants.length];
     }
-    
+
     function iconFor(tab) {
       return icons[tab];
     }
-    
+
     function selectCard(key, evt) {
       selected.value = key;
       const el = evt?.currentTarget;
@@ -967,14 +967,14 @@ export default defineComponent({
   min-width: 200px;
 }
 
-.exam-cta-btn:hover { 
-  transform: translateY(-1px); 
-  box-shadow: 0 16px 28px -12px rgba(37,99,235,.66); 
+.exam-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px -12px rgba(37,99,235,.66);
 }
 
-.exam-cta-btn:active { 
-  transform: translateY(0); 
-  box-shadow: 0 8px 18px -12px rgba(37,99,235,.6); 
+.exam-cta-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px -12px rgba(37,99,235,.6);
 }
 
 .exam-selection-hint {
@@ -989,7 +989,7 @@ export default defineComponent({
     width: 100%;
     max-width: 100%;
   }
-  
+
   .toggle-btn {
     flex: 1;
     padding: 12px 16px;
@@ -997,15 +997,15 @@ export default defineComponent({
     gap: 6px;
     justify-content: center;
   }
-  
+
   .toggle-btn .q-icon {
     font-size: 20px;
   }
-  
+
   .pricing-section {
     padding: 24px 16px;
   }
-  
+
   .category-toggle-wrapper {
     margin-bottom: 28px;
   }
