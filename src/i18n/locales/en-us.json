@@ -362,6 +362,51 @@
       "terms": "Terms and Conditions"
     }
   },
+  "terms": {
+    "title": "Terms and Conditions",
+    "subtitle": "Please read these terms carefully",
+    "company_info": {
+      "title": "Company details",
+      "name": "Name",
+      "address": "Address",
+      "kvk": "Chamber of Commerce (KVK)",
+      "vat": "VAT",
+      "email": "E-mail",
+      "phone": "Phone"
+    },
+    "applicability": {
+      "title": "Applicability",
+      "body": "These terms and conditions apply to all offers, orders and agreements concluded via www.miranrijschool.nl."
+    },
+    "services": {
+      "title": "Services",
+      "body": "Miranrijschool offers theory packages and driving lesson packages for individuals preparing for their driving license."
+    },
+    "prices": {
+      "title": "Prices",
+      "body": "All prices include VAT unless stated otherwise. Promotions or discounts are clearly indicated on the website."
+    },
+    "payment": {
+      "title": "Payment",
+      "body_1": "Payments are processed securely via Mollie (including iDEAL, Bancontact, credit card, Apple Pay).",
+      "body_2": "An order will only be processed after payment has been received."
+    },
+    "cancellation": {
+      "title": "Cancellation and refunds",
+      "body_1": "Digital theory packages cannot be cancelled after delivery.",
+      "body_2": "Driving lesson packages can be cancelled within 14 days provided no lessons have been taken.",
+      "body_3": "Refunds are processed within 14 days using the same payment method."
+    },
+    "liability": {
+      "title": "Liability",
+      "body": "Miranrijschool is not liable for errors in third-party learning materials or outages in online systems."
+    },
+    "complaints": {
+      "title": "Complaints",
+      "body": "Complaints can be sent to info@miranrijschool.nl. We aim to respond within 5 working days."
+    }
+  }
+  ,
   "myPrograms": {
     "title": "My Programs",
     "subtitle": "View and manage your active learning programs",

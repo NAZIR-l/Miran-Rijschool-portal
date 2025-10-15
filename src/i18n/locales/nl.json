@@ -365,6 +365,51 @@
       "terms": "Algemene voorwaarden"
     }
   },
+  "terms": {
+    "title": "Algemene voorwaarden",
+    "subtitle": "Lees deze voorwaarden zorgvuldig door",
+    "company_info": {
+      "title": "Bedrijfsgegevens",
+      "name": "Naam",
+      "address": "Adres",
+      "kvk": "KVK",
+      "vat": "BTW",
+      "email": "E‑mail",
+      "phone": "Telefoon"
+    },
+    "applicability": {
+      "title": "Toepasselijkheid",
+      "body": "Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, bestellingen en overeenkomsten die via www.miranrijschool.nl tot stand komen."
+    },
+    "services": {
+      "title": "Diensten",
+      "body": "Miranrijschool biedt theoriepakketten en rijlespakketten aan voor personen die zich willen voorbereiden op het rijbewijs."
+    },
+    "prices": {
+      "title": "Prijzen",
+      "body": "Alle prijzen zijn inclusief btw, tenzij anders vermeld. Acties of kortingen worden duidelijk op de website aangegeven."
+    },
+    "payment": {
+      "title": "Betaling",
+      "body_1": "Betalingen verlopen veilig via Mollie (o.a. iDEAL, Bancontact, creditcard, Apple Pay).",
+      "body_2": "Een bestelling wordt pas verwerkt nadat de betaling is ontvangen."
+    },
+    "cancellation": {
+      "title": "Annulering en restitutie",
+      "body_1": "Digitale theoriepakketten kunnen na levering niet meer geannuleerd worden.",
+      "body_2": "Rijlespakketten kunnen binnen 14 dagen worden geannuleerd mits er nog geen lessen zijn gevolgd.",
+      "body_3": "Restitutie vindt binnen 14 dagen plaats via dezelfde betaalmethode."
+    },
+    "liability": {
+      "title": "Aansprakelijkheid",
+      "body": "Miranrijschool is niet aansprakelijk voor fouten in lesmateriaal van derden of storingen in online systemen."
+    },
+    "complaints": {
+      "title": "Klachten",
+      "body": "Klachten kunnen worden gericht aan info@miranrijschool.nl. Wij streven ernaar binnen 5 werkdagen te reageren."
+    }
+  }
+  ,
   "myPrograms": {
     "title": "Mijn Programma's",
     "subtitle": "Bekijk en beheer je actieve leerprogramma's",

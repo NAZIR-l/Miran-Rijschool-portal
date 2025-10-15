@@ -69,21 +69,21 @@
           <!-- Chart -->
           <div class="chart-container">
             <div class="chart-bars">
-              <div 
-                v-for="(day, index) in activityData.dailyStats" 
+              <div
+                v-for="(day, index) in activityData.dailyStats"
                 :key="index"
                 class="chart-day"
               >
                 <div class="bar-group">
-                  <div 
-                    class="bar bar-passed" 
+                  <div
+                    class="bar bar-passed"
                     :style="{ height: getBarHeight(day.passed) }"
                     v-if="day.passed > 0"
                   >
                     <q-tooltip>{{ day.passed }} {{ $t('dashboard.passed') }}</q-tooltip>
                   </div>
-                  <div 
-                    class="bar bar-failed" 
+                  <div
+                    class="bar bar-failed"
                     :style="{ height: getBarHeight(day.failed) }"
                     v-if="day.failed > 0"
                   >
@@ -93,7 +93,7 @@
                 <div class="day-label">{{ formatDayLabel(day.date) }}</div>
               </div>
             </div>
-            
+
             <div class="chart-legend">
               <div class="legend-item">
                 <div class="legend-color passed-color"></div>
@@ -117,7 +117,7 @@
                 <div class="progress-subtitle">{{ $t('dashboard.exams_passed') }}</div>
               </div>
             </div>
-            
+
             <!-- Course Selector (if multiple courses) -->
             <div v-if="userCourses.length > 1" class="course-selector">
               <q-select
@@ -207,12 +207,12 @@
               <span class="progress-bar-label">{{ $t('dashboard.overall_progress') }}</span>
               <span class="progress-bar-value">{{ statistics.passedExams }}/{{ statistics.totalExams }} {{ $t('dashboard.exams') }}</span>
             </div>
-            <q-linear-progress 
-              :value="practiceProgress" 
+            <q-linear-progress
+              :value="practiceProgress"
               size="12px"
-              color="primary" 
-              track-color="grey-3" 
-              rounded 
+              color="primary"
+              track-color="grey-3"
+              rounded
               class="professional-progress-bar"
             />
           </div>
@@ -249,7 +249,7 @@ export default defineComponent({
     // User courses
     const userCourses = ref([]);
     const selectedCourseId = ref(null);
-    
+
     // Statistics
     const statistics = ref({
       courseId: null,
@@ -276,20 +276,20 @@ export default defineComponent({
       if (statistics.value.totalExams === 0) return 0;
       return statistics.value.passedExams / statistics.value.totalExams;
     });
-    
+
     const progressPercent = computed(() => statistics.value.progress);
 
     const courseOptions = computed(() => {
       return userCourses.value.map(course => {
         const courseName = course.course?.name;
         let label = 'Course';
-        
+
         if (typeof courseName === 'object' && courseName !== null) {
           label = courseName[locale.value] || courseName.nl || courseName.en || 'Course';
         } else if (typeof courseName === 'string') {
           label = courseName;
         }
-        
+
         return {
           label: label,
           value: course.course?.id
@@ -314,7 +314,7 @@ export default defineComponent({
       try {
         const response = await api.get('/exams/my-courses');
         userCourses.value = response.data || [];
-        
+
         // Set the first course as selected by default
         if (userCourses.value.length > 0) {
           selectedCourseId.value = userCourses.value[0].course?.id;
@@ -326,10 +326,10 @@ export default defineComponent({
 
     async function fetchStatistics() {
       try {
-        const params = selectedCourseId.value 
+        const params = selectedCourseId.value
           ? { courseId: selectedCourseId.value }
           : {};
-        
+
         const response = await api.get('/exams/statistics', { params });
         statistics.value = response.data;
       } catch (error) {
@@ -339,10 +339,10 @@ export default defineComponent({
 
     async function fetchActivityData() {
       try {
-        const params = selectedCourseId.value 
+        const params = selectedCourseId.value
           ? { courseId: selectedCourseId.value }
           : {};
-        
+
         const response = await api.get('/exams/activity/7days', { params });
         activityData.value = response.data;
       } catch (error) {
@@ -371,12 +371,12 @@ export default defineComponent({
 
     function getBarHeight(value) {
       if (!activityData.value.dailyStats.length) return '0px';
-      
+
       const maxValue = Math.max(
         ...activityData.value.dailyStats.map(day => Math.max(day.passed, day.failed)),
         1
       );
-      
+
       const height = (value / maxValue) * 120;
       return `${height}px`;
     }
@@ -385,13 +385,13 @@ export default defineComponent({
       const date = new Date(dateString);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      
+
       const yesterday = new Date(today);
       yesterday.setDate(yesterday.getDate() - 1);
-      
+
       const dateToCheck = new Date(date);
       dateToCheck.setHours(0, 0, 0, 0);
-      
+
       if (dateToCheck.getTime() === today.getTime()) {
         return locale.value === 'nl' ? 'Vandaag' : locale.value === 'ar' ? 'اليوم' : 'Today';
       } else if (dateToCheck.getTime() === yesterday.getTime()) {
@@ -400,7 +400,7 @@ export default defineComponent({
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         const daysNL = ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'];
         const daysAR = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
-        
+
         const dayIndex = date.getDay();
         if (locale.value === 'nl') return daysNL[dayIndex];
         if (locale.value === 'ar') return daysAR[dayIndex];
@@ -445,15 +445,15 @@ export default defineComponent({
       } catch (_) {}
     });
 
-    return { 
-      username, 
+    return {
+      username,
       statistics,
       activityData,
-      practiceProgress, 
-      progressPercent, 
-      currentPackage, 
-      daysLeft, 
-      goto, 
+      practiceProgress,
+      progressPercent,
+      currentPackage,
+      daysLeft,
+      goto,
       myPrograms,
       userCourses,
       selectedCourseId,
@@ -510,7 +510,7 @@ export default defineComponent({
 
 .course-selector {
   min-width: 250px;
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -527,7 +527,7 @@ export default defineComponent({
   gap: 32px;
   margin-bottom: 28px;
   align-items: center;
-  
+
   @media (max-width: 968px) {
     flex-direction: column;
   }
@@ -555,7 +555,7 @@ export default defineComponent({
 }
 
 .circle-label {
-  font-size: 12px;
+  font-size: 8px;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -569,11 +569,11 @@ export default defineComponent({
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   flex: 1;
-  
+
   @media (max-width: 968px) {
     width: 100%;
   }
-  
+
   @media (max-width: 500px) {
     grid-template-columns: 1fr;
   }
@@ -588,7 +588,7 @@ export default defineComponent({
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -604,27 +604,27 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  
+
   &.success {
     background: linear-gradient(135deg, #d1fae5, #a7f3d0);
     color: #059669;
   }
-  
+
   &.danger {
     background: linear-gradient(135deg, #fee2e2, #fecaca);
     color: #dc2626;
   }
-  
+
   &.info {
     background: linear-gradient(135deg, #dbeafe, #bfdbfe);
     color: #2563eb;
   }
-  
+
   &.warning {
     background: linear-gradient(135deg, #fef3c7, #fde68a);
     color: #d97706;
   }
-  
+
   &.primary {
     background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
     color: #4f46e5;
@@ -696,7 +696,7 @@ export default defineComponent({
   color: #92400e;
   font-size: 14px;
   font-weight: 600;
-  
+
   &.success {
     background: linear-gradient(135deg, #d1fae5, #dcfce7);
     border-left-color: #10b981;
@@ -738,17 +738,17 @@ export default defineComponent({
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
-  
+
   &.success-item {
     background: linear-gradient(135deg, #d1fae5, #a7f3d0);
     color: #059669;
   }
-  
+
   &.danger-item {
     background: linear-gradient(135deg, #fee2e2, #fecaca);
     color: #dc2626;
   }
-  
+
   &.info-item {
     background: linear-gradient(135deg, #dbeafe, #bfdbfe);
     color: #2563eb;
@@ -796,16 +796,16 @@ export default defineComponent({
   transition: all 0.3s ease;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
-  
+
   &.bar-passed {
     background: linear-gradient(180deg, #10b981, #059669);
   }
-  
+
   &.bar-failed {
     background: linear-gradient(180deg, #ef4444, #dc2626);
   }
@@ -843,11 +843,11 @@ export default defineComponent({
   width: 16px;
   height: 16px;
   border-radius: 4px;
-  
+
   &.passed-color {
     background: linear-gradient(135deg, #10b981, #059669);
   }
-  
+
   &.failed-color {
     background: linear-gradient(135deg, #ef4444, #dc2626);
   }
@@ -872,7 +872,7 @@ export default defineComponent({
 
 .stat-card {
   animation: fadeInUp 0.5s ease-out;
-  
+
   &:nth-child(1) { animation-delay: 0.1s; }
   &:nth-child(2) { animation-delay: 0.2s; }
   &:nth-child(3) { animation-delay: 0.3s; }
@@ -881,7 +881,7 @@ export default defineComponent({
 
 .chart-day {
   animation: fadeInUp 0.5s ease-out;
-  
+
   @for $i from 1 through 7 {
     &:nth-child(#{$i}) {
       animation-delay: #{$i * 0.05}s;
@@ -893,22 +893,22 @@ export default defineComponent({
 @media (max-width: 600px) {
   .activity-summary {
     width: 100%;
-    
+
     .summary-item {
       flex: 1;
       justify-content: center;
     }
   }
-  
+
   .chart-bars {
     gap: 4px;
     padding: 15px 10px;
   }
-  
+
   .bar {
     max-width: 20px;
   }
-  
+
   .day-label {
     font-size: 10px;
   }

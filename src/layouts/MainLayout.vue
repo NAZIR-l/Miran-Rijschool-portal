@@ -413,10 +413,10 @@
                 <div class="footer-col contact">
                   <div class="col-title">Contact</div>
                   <ul class="list">
-                    <li>
+                    <!-- <li>
                       <q-icon name="call" size="16px" />
                       <span>020 261 7438</span>
-                    </li>
+                    </li> -->
                     <li>
                       <q-icon name="chat" size="16px" />
                       <span>WhatsApp:                 +31 6 86300588
@@ -436,7 +436,7 @@
                 <div class="copy">© 2025 Miran Rijscool
                 </div>
                 <div class="footer-links">
-                  <span>Terms and Conditions</span>
+                  <router-link class="footer-link" to="/terms">{{ $t('layout.footer.terms') }}</router-link>
                 </div>
               </div>
             </footer>

@@ -22,8 +22,27 @@
             </q-btn>
           </div>
           <div class="header-titles">
-            <h1 class="text-h1">{{ $t('exam_answers.title')}}</h1>
-            <p>{{ $t('exam_answers.subtitle') }}</p>
+            <h1 class="page-title">{{ $t('exam_answers.title')}}</h1>
+            <p class="page-subtitle">{{ $t('exam_answers.subtitle') }}</p>
+          </div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="summary-bar">
+          <div class="summary-item">
+            <q-icon name="list_alt" color="primary" size="20px" />
+            <span class="summary-label">{{ $t('exam_answers.total_questions') || 'Questions' }}</span>
+            <span class="summary-value">{{ totalQuestions }}</span>
+          </div>
+          <div class="summary-item">
+            <q-icon name="check_circle" color="positive" size="20px" />
+            <span class="summary-label">{{ $t('exam_answers.correct') || 'Correct' }}</span>
+            <span class="summary-value positive">{{ totalCorrect }}</span>
+          </div>
+          <div class="summary-item">
+            <q-icon name="cancel" color="negative" size="20px" />
+            <span class="summary-label">{{ $t('exam_answers.incorrect') || 'Incorrect' }}</span>
+            <span class="summary-value negative">{{ totalIncorrect }}</span>
           </div>
         </div>
       </div>
@@ -40,12 +59,9 @@
             <div class="question-number">
               {{ $t('exam_answers.question') }} {{ index + 1 }}
             </div>
-            <div class="question-status">
-              <q-icon
-                :name="isCorrect(index) ? 'check_circle' : 'cancel'"
-                :color="isCorrect(index) ? 'positive' : 'negative'"
-                size="sm"
-              />
+            <div class="status-chip" :class="isCorrect(index) ? 'is-correct' : 'is-incorrect'">
+              <q-icon :name="isCorrect(index) ? 'check_circle' : 'cancel'" size="16px" />
+              <span>{{ isCorrect(index) ? ($t('common.correct') || 'Correct') : ($t('common.incorrect') || 'Incorrect') }}</span>
             </div>
           </div>
 
@@ -54,42 +70,47 @@
               {{ question.text }}
             </div>
 
-            <div class="question-image" v-if="question.image">
-              <q-img
-                src="../assets/exam1/q1.png"
-                class="answer-image"
-              >           
-                <template v-slot:error>
-                  <div class="image-error">
-                    <q-icon name="image_not_supported" size="48px" color="grey-4" />
+            <div class="question-layout">
+              <div class="question-media" v-if="question.image">
+                <q-img
+                  :src="getImageSrc(question.image)"
+                  ratio="16/9"
+                  class="answer-image"
+                >
+                  <template v-slot:error>
+                    <div class="image-error">
+                      <q-icon name="image_not_supported" size="48px" color="grey-4" />
+                    </div>
+                  </template>
+                </q-img>
+              </div>
+
+              <div class="question-details">
+                <div class="answers-comparison">
+                  <div class="user-answer">
+                    <div class="answer-label">{{ $t('exam_answers.your_answer') }}</div>
+                    <div class="answer-value" :class="{ 'correct': isCorrect(index), 'incorrect': !isCorrect(index) }">
+                      {{ getUserAnswer(index) }}
+                    </div>
                   </div>
-                </template>
-              </q-img>
-            </div>
 
-            <div class="answers-comparison">
-              <div class="user-answer">
-                <div class="answer-label">{{ $t('exam_answers.your_answer') }}</div>
-                <div class="answer-value" :class="{ 'correct': isCorrect(index), 'incorrect': !isCorrect(index) }">
-                  {{ getUserAnswer(index) }}
+                  <div class="correct-answer" v-if="!isCorrect(index)">
+                    <div class="answer-label">{{ $t('exam_answers.correct_answer') }}</div>
+                    <div class="answer-value correct">
+                      {{ getCorrectAnswer(index) }}
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="correct-answer" v-if="!isCorrect(index)">
-                <div class="answer-label">{{ $t('exam_answers.correct_answer') }}</div>
-                <div class="answer-value correct">
-                  {{ getCorrectAnswer(index) }}
+                <div class="explanation" v-if="question.explanation">
+                  <div class="explanation-label">
+                    <q-icon name="info" size="sm" />
+                    {{ $t('exam_answers.explanation') }}
+                  </div>
+                  <div class="explanation-text">
+                    {{ question.explanation }}
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="explanation" v-if="question.explanation">
-              <div class="explanation-label">
-                <q-icon name="info" size="sm" />
-                {{ $t('exam_answers.explanation') }}
-              </div>
-              <div class="explanation-text">
-                {{ question.explanation }}
               </div>
             </div>
           </div>
@@ -159,16 +180,16 @@ export default defineComponent({
         attemptData.value = response.data
         examData.value = response.data.exam
         examQuestions.value = response.data.exam.questions || []
-        
+
         // Process multilingual text
         examQuestions.value = examQuestions.value.map(q => {
           let text = q.text
           if (typeof text === 'object') {
             text = text[locale.value] || text.nl || text.en || ''
           }
-          
+
           // Process options
-          const options = Array.isArray(q.options) 
+          const options = Array.isArray(q.options)
             ? q.options.map(opt => {
                 let label = opt.label
                 if (typeof label === 'object') {
@@ -177,10 +198,10 @@ export default defineComponent({
                 return { ...opt, label }
               })
             : []
-          
+
           return { ...q, text, options }
         })
-        
+
         // Extract user answers from attempt data
         userAnswers.value = examQuestions.value.map((question) => {
           const answer = response.data.answers.find(a => a.questionId === question.id)
@@ -201,23 +222,33 @@ export default defineComponent({
       }
     }
 
-    function getimage(image) {
-      return `../assets/${image}`
+    function getImageSrc(imagePath) {
+      if (!imagePath) return ''
+      if (/^https?:\/\//.test(imagePath) || imagePath.startsWith('/')) return imagePath
+      try {
+        return new URL(`../assets/${imagePath}`, import.meta.url).href
+      } catch (e) {
+        try {
+          return new URL(`../assets/${String(imagePath).replace(/^\.\/?/, '')}`, import.meta.url).href
+        } catch (e2) {
+          return ''
+        }
+      }
     }
     function loadFromLocalStorage() {
       try {
         const storedData = localStorage.getItem(`exam_${examId}_data`)
         if (storedData) {
           examData.value = JSON.parse(storedData)
-          
+
           // Process multilingual questions from localStorage
           examQuestions.value = (examData.value.questions || []).map(q => {
             let text = q.text
             if (typeof text === 'object') {
               text = text[locale.value] || text.nl || text.en || ''
             }
-            
-            const options = Array.isArray(q.options) 
+
+            const options = Array.isArray(q.options)
               ? q.options.map(opt => {
                   let label = opt.label
                   if (typeof label === 'object') {
@@ -226,12 +257,12 @@ export default defineComponent({
                   return { ...opt, label }
                 })
               : []
-            
+
             let explanation = q.explanation
             if (typeof explanation === 'object') {
               explanation = explanation[locale.value] || explanation.nl || explanation.en || ''
             }
-            
+
             return { ...q, text, options, explanation }
           })
         }
@@ -297,6 +328,12 @@ export default defineComponent({
       }
     }
 
+    const totalQuestions = computed(() => examQuestions.value.length)
+    const totalCorrect = computed(() => {
+      return userAnswers.value.reduce((acc, ans, idx) => acc + (ans === examQuestions.value[idx]?.correct ? 1 : 0), 0)
+    })
+    const totalIncorrect = computed(() => Math.max(totalQuestions.value - totalCorrect.value, 0))
+
     return {
       examId,
       attemptId,
@@ -309,9 +346,12 @@ export default defineComponent({
       getUserAnswer,
       getCorrectAnswer,
       goBack,
-      getimage,
+      getImageSrc,
       retakeExam,
-      goToResults
+      goToResults,
+      totalQuestions,
+      totalCorrect,
+      totalIncorrect
     }
   }
 })
@@ -320,8 +360,8 @@ export default defineComponent({
 <style scoped>
 .exam-answers-page {
   min-height: 100vh;
-  background: #f8fafc;
   padding: 20px;
+  background: transparent;
 }
 
 /* Loading State */
@@ -360,12 +400,19 @@ export default defineComponent({
   gap: 16px;
 }
 
-.text-h1 {
-  font-size: 24px;
-  font-weight: 700;
+
+.page-title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 800;
   color: #1e293b;
-  line-height: 1rem;
-  margin: 0 0 8px 0;
+  line-height: 1.2;
+  margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+  color: #64748b;
+  margin: 0;
+  font-size: clamp(14px, 1.6vw, 16px);
 }
 
 .header-titles p {
@@ -404,6 +451,28 @@ export default defineComponent({
   margin-bottom: 16px;
 }
 
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-chip.is-correct {
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+}
+
+.status-chip.is-incorrect {
+  color: #7f1d1d;
+  background: #fef2f2;
+  border: 1px solid #ef4444;
+}
+
 .question-number {
   font-size: 18px;
   font-weight: 600;
@@ -416,31 +485,34 @@ export default defineComponent({
   gap: 16px;
 }
 
+.question-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .question-layout {
+    grid-template-columns: 1fr 1.2fr;
+    align-items: start;
+  }
+}
+
 .question-text {
   font-size: 16px;
   color: #374151;
   line-height: 1.6;
 }
 
-.question-image {
+.question-media {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .answer-image {
-  max-height: 300px;
-  height: 300px;
   width: 100%;
-  /* object-fit: contain; */
-}
-.answer-image img{
-  object-fit: fill !important;
-
-}
-.q-img__image{
-  object-fit: fill !important;
-
+  max-height: 360px;
 }
 
 .answers-comparison {
@@ -535,4 +607,35 @@ export default defineComponent({
     max-width: 300px;
   }
 }
+
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.summary-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.summary-label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.summary-value {
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.summary-value.positive { color: #059669; }
+.summary-value.negative { color: #dc2626; }
 </style>
