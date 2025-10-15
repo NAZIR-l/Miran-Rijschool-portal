@@ -1,6 +1,6 @@
 <template>
-  <q-page class="terms-page">
-    <div class="container">
+  <q-page class="home-bg">
+    <div class="terms-page">
       <header class="page-header">
         <h1 class="title">{{ $t('terms.title') }}</h1>
         <p class="subtitle">{{ $t('terms.subtitle') }}</p>

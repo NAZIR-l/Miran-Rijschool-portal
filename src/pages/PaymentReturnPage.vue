@@ -1,7 +1,12 @@
 <template>
-  <q-page class="q-pa-lg flex flex-center payment-return-page">
+  <div class="payment-return-page">
     <div class="container">
-      <q-card flat bordered class="q-pa-lg">
+      <!-- Logo Header -->
+      <div class="logo-header">
+        <img src="../assets/Logo-test1.png" alt="Logo" class="logo" />
+      </div>
+
+      <q-card flat bordered class="q-pa-lg payment-card">
         <div class="column items-center q-gutter-sm q-mb-md">
           <q-avatar v-if="loading" size="64px" color="bg-blue" text-color="white">
             <q-spinner size="lg" />
@@ -49,26 +54,20 @@
             <div class="col text-weight-medium">{{ prettyMethod }}</div>
           </div>
           <div class="row items-center no-wrap q-col-gutter-sm">
-            <div class="col-auto text-grey-7">Transaction ID:</div>
-            <div class="col ellipsis text-weight-medium" :title="result?.transactionId">
-              {{ result?.transactionId || '-' }}
-            </div>
-            <div class="col-auto">
-              <q-btn dense flat icon="content_copy" @click="copyTxId" :disable="!result?.transactionId" :title="'Copy'" />
-            </div>
           </div>
         </div>
 
-        <div class="q-mt-lg row justify-center q-gutter-sm">
-          <q-btn v-if="isSuccess" color="primary" unelevated label="Go to My Exams" @click="goMyExams" />
-          <q-btn v-if="isSuccess" outline color="primary" label="Go to Dashboard" @click="goDashboard" />
-          <q-btn v-if="!loading && !isSuccess && !isPending" color="primary" unelevated label="Go to Orders" @click="goOrders" />
-          <q-btn v-if="isPending" outline color="warning" label="Refresh status" @click="refresh" :loading="refreshing" />
+        <div class="q-mt-lg column items-center q-gutter-sm">
+          <q-btn v-if="isSuccess" color="primary" size="lg" unelevated label="Portal" @click="goLogin" class="login-btn" />
+          <q-btn v-if="!loading && !isSuccess && !isPending" color="primary" size="lg" unelevated label="Login to Retry" @click="goLogin" class="login-btn" />
+          <q-btn v-if="isPending" outline color="warning" label="Refresh Status" @click="refresh" :loading="refreshing" />
+          <div v-if="!loading" class="text-caption text-grey-7 q-mt-sm">
+            Login to your portal to access your purchased course
+          </div>
         </div>
       </q-card>
     </div>
-  </q-page>
-  
+  </div>
 </template>
 
 <script>
@@ -115,9 +114,10 @@ export default defineComponent({
       try { await fetchStatus() } finally { refreshing.value = false }
     }
 
-    const goDashboard = () => router.replace({ name: 'Dashboard' })
-    const goMyExams = () => router.replace({ name: 'MyExams' })
-    const goOrders = () => router.replace({ name: 'Orders' })
+    const goLogin = () => {
+      // Redirect to login page
+      window.location.href = 'https://leren.miranrijschool.nl/'
+    }
     const copyTxId = async () => {
       if (!result.value?.transactionId) return
       try { await navigator.clipboard.writeText(result.value.transactionId) } catch (_) {}
@@ -132,9 +132,7 @@ export default defineComponent({
       isSuccess,
       isPending,
       prettyMethod,
-      goDashboard,
-      goMyExams,
-      goOrders,
+      goLogin,
       refresh,
       copyTxId,
     }
@@ -144,19 +142,64 @@ export default defineComponent({
 
 <style scoped>
 .payment-return-page {
-  min-height: 824px;
-    display: flex
-;
-    align-items: flex-start;
-    width: 100%;
-} 
-.container {
-  border-top: 5px solid #2b3bff !important;
-    width: 100%;
-    border-radius: 12px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  padding: 24px;
 }
+
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.logo-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  height: 60px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.payment-card {
+  border-top: 5px solid #2b3bff;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  font-size: 20px;
+    background: #2b3bff !important;
+    border-radius: 14px;
+}
+
 .bg-blue {
   background: #2b3bff !important;
+}
+
+@media (max-width: 600px) {
+  .payment-return-page {
+    padding: 16px;
+  }
+  
+  .logo {
+    height: 48px;
+  }
+  
+  .login-btn {
+    max-width: 100%;
+  }
 }
 </style>
 
