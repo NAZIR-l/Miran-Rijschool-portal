@@ -27,10 +27,10 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
-  // Global auth guard: redirect unauthenticated users to /login
+  // Global auth guard: redirect unauthenticated users to external login, allow public routes
   Router.beforeEach((to) => {
-    // Allow login route regardless of auth
-    if (to.path === '/login') {
+    // Public routes allowed without auth
+    if (to.path === '/login' || to.path === '/terms' || to.name === 'Terms') {
       return true
     }
     const token = Cookies.get('auth_token')

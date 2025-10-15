@@ -361,7 +361,6 @@ export default defineComponent({
 .exam-answers-page {
   min-height: 100vh;
   padding: 20px;
-  background: transparent;
 }
 
 /* Loading State */
