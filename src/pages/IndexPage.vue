@@ -509,8 +509,6 @@ export default defineComponent({
 }
 
 .course-selector {
-  min-width: 250px;
-
   @media (max-width: 768px) {
     width: 100%;
   }

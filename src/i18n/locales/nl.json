@@ -39,9 +39,9 @@
     "normal_price": "Normale prijs",
     "cta": "Koop nu",
     "notes_title": "Notities",
-    "notes_0": "Pakketten bevatten een praktijk examen bij het CBR.",
+    "notes_0": "Alle lessen zijn 100 minuten.",
     "notes_1": "Pakketten bevatten een praktijk examen bij het CBR.",
-    "notes_2": "Pakketten bevatten een praktijk examen bij het CBR.",
+    "notes_2": "Herpakketten zijn alleen beschikbaar voor leerlingen die bij het eerste examen gezakt zijn.",
     "start": "Startpakket",
     "basic": "Basispakket",
     "total": "Totaalpakket",
@@ -52,7 +52,18 @@
     "lesson_desc_free": "{count} lessen (100 min.) + GRATIS praktijkexamen",
     "note_all_lessons": "Alle lessen zijn 100 minuten.",
     "note_inclusive": "Pakketten zijn inclusief praktijkexamen bij het CBR.",
-    "note_retake_only": "Herpakketten zijn alleen beschikbaar voor leerlingen die bij het eerste examen gezakt zijn."
+    "note_retake_only": "Herpakketten zijn alleen beschikbaar voor leerlingen die bij het eerste examen gezakt zijn.",
+    "driving_lessons": "Rijlessen",
+    "exam_packages": "Examenpakketten",
+    "exam_section_title": "Oefenexamen Pakketten",
+    "exam_section_subtitle": "Kies het pakket dat bij jouw leerschema past",
+    "exam_feature_1": "14 officiële CBR oefenexamens",
+    "exam_feature_2": "Gedetailleerde uitleg bij alle vragen",
+    "exam_feature_3": "Volg je voortgang en verbetering",
+    "exam_select_hint": "Selecteer een pakket om door te gaan",
+    "processing": "Verwerken...",
+    "payment_failed": "Betaling mislukt. Probeer het opnieuw.",
+    "failed_to_load_packages": "Laden van pakketten mislukt. Ververs de pagina."
   },
   "index": {
     "title": "Rijles Pakketten",
@@ -233,7 +244,19 @@
     "quick_orders": "Bestellingen",
     "progress": "Voortgang",
     "exams_attempted": "Afgelegde examens",
-    "hint": "Ga door — je bent er bijna!"
+    "exams_passed": "Examens gehaald",
+    "hint": "Ga door — je bent er bijna!",
+    "activity_7days": "7-Dagen Activiteit",
+    "passed": "Gehaald",
+    "failed": "Gezakt",
+    "success_rate": "Slagingspercentage",
+    "select_course": "Selecteer Cursus",
+    "complete": "Compleet",
+    "remaining": "Resterend",
+    "total_exams": "Totaal Examens",
+    "exams": "examens",
+    "overall_progress": "Algehele Voortgang",
+    "completed_all": "Gefeliciteerd! Je hebt alle examens gehaald!"
   },
   "not_found": {
     "title": "Pagina niet gevonden",
@@ -484,6 +507,10 @@
     "txCancelled": "Geannuleerd",
     "txExpired": "Verlopen",
     "errorLoading": "Kon gegevens niet laden"
+  },
+  "errors": {
+    "failed_to_load_packages": "Laden van pakketten mislukt. Ververs de pagina.",
+    "payment_failed": "Betaling mislukt. Probeer het opnieuw."
   }
 }
 

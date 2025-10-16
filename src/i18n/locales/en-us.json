@@ -39,9 +39,9 @@
     "normal_price": "Normal price",
     "cta": "Buy now",
     "notes_title": "Notes",
-    "notes_0": "Packages include a practical exam at the CBR.",
+    "notes_0": "All lessons are 100 minutes.",
     "notes_1": "Packages include a practical exam at the CBR.",
-    "notes_2": "Packages include a practical exam at the CBR.",
+    "notes_2": "Retake packages are only available for students who failed their first exam.",
     "start": "Starter package",
     "basic": "Basic package",
     "total": "Total package",
@@ -52,7 +52,18 @@
     "lesson_desc_free": "{count} lessons (100 min.) + FREE practical exam",
     "note_all_lessons": "All lessons are 100 minutes.",
     "note_inclusive": "Packages include a practical exam at the CBR.",
-    "note_retake_only": "Retake packages are only available for students who failed their first exam."
+    "note_retake_only": "Retake packages are only available for students who failed their first exam.",
+    "driving_lessons": "Driving Lessons",
+    "exam_packages": "Exam Packages",
+    "exam_section_title": "Practice Exam Packages",
+    "exam_section_subtitle": "Choose the package that fits your learning schedule",
+    "exam_feature_1": "14 official CBR practice exams",
+    "exam_feature_2": "Detailed explanations for all questions",
+    "exam_feature_3": "Track your progress and improvement",
+    "exam_select_hint": "Please select a package to continue",
+    "processing": "Processing...",
+    "payment_failed": "Payment failed. Please try again.",
+    "failed_to_load_packages": "Failed to load packages. Please refresh the page."
   },
   "index": {
     "title": "Driving Lesson Packages",
@@ -90,7 +101,19 @@
     "quick_orders": "Orders",
     "progress": "Progress",
     "exams_attempted": "Exams attempted",
-    "hint": "Keep going—you’re almost there!"
+    "exams_passed": "Exams passed",
+    "hint": "Keep going—you're almost there!",
+    "activity_7days": "7-Day Activity",
+    "passed": "Passed",
+    "failed": "Failed",
+    "success_rate": "Success Rate",
+    "select_course": "Select Course",
+    "complete": "Complete",
+    "remaining": "Remaining",
+    "total_exams": "Total Exams",
+    "exams": "exams",
+    "overall_progress": "Overall Progress",
+    "completed_all": "Congratulations! You've completed all exams!"
   },
   "not_found": {
     "title": "Page not Found",
@@ -481,5 +504,9 @@
     "txCancelled": "Cancelled",
     "txExpired": "Expired",
     "errorLoading": "Failed to load data"
+  },
+  "errors": {
+    "failed_to_load_packages": "Failed to load packages. Please refresh the page.",
+    "payment_failed": "Payment failed. Please try again."
   }
 }
