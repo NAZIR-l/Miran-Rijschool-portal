@@ -47,79 +47,6 @@
             <q-btn flat color="primary" no-caps icon="receipt" :label="$t('dashboard.quick_orders')" @click="goto('/orders')" />
           </div>
         </div> -->
-
-        <!-- 7-Day Activity Chart -->
-        <div class="dash-card activity-card d-col-12">
-          <div v-if="loadingActivity" class="loading-banner">
-            <q-inner-loading :showing="true" color="primary">
-              <q-spinner-dots size="50px" color="primary" />
-            </q-inner-loading>
-          </div>
-          <template v-else>
-            <div class="card-title-section">
-              <div class="title-with-icon">
-                <q-icon name="bar_chart" size="24px" color="primary" />
-                <div class="card-title">{{ $t('dashboard.activity_7days') }}</div>
-              </div>
-              <div class="activity-summary">
-                <div class="summary-item success-item">
-                  <q-icon name="check_circle" size="18px" />
-                  <span>{{ activityData.summary.totalPassed }} {{ $t('dashboard.passed') }}</span>
-                </div>
-                <div class="summary-item danger-item">
-                  <q-icon name="cancel" size="18px" />
-                  <span>{{ activityData.summary.totalFailed }} {{ $t('dashboard.failed') }}</span>
-                </div>
-                <div class="summary-item info-item">
-                  <q-icon name="percent" size="18px" />
-                  <span>{{ activityData.summary.successRate }}% {{ $t('dashboard.success_rate') }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chart -->
-            <div class="chart-container">
-              <div class="chart-bars">
-                <div
-                  v-for="(day, index) in activityData.dailyStats"
-                  :key="index"
-                  class="chart-day"
-                >
-                  <div class="bar-group">
-                    <div
-                      class="bar bar-passed"
-                      :style="{ height: getBarHeight(day.passed) }"
-                      v-if="day.passed > 0"
-                    >
-                      <q-tooltip>{{ day.passed }} {{ $t('dashboard.passed') }}</q-tooltip>
-                    </div>
-                    <div
-                      class="bar bar-failed"
-                      :style="{ height: getBarHeight(day.failed) }"
-                      v-if="day.failed > 0"
-                    >
-                      <q-tooltip>{{ day.failed }} {{ $t('dashboard.failed') }}</q-tooltip>
-                    </div>
-                  </div>
-                  <div class="day-label">{{ formatDayLabel(day.date) }}</div>
-                </div>
-              </div>
-
-              <div class="chart-legend">
-                <div class="legend-item">
-                  <div class="legend-color passed-color"></div>
-                  <span>{{ $t('dashboard.passed') }}</span>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-color failed-color"></div>
-                  <span>{{ $t('dashboard.failed') }}</span>
-                </div>
-              </div>
-            </div>
-          </template>
-        </div>
-
-        <!-- Progress -->
         <div class="dash-card progress-card d-col-12">
           <div v-if="loadingStatistics" class="loading-banner">
             <q-inner-loading :showing="true" color="primary">
@@ -142,15 +69,31 @@
                   v-model="selectedCourseId"
                   :options="courseOptions"
                   :label="$t('dashboard.select_course')"
-                  dense
                   outlined
+                  dense
                   emit-value
                   map-options
                   @update:model-value="() => { fetchStatistics(); fetchActivityData(); }"
-                  class="professional-select"
+                  class="course-select"
                 >
                   <template v-slot:prepend>
-                    <q-icon name="school" />
+                    <q-icon name="filter_list" color="primary" />
+                  </template>
+                  <template v-slot:selected>
+                    <div class="selected-course" v-if="selectedCourseId">
+                      <q-icon :name="getCourseIcon(selectedCourseId)" size="18px" class="course-icon" />
+                      <span>{{ getCourseLabel(selectedCourseId) }}</span>
+                    </div>
+                  </template>
+                  <template v-slot:option="scope">
+                    <q-item v-bind="scope.itemProps" class="course-option">
+                      <q-item-section avatar>
+                        <q-icon :name="scope.opt.icon" color="primary" size="20px" />
+                      </q-item-section>
+                      <q-item-section>
+                        <q-item-label>{{ scope.opt.label }} - {{ scope.opt.type }}</q-item-label>
+                      </q-item-section>
+                    </q-item>
                   </template>
                 </q-select>
               </div>
@@ -246,6 +189,79 @@
             </div>
           </template>
         </div>
+        <!-- 7-Day Activity Chart -->
+        <div class="dash-card activity-card d-col-12">
+          <div v-if="loadingActivity" class="loading-banner">
+            <q-inner-loading :showing="true" color="primary">
+              <q-spinner-dots size="50px" color="primary" />
+            </q-inner-loading>
+          </div>
+          <template v-else>
+            <div class="card-title-section">
+              <div class="title-with-icon">
+                <q-icon name="bar_chart" size="24px" color="primary" />
+                <div class="card-title">{{ $t('dashboard.activity_7days') }}</div>
+              </div>
+              <div class="activity-summary">
+                <div class="summary-item success-item">
+                  <q-icon name="check_circle" size="18px" />
+                  <span>{{ activityData.summary.totalPassed }} {{ $t('dashboard.passed') }}</span>
+                </div>
+                <div class="summary-item danger-item">
+                  <q-icon name="cancel" size="18px" />
+                  <span>{{ activityData.summary.totalFailed }} {{ $t('dashboard.failed') }}</span>
+                </div>
+                <div class="summary-item info-item">
+                  <q-icon name="percent" size="18px" />
+                  <span>{{ activityData.summary.successRate }}% {{ $t('dashboard.success_rate') }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="chart-container">
+              <div class="chart-bars">
+                <div
+                  v-for="(day, index) in activityData.dailyStats"
+                  :key="index"
+                  class="chart-day"
+                >
+                  <div class="bar-group">
+                    <div
+                      class="bar bar-passed"
+                      :style="{ height: getBarHeight(day.passed) }"
+                      v-if="day.passed > 0"
+                    >
+                      <q-tooltip>{{ day.passed }} {{ $t('dashboard.passed') }}</q-tooltip>
+                    </div>
+                    <div
+                      class="bar bar-failed"
+                      :style="{ height: getBarHeight(day.failed) }"
+                      v-if="day.failed > 0"
+                    >
+                      <q-tooltip>{{ day.failed }} {{ $t('dashboard.failed') }}</q-tooltip>
+                    </div>
+                  </div>
+                  <div class="day-label">{{ formatDayLabel(day.date) }}</div>
+                </div>
+              </div>
+
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <div class="legend-color passed-color"></div>
+                  <span>{{ $t('dashboard.passed') }}</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color failed-color"></div>
+                  <span>{{ $t('dashboard.failed') }}</span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Progress -->
+
       </div>
     </div>
   </q-page>
@@ -306,6 +322,7 @@ export default defineComponent({
     const courseOptions = computed(() => {
       return userCourses.value.map(course => {
         const courseName = course.course?.name;
+        const courseType = course.course?.type;
         let label = 'Course';
 
         if (typeof courseName === 'object' && courseName !== null) {
@@ -316,10 +333,47 @@ export default defineComponent({
 
         return {
           label: label,
-          value: course.course?.id
+          value: course.course?.id,
+          icon: getCourseIconByType(courseType),
+          type: courseType
         };
       });
     });
+
+    // Get course icon based on type
+    function getCourseIconByType(type) {
+      const icons = {
+        'manual': 'drive_eta',
+        'automatic': 'directions_car',
+        'retake': 'refresh'
+      };
+      return icons[type] || 'school';
+    }
+
+    // Get course icon for selected course
+    function getCourseIcon(courseId) {
+      const course = userCourses.value.find(c => c.course?.id === courseId);
+      return getCourseIconByType(course?.course?.type);
+    }
+
+    // Get course label for selected course
+    function getCourseLabel(courseId) {
+      const course = userCourses.value.find(c => c.course?.id === courseId);
+      
+      if (!course) return '';
+      
+      const courseName = course.course?.name;
+      const courseType = course.course?.type;
+      let label = 'Course';
+
+      if (typeof courseName === 'object' && courseName !== null) {
+        label = courseName[locale.value] || courseName.nl || courseName.en || 'Course';
+      } else if (typeof courseName === 'string') {
+        label = courseName;
+      }
+      
+      return `${label} - ${courseType}`;
+    }
 
     const currentPackage = ref({ name: '-', expires: '-', daysUsed: 0, totalDays: 0 })
     const myPrograms = ref([])
@@ -498,7 +552,9 @@ export default defineComponent({
       formatDayLabel,
       loadingUser,
       loadingStatistics,
-      loadingActivity
+      loadingActivity,
+      getCourseIcon,
+      getCourseLabel
     };
   },
 });
@@ -545,15 +601,89 @@ export default defineComponent({
   margin-top: 2px;
 }
 
+/* Course Selector */
 .course-selector {
+  min-width: 240px;
+
   @media (max-width: 768px) {
     width: 100%;
   }
 }
 
-.professional-select {
-  background: #f8fafc;
+.course-select {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  
+  :deep(.q-field__control) {
+    height: 42px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: #2b3bff;
+      box-shadow: 0 2px 8px rgba(43, 59, 255, 0.1);
+    }
+    
+    &:before {
+      border: none;
+    }
+  }
+  
+  :deep(.q-field__control-container) {
+    padding-top: 0;
+  }
+  
+  :deep(.q-field__label) {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  
+  :deep(.q-field__native) {
+    padding-left: 8px;
+    color: #0f172a;
+    font-weight: 600;
+  }
+  
+  :deep(.q-field__prepend) {
+    padding-right: 8px;
+  }
+}
+
+.selected-course {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+  
+  .course-icon {
+    color: #2b3bff;
+  }
+}
+
+/* Dropdown options styling */
+:deep(.course-option) {
+  padding: 12px 16px;
+  transition: all 0.2s ease;
   border-radius: 8px;
+  margin: 4px 8px;
+  
+  &:hover {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    transform: translateX(4px);
+  }
+  
+  .q-item__section--avatar {
+    min-width: 36px;
+  }
+  
+  .q-item__label {
+    font-weight: 500;
+    color: #334155;
+  }
 }
 
 /* Main Progress Section */

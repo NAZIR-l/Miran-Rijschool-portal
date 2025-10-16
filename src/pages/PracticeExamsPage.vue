@@ -33,8 +33,8 @@
                     <q-icon :name="scope.opt.icon" color="primary" size="20px" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>{{ scope.opt.label }}</q-item-label>
-                  </q-item-section>
+                    <q-item-label>{{ scope.opt.label }} - {{ scope.opt.type }}</q-item-label>
+                  </q-item-section> 
                 </q-item>
               </template>
             </q-select>
@@ -269,7 +269,8 @@ export default defineComponent({
         options.push({
           label: courseName || course.code,
           value: course.id,
-          icon: getCourseIcon(course.type)
+          icon: getCourseIcon(course.type),
+          type: course.type
         });
       });
       
@@ -304,11 +305,12 @@ export default defineComponent({
       
       // Handle multilingual course names
       let courseName = course.name;
+      let type = course.type;
       if (typeof courseName === 'object') {
         courseName = courseName[locale.value] || courseName.nl || courseName.en || course.code;
       }
       
-      return courseName || course.code;
+      return  `${courseName} - ${type}` || course.code;
     }
 
     // Status functions - now using real API data
@@ -422,7 +424,7 @@ export default defineComponent({
 /* Course Filter Dropdown */
 .course-filter {
   min-width: 240px;
-  max-width: 320px;
+  // max-width: 320px;
 }
 
 .course-select {
