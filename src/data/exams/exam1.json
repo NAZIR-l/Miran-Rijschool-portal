@@ -67,141 +67,265 @@
     {
       "id": "exam1-q3",
       "image": "../../assets/exam1/q3.png",
-      "text": "je wilt rechtdoor. Moet je de hele militaire colonne voor laten gaan?",
+      "text": {
+        "nl": "Je wilt rechtdoor. Moet je de hele militaire colonne voor laten gaan?",
+        "en": "You want to go straight ahead. Do you have to let the entire military convoy pass?",
+        "ar": "تريد الذهاب مباشرة. هل يجب عليك السماح للقافلة العسكرية بأكملها بالمرور؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",
-      "reason" : "Het eerste militaire voertuig is je nog niet gepasseerd en je komt van rechts, dus jij hebt voorrang."
+      "reason": {
+        "nl": "Het eerste militaire voertuig is je nog niet gepasseerd en je komt van rechts, dus jij hebt voorrang.",
+        "en": "The first military vehicle has not passed you yet and you are coming from the right, so you have priority.",
+        "ar": "المركبة العسكرية الأولى لم تمر بعد وأنت قادم من اليمين، لذلك لديك الأولوية."
+      }
     },
     {
       "id": "exam1-q4",
       "image": "../../assets/exam1/q4.png",
-      "text": "Mag je hier doorrijden bij groen licht?",
+      "text": {
+        "nl": "Mag je hier doorrijden bij groen licht?",
+        "en": "Are you allowed to continue here when the light is green?",
+        "ar": "هل يُسمح لك بالاستمرار هنا عندما يكون الضوء أخضر؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",
-
-      "reason": "Rijd je hier door dan blokkeer je de kruisende weg door de file voor je, en dat mag nooit."
+      "reason": {
+        "nl": "Rijd je hier door dan blokkeer je de kruisende weg door de file voor je, en dat mag nooit.",
+        "en": "If you continue here, you will block the crossing road due to the traffic jam ahead, and that is never allowed.",
+        "ar": "إذا استمريت هنا، ستحجب الطريق المتقاطع بسبب الازدحام المروري أمامك، وهذا غير مسموح به أبداً."
+      }
     },
     {
       "id": "exam1-q5",
       "image": "../../assets/exam1/q5.png",
-      "text": "welk deel van de weg wordt de rijbaan genoemd?",
+      "text": {
+        "nl": "Welk deel van de weg wordt de rijbaan genoemd?",
+        "en": "Which part of the road is called the carriageway?",
+        "ar": "أي جزء من الطريق يُسمى مسار المركبات؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "A"
+          "label": {
+            "nl": "A",
+            "en": "A",
+            "ar": "A"
+          }
         },
         {
           "id": "b",
-          "label": "B"
+          "label": {
+            "nl": "B",
+            "en": "B",
+            "ar": "B"
+          }
         },
         {
           "id": "c",
-          "label": "C"
+          "label": {
+            "nl": "C",
+            "en": "C",
+            "ar": "C"
+          }
         }
       ],
       "correct": "b",
-      "reason" : "De rijbaan is het gedeelte van de weg dat bestemd is voor rijdende voertuigen."
+      "reason": {
+        "nl": "De rijbaan is het gedeelte van de weg dat bestemd is voor rijdende voertuigen.",
+        "en": "The carriageway is the part of the road intended for moving vehicles.",
+        "ar": "مسار المركبات هو الجزء من الطريق المخصص للمركبات المتحركة."
+      }
     },
     {
       "id": "exam1-q6",
       "image": "../../assets/exam1/q6.png",
-      "text": "wat betekent een groene ventieldop op de band?",
+      "text": {
+        "nl": "Wat betekent een groene ventieldop op de band?",
+        "en": "What does a green valve cap on the tire mean?",
+        "ar": "ماذا يعني غطاء الصمام الأخضر على الإطار؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Reserveband"
+          "label": {
+            "nl": "Reserveband",
+            "en": "Spare tire",
+            "ar": "إطار احتياطي"
+          }
         },
         {
           "id": "b",
-          "label": "Zomerband"
+          "label": {
+            "nl": "Zomerband",
+            "en": "Summer tire",
+            "ar": "إطار صيفي"
+          }
         },
         {
           "id": "c",
-          "label": "Een band die gevuld is met stikstof"
+          "label": {
+            "nl": "Een band die gevuld is met stikstof",
+            "en": "A tire filled with nitrogen",
+            "ar": "إطار مملوء بالنيتروجين"
+          }
         }
       ],
       "correct": "c",
-      "reason": "Er wordt een groen ventieldopje gebruikt als de band gevuld is met stikstof."    },
+      "reason": {
+        "nl": "Er wordt een groen ventieldopje gebruikt als de band gevuld is met stikstof.",
+        "en": "A green valve cap is used when the tire is filled with nitrogen.",
+        "ar": "يُستخدم غطاء صمام أخضر عندما يكون الإطار مملوءاً بالنيتروجين."
+      }
+    },
     {
       "id": "exam1-q7",
       "image": "../../assets/exam1/q7.png",
-      "text": "je komt hier aan rijden en wil linksaf slaan. wat doe je?",
+      "text": {
+        "nl": "Je komt hier aan rijden en wil linksaf slaan. Wat doe je?",
+        "en": "You arrive here and want to turn left. What do you do?",
+        "ar": "تصل إلى هنا وتريد الانعطاف يساراً. ماذا تفعل؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "je wacht voor de haaientanden totdat de grijze auto is afgeslagen"
+          "label": {
+            "nl": "Je wacht voor de haaientanden totdat de grijze auto is afgeslagen",
+            "en": "You wait before the yield markings until the gray car has turned",
+            "ar": "تنتظر أمام علامات الأولوية حتى تنعطف السيارة الرمادية"
+          }
         },
         {
           "id": "b",
-          "label": "je rijdt door tot het middenstuk en wqacht daar tot de grijze auto is afgeslagen"
+          "label": {
+            "nl": "Je rijdt door tot het middenstuk en wacht daar tot de grijze auto is afgeslagen",
+            "en": "You drive to the center section and wait there until the gray car has turned",
+            "ar": "تقود إلى القسم الأوسط وتنتظر هناك حتى تنعطف السيارة الرمادية"
+          }
         },
         {
           "id": "c",
-          "label": "je ridjt door en neemt de afslag voor de grijze auto omdat jij eerst mag"
+          "label": {
+            "nl": "Je rijdt door en neemt de afslag voor de grijze auto omdat jij eerst mag",
+            "en": "You continue and take the exit before the gray car because you have priority",
+            "ar": "تستمر وتأخذ المخرج قبل السيارة الرمادية لأن لديك الأولوية"
+          }
         }
       ],
       "correct": "a",
-      "reason": "Rijd je door naar het middenstuk, dan zal je een deel van de weg blokkeren met jouw aanhangwagen. Dit is verboden. Daarnaast heb jij ook geen voorrang, dus wacht je achter de haaientanden totdat de grijze auto is afgeslagen.",
+      "reason": {
+        "nl": "Rijd je door naar het middenstuk, dan zal je een deel van de weg blokkeren met jouw aanhangwagen. Dit is verboden. Daarnaast heb jij ook geen voorrang, dus wacht je achter de haaientanden totdat de grijze auto is afgeslagen.",
+        "en": "If you drive to the center section, you will block part of the road with your trailer. This is prohibited. Additionally, you don't have priority, so you wait behind the yield markings until the gray car has turned.",
+        "ar": "إذا قدت إلى القسم الأوسط، ستحجب جزءاً من الطريق بمقطورتك. هذا ممنوع. بالإضافة إلى ذلك، ليس لديك الأولوية، لذلك تنتظر خلف علامات الأولوية حتى تنعطف السيارة الرمادية."
+      },
       "category": "lanes"
     },
     {
       "id": "exam1-q8",
       "image": "../../assets/exam1/q8.png",
-      "text": "Is een kentekenplaat noodzakelijk in deze situatie?",
+      "text": {
+        "nl": "Is een kentekenplaat noodzakelijk in deze situatie?",
+        "en": "Is a license plate necessary in this situation?",
+        "ar": "هل لوحة الترخيص ضرورية في هذا الموقف؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "a",
-      "reason": "Je kentekenplaat moet ten alle tijde goed zichtbaar en leesbaar zijn."
+      "reason": {
+        "nl": "Je kentekenplaat moet ten alle tijde goed zichtbaar en leesbaar zijn.",
+        "en": "Your license plate must be clearly visible and legible at all times.",
+        "ar": "يجب أن تكون لوحة الترخيص الخاصة بك واضحة ومقروءة في جميع الأوقات."
+      }
     },
     {
       "id": "exam1-q9",
       "image": "../../assets/exam1/q9.png",
-      "text": "je wilt hier rechtdoor. Moet je toch stoppen?",
+      "text": {
+        "nl": "Je wilt hier rechtdoor. Moet je toch stoppen?",
+        "en": "You want to go straight here. Do you still have to stop?",
+        "ar": "تريد الذهاب مباشرة هنا. هل يجب عليك التوقف؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",
-      "reason" : "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen."
+      "reason": {
+        "nl": "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen.",
+        "en": "Traffic lights take precedence over traffic signs that regulate priority.",
+        "ar": "إشارات المرور لها الأولوية على اللافتات المرورية التي تنظم حق الأولوية."
+      }
     },
     {
       "id": "exam1-q10",
