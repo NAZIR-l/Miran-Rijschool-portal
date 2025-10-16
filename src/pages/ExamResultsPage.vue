@@ -556,7 +556,7 @@ export default defineComponent({
 }
 
 .retake-btn {
-  border: 2px solid #3b82f6;
+  /* border: 2px solid #3b82f6; */
   color: #3b82f6;
 }
 

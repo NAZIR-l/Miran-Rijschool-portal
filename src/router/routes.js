@@ -37,12 +37,6 @@ const routes = [
     component: () => import('pages/PaymentReturnPage.vue'),
     meta: { public: true }
   },
-  {
-    path: '/payment/return',
-    name: 'PaymentReturn',
-    component: () => import('pages/PaymentReturnPage.vue'),
-    meta: { public: true }
-  },
   // {
   //   path: 'exam',
   //   component: () => import('layouts/ExamLayout.vue'),

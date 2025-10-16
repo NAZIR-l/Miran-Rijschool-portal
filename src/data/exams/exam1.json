@@ -330,71 +330,129 @@
     {
       "id": "exam1-q10",
       "image": "../../assets/exam1/q10.png",
-      "text": "Je wilt rechtdoo. Moet je de bromfietser voor laten gaan?",
+      "text": {
+        "nl": "Je wilt rechtdoor. Moet je de bromfietser voor laten gaan?",
+        "en": "You want to go straight ahead. Do you have to let the moped rider pass?",
+        "ar": "تريد الذهاب مباشرة. هل يجب عليك السماح لراكب الدراجة البخارية بالمرور؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "b",
-      "reason" : "Bestuurders op een onverharde weg moeten voorrang verlenen aan bestuurders op een verharde weg."
+      "reason": {
+        "nl": "Bestuurders op een onverharde weg moeten voorrang verlenen aan bestuurders op een verharde weg.",
+        "en": "Drivers on an unpaved road must yield to drivers on a paved road.",
+        "ar": "يجب على السائقين على طريق غير معبد منح الأولوية للسائقين على طريق معبد."
+      }
     },
     {
       "id": "exam1-q11",
       "image": "../../assets/exam1/q11.png",
-      "text": "je wilt linksaf. Moet je stoppen?",
+      "text": {
+        "nl": "Je wilt linksaf. Moet je stoppen?",
+        "en": "You want to turn left. Do you have to stop?",
+        "ar": "تريد الانعطاف يساراً. هل يجب عليك التوقف؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Ja"
+          "label": {
+            "nl": "Ja",
+            "en": "Yes",
+            "ar": "نعم"
+          }
         },
         {
           "id": "b",
-          "label": "Nee"
+          "label": {
+            "nl": "Nee",
+            "en": "No",
+            "ar": "لا"
+          }
         }
       ],
       "correct": "a",
-      "reason" : "Zie de armen van de verkeersregelaar als slagbomen: die staan nu naar beneden voor jou. Alleen bestuurders op de kruisende weg mogen nu doorrijden."
+      "reason": {
+        "nl": "Zie de armen van de verkeersregelaar als slagbomen: die staan nu naar beneden voor jou. Alleen bestuurders op de kruisende weg mogen nu doorrijden.",
+        "en": "See the traffic controller's arms as barriers: they are currently down for you. Only drivers on the crossing road may proceed now.",
+        "ar": "انظر إلى ذراعي منظم المرور كحواجز: هي الآن للأسفل بالنسبة لك. يمكن فقط للسائقين على الطريق المتقاطع المتابعة الآن."
+      }
     },
     {
       "id": "exam1-q12",
       "image": "../../assets/exam1/q12.png",
-      "text": "Wie mag je bij uitstappen niet hinderen?",
+      "text": {
+        "nl": "Wie mag je bij uitstappen niet hinderen?",
+        "en": "Who must you not obstruct when getting out?",
+        "ar": "من يجب ألا تعيق عند النزول من السيارة؟"
+      },
       "type": "multiple",
       "options": [
         {
           "id": "a",
-          "label": "Alleen voetgangers"
+          "label": {
+            "nl": "Alleen voetgangers",
+            "en": "Only pedestrians",
+            "ar": "المشاة فقط"
+          }
         },
         {
           "id": "b",
-          "label": "Alleen bestuurders"
+          "label": {
+            "nl": "Alleen bestuurders",
+            "en": "Only drivers",
+            "ar": "السائقون فقط"
+          }
         },
         {
           "id": "c",
-          "label": "Bestuurders en voetgangers"
+          "label": {
+            "nl": "Bestuurders en voetgangers",
+            "en": "Drivers and pedestrians",
+            "ar": "السائقون والمشاة"
+          }
         }
       ],
       "correct": "c",
-      "reason": "Het in- en uitstappen worden samen als één bijzondere verrichting beschouwd, waarbij je alle weggebruikers voor moet laten gaan."
+      "reason": {
+        "nl": "Het in- en uitstappen worden samen als één bijzondere verrichting beschouwd, waarbij je alle weggebruikers voor moet laten gaan.",
+        "en": "Getting in and out are considered together as one special maneuver, where you must let all road users pass.",
+        "ar": "يعتبر الصعود والنزول معاً كمناورة خاصة واحدة، حيث يجب عليك السماح لجميع مستخدمي الطريق بالمرور."
+      }
     },
     {
       "id": "exam1-q13",
       "image": "../../assets/exam1/q13.png",
-      "text": "Wat is je toegestane maximumsnelheid op deze weg?(Km/u)",
+      "text": {
+        "nl": "Wat is je toegestane maximumsnelheid op deze weg? (Km/u)",
+        "en": "What is your allowed maximum speed on this road? (Km/h)",
+        "ar": "ما هي السرعة القصوى المسموح بها على هذا الطريق؟ (كم/ساعة)"
+      },
       "type": "input",
-      "options": [
-
-      ],
-      "correct": "b",
-      "reason" : "Met een aanhangwagen is de maximumsnelheid op de autosnelweg 90 km/u."
+      "options": [],
+      "correct": "90",
+      "reason": {
+        "nl": "Met een aanhangwagen is de maximumsnelheid op de autosnelweg 90 km/u.",
+        "en": "With a trailer, the maximum speed on the highway is 90 km/h.",
+        "ar": "مع مقطورة، السرعة القصوى على الطريق السريع هي 90 كم/ساعة."
+      }
     },
     {
       "id": "exam1-q14",

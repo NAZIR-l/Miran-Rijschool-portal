@@ -118,6 +118,7 @@ export default defineComponent({
     const courses = ref([]);
     const loading = ref(true);
     const selectedCourse = ref(null);
+    const examStatuses = ref({}); // Store exam statuses: { examId: { passed: bool, status: 'PASSED'|'FAILED', ... } }
 
     // Fetch user's active courses from API
     async function fetchCourses() {
@@ -150,6 +151,36 @@ export default defineComponent({
       }
     }
 
+    // Fetch exam status from API
+    async function fetchExamStatus(examId) {
+      try {
+        const response = await api.get(`/exams/status/${examId}`);
+        return response.data;
+      } catch (error) {
+        // If error (like 401 unauthorized or exam not attempted), return null
+        console.log(`No status found for exam ${examId}:`, error.response?.status);
+        return null;
+      }
+    }
+
+    // Fetch statuses for all exams
+    async function fetchAllExamStatuses(examList) {
+      const statuses = {};
+      
+      // Fetch all exam statuses in parallel
+      await Promise.all(
+        examList.map(async (exam) => {
+          const status = await fetchExamStatus(exam.id);
+          if (status && status.hasAttempt) {
+            statuses[exam.id] = status;
+          }
+        })
+      );
+      
+      examStatuses.value = statuses;
+      console.log('Loaded exam statuses:', statuses);
+    }
+
     // Fetch exams by course ID from API
     async function fetchExamsByCourseId(courseId) {
       try {
@@ -160,6 +191,11 @@ export default defineComponent({
         exams.value = response.data || [];
         
         console.log('Loaded exams for course:', courseId, exams.value.length);
+        
+        // Fetch statuses for all exams
+        if (exams.value.length > 0) {
+          await fetchAllExamStatuses(exams.value);
+        }
       } catch (error) {
         console.error("Failed to fetch exams for course:", error);
         $q.notify({
@@ -275,20 +311,29 @@ export default defineComponent({
       return courseName || course.code;
     }
 
-    // Status functions
+    // Status functions - now using real API data
     function statusClass(examId) {
-      if (examId === "1") return "failed";
-      return "new";   
+      const status = examStatuses.value[examId];
+      if (!status) return "new"; // Not attempted yet
+      
+      if (status.passed) return "passed";
+      return "failed";
     }
 
     function statusIcon(examId) {
-      if (examId === "1") return "😕";
-      return "👀";
+      const status = examStatuses.value[examId];
+      if (!status) return "👀"; // New - not attempted
+      
+      if (status.passed) return "✅";
+      return "😕"; // Failed
     }
 
     function statusKey(examId) {
-      if (examId === "1") return "failed";
-      return "new";
+      const status = examStatuses.value[examId];
+      if (!status) return "new"; // Not attempted
+      
+      if (status.passed) return "passed";
+      return "failed";
     }
 
     function go(examId) {
@@ -317,6 +362,7 @@ export default defineComponent({
       courses,
       loading,
       selectedCourse,
+      examStatuses,
       courseOptions,
       filterExamsByCourse,
       getCourseIcon,
@@ -326,6 +372,7 @@ export default defineComponent({
       statusKey,
       go,
       getExamTitle,
+      router,
     };
   },
 });
@@ -580,6 +627,21 @@ export default defineComponent({
   border: 2px solid #ff7300;
 }
 
+.status-chip.passed .status-icon {
+  background: #f0fdf4;
+  border-color: #16a34a;
+}
+
+.status-chip.failed .status-icon {
+  background: #fff7ed;
+  border-color: #ff7300;
+}
+
+.status-chip.new .status-icon {
+  background: #f8fafc;
+  border-color: #64748b;
+}
+
 .status-bar {
   flex: 1;
   height: 40px;
@@ -587,6 +649,13 @@ export default defineComponent({
 }
 
 /* حالات */
+.status-chip.passed {
+  color: #16a34a;
+  background: #dcfce7;
+}
+.status-bar.passed {
+  background: #dcfce7;
+}
 .status-chip.failed {
   color: #d13c00;
   background: #ffe9df;

@@ -155,7 +155,7 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
     const $q = useQuasar()
-    const { locale } = useI18n()
+    const { locale, t } = useI18n()
 
     const examId = route.params.id || '1'
     const attemptId = route.params.attemptId || null
@@ -290,7 +290,7 @@ export default defineComponent({
       const userAnswer = userAnswers.value[questionIndex]
 
       if (!userAnswer) {
-        return $t('exam_answers.no_answer')
+        return t('exam_answers.no_answer')
       }
 
       if (question.type === 'multiple' || question.type === 'dropdown') {
