@@ -8,7 +8,9 @@
     "back": "Back",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "correct": "Correct",
+    "incorrect": "Incorrect"
   },
   "header": {
     "hello": "Hello,"
@@ -252,7 +254,7 @@
     "load_error": "Failed to load results. Using cache..."
   },
   "exam_answers": {
-    "title": "Answers for exam {examId}",
+    "title": "Exam Answers",
     "subtitle": "Review your answers and the correct solutions",
     "question": "Question",
     "your_answer": "Your answer",
@@ -261,7 +263,10 @@
     "no_answer": "No answer given",
     "retake_exam": "Retake exam",
     "back_to_results": "Back to results",
-    "loading": "Loading answers..."
+    "loading": "Loading answers...",
+    "total_questions": "Total questions",
+    "correct": "Correct",
+    "incorrect": "Incorrect"
   },
   "support": {
     "title": "Support & Help",

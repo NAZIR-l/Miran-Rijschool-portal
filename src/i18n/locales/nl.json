@@ -8,7 +8,9 @@
     "back": "Terug",
     "loading": "Laden...",
     "error": "Fout",
-    "success": "Succes"
+    "success": "Succes",
+    "correct": "Juist",
+    "incorrect": "Onjuist"
   },
   "header": {
     "hello": "Hallo,"
@@ -110,7 +112,8 @@
     "email_pref_title": "Email-voorkeur beheren",
     "email_pref_label": "Ik wil graag emails ontvangen over nieuwe pakketten of speciale aanbiedingen.",
     "exam_date": "Examen datum",
-    "submit": "Wijzig"
+    "submit": "Wijzig",
+    "banner_tip": "Maak je account compleet en maak kans op een leuke goodie bag. We versturen er 5 per dag! 🤩"
   },
   "orders": {
     "title": "Bestellingen",
@@ -219,7 +222,7 @@
     "load_error": "Kan resultaten niet laden. Gebruik cache..."
   },
   "exam_answers": {
-    "title": "Antwoorden voor examen {examId}",
+    "title": "Antwoorden Examen",
     "subtitle": "Bekijk je antwoorden en de juiste oplossingen",
     "question": "Vraag",
     "your_answer": "Jouw antwoord",
@@ -228,7 +231,10 @@
     "no_answer": "Geen antwoord gegeven",
     "retake_exam": "Examen opnieuw",
     "back_to_results": "Terug naar resultaten",
-    "loading": "Antwoorden laden..."
+    "loading": "Antwoorden laden...",
+    "total_questions": "Totaal vragen",
+    "correct": "Juist",
+    "incorrect": "Onjuist"
   },
   "dashboard": {
     "welcome_back": "Welkom terug",
@@ -360,9 +366,6 @@
       "direction": "Rijrichtingen",
       "parking": "Parkeren"
     }
-  },
-  "account": {
-    "banner_tip": "Maak je account compleet en maak kans op een leuke goodie bag. We versturen er 5 per dag! 🤩"
   },
   "layout": {
     "menu_open": "Menu openen",

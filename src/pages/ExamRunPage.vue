@@ -719,7 +719,7 @@ export default defineComponent({
     }
 
     // Timer - will be set from API response
-    const remaining = ref(0)
+    const remaining = ref(30)
     let timer
     onMounted(() => {
       // Load exam data first
