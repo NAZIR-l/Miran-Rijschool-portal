@@ -699,6 +699,13 @@ export default defineComponent({
         // Initialize answers array
         answers.value = questions.value.map(() => null)
         selected.value = getDefaultSelection(questions.value[0] || null)
+
+        // Set timer duration from API response (default to 30 minutes if not provided)
+        console.log('🎯 Exam duration:', data.durationMinutes)
+        console.log(JSON.stringify(data))
+        const durationMinutes = data.durationMinutes || 30
+        remaining.value = durationMinutes * 60
+        console.log('⏱️ Exam duration set to:', durationMinutes, 'minutes')
       } catch (error) {
         console.error('Failed to load exam:', error)
         $q.notify({
@@ -711,8 +718,8 @@ export default defineComponent({
       }
     }
 
-    // Timer (30 min)
-    const remaining = ref(30 * 60)
+    // Timer - will be set from API response
+    const remaining = ref(0)
     let timer
     onMounted(() => {
       // Load exam data first
@@ -854,8 +861,9 @@ export default defineComponent({
       console.log('📝 Examen submitted for exam', examId, ':', answers.value)
 
       try {
-        // Calculate time spent (30 minutes - remaining time)
-        const timeSpentSeconds = (30 * 60) - remaining.value
+        // Calculate time spent (total duration - remaining time)
+        const totalDuration = examData.value?.durationMinutes || 30
+        const timeSpentSeconds = (totalDuration * 60) - remaining.value
 
         // Submit to backend
         const response = await api.post('/exams/submit', {
