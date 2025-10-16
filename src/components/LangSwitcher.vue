@@ -62,17 +62,26 @@ export default {
 
   watch: {
     lang(lang) {
+      // Map locale to Quasar language pack
+      const quasarLangMap = {
+        'en': 'en-US',
+        'ar': 'ar',
+        'nl': 'nl'
+      };
+      
+      const quasarLang = quasarLangMap[lang] || 'en-US';
+      
       // dynamic import, so loading on demand onlyFDSAF
       import(
-        /* webpackInclude: /(ar|en|nl)\.js$/ */
-        "quasar/lang/" + lang
-      ).then(lang => {
-        this.$q.lang.set(lang.default);
-        this.locale = lang.default.isoName;
-        this.$q.cookies.set("locale", lang.default.isoName);
+        /* webpackInclude: /(ar|en-US|nl)\.js$/ */
+        "quasar/lang/" + quasarLang
+      ).then(langModule => {
+        this.$q.lang.set(langModule.default);
+        this.locale = lang;
+        this.$q.cookies.set("locale", lang);
         try {
-          document.documentElement.setAttribute('dir', this.locale === 'ar' ? 'rtl' : 'ltr');
-          document.documentElement.setAttribute('lang', this.locale);
+          document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+          document.documentElement.setAttribute('lang', lang);
         } catch (e) {}
       });
     }

@@ -39,18 +39,27 @@ export default defineComponent({
     const currentFlag = computed(() => (options.find(o => o.value === current.value)?.flag) || '🌐')
 
     function setLanguage(lang) {
+      // Map locale to Quasar language pack
+      const quasarLangMap = {
+        'en': 'en-US',
+        'ar': 'ar',
+        'nl': 'nl'
+      }
+      
+      const quasarLang = quasarLangMap[lang] || 'en-US'
+      
       import(
-        /* webpackInclude: /(ar|en|nl)\.js$/ */
-        'quasar/lang/' + lang
+        /* webpackInclude: /(ar|en-US|nl)\.js$/ */
+        'quasar/lang/' + quasarLang
       ).then(mod => {
         const qlang = mod.default
         if (qlang) {
           // Quasar lang
           $q.lang.set(qlang)
           // Vue i18n
-          locale.value = qlang.isoName || lang
+          locale.value = lang
           // Persist
-          $q.cookies.set('locale', locale.value)
+          $q.cookies.set('locale', lang)
           current.value = lang
           // Set direction for Arabic
           try { document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr') } catch (e) {}

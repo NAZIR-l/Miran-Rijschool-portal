@@ -541,13 +541,13 @@ export default defineComponent({
 }
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 28px;
   margin-top: 24px;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .cards-grid {
-    grid-template-columns: repeat(1, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 .price-card {
@@ -741,26 +741,7 @@ export default defineComponent({
 
 
 /* Responsive */
-@media (max-width: 768px) {
-  .cards-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .pricing-section {
-    padding: 20px 14px;
-  }
-  .cards-grid {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-  .price-card {
-    min-width: 80%;
-    scroll-snap-align: center;
-  }
-}
+
 
 /* Exam Packages Styles */
 .exam-packages-wrapper {
@@ -773,10 +754,10 @@ export default defineComponent({
   gap: 28px;
   margin-bottom: 32px;
 }
-
 @media (max-width: 1024px) {
   .exam-cards-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 

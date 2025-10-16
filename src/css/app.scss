@@ -6,22 +6,28 @@
   --primary: #043CA1;
   --page-bg: #f5f3ef;
 }
-.q-layout{
-  width: auto;
+
+.q-layout {
+  min-height: 1638px;
+  max-width: 2499px;
 }
+#q-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f3f0;
+}
+
+
 html {
 
   overflow-x: hidden;
 }
-
-.q-layout {
-  max-width: 1900px;
-}
-
-.answer-image img{
+.answer-image img {
   object-fit: fill !important;
 
 }
+
 /* Home page background helper */
 .home-bg {
   background: var(--page-bg);
@@ -42,6 +48,7 @@ body,
 .q-page-container {
   background: var(--page-bg);
   min-height: 100vh;
+
   @media (max-width: 420px) {
     width: fit-content;
   }
@@ -96,11 +103,13 @@ body,
   color: #666;
   font-size: 14px;
 }
+
 @media (max-width: 1024px) {
   .footer-inner {
     flex-direction: column;
   }
 }
+
 .footer-inner .left div+div,
 .footer-inner .middle div+div {
   margin-top: 4px;
