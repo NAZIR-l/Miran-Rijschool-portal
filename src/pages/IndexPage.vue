@@ -4,7 +4,12 @@
       <div class="dashboard-grid three">
         <!-- Greeting -->
         <div class="dash-card greeting-card d-col-12">
-          <div class="greeting-inner">
+          <div v-if="loadingUser" class="loading-banner">
+            <q-inner-loading :showing="true" color="primary">
+              <q-spinner-dots size="50px" color="primary" />
+            </q-inner-loading>
+          </div>
+          <div v-else class="greeting-inner">
             <div class="copy">
               <div class="eyebrow">{{ $t('dashboard.welcome_back') }}</div>
               <h2 class="headline">{{ username }}!</h2>
@@ -45,187 +50,201 @@
 
         <!-- 7-Day Activity Chart -->
         <div class="dash-card activity-card d-col-12">
-          <div class="card-title-section">
-            <div class="title-with-icon">
-              <q-icon name="bar_chart" size="24px" color="primary" />
-              <div class="card-title">{{ $t('dashboard.activity_7days') }}</div>
-            </div>
-            <div class="activity-summary">
-              <div class="summary-item success-item">
-                <q-icon name="check_circle" size="18px" />
-                <span>{{ activityData.summary.totalPassed }} {{ $t('dashboard.passed') }}</span>
-              </div>
-              <div class="summary-item danger-item">
-                <q-icon name="cancel" size="18px" />
-                <span>{{ activityData.summary.totalFailed }} {{ $t('dashboard.failed') }}</span>
-              </div>
-              <div class="summary-item info-item">
-                <q-icon name="percent" size="18px" />
-                <span>{{ activityData.summary.successRate }}% {{ $t('dashboard.success_rate') }}</span>
-              </div>
-            </div>
+          <div v-if="loadingActivity" class="loading-banner">
+            <q-inner-loading :showing="true" color="primary">
+              <q-spinner-dots size="50px" color="primary" />
+            </q-inner-loading>
           </div>
-
-          <!-- Chart -->
-          <div class="chart-container">
-            <div class="chart-bars">
-              <div
-                v-for="(day, index) in activityData.dailyStats"
-                :key="index"
-                class="chart-day"
-              >
-                <div class="bar-group">
-                  <div
-                    class="bar bar-passed"
-                    :style="{ height: getBarHeight(day.passed) }"
-                    v-if="day.passed > 0"
-                  >
-                    <q-tooltip>{{ day.passed }} {{ $t('dashboard.passed') }}</q-tooltip>
-                  </div>
-                  <div
-                    class="bar bar-failed"
-                    :style="{ height: getBarHeight(day.failed) }"
-                    v-if="day.failed > 0"
-                  >
-                    <q-tooltip>{{ day.failed }} {{ $t('dashboard.failed') }}</q-tooltip>
-                  </div>
+          <template v-else>
+            <div class="card-title-section">
+              <div class="title-with-icon">
+                <q-icon name="bar_chart" size="24px" color="primary" />
+                <div class="card-title">{{ $t('dashboard.activity_7days') }}</div>
+              </div>
+              <div class="activity-summary">
+                <div class="summary-item success-item">
+                  <q-icon name="check_circle" size="18px" />
+                  <span>{{ activityData.summary.totalPassed }} {{ $t('dashboard.passed') }}</span>
                 </div>
-                <div class="day-label">{{ formatDayLabel(day.date) }}</div>
+                <div class="summary-item danger-item">
+                  <q-icon name="cancel" size="18px" />
+                  <span>{{ activityData.summary.totalFailed }} {{ $t('dashboard.failed') }}</span>
+                </div>
+                <div class="summary-item info-item">
+                  <q-icon name="percent" size="18px" />
+                  <span>{{ activityData.summary.successRate }}% {{ $t('dashboard.success_rate') }}</span>
+                </div>
               </div>
             </div>
 
-            <div class="chart-legend">
-              <div class="legend-item">
-                <div class="legend-color passed-color"></div>
-                <span>{{ $t('dashboard.passed') }}</span>
+            <!-- Chart -->
+            <div class="chart-container">
+              <div class="chart-bars">
+                <div
+                  v-for="(day, index) in activityData.dailyStats"
+                  :key="index"
+                  class="chart-day"
+                >
+                  <div class="bar-group">
+                    <div
+                      class="bar bar-passed"
+                      :style="{ height: getBarHeight(day.passed) }"
+                      v-if="day.passed > 0"
+                    >
+                      <q-tooltip>{{ day.passed }} {{ $t('dashboard.passed') }}</q-tooltip>
+                    </div>
+                    <div
+                      class="bar bar-failed"
+                      :style="{ height: getBarHeight(day.failed) }"
+                      v-if="day.failed > 0"
+                    >
+                      <q-tooltip>{{ day.failed }} {{ $t('dashboard.failed') }}</q-tooltip>
+                    </div>
+                  </div>
+                  <div class="day-label">{{ formatDayLabel(day.date) }}</div>
+                </div>
               </div>
-              <div class="legend-item">
-                <div class="legend-color failed-color"></div>
-                <span>{{ $t('dashboard.failed') }}</span>
+
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <div class="legend-color passed-color"></div>
+                  <span>{{ $t('dashboard.passed') }}</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color failed-color"></div>
+                  <span>{{ $t('dashboard.failed') }}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </template>
         </div>
 
         <!-- Progress -->
         <div class="dash-card progress-card d-col-12">
-          <div class="progress-header">
-            <div class="progress-title-section">
-              <q-icon name="analytics" size="28px" color="primary" class="progress-icon" />
-              <div>
-          <div class="card-title">{{ $t('dashboard.progress') }}</div>
-                <div class="progress-subtitle">{{ $t('dashboard.exams_passed') }}</div>
+          <div v-if="loadingStatistics" class="loading-banner">
+            <q-inner-loading :showing="true" color="primary">
+              <q-spinner-dots size="50px" color="primary" />
+            </q-inner-loading>
+          </div>
+          <template v-else>
+            <div class="progress-header">
+              <div class="progress-title-section">
+                <q-icon name="analytics" size="28px" color="primary" class="progress-icon" />
+                <div>
+            <div class="card-title">{{ $t('dashboard.progress') }}</div>
+                  <div class="progress-subtitle">{{ $t('dashboard.exams_passed') }}</div>
+                </div>
+              </div>
+
+              <!-- Course Selector (if multiple courses) -->
+              <div v-if="userCourses.length > 1" class="course-selector">
+                <q-select
+                  v-model="selectedCourseId"
+                  :options="courseOptions"
+                  :label="$t('dashboard.select_course')"
+                  dense
+                  outlined
+                  emit-value
+                  map-options
+                  @update:model-value="() => { fetchStatistics(); fetchActivityData(); }"
+                  class="professional-select"
+                >
+                  <template v-slot:prepend>
+                    <q-icon name="school" />
+                  </template>
+                </q-select>
               </div>
             </div>
 
-            <!-- Course Selector (if multiple courses) -->
-            <div v-if="userCourses.length > 1" class="course-selector">
-              <q-select
-                v-model="selectedCourseId"
-                :options="courseOptions"
-                :label="$t('dashboard.select_course')"
-                dense
-                outlined
-                emit-value
-                map-options
-                @update:model-value="() => { fetchStatistics(); fetchActivityData(); }"
-                class="professional-select"
-              >
-                <template v-slot:prepend>
-                  <q-icon name="school" />
-                </template>
-              </q-select>
-            </div>
-          </div>
+            <!-- Main Progress Display -->
+            <div class="progress-main">
+              <div class="progress-circle-wrapper">
+                <q-circular-progress
+                  :value="progressPercent"
+                  size="140px"
+                  :thickness="0.12"
+                  color="primary"
+                  track-color="grey-3"
+                  class="progress-circle"
+                  show-value
+                >
+                  <div class="progress-circle-content">
+                    <div class="circle-percent">{{ progressPercent }}%</div>
+                    <div class="circle-label">{{ $t('dashboard.complete') }}</div>
+                  </div>
+                </q-circular-progress>
+              </div>
 
-          <!-- Main Progress Display -->
-          <div class="progress-main">
-            <div class="progress-circle-wrapper">
-              <q-circular-progress
-                :value="progressPercent"
-                size="140px"
-                :thickness="0.12"
+              <!-- Statistics Grid -->
+              <div class="stats-grid">
+                <div class="stat-card stat-passed">
+                  <div class="stat-icon-wrapper success">
+                    <q-icon name="check_circle" size="24px" />
+                  </div>
+                  <div class="stat-content">
+                    <div class="stat-value">{{ statistics.passedExams }}</div>
+                    <div class="stat-label">{{ $t('dashboard.passed') }}</div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-failed">
+                  <div class="stat-icon-wrapper danger">
+                    <q-icon name="cancel" size="24px" />
+                  </div>
+                  <div class="stat-content">
+                    <div class="stat-value">{{ statistics.failedExams }}</div>
+                    <div class="stat-label">{{ $t('dashboard.failed') }}</div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-remaining">
+                  <div class="stat-icon-wrapper warning">
+                    <q-icon name="pending_actions" size="24px" />
+                  </div>
+                  <div class="stat-content">
+                    <div class="stat-value">{{ statistics.totalExams - statistics.passedExams }}</div>
+                    <div class="stat-label">{{ $t('dashboard.remaining') }}</div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-total">
+                  <div class="stat-icon-wrapper primary">
+                    <q-icon name="assignment" size="24px" />
+                  </div>
+                  <div class="stat-content">
+                    <div class="stat-value">{{ statistics.totalExams }}</div>
+                    <div class="stat-label">{{ $t('dashboard.total_exams') }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-section">
+              <div class="progress-bar-header">
+                <span class="progress-bar-label">{{ $t('dashboard.overall_progress') }}</span>
+                <span class="progress-bar-value">{{ statistics.passedExams }}/{{ statistics.totalExams }} {{ $t('dashboard.exams') }}</span>
+              </div>
+              <q-linear-progress
+                :value="practiceProgress"
+                size="12px"
                 color="primary"
                 track-color="grey-3"
-                class="progress-circle"
-                show-value
-              >
-                <div class="progress-circle-content">
-                  <div class="circle-percent">{{ progressPercent }}%</div>
-                  <div class="circle-label">{{ $t('dashboard.complete') }}</div>
-                </div>
-              </q-circular-progress>
+                rounded
+                class="professional-progress-bar"
+              />
             </div>
 
-            <!-- Statistics Grid -->
-            <div class="stats-grid">
-              <div class="stat-card stat-passed">
-                <div class="stat-icon-wrapper success">
-                  <q-icon name="check_circle" size="24px" />
-                </div>
-                <div class="stat-content">
-                  <div class="stat-value">{{ statistics.passedExams }}</div>
-                  <div class="stat-label">{{ $t('dashboard.passed') }}</div>
-                </div>
-              </div>
-
-              <div class="stat-card stat-failed">
-                <div class="stat-icon-wrapper danger">
-                  <q-icon name="cancel" size="24px" />
-                </div>
-                <div class="stat-content">
-                  <div class="stat-value">{{ statistics.failedExams }}</div>
-                  <div class="stat-label">{{ $t('dashboard.failed') }}</div>
-                </div>
-              </div>
-
-              <div class="stat-card stat-remaining">
-                <div class="stat-icon-wrapper warning">
-                  <q-icon name="pending_actions" size="24px" />
-                </div>
-                <div class="stat-content">
-                  <div class="stat-value">{{ statistics.totalExams - statistics.passedExams }}</div>
-                  <div class="stat-label">{{ $t('dashboard.remaining') }}</div>
-                </div>
-              </div>
-
-              <div class="stat-card stat-total">
-                <div class="stat-icon-wrapper primary">
-                  <q-icon name="assignment" size="24px" />
-                </div>
-                <div class="stat-content">
-                  <div class="stat-value">{{ statistics.totalExams }}</div>
-                  <div class="stat-label">{{ $t('dashboard.total_exams') }}</div>
-                </div>
-              </div>
+            <!-- Motivational Message -->
+            <div class="motivation-message" v-if="progressPercent < 100">
+              <q-icon name="emoji_events" size="20px" color="amber-7" />
+              <span>{{ $t('dashboard.hint') }}</span>
             </div>
-          </div>
-
-          <!-- Progress Bar -->
-          <div class="progress-bar-section">
-            <div class="progress-bar-header">
-              <span class="progress-bar-label">{{ $t('dashboard.overall_progress') }}</span>
-              <span class="progress-bar-value">{{ statistics.passedExams }}/{{ statistics.totalExams }} {{ $t('dashboard.exams') }}</span>
+            <div class="motivation-message success" v-else>
+              <q-icon name="celebration" size="20px" color="positive" />
+              <span>{{ $t('dashboard.completed_all') }}</span>
             </div>
-            <q-linear-progress
-              :value="practiceProgress"
-              size="12px"
-              color="primary"
-              track-color="grey-3"
-              rounded
-              class="professional-progress-bar"
-            />
-          </div>
-
-          <!-- Motivational Message -->
-          <div class="motivation-message" v-if="progressPercent < 100">
-            <q-icon name="emoji_events" size="20px" color="amber-7" />
-            <span>{{ $t('dashboard.hint') }}</span>
-          </div>
-          <div class="motivation-message success" v-else>
-            <q-icon name="celebration" size="20px" color="positive" />
-            <span>{{ $t('dashboard.completed_all') }}</span>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -245,6 +264,11 @@ export default defineComponent({
     const router = useRouter();
     const { locale } = useI18n();
     const username = ref("");
+
+    // Loading states
+    const loadingUser = ref(true);
+    const loadingStatistics = ref(true);
+    const loadingActivity = ref(true);
 
     // User courses
     const userCourses = ref([]);
@@ -325,6 +349,7 @@ export default defineComponent({
     }
 
     async function fetchStatistics() {
+      loadingStatistics.value = true;
       try {
         const params = selectedCourseId.value
           ? { courseId: selectedCourseId.value }
@@ -334,10 +359,13 @@ export default defineComponent({
         statistics.value = response.data;
       } catch (error) {
         console.error('Failed to fetch exam statistics:', error);
+      } finally {
+        loadingStatistics.value = false;
       }
     }
 
     async function fetchActivityData() {
+      loadingActivity.value = true;
       try {
         const params = selectedCourseId.value
           ? { courseId: selectedCourseId.value }
@@ -366,6 +394,8 @@ export default defineComponent({
             successRate: 0
           }
         };
+      } finally {
+        loadingActivity.value = false;
       }
     }
 
@@ -410,6 +440,7 @@ export default defineComponent({
 
     onMounted(async () => {
       // Fetch user info
+      loadingUser.value = true;
       try {
         const res = await api.get('/auth/me');
         const user = res?.data;
@@ -424,6 +455,9 @@ export default defineComponent({
         }
       } catch (e) {
         console.error('Failed to fetch user:', e);
+        username.value = 'User';
+      } finally {
+        loadingUser.value = false;
       }
 
       // Fetch user courses, statistics, and activity data
@@ -461,7 +495,10 @@ export default defineComponent({
       fetchStatistics,
       fetchActivityData,
       getBarHeight,
-      formatDayLabel
+      formatDayLabel,
+      loadingUser,
+      loadingStatistics,
+      loadingActivity
     };
   },
 });
@@ -885,6 +922,29 @@ export default defineComponent({
       animation-delay: #{$i * 0.05}s;
     }
   }
+}
+
+/* Loading Banner */
+.loading-banner {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border-radius: 12px;
+}
+
+.greeting-card .loading-banner {
+  min-height: 150px;
+}
+
+.activity-card .loading-banner {
+  min-height: 300px;
+}
+
+.progress-card .loading-banner {
+  min-height: 400px;
 }
 
 /* Responsive adjustments */
