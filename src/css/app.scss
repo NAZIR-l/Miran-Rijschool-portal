@@ -19,6 +19,14 @@
 }
 
 
+.visual-content{
+  .q-absolute-full{
+    img{
+      object-fit: fill !important;
+    }
+  }
+}
+
 html {
 
   overflow-x: hidden;

@@ -16,8 +16,8 @@
             <img src="../assets/Logo-test1.png" alt="Logo" class="header-logo" />
           </div>
           <div class="exam-info">
-            <!-- <h1 class="exam-title">{{ examInfo.title }}</h1> -->
-            <!-- <p class="exam-subtitle">{{ $t('exam_run.exam_subtitle', { total: examInfo.totalQuestions }) }}</p> -->
+            <h1 class="exam-title">{{ examInfo.title }}</h1>
+            <p class="exam-subtitle">{{ $t('exam_run.exam_subtitle', { total: examInfo.totalQuestions }) }}</p>
           </div>
         </div>
 
@@ -62,8 +62,8 @@
       <div class="progress-container">
         <div class="progress-info">
           <div class="progress-text">
-          {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
-        </div>
+            Vraag {{ indexDisplay }} van {{ questions.length }}
+          </div>
           <div class="progress-percentage">{{ Math.round(progressPercentage) }}%</div>
         </div>
         <div class="progress-bar">
@@ -72,7 +72,9 @@
             :style="{ width: progressPercentage + '%' }"
           ></div>
         </div>
-
+        <div class="progress-text">
+          {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
+        </div>
         <!-- Debug info (uncomment if needed) -->
         <!-- <div class="debug-info">
           <small>Exam ID: {{ examId }} | Questions: {{ questions.length }} | Current: {{ indexDisplay }}</small>
@@ -90,12 +92,16 @@
               <div class="visual-content">
                 <div class="image-container">
                   <q-img
+                    ref="imageRef"
                     :src="currentImage"
                     ratio="1"
                     class="visual-image"
+                    :class="{ 'drag-drop-enabled': isDragDropQuestion }"
                     :placeholder-src="placeholderImage"
-                    fit="contain"
                     draggable="false"
+                    @drop="handleDrop"
+                    @dragover.prevent="allowDrop"
+                    @dragenter.prevent="allowDrop"
                   >
                     <template v-slot:error>
                       <div class="image-error">
@@ -105,6 +111,29 @@
                           Path: {{ current.rawImage }}<br>
                           Exam: {{ examId }}<br>
                           Resolved: {{ currentImage }}
+                        </div>
+                      </div>
+                    </template>
+                    
+                    <!-- Drag and drop zones overlay -->
+                    <template v-if="isDragDropQuestion">
+                      <div class="drag-zones-overlay">
+                        <div
+                          v-for="target in current.dragTargets"
+                          :key="target.id"
+                          class="drag-zone"
+                          :style="{
+                            left: target.x + '%',
+                            top: target.y + '%'
+                          }"
+                          :class="{ 'has-assignment': getTargetForNumber(1)?.id === target.id || getTargetForNumber(2)?.id === target.id || getTargetForNumber(3)?.id === target.id }"
+                          @drop.prevent.stop="handleDropOnZone(target, $event)"
+                          @dragover.prevent.stop="allowDrop"
+                          @dragenter.prevent.stop
+                        >
+                          <div class="zone-number" v-if="getTargetForNumber(1)?.id === target.id">1</div>
+                          <div class="zone-number" v-else-if="getTargetForNumber(2)?.id === target.id">2</div>
+                          <div class="zone-number" v-else-if="getTargetForNumber(3)?.id === target.id">3</div>
                         </div>
                       </div>
                     </template>
@@ -160,36 +189,77 @@
               <div class="options-section">
 
                 <div class="options-content">
-                  <!-- Multiple Choice Options -->
-                  <template v-if="questionType === 'multiple-choice'">
-                    <div class="multi-hint" v-if="current.isMulti">
-                      <q-icon name="done_all" size="16px" />
-                      <span>{{ $t('exam_run.multiple_allowed') || 'Multiple answers allowed' }}</span>
+                  <!-- Drag and Drop Interface -->
+                  <template v-if="isDragDropQuestion">
+                    <div class="drag-drop-interface">
+                      <div class="drag-instructions">
+                        <q-icon name="touch_app" size="sm" color="primary" />
+                        <span>{{ $t('exam_run.drag_instructions', 'Sleep de nummers naar de juiste posities op de afbeelding') }}</span>
+                      </div>
+                      
+                      <!-- Draggable Numbers -->
+                      <div class="draggable-numbers">
+                        <div
+                          v-for="number in Array.from({ length: current.dragTargets?.length || 0 }, (_, i) => i + 1)"
+                          :key="number"
+                          class="draggable-number"
+                          :class="{ 'assigned': isNumberAssigned(number) }"
+                          draggable="true"
+                          @dragstart="startDrag(number, $event)"
+                        >
+                          {{ number }}
+                        </div>
+                      </div>
+                      
+                      <!-- Current Assignments -->
+                      <div class="current-assignments" v-if="dragOrder.length > 0">
+                        <div class="assignments-title">{{ $t('exam_run.current_order', 'Huidige volgorde:') }}</div>
+                        <div class="assignment-list">
+                          <div
+                            v-for="(assignment, idx) in dragOrder.sort((a, b) => a.number - b.number)"
+                            :key="assignment.number"
+                            class="assignment-item"
+                          >
+                            <span class="assignment-number">{{ assignment.number }}.</span>
+                            <span class="assignment-target">{{ getDragTargetLabel(assignment.targetId) }}</span>
+                            <q-btn
+                              flat
+                              round
+                              dense
+                              icon="close"
+                              size="xs"
+                              color="grey-6"
+                              @click="removeDragAssignment(assignment.number)"
+                              class="remove-btn"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </template>
+
+                  <!-- Multiple Choice Options -->
+                  <template v-else-if="questionType === 'multiple'">
                     <div class="options-list">
                       <div
                         v-for="(option, idx) in optionGroup"
                         :key="option.value"
                         class="option-item"
-                        :class="{ 'selected': current.isMulti ? (Array.isArray(selected) && selected.includes(option.value)) : (selected === option.value) }"
-                        @click="toggleOption(option.value)"
+                        :class="{ 'selected': selected === option.value }"
+                        @click="selected = option.value"
                       >
                         <div class="option-selector">
-                          <div v-if="!current.isMulti" class="option-radio">
+                          <div class="option-radio">
                             <div class="radio-outer">
                               <div class="radio-inner" :class="{ 'checked': selected === option.value }"></div>
                             </div>
-                          </div>
-                          <div v-else class="option-checkbox">
-                            <div class="checkbox-outer">
-                              <div class="checkbox-inner" :class="{ 'checked': Array.isArray(selected) && selected.includes(option.value) }"></div>
-                            </div>
+
                           </div>
                           <div class="option-content">
                             <div class="option-label">{{ option.label }}</div>
                           </div>
                         </div>
-                        <div class="option-indicator" v-if="current.isMulti ? (Array.isArray(selected) && selected.includes(option.value)) : (selected === option.value)">
+                        <div class="option-indicator" v-if="selected === option.value">
                           <q-icon name="check_circle" class="check-icon" />
                         </div>
                       </div>
@@ -444,7 +514,7 @@ function resolveAsset(inputPath, examCode) {
 
     const raw = String(inputPath).trim().replace(/\\/g, '/')
     const fileName = raw.split('/').pop()
-
+    
     // Extract exam number from code (e.g., 'exam-1' -> '1')
     let examNumber = '1'
     if (examCode) {
@@ -493,10 +563,10 @@ async function loadExamDataById(id) {
 
     // Check if it's a UUID (contains dashes) or a number
     const isUUID = id && id.includes && id.includes('-')
-
+    
     // Use the appropriate endpoint
     const endpoint = isUUID ? `/exams/detail/${id}` : `/exams/number/${id}`
-
+    
     // Fetch exam data from backend API
     const response = await api.get(endpoint)
     const examData = response.data
@@ -565,28 +635,15 @@ export default defineComponent({
       }
     })
 
-    // Type helpers
-    function normalizeType(raw) {
-      const s = String(raw || '').toLowerCase().replace(/\s+/g, '-').replace(/_/g, '-')
-      if (['multiple', 'multiple-choice', 'choice', 'radio'].includes(s)) return 'multiple-choice'
-      if (['dropdown', 'select', 'select-one'].includes(s)) return 'dropdown'
-      if (['input', 'text', 'short-answer', 'numeric', 'number'].includes(s)) return 'input'
-      return 'multiple-choice'
-    }
-
-    function allowMultipleAnswers(question) {
-      if (!question) return false
-      if (question.allowMultiple === true || question.multi === true) return true
-      if (Array.isArray(question.correct)) return true
-      return false
-    }
-
     // State management
     function getDefaultSelection(question) {
       if (!question) return null
-      const type = normalizeType(question.type || 'multiple-choice')
+      const type = (question.type || 'multiple')
       if (type === 'input') return ''
-      if (type === 'multiple-choice' && allowMultipleAnswers(question)) return []
+      // For drag-drop questions, initialize with empty array
+      if ((type === 'multiple' || type === 'interactive-choice') && Array.isArray(question.options) && question.options.length === 0 && Array.isArray(question.dragTargets)) {
+        return []
+      }
       return null
     }
 
@@ -596,6 +653,11 @@ export default defineComponent({
     const flaggedQuestions = ref(new Set())
     const showOverview = ref(false)
     const exitConfirm = ref(false)
+    
+    // Drag and drop state
+    const dragOrder = ref([])
+    const draggedNumber = ref(null)
+    const imageRef = ref(null)
 
     // Computed properties
     const current = computed(() => {
@@ -615,7 +677,7 @@ export default defineComponent({
       }
 
       // Process localized options
-      const options = Array.isArray(question.options)
+      const options = Array.isArray(question.options) 
         ? question.options.map(opt => {
             let label = opt.label
             if (typeof label === 'object') {
@@ -653,7 +715,14 @@ export default defineComponent({
       return img
     })
 
-    const questionType = computed(() => normalizeType(current.value.type || 'multiple-choice'))
+    const questionType = computed(() => current.value.type || 'multiple')
+    const isDragDropQuestion = computed(() => {
+      return (questionType.value === 'multiple' || questionType.value === 'interactive-choice') && 
+             Array.isArray(current.value.options) && 
+             current.value.options.length === 0 && 
+             Array.isArray(current.value.dragTargets) && 
+             current.value.dragTargets.length > 0
+    })
     const optionGroup = computed(() => Array.isArray(current.value.options)
       ? current.value.options.map(o => ({ label: o.label, value: o.id }))
       : []
@@ -667,21 +736,9 @@ export default defineComponent({
       const val = selected.value
       if (type === 'input') return typeof val === 'string' && val.trim().length > 0
       if (Array.isArray(val)) return val.length > 0
+      if (isDragDropQuestion.value) return dragOrder.value.length === current.value.dragTargets.length
       return val !== null && val !== undefined && val !== ''
     })
-
-    function toggleOption(value) {
-      const q = questions.value[index.value]
-      const isMulti = !!q?.isMulti
-      if (!isMulti) {
-        selected.value = value
-        return
-      }
-      if (!Array.isArray(selected.value)) selected.value = []
-      const i = selected.value.indexOf(value)
-      if (i >= 0) selected.value.splice(i, 1)
-      else selected.value.push(value)
-    }
 
     // Overview stats
     const answeredCount = computed(() => answers.value.filter(a => a !== null && a !== undefined && a !== '').length)
@@ -716,8 +773,7 @@ export default defineComponent({
           const processedQuestion = {
             ...q,
             rawImage: q.image || '',
-            image: q.image ? resolveAsset(q.image, data.code) : '',
-            isMulti: allowMultipleAnswers(q)
+            image: q.image ? resolveAsset(q.image, data.code) : ''
           }
 
           console.log(`Processing question ${idx + 1}:`, {
@@ -736,6 +792,14 @@ export default defineComponent({
         // Initialize answers array
         answers.value = questions.value.map(() => null)
         selected.value = getDefaultSelection(questions.value[0] || null)
+        
+        // Initialize drag order for current question
+        const currentQuestion = questions.value[0]
+        if (currentQuestion && (currentQuestion.type === 'multiple' || currentQuestion.type === 'interactive-choice') && 
+            Array.isArray(currentQuestion.options) && currentQuestion.options.length === 0 && 
+            Array.isArray(currentQuestion.dragTargets)) {
+          dragOrder.value = []
+        }
 
         // Set timer duration from API response (default to 30 minutes if not provided)
         console.log('🎯 Exam duration:', data.durationMinutes)
@@ -772,14 +836,14 @@ export default defineComponent({
       // Prevent pasting images/files into the page
       window.addEventListener('paste', handlePaste)
       // Block file/image drag & drop onto the page
-      window.addEventListener('drop', handleDrop)
+      window.addEventListener('drop', handleGlobalDrop)
       window.addEventListener('dragover', handleDragOver)
     })
 
     onBeforeUnmount(() => {
       if (timer) clearInterval(timer)
       window.removeEventListener('paste', handlePaste)
-      window.removeEventListener('drop', handleDrop)
+      window.removeEventListener('drop', handleGlobalDrop)
       window.removeEventListener('dragover', handleDragOver)
     })
 
@@ -807,7 +871,12 @@ export default defineComponent({
       }
     }
 
-    function handleDrop(e) {
+    function handleGlobalDrop(e) {
+      // Allow drag-drop for exam questions
+      if (isDragDropQuestion.value && draggedNumber.value) {
+        return
+      }
+      
       try {
         const dt = e.dataTransfer
         if (dt && dt.files && dt.files.length > 0) {
@@ -819,6 +888,11 @@ export default defineComponent({
     }
 
     function handleDragOver(e) {
+      // Allow drag-drop for exam questions
+      if (isDragDropQuestion.value && draggedNumber.value) {
+        return
+      }
+      
       try {
         if (e.dataTransfer) {
           e.dataTransfer.dropEffect = 'none'
@@ -838,14 +912,93 @@ export default defineComponent({
       return types[type] || 'Meerkeuze'
     }
 
+    // Format drag-drop answer as string
+    function formatDragDropAnswer(dragOrderArray) {
+      if (!Array.isArray(dragOrderArray) || dragOrderArray.length === 0) {
+        return ''
+      }
+
+      // Sort by number to get correct order
+      const sortedOrder = dragOrderArray
+        .sort((a, b) => a.number - b.number)
+        .map(item => {
+          const target = current.value.dragTargets.find(t => t.id === item.targetId)
+          let label = target?.label || `Target ${item.targetId}`
+          
+          // Handle multi-language labels
+          if (typeof label === 'object') {
+            label = label[locale.value] || label.nl || label.en || `Target ${item.targetId}`
+          }
+          
+          return `${item.number}. ${label}`
+        })
+        .join(', ')
+
+      return sortedOrder
+    }
+
+    // Parse drag-drop answer from string back to array
+    function parseDragDropAnswer(answerString) {
+      if (!answerString || typeof answerString !== 'string') {
+        return []
+      }
+
+      const assignments = []
+      const parts = answerString.split(', ')
+
+      parts.forEach(part => {
+        const match = part.match(/^(\d+)\.\s*(.+)$/)
+        if (match) {
+          const number = parseInt(match[1])
+          const label = match[2].trim()
+          
+          // Find the target with matching label (check both string and object formats)
+          const target = current.value.dragTargets.find(t => {
+            if (typeof t.label === 'string') {
+              return t.label === label
+            } else if (typeof t.label === 'object') {
+              return t.label.nl === label || t.label.en === label || t.label[locale.value] === label
+            }
+            return false
+          })
+          
+          if (target) {
+            assignments.push({
+              number: number,
+              targetId: target.id
+            })
+          }
+        }
+      })
+
+      return assignments
+    }
+
     function next() {
       if (questions.value.length === 0) return
-      answers.value[index.value] = selected.value
+      
+      // Save current answer - for drag-drop questions, format as string
+      if (isDragDropQuestion.value) {
+        const formattedAnswer = formatDragDropAnswer(dragOrder.value)
+        answers.value[index.value] = formattedAnswer
+      } else {
+        answers.value[index.value] = selected.value
+      }
+      
       if (index.value < questions.value.length - 1) {
         index.value += 1
-        selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
-          ? answers.value[index.value]
-          : getDefaultSelection(questions.value[index.value])
+        const nextQuestion = questions.value[index.value]
+        
+        if (nextQuestion && (nextQuestion.type === 'multiple' || nextQuestion.type === 'interactive-choice') && 
+            Array.isArray(nextQuestion.options) && nextQuestion.options.length === 0 && 
+            Array.isArray(nextQuestion.dragTargets)) {
+          // Initialize drag order for next drag-drop question
+          dragOrder.value = answers.value[index.value] ? parseDragDropAnswer(answers.value[index.value]) : []
+        } else {
+          selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
+            ? answers.value[index.value]
+            : getDefaultSelection(nextQuestion)
+        }
       } else {
         submitExam()
       }
@@ -853,20 +1006,52 @@ export default defineComponent({
 
     function previous() {
       if (index.value > 0) {
-        answers.value[index.value] = selected.value
+        // Save current answer - for drag-drop questions, format as string
+        if (isDragDropQuestion.value) {
+          const formattedAnswer = formatDragDropAnswer(dragOrder.value)
+          answers.value[index.value] = formattedAnswer
+        } else {
+          answers.value[index.value] = selected.value
+        }
+        
         index.value -= 1
-        selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
-          ? answers.value[index.value]
-          : getDefaultSelection(questions.value[index.value])
+        const prevQuestion = questions.value[index.value]
+        
+        if (prevQuestion && (prevQuestion.type === 'multiple' || prevQuestion.type === 'interactive-choice') && 
+            Array.isArray(prevQuestion.options) && prevQuestion.options.length === 0 && 
+            Array.isArray(prevQuestion.dragTargets)) {
+          // Initialize drag order for previous drag-drop question
+          dragOrder.value = answers.value[index.value] ? parseDragDropAnswer(answers.value[index.value]) : []
+        } else {
+          selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
+            ? answers.value[index.value]
+            : getDefaultSelection(prevQuestion)
+        }
       }
     }
 
     function goToQuestion(questionIndex) {
-      answers.value[index.value] = selected.value
+      // Save current answer - for drag-drop questions, format as string
+      if (isDragDropQuestion.value) {
+        const formattedAnswer = formatDragDropAnswer(dragOrder.value)
+        answers.value[index.value] = formattedAnswer
+      } else {
+        answers.value[index.value] = selected.value
+      }
+      
       index.value = questionIndex
-      selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
-        ? answers.value[index.value]
-        : getDefaultSelection(questions.value[index.value])
+      const targetQuestion = questions.value[index.value]
+      
+      if (targetQuestion && (targetQuestion.type === 'multiple' || targetQuestion.type === 'interactive-choice') && 
+          Array.isArray(targetQuestion.options) && targetQuestion.options.length === 0 && 
+          Array.isArray(targetQuestion.dragTargets)) {
+        // Initialize drag order for target drag-drop question
+        dragOrder.value = answers.value[index.value] ? parseDragDropAnswer(answers.value[index.value]) : []
+      } else {
+        selected.value = (answers.value[index.value] !== null && answers.value[index.value] !== undefined)
+          ? answers.value[index.value]
+          : getDefaultSelection(targetQuestion)
+      }
       showOverview.value = false
     }
 
@@ -876,6 +1061,118 @@ export default defineComponent({
       } else {
         flaggedQuestions.value.add(index.value)
       }
+    }
+
+    // Drag and drop functions
+    function startDrag(number, event) {
+      if (!isDragDropQuestion.value) return
+      draggedNumber.value = number
+      event.dataTransfer.effectAllowed = 'move'
+      event.dataTransfer.setData('text/plain', number.toString())
+      
+      // Create a custom drag image
+      const dragImage = event.target.cloneNode(true)
+      dragImage.style.opacity = '0.8'
+      event.dataTransfer.setDragImage(event.target, 30, 30)
+    }
+
+    function allowDrop(event) {
+      if (!isDragDropQuestion.value) return
+      event.preventDefault()
+      event.stopPropagation()
+      if (event.dataTransfer) {
+        event.dataTransfer.dropEffect = 'move'
+      }
+    }
+
+    function handleDropOnZone(target, event) {
+      if (!isDragDropQuestion.value || !draggedNumber.value) return
+      
+      event.preventDefault()
+      event.stopPropagation()
+      
+      // Remove any existing assignment for this number
+      dragOrder.value = dragOrder.value.filter(item => item.number !== draggedNumber.value)
+      
+      // Remove any existing assignment for this target
+      dragOrder.value = dragOrder.value.filter(item => item.targetId !== target.id)
+      
+      // Add new assignment
+      dragOrder.value.push({
+        number: draggedNumber.value,
+        targetId: target.id
+      })
+      
+      // Update selected value for validation
+      selected.value = dragOrder.value.map(item => item.targetId)
+      
+      draggedNumber.value = null
+    }
+
+    function handleDrop(event) {
+      if (!isDragDropQuestion.value || !draggedNumber.value) {
+        // If not a drag-drop question, prevent file drops
+        try {
+          const dt = event.dataTransfer
+          if (dt && dt.files && dt.files.length > 0) {
+            event.preventDefault()
+          }
+        } catch (_) {
+          // no-op
+        }
+        return
+      }
+      
+      event.preventDefault()
+      event.stopPropagation()
+      
+      // Get the actual DOM element from the q-img component
+      const imgElement = imageRef.value?.$el || imageRef.value
+      if (!imgElement) return
+      
+      const rect = imgElement.getBoundingClientRect()
+      if (!rect) return
+      
+      const x = ((event.clientX - rect.left) / rect.width) * 100
+      const y = ((event.clientY - rect.top) / rect.height) * 100
+      
+      // Find the closest drag target
+      const closestTarget = current.value.dragTargets.reduce((closest, target) => {
+        const distance = Math.sqrt(Math.pow(target.x - x, 2) + Math.pow(target.y - y, 2))
+        return distance < closest.distance ? { target, distance } : closest
+      }, { distance: Infinity })
+      
+      if (closestTarget.target && closestTarget.distance < 15) { // Only drop if within 15% distance
+        handleDropOnZone(closestTarget.target, event)
+      }
+      
+      draggedNumber.value = null
+    }
+
+    function removeDragAssignment(number) {
+      dragOrder.value = dragOrder.value.filter(item => item.number !== number)
+      selected.value = dragOrder.value.map(item => item.targetId)
+    }
+
+    function getTargetForNumber(number) {
+      const assignment = dragOrder.value.find(item => item.number === number)
+      return assignment ? current.value.dragTargets.find(target => target.id === assignment.targetId) : null
+    }
+
+    function isNumberAssigned(number) {
+      return dragOrder.value.some(item => item.number === number)
+    }
+
+    function getDragTargetLabel(targetId) {
+      const target = current.value.dragTargets.find(t => t.id === targetId)
+      if (!target) return `Target ${targetId}`
+      
+      let label = target.label
+      if (typeof label === 'object') {
+        label = label[locale.value] || label.nl || label.en || `Target ${targetId}`
+      }
+      
+      return label
     }
 
     function askExit() {
@@ -916,7 +1213,7 @@ export default defineComponent({
         router.push(`/exam/${examId}/results/${attemptId}`)
       } catch (error) {
         console.error('❌ Error submitting exam:', error)
-
+        
         // Fallback: Save to localStorage if API fails
         try {
           localStorage.setItem(`exam_${examId}_data`, JSON.stringify({
@@ -925,13 +1222,13 @@ export default defineComponent({
             questions: questions.value
           }))
           localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers.value))
-
+          
           const timingData = {
             start: new Date().toISOString(),
             end: new Date().toISOString()
           }
           localStorage.setItem(`exam_${examId}_timing`, JSON.stringify(timingData))
-
+          
           console.log('⚠️ Saved to localStorage as fallback')
         } catch (storageError) {
           console.error('❌ Error saving to localStorage:', storageError)
@@ -958,6 +1255,7 @@ export default defineComponent({
       index,
       current,
       questionType,
+      isDragDropQuestion,
       optionGroup,
       selected,
       answers,
@@ -986,7 +1284,18 @@ export default defineComponent({
       unansweredCount,
       goToFirstUnanswered,
       goToFirstFlagged,
-      toggleOption
+      // drag and drop exports
+      dragOrder,
+      draggedNumber,
+      imageRef,
+      startDrag,
+      allowDrop,
+      handleDrop,
+      handleDropOnZone,
+      removeDragAssignment,
+      getTargetForNumber,
+      isNumberAssigned,
+      getDragTargetLabel
     }
   }
 })
@@ -1063,7 +1372,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  max-width: 1280px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -1071,18 +1380,11 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 
 .header-content {
   padding: 16px 24px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "logo . icons"
-    "timer timer timer";
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px 16px;
+  flex-wrap: nowrap;
 }
-.header-left { grid-area: logo; }
-.header-center { grid-area: timer; justify-self: stretch; min-width: 0; width: 100%; }
-.header-right { grid-area: icons; justify-self: end; }
 
 
 .header-left {
@@ -1098,7 +1400,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .exam-title {
-  font-size: clamp(18px, 2vw, 26px);
+  font-size: 18px;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -1354,7 +1656,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 .main-container {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: 1.3fr 1.2fr;
   gap: 32px;
   align-items: start;
 }
@@ -1369,7 +1671,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   overflow: hidden;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: fit-content;
+  /* height: fit-content; */
 }
 
 .visual-title {
@@ -1392,8 +1694,11 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   border-radius: 20px;
   width: 100%;
   transition: transform 0.3s ease;
-  max-height: clamp(220px, 45vh, 560px);
-  object-fit: contain;
+}
+
+.visual-image :deep(.q-img__image) {
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 
@@ -1432,10 +1737,9 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .question-options-card {
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #e2e8f0;
+
   overflow: hidden;
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
@@ -1533,7 +1837,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .question-text {
-  font-size: clamp(14px, 1.2vw + 8px, 18px);
+  font-size: 12px;
   line-height: 1.7;
   color: #1f2937;
   font-weight: 500;
@@ -1673,49 +1977,12 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   background: #fff;
 }
 
-.option-checkbox { display: flex; align-items: center; justify-content: center; }
-.checkbox-outer {
-  width: 22px;
-  height: 22px;
-  border: 2px solid #d1d5db;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  background: #fff;
-}
-.option-item:hover .checkbox-outer { border-color: #3b82f6; }
-.option-item.selected .checkbox-outer { border-color: #3b82f6; background: #3b82f6; }
-.checkbox-inner {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  background: transparent;
-  transition: all 0.2s ease;
-}
-.checkbox-inner.checked { background: #fff; }
-
-.multi-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding: 6px 10px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #166534;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 .option-content {
   flex: 1;
 }
 
 .option-label {
-  font-size: clamp(14px, 1vw + 8px, 18px);
+  font-size: 16px;
   font-weight: 500;
   color: #374151;
   line-height: 1.5;
@@ -1926,20 +2193,6 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
     padding: 20px 16px;
   }
 
-  /* Header grid on tablets/phones: logo + icons row, timer full width below */
-  .header-content {
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "logo . icons"
-      "timer timer timer";
-    gap: 10px 12px;
-  }
-  .header-left { grid-area: logo; }
-  .header-center { grid-area: timer; }
-  .header-right { grid-area: icons; }
-  .timer-container { width: 100%; max-width: 100%; justify-content: center; }
-
   .question-text-wrapper {
     flex-direction: column;
     gap: 12px;
@@ -1951,7 +2204,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .question-text {
-    font-size: clamp(14px, 2.5vw, 16px);
+    font-size: 16px;
   }
 
   .navigation-buttons {
@@ -1979,7 +2232,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .option-label {
-    font-size: clamp(13px, 2.2vw, 15px);
+    font-size: 14px;
   }
 }
 
@@ -1993,7 +2246,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .question-text {
-    font-size: clamp(14px, 3vw, 15px);
+    font-size: 15px;
     padding: 0;
   }
 
@@ -2015,42 +2268,14 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
     padding: 12px 20px;
   }
 
-  /* Keep one-row layout at very small widths as well */
   .header-content {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 8px;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
-  .header-left { grid-column: 1; }
-  .header-center { grid-column: 2; min-width: 0; }
-  .header-right { grid-column: 3; }
-  .header-logo { height: 26px; }
-  .timer-container { padding: 8px 12px; width: 100%; max-width: 100%; }
-  .action-btn { width: 30px; height: 30px; }
-  /* Keep logo and icons on same row at very small screens */
-  .header-left {
-    order: 1;
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .header-right {
-    order: 2;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-  .header-logo {
-    height: 28px;
-  }
-  .action-btn {
-    width: 32px;
-    height: 32px;
+
+  .header-center {
+    order: 3;
+    flex-basis: 100%;
   }
 
   .option-selector {
@@ -2058,18 +2283,18 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .option-label {
-    font-size: clamp(12px, 3vw, 13px);
+    font-size: 13px;
   }
 }
 
 .question-text {
-  font-size: clamp(15px, 1vw + 12px, 18px);
+  font-size: 16px;
   line-height: 1.7;
   color: #1f2937;
-  font-weight: 400;
+  font-weight: 300;
   width: 100%;
   background: #f8fafc;
-  padding: clamp(16px, 1.2vw + 8px, 24px);
+  padding: 24px;
   border-radius: 12px;
   border-left: 4px solid #3b82f6;
 }
@@ -2694,4 +2919,182 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 /* Focus states */
 .action-btn:focus-visible, .nav-btn:focus-visible, .question-indicator:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+
+/* Drag and Drop Styles */
+.drag-drop-enabled {
+  position: relative;
+  cursor: crosshair;
+}
+
+.drag-zones-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.drag-zone {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 3px dashed #3b82f6;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.drag-zone:hover {
+  border-width: 4px;
+  background: rgba(59, 130, 246, 0.25);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.drag-zone.has-assignment {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.25);
+  border-style: solid;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.drag-zone.has-assignment:hover {
+  background: rgba(16, 185, 129, 0.35);
+}
+
+.zone-number {
+  width: 40px;
+  height: 40px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.drag-drop-interface {
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.drag-instructions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #eff6ff;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+.draggable-numbers {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.draggable-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: grab;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  user-select: none;
+}
+
+.draggable-number:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.draggable-number:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.draggable-number.assigned {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  opacity: 0.7;
+}
+
+.current-assignments {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.assignments-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assignment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assignment-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.assignment-number {
+  font-weight: 700;
+  color: #3b82f6;
+  min-width: 20px;
+}
+
+.assignment-target {
+  flex: 1;
+  color: #374151;
+  font-weight: 500;
+}
+
+.remove-btn {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.remove-btn:hover {
+  opacity: 1;
+  background: #fee2e2;
+  color: #dc2626;
+}
 </style>

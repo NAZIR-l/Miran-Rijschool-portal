@@ -660,12 +660,44 @@
       },
       "type": "interactive-choice",
       "options": [],
-      "correct": "1. Witte personenauto, 2. Fietser, 3. Motor",
+      "correct": "1. Auto, 2. Fietser, 3. Bromfiets",
       "reason": {
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3).",
         "en": "The car (1) is going straight on a priority road. The cyclist and motorcycle are behind yield markings on the same road. The cyclist (2) is going straight and therefore has priority over the turning motorcycle (3).",
         "ar": "السيارة (1) تسير مباشرة على طريق أولوية. راكب الدراجة والدراجة النارية خلف علامات الأولوية على نفس الطريق. راكب الدراجة (2) يسير مباشرة وبالتالي لديه الأولوية على الدراجة النارية المنعطفة (3)."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 27,
+          "y": 23,
+          "id": "cyclist",
+          "label": {
+            "nl": "Fietser",
+            "en": "Cyclist",
+            "ar": "راكب الدراجة"
+          }
+        },
+        {
+          "x": 95,
+          "y": 32,
+          "id": "car",
+          "label": {
+            "nl": "Auto",
+            "en": "Car",
+            "ar": "سيارة"
+          }
+        },
+        {
+          "x": 72,
+          "y": 67,
+          "id": "moped",
+          "label": {
+            "nl": "Bromfiets",
+            "en": "Moped",
+            "ar": "دراجة بخارية"
+          }
+        }
+      ]
     },
     {
       "id": "exam1-q20",
@@ -1326,7 +1358,30 @@
         "nl": "De tram heeft altijd voorrang, behalve als deze van rechts komt. Daarna heeft de auto voorrang omdat deze van rechts komt ten opzichte van de andere auto.",
         "en": "The tram always has priority, except when it comes from the right. Then the car has priority because it comes from the right relative to the other car.",
         "ar": "الترام دائماً له الأولوية، إلا إذا جاء من اليمين. ثم السيارة لها الأولوية لأنها تأتي من اليمين بالنسبة للسيارة الأخرى."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 27,
+          "y": 78,
+          "id": "Tram",
+          "label": {
+            "nl": "Tram",
+            "en": "Tram",
+            "ar": "ترام"
+          }
+        },
+        {
+          "x": 95,
+          "y": 32,
+          "id": "Auto",
+          "label": {
+            "nl": "Auto",
+            "en": "Car",
+            "ar": "سيارة"
+          }
+        }
+        
+      ]
     },
     {
       "id": "exam1-q40",
