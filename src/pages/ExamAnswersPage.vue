@@ -72,6 +72,7 @@
 
             <div class="question-layout">
               <div class="question-media" v-if="question.image">
+                <!-- {{  question.image }} -->
                 <q-img
                   :src="getImageSrc(question.image)"
                   ratio="16/9"
@@ -148,6 +149,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { api } from 'boot/axios'
 import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
+
+// Import assets context for image resolution
+const assetsCtx = require.context('../assets', true, /(png|jpe?g|webp|svg|gif)$/)
 
 export default defineComponent({
   name: 'ExamAnswersPage',
@@ -230,15 +234,52 @@ export default defineComponent({
 
     function getImageSrc(imagePath) {
       if (!imagePath) return ''
-      if (/^https?:\/\//.test(imagePath) || imagePath.startsWith('/')) return imagePath
+      
+      // If it's an absolute URL or already resolved, return as is
+      if (/^https?:\/\//.test(imagePath) || imagePath.startsWith('blob:')) return imagePath
+      
       try {
-        return new URL(`../assets/${imagePath}`, import.meta.url).href
-      } catch (e) {
-        try {
-          return new URL(`../assets/${String(imagePath).replace(/^\.\/?/, '')}`, import.meta.url).href
-        } catch (e2) {
-          return ''
+        const raw = String(imagePath).trim().replace(/\\/g, '/')
+        const fileName = raw.split('/').pop()
+        
+        // Extract exam number from examId (e.g., '1' -> 'exam1')
+        let examNumber = examId
+        if (examId && examId.includes && examId.includes('-')) {
+          const match = String(examId).match(/exam-?(\d+)/)
+          examNumber = match ? match[1] : examId
         }
+        
+        console.log(`Resolving image: ${imagePath} for exam ${examId}`)
+        
+        const allAssets = assetsCtx.keys()
+        
+        // Try exact path first (e.g., './exam1/q1.png')
+        const expectedPath = `./${raw}`
+        let foundAsset = allAssets.find(p => p === expectedPath)
+        
+        if (!foundAsset) {
+          // Try with exam folder pattern
+          foundAsset = allAssets.find(p => p.includes(`exam${examNumber}/`) && p.endsWith(fileName))
+        }
+        
+        if (!foundAsset) {
+          // Try just the filename in any exam folder
+          foundAsset = allAssets.find(p => p.endsWith(fileName))
+        }
+        
+        if (foundAsset) {
+          console.log(`Found asset: ${foundAsset}`)
+          const mod = assetsCtx(foundAsset)
+          const resolved = mod && mod.default ? mod.default : mod
+          console.log(`Resolved image URL:`, resolved)
+          return resolved
+        }
+        
+        console.warn(`Image not found: ${fileName} for exam ${examId}`)
+        return ''
+      } catch (e) {
+        console.error('Image resolution error:', imagePath, e)
+        return ''
       }
     }
     function loadFromLocalStorage() {
@@ -523,7 +564,7 @@ export default defineComponent({
 
 .answer-image {
   width: 100%;
-  max-height: 360px;
+  min-height: 220px;
 }
 
 .answers-comparison {
@@ -619,9 +660,6 @@ export default defineComponent({
     width: 100%;
     max-width: 300px;
   }
-
-  .answer-image { max-height: 220px; }
-  .answer-item { padding: 16px; }
 }
 
 .summary-bar {
