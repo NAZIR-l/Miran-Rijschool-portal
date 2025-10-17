@@ -199,7 +199,13 @@ export default defineComponent({
               })
             : []
 
-          return { ...q, text, options }
+          // Explanation (map from reason/explanation with locale)
+          let explanation = q.explanation || q.reason
+          if (typeof explanation === 'object') {
+            explanation = explanation[locale.value] || explanation.nl || explanation.en || ''
+          }
+
+          return { ...q, text, options, explanation }
         })
 
         // Extract user answers from attempt data
@@ -258,7 +264,7 @@ export default defineComponent({
                 })
               : []
 
-            let explanation = q.explanation
+            let explanation = q.explanation || q.reason
             if (typeof explanation === 'object') {
               explanation = explanation[locale.value] || explanation.nl || explanation.en || ''
             }
@@ -383,6 +389,8 @@ export default defineComponent({
 .answers-container {
   max-width: 1000px;
   margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .answers-header {
@@ -448,6 +456,8 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .status-chip {
@@ -501,6 +511,8 @@ export default defineComponent({
   font-size: 16px;
   color: #374151;
   line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .question-media {
@@ -542,6 +554,8 @@ export default defineComponent({
   border-radius: 6px;
   background: white;
   border: 2px solid #e2e8f0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .answer-value.correct {
@@ -605,12 +619,15 @@ export default defineComponent({
     width: 100%;
     max-width: 300px;
   }
+
+  .answer-image { max-height: 220px; }
+  .answer-item { padding: 16px; }
 }
 
 .summary-bar {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
   align-items: center;
   margin-top: 16px;
 }

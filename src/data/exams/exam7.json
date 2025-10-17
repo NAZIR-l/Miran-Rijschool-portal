@@ -1,998 +1,1019 @@
 {
   "id": "exam7",
-  "title": "Exam 7",
+  "title": {
+    "nl": "Examen 7",
+    "en": "Exam 7",
+    "ar": "امتحان 7"
+  },
   "questions": [
     {
       "id": "exam7-q1",
       "image": "../../assets/exam7/q1.png",
-      "text": "Mag je hier met je dimlicht aan rijden?",
+      "text": {
+        "nl": "Mag je hier met je dimlicht aan rijden?",
+        "en": "Are you allowed to drive here with your low beam on?",
+        "ar": "هل يسمح لك بالقيادة هنا مع تشغيل الضوء المنخفض؟"
+      },
       "type": "multiple",
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Dimlicht is je standaard verlichting die je altijd mag voeren.",
+      "reason": {
+        "nl": "Dimlicht is je standaard verlichting die je altijd mag voeren.",
+        "en": "Low beam is your standard lighting that you may always use.",
+        "ar": "الضوء المنخفض هو إضاءتك القياسية التي يمكنك استخدامها دائماً."
+      },
       "category": "lanes"
     },
     {
       "id": "exam7-q2",
       "image": "../../assets/exam7/q2.png",
-      "text": "Welk verkeersbord waarschuwt voor voetgangers?",
+      "text": {
+        "nl": "Welk verkeersbord waarschuwt voor voetgangers?",
+        "en": "Which traffic sign warns for pedestrians?",
+        "ar": "أي علامة مرور تحذر من المشاة؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Verkeersbord 1"
-        },
-        {
-          "id": "b",
-          "label": "Verkeersbord 2"
-        },
-        {
-          "id": "c",
-          "label": "Allebei"
-        }
+        {"id": "a", "label": {"nl": "Verkeersbord 1", "en": "Traffic sign 1", "ar": "علامة المرور 1"}},
+        {"id": "b", "label": {"nl": "Verkeersbord 2", "en": "Traffic sign 2", "ar": "علامة المرور 2"}},
+        {"id": "c", "label": {"nl": "Allebei", "en": "Both", "ar": "كلاهما"}}
       ],
       "correct": "b",
-      "reason": "Een verkeersbord in de vorm van een driehoek met de punt naar boven geeft een waarschuwingsbord aan."
-
+      "reason": {
+        "nl": "Een verkeersbord in de vorm van een driehoek met de punt naar boven geeft een waarschuwingsbord aan.",
+        "en": "A traffic sign in the shape of a triangle with the point upwards indicates a warning sign.",
+        "ar": "علامة مرور على شكل مثلث مع نقطة للأعلى تشير إلى علامة تحذير."
+      }
     },
     {
       "id": "exam7-q3",
       "image": "../../assets/exam7/q3.png",
-      "text": "Met welke snelheid mag je na het bord maximaal rijden?",
+      "text": {
+        "nl": "Met welke snelheid mag je na het bord maximaal rijden?",
+        "en": "What is the maximum speed you can drive after this sign?",
+        "ar": "ما هي السرعة القصوى التي يمكنك القيادة بها بعد هذه العلامة؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id":"a",
-          "label": "50 Km/u"
-        },
-        {
-          "id":"b",
-          "label": "80 Km/u"
-        },
-        {
-          "id":"c",
-          "label": "90 Km/u"
-        }
-
+        {"id": "a", "label": {"nl": "50 Km/u", "en": "50 Km/h", "ar": "50 كم/ساعة"}},
+        {"id": "b", "label": {"nl": "80 Km/u", "en": "80 Km/h", "ar": "80 كم/ساعة"}},
+        {"id": "c", "label": {"nl": "90 Km/u", "en": "90 Km/h", "ar": "90 كم/ساعة"}}
       ],
       "correct": "b",
-
-      "reason": "Buiten de bebouwde kom is je maximumsnelheid 80 km/u."
-
+      "reason": {
+        "nl": "Buiten de bebouwde kom is je maximumsnelheid 80 km/u.",
+        "en": "Outside built-up areas, your maximum speed is 80 km/h.",
+        "ar": "خارج المناطق المأهولة، سرعتك القصوى هي 80 كم/ساعة."
+      }
     },
     {
       "id": "exam7-q4",
       "image": "../../assets/exam7/q4.png",
-      "text": "In welke situatie moet je rekening houden met brommobielen?",
+      "text": {
+        "nl": "In welke situatie moet je rekening houden met brommobielen?",
+        "en": "In which situation should you take microcars into account?",
+        "ar": "في أي موقف يجب أن تأخذ السيارات المصغرة في الاعتبار؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id":"a",
-          "label":"Situatie A"
-        },
-        {
-          "id":"b",
-          "label":"Situatie B"
-        },
-        {
-          "id":"c",
-          "label":"Situatie C"
-        }
-
+        {"id": "a", "label": {"nl": "Situatie A", "en": "Situation A", "ar": "الموقف A"}},
+        {"id": "b", "label": {"nl": "Situatie B", "en": "Situation B", "ar": "الموقف B"}},
+        {"id": "c", "label": {"nl": "Situatie C", "en": "Situation C", "ar": "الموقف C"}}
       ],
       "correct": "c",
-      "reason": "Een brommobiel mag niet op een weg die ingericht is om maximaal 100 km/u te rijden."
-
+      "reason": {
+        "nl": "Een brommobiel mag niet op een weg die ingericht is om maximaal 100 km/u te rijden.",
+        "en": "A microcar may not be on a road designed for maximum 100 km/h.",
+        "ar": "لا يجوز للسيارة المصغرة أن تكون على طريق مصمم للسرعة القصوى 100 كم/ساعة."
+      }
     },
-
     {
       "id": "exam7-q5",
       "image": "../../assets/exam7/q5.png",
-      "text": "Mag je zo rijden?",
+      "text": {
+        "nl": "Mag je zo rijden?",
+        "en": "Are you allowed to drive like this?",
+        "ar": "هل يسمح لك بالقيادة هكذا؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id":"a",
-          "label":"Ja"
-        },
-        {
-          "id":"b",
-          "label":"Nee"
-        }
-
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "De lading bedekt het nummerbord, dus dit is niet toegestaan"
+      "reason": {
+        "nl": "De lading bedekt het nummerbord, dus dit is niet toegestaan.",
+        "en": "The load covers the license plate, so this is not allowed.",
+        "ar": "الحمولة تغطي لوحة الترخيص، لذلك هذا غير مسموح."
+      }
     },
     {
       "id": "exam7-q6",
       "image": "../../assets/exam7/q6.png",
-      "text": "Mag je al rijdend met de telefoon in je hand 112 bellen om een verkeersongeval te melden?",
+      "text": {
+        "nl": "Mag je al rijdend met de telefoon in je hand 112 bellen om een verkeersongeval te melden?",
+        "en": "Are you allowed to call 112 while driving with phone in hand to report a traffic accident?",
+        "ar": "هل يسمح لك بالاتصال بالرقم 112 أثناء القيادة مع الهاتف في اليد للإبلاغ عن حادث مروري؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason":"Zorg ervoor dat het melden van een ongeval geen gevaarlijke situatie voor jezelf en anderen veroorzaakt. Rijdend bellen is gevaarlijk."
+      "reason": {
+        "nl": "Zorg ervoor dat het melden van een ongeval geen gevaarlijke situatie voor jezelf en anderen veroorzaakt. Rijdend bellen is gevaarlijk.",
+        "en": "Ensure that reporting an accident does not cause a dangerous situation for yourself and others. Calling while driving is dangerous.",
+        "ar": "تأكد من أن الإبلاغ عن حادث لا يسبب موقفاً خطيراً لنفسك والآخرين. الاتصال أثناء القيادة خطير."
+      }
     },
     {
       "id": "exam7-q7",
       "image": "../../assets/exam7/q7.png",
-      "text": "Hoe vaak moet je de bandenspanning controleren?",
+      "text": {
+        "nl": "Hoe vaak moet je de bandenspanning controleren?",
+        "en": "How often should you check the tire pressure?",
+        "ar": "كم مرة يجب أن تفحص ضغط الإطارات؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "1x per week "
-        },
-        {
-          "id": "b",
-          "label": "1x per maand"
-        },
-        {
-          "id":"c",
-          "label":"1x per kwartaal"
-        }
-
+        {"id": "a", "label": {"nl": "1x per week", "en": "1x per week", "ar": "مرة واحدة في الأسبوع"}},
+        {"id": "b", "label": {"nl": "1x per maand", "en": "1x per month", "ar": "مرة واحدة في الشهر"}},
+        {"id": "c", "label": {"nl": "1x per kwartaal", "en": "1x per quarter", "ar": "مرة واحدة في الربع"}}
       ],
       "correct": "b",
-      "reason" :"Om de bandenspanning op peil te houden, is het verstandig om deze elke maand te controleren."
-
+      "reason": {
+        "nl": "Om de bandenspanning op peil te houden, is het verstandig om deze elke maand te controleren.",
+        "en": "To maintain proper tire pressure, it is wise to check it every month.",
+        "ar": "للحفاظ على ضغط الإطارات المناسب، من الحكمة فحصه كل شهر."
+      }
     },
     {
       "id": "exam7-q8",
       "image": "../../assets/exam7/q8.png",
-      "text": "Wanneer moet je als bestuurder een tram voorrang verlenen?",
+      "text": {
+        "nl": "Wanneer moet je als bestuurder een tram voorrang verlenen?",
+        "en": "When should you as a driver give way to a tram?",
+        "ar": "متى يجب عليك كسائق إعطاء الأولوية للترام؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Op een gelijkwaardig kruispunt"
-        },
-        {
-          "id": "b",
-          "label": "Altijd, ongeacht of er andere verkeerstekens, borden of lichten op het kruispunt staan"
-        },
-        {
-          "id": "c",
-          "label": "Nooit, trams hebben geen voorrang op andere bestuurders"
-        }
+        {"id": "a", "label": {"nl": "Op een gelijkwaardig kruispunt", "en": "At an equal intersection", "ar": "عند تقاطع متساوٍ"}},
+        {"id": "b", "label": {"nl": "Altijd, ongeacht of er andere verkeerstekens, borden of lichten op het kruispunt staan", "en": "Always, regardless of other traffic signs, markings or lights at the intersection", "ar": "دائماً، بغض النظر عن علامات المرور الأخرى أو العلامات أو الأضواء عند التقاطع"}},
+        {"id": "c", "label": {"nl": "Nooit, trams hebben geen voorrang op andere bestuurders", "en": "Never, trams have no priority over other drivers", "ar": "أبداً، الترام ليس له أولوية على السائقين الآخرين"}}
       ],
       "correct": "a",
-      "reason": "Op een gelijkwaardig kruispunt heeft de tram altijd voorrang. Daarnaast hoeft een tram zelf ook geen voorrang te verlenen aan ander verkeer op een gelijkwaardig kruispunt als hij afslaat."    },
+      "reason": {
+        "nl": "Op een gelijkwaardig kruispunt heeft de tram altijd voorrang. Daarnaast hoeft een tram zelf ook geen voorrang te verlenen aan ander verkeer op een gelijkwaardig kruispunt als hij afslaat.",
+        "en": "At an equal intersection, the tram always has priority. In addition, a tram itself does not have to yield to other traffic at an equal intersection when turning.",
+        "ar": "عند تقاطع متساوٍ، يكون للترام أولوية دائماً. بالإضافة إلى ذلك، لا يجب على الترام نفسه إعطاء الأولوية لحركة المرور الأخرى عند تقاطع متساوٍ عند الانعطاف."
+      }
+    },
     {
       "id": "exam7-q9",
       "image": "../../assets/exam7/q9.png",
-      "text": "Jouw verkeerslicht staat op groen. Mag je doorrijden?" ,
+      "text": {
+        "nl": "Jouw verkeerslicht staat op groen. Mag je doorrijden?",
+        "en": "Your traffic light is green. Are you allowed to continue driving?",
+        "ar": "إشارة المرور الخاصة بك خضراء. هل يسمح لك بمواصلة القيادة؟"
+      },
       "type": "multiple",
-
       "options": [
-
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "De volgauto's van een militaire colonne mogen doorrijden bij oranje of rood licht om het eerste voertuig te volgen. Jij met groen licht moet dan wachten tot de colonne is gepasseerd."
+      "reason": {
+        "nl": "De volgauto's van een militaire colonne mogen doorrijden bij oranje of rood licht om het eerste voertuig te volgen. Jij met groen licht moet dan wachten tot de colonne is gepasseerd.",
+        "en": "The following vehicles of a military convoy may continue driving at orange or red light to follow the first vehicle. You with green light must then wait until the convoy has passed.",
+        "ar": "يجوز للمركبات التالية لرتل عسكري مواصلة القيادة عند الضوء البرتقالي أو الأحمر لمتابعة المركبة الأولى. أنت مع الضوء الأخضر يجب أن تنتظر حتى يمر الرتل."
+      }
     },
     {
       "id": "exam7-q10",
       "image": "../../assets/exam7/q10.png",
-      "text": "Rijd je nu op de juiste rijstrook?",
+      "text": {
+        "nl": "Rijd je nu op de juiste rijstrook?",
+        "en": "Are you driving in the correct lane now?",
+        "ar": "هل تقود في الحارة الصحيحة الآن؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id":"a",
-          "label":"Ja"
-        },
-        {
-          "id":"b",
-          "label":"Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Je moet gebruikmaken van de spitsstrook als deze open is, want jouw plaats op de weg is zoveel mogelijk rechts."
-
+      "reason": {
+        "nl": "Je moet gebruikmaken van de spitsstrook als deze open is, want jouw plaats op de weg is zoveel mogelijk rechts.",
+        "en": "You must use the rush hour lane if it is open, because your position on the road is as far to the right as possible.",
+        "ar": "يجب عليك استخدام حارة ساعة الذروة إذا كانت مفتوحة، لأن موقعك على الطريق هو في أقصى اليمين قدر الإمكان."
+      }
     },
     {
       "id": "exam7-q11",
       "image": "../../assets/exam7/q11.png",
-      "text": "Wat is hier de juiste volgorde van voor laten gaan?",
+      "text": {
+        "nl": "Wat is hier de juiste volgorde van voor laten gaan?",
+        "en": "What is the correct order of giving way here?",
+        "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية هنا؟"
+      },
       "type": "interactive-choice",
-
-      "options": [
-
-
-
-      ],
-      "correct": "1. Bromfiets, 2. Motor, 3. Auto",
-      "reason": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3)."
+      "options": [],
+      "correct": {
+        "nl": "1. Bromfiets, 2. Motor, 3. Auto",
+        "en": "1. Moped, 2. Motorcycle, 3. Car",
+        "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
+      },
+      "reason": {
+        "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
+        "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
+        "ar": "الدراجة البخارية تأتي من اليمين قبل الدراجة النارية. الدراجة النارية تأتي من اليمين قبل السيارة. لذا الدراجة البخارية (1) تذهب أولاً، ثم الدراجة النارية (2) وأخيراً السيارة (3)."
+      }
     },
     {
       "id": "exam7-q12",
       "image": "../../assets/exam7/q12.png",
-      "text": "Een slachtoffer is bewusteloos en begint te braken. Wat is de beste lichaamshouding?",
+      "text": {
+        "nl": "Een slachtoffer is bewusteloos en begint te braken. Wat is de beste lichaamshouding?",
+        "en": "A victim is unconscious and starts vomiting. What is the best body position?",
+        "ar": "الضحية فاقدة للوعي وبدأت في التقيؤ. ما هو أفضل وضع للجسم؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "A"
-        },
-        {
-          "id": "b",
-          "label": "B"
-        },
-        {
-          "id" :"c",
-          "label" : "C"
-        }
+        {"id": "a", "label": {"nl": "A", "en": "A", "ar": "A"}},
+        {"id": "b", "label": {"nl": "B", "en": "B", "ar": "B"}},
+        {"id": "c", "label": {"nl": "C", "en": "C", "ar": "C"}}
       ],
       "correct": "c",
-      "reason": "Dit noem je de stabiele zijligging."
+      "reason": {
+        "nl": "Dit noem je de stabiele zijligging.",
+        "en": "This is called the recovery position.",
+        "ar": "هذا يسمى وضعية الاستلقاء الجانبي."
+      }
     },
     {
       "id": "exam7-q13",
       "image": "../../assets/exam7/q13.png",
-      "text": "Je wilt linksaf. Sorteer je zo goed voor?",
+      "text": {
+        "nl": "Je wilt linksaf. Sorteer je zo goed voor?",
+        "en": "You want to turn left. Are you positioning yourself correctly?",
+        "ar": "تريد الانعطاف لليسار. هل تتمركز بشكل صحيح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Ondanks dat je hier een eenrichtingsweg in gaat, kan je vanaf rechts nog wel tegenliggers op jouw weghelft verwachten als je hier links voorsorteert."
+      "reason": {
+        "nl": "Ondanks dat je hier een eenrichtingsweg in gaat, kan je vanaf rechts nog wel tegenliggers op jouw weghelft verwachten als je hier links voorsorteert.",
+        "en": "Even though you are entering a one-way street here, you can still expect oncoming traffic on your side of the road from the right if you position yourself to the left here.",
+        "ar": "على الرغم من أنك تدخل طريقاً ذا اتجاه واحد هنا، لا يزال بإمكانك توقع حركة المرور القادمة على جانبك من الطريق من اليمين إذا تمركزت إلى اليسار هنا."
+      }
     },
     {
       "id": "exam7-q14",
       "image": "../../assets/exam7/q14.png",
-      "text": "Je snelheidsmeter is kapot, je gaat de weg op. Mag dit?",
+      "text": {
+        "nl": "Je snelheidsmeter is kapot, je gaat de weg op. Mag dit?",
+        "en": "Your speedometer is broken, you go onto the road. Is this allowed?",
+        "ar": "عداد السرعة الخاص بك معطل، تذهب إلى الطريق. هل هذا مسموح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Als je in een auto wilt rijden, moet de snelheidsmeter het altijd doen. Werkt die niet, dan mag je niet de weg op!"
+      "reason": {
+        "nl": "Als je in een auto wilt rijden, moet de snelheidsmeter het altijd doen. Werkt die niet, dan mag je niet de weg op!",
+        "en": "If you want to drive a car, the speedometer must always work. If it doesn't work, you may not go on the road!",
+        "ar": "إذا كنت تريد قيادة سيارة، يجب أن يعمل عداد السرعة دائماً. إذا لم يعمل، لا يجوز لك الخروج إلى الطريق!"
+      }
     },
     {
       "id": "exam7-q15",
       "image": "../../assets/exam7/q15.png",
-      "text": "Je wilt hier uitvoegen, Wat doe je?",
+      "text": {
+        "nl": "Je wilt hier uitvoegen, Wat doe je?",
+        "en": "You want to exit here, What do you do?",
+        "ar": "تريد الخروج هنا، ماذا تفعل؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Je voegt uit voor de rode auto"
-        },
-        {
-          "id": "b",
-          "label": "Je voegt uit achter de rode auto"
-        }
+        {"id": "a", "label": {"nl": "Je voegt uit voor de rode auto", "en": "You exit before the red car", "ar": "تخرج قبل السيارة الحمراء"}},
+        {"id": "b", "label": {"nl": "Je voegt uit achter de rode auto", "en": "You exit after the red car", "ar": "تخرج بعد السيارة الحمراء"}}
       ],
       "correct": "b",
-      "reason": "Uitvoegen is een bijzondere manoeuvre, je wisselt namelijk van rijstrook. Daarbij moet je voorrang verlenen, dus je moet de rode auto laten passeren voordat jij uitvoegt."
+      "reason": {
+        "nl": "Uitvoegen is een bijzondere manoeuvre, je wisselt namelijk van rijstrook. Daarbij moet je voorrang verlenen, dus je moet de rode auto laten passeren voordat jij uitvoegt.",
+        "en": "Exiting is a special maneuver, as you are changing lanes. In doing so, you must yield, so you must let the red car pass before you exit.",
+        "ar": "الخروج مناورة خاصة، لأنك تغير الحارة. عند القيام بذلك، يجب أن تعطي الأولوية، لذا يجب أن تدع السيارة الحمراء تمر قبل أن تخرج."
+      }
     },
-
     {
       "id": "exam7-q16",
       "image": "../../assets/exam7/q16.png",
-      "text": "Hoe hard mag jij hier rijden?(Km/u)",
+      "text": {
+        "nl": "Hoe hard mag jij hier rijden?(Km/u)",
+        "en": "How fast can you drive here?(Km/h)",
+        "ar": "ما هي السرعة التي يمكنك القيادة بها هنا؟ (كم/ساعة)"
+      },
       "type": "input",
-
-      "options": [
-
-      ],
-      "correct": "50 Km/u",
-      "reason": "Matrixborden gaan boven snelheidsborden. Dus hier mag jij 50km/u rijden."
+      "options": [],
+      "correct": {"nl": "50 Km/u", "en": "50 Km/h", "ar": "50 كم/ساعة"},
+      "reason": {
+        "nl": "Matrixborden gaan boven snelheidsborden. Dus hier mag jij 50km/u rijden.",
+        "en": "Matrix signs take precedence over speed signs. So here you may drive 50 km/h.",
+        "ar": "علامات المصفوفة لها الأسبقية على علامات السرعة. لذا هنا يمكنك القيادة بسرعة 50 كم/ساعة."
+      }
     },
     {
       "id": "exam7-q17",
       "image": "../../assets/exam7/q17.png",
-      "text": "Mag je de tractor echts inhalen?",
+      "text": {
+        "nl": "Mag je de tractor rechts inhalen?",
+        "en": "Are you allowed to overtake the tractor on the right?",
+        "ar": "هل يسمح لك بتجاوز الجرار على اليمين؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Vlak voor of op een rotonde mag je rechts inhalen."
+      "reason": {
+        "nl": "Vlak voor of op een rotonde mag je rechts inhalen.",
+        "en": "Just before or on a roundabout, you may overtake on the right.",
+        "ar": "قبل الدوار مباشرة أو على الدوار، يمكنك التجاوز على اليمين."
+      }
     },
     {
       "id": "exam7-q18",
       "image": "../../assets/exam7/q18.png",
-      "text": "Moet je de uitstappende trampassagiers voor laten gaan?",
+      "text": {
+        "nl": "Moet je de uitstappende trampassagiers voor laten gaan?",
+        "en": "Should you give way to disembarking tram passengers?",
+        "ar": "هل يجب أن تعطي الأولوية لركاب الترام النازلين؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Als er een vluchtheuvel bij de halte is, dan hoef je de passagiers niet voor te laten."
+      "reason": {
+        "nl": "Als er een vluchtheuvel bij de halte is, dan hoef je de passagiers niet voor te laten.",
+        "en": "If there is a safety island at the stop, you do not have to give way to passengers.",
+        "ar": "إذا كانت هناك جزيرة أمان عند المحطة، فلا يجب أن تعطي الأولوية للركاب."
+      }
     },
     {
       "id": "exam7-q19",
       "image": "../../assets/exam7/q19.png",
-      "text": "Wat is de maximumsnelheid na dit bord om 19.30 uur? (Km/u)",
+      "text": {
+        "nl": "Wat is de maximumsnelheid na dit bord om 19.30 uur? (Km/u)",
+        "en": "What is the maximum speed after this sign at 19:30? (Km/h)",
+        "ar": "ما هي السرعة القصوى بعد هذه العلامة الساعة 19:30؟ (كم/ساعة)"
+      },
       "type": "input",
-
-      "options": [
-
-      ],
-      "correct": "112 Km/u",
-      "reason": "Tussen 19:00 uur en 06:00 uur is de maximumsnelheid 120 km/u."
+      "options": [],
+      "correct": {"nl": "130 Km/u", "en": "130 Km/h", "ar": "130 كم/ساعة"},
+      "reason": {
+        "nl": "Tussen 19:00 uur en 06:00 uur is de maximumsnelheid 130 km/u.",
+        "en": "Between 19:00 and 06:00, the maximum speed is 130 km/h.",
+        "ar": "بين الساعة 19:00 و 06:00، السرعة القصوى هي 130 كم/ساعة."
+      }
     },
     {
       "id": "exam7-q20",
       "image": "../../assets/exam7/q20.png",
-      "text": "Wie moet je voor laten gaan als je uit een uitrit komt?",
+      "text": {
+        "nl": "Wie moet je voor laten gaan als je uit een uitrit komt?",
+        "en": "Who should you give way to when exiting a driveway?",
+        "ar": "من يجب أن تعطيه الأولوية عند الخروج من مخرج؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Alle weggebruikers"
-        },
-        {
-          "id": "b",
-          "label": "Alle weggebruikers behalve voetgangers"
-        },
-        {
-          "id": "c",
-          "label": "Allen bestuurders van motorvoertuigen"
-        }
+        {"id": "a", "label": {"nl": "Alle weggebruikers", "en": "All road users", "ar": "جميع مستخدمي الطريق"}},
+        {"id": "b", "label": {"nl": "Alle weggebruikers behalve voetgangers", "en": "All road users except pedestrians", "ar": "جميع مستخدمي الطريق باستثناء المشاة"}},
+        {"id": "c", "label": {"nl": "Allen bestuurders van motorvoertuigen", "en": "Only drivers of motor vehicles", "ar": "فقط سائقو المركبات ذات المحركات"}}
       ],
       "correct": "a",
-      "reason": "Bij het verlaten van een uitrit dien je alle weggebruikers voor te laten gaan."
+      "reason": {
+        "nl": "Bij het verlaten van een uitrit dien je alle weggebruikers voor te laten gaan.",
+        "en": "When exiting a driveway, you must give way to all road users.",
+        "ar": "عند الخروج من مخرج، يجب أن تعطي الأولوية لجميع مستخدمي الطريق."
+      }
     },
     {
       "id": "exam7-q21",
       "image": "../../assets/exam7/q21.png",
-      "text": "Je auto rijdt op diesel en is ouder dan 3 jaar. Hoe vaak moet je de auto ApK laten keuren ?",
+      "text": {
+        "nl": "Je auto rijdt op diesel en is ouder dan 3 jaar. Hoe vaak moet je de auto APK laten keuren?",
+        "en": "Your car runs on diesel and is older than 3 years. How often must you have the car MOT inspected?",
+        "ar": "سيارتك تعمل بالديزل وعمرها أكثر من 3 سنوات. كم مرة يجب فحص السيارة فحص فني؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id":"a",
-          "label": "Elk jaar"
-        },
-        {
-          "id":"b",
-          "label": "Elke 2 jaar "
-        },
-        {
-          "id":"c",
-          "label": "Elke 3 jaar "
-        }
-
+        {"id": "a", "label": {"nl": "Elk jaar", "en": "Every year", "ar": "كل سنة"}},
+        {"id": "b", "label": {"nl": "Elke 2 jaar", "en": "Every 2 years", "ar": "كل سنتين"}},
+        {"id": "c", "label": {"nl": "Elke 3 jaar", "en": "Every 3 years", "ar": "كل 3 سنوات"}}
       ],
       "correct": "a",
-      "reason": "Als je auto ouder dan 3 jaar is, dan moet de auto elk jaar gekeurd worden.."
+      "reason": {
+        "nl": "Als je auto ouder dan 3 jaar is, dan moet de auto elk jaar gekeurd worden.",
+        "en": "If your car is older than 3 years, then the car must be inspected every year.",
+        "ar": "إذا كانت سيارتك أقدم من 3 سنوات، فيجب فحص السيارة كل سنة."
+      }
     },
     {
       "id": "exam7-q22",
       "image": "../../assets/exam7/q22.png",
-      "text": "Na een hevige sneeuwbui zet je je motor aan zodat de ramen kunnen ontdooien voor je wegrijdt. Is dit schadelijk voor het milieu?",
+      "text": {
+        "nl": "Na een hevige sneeuwbui zet je je motor aan zodat de ramen kunnen ontdooien voor je wegrijdt. Is dit schadelijk voor het milieu?",
+        "en": "After a heavy snowfall, you start your engine so the windows can defrost before you drive off. Is this harmful to the environment?",
+        "ar": "بعد تساقط ثلوج كثيفة، تشغل محركك حتى تذوب النوافذ قبل أن تنطلق. هل هذا ضار بالبيئة؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Ja, dit is schadelijk voor het milieu, het is beter om direct weg te rijden dan de motor eerst aan te zetten en te wachten tot de ruiten ontdooien. Dit kost namelijk onnodig brandstof die je uitstoot."
+      "reason": {
+        "nl": "Ja, dit is schadelijk voor het milieu, het is beter om direct weg te rijden dan de motor eerst aan te zetten en te wachten tot de ruiten ontdooien. Dit kost namelijk onnodig brandstof die je uitstoot.",
+        "en": "Yes, this is harmful to the environment, it is better to drive off immediately than to start the engine first and wait for the windows to defrost. This unnecessarily costs fuel that you emit.",
+        "ar": "نعم، هذا ضار بالبيئة، من الأفضل الانطلاق فوراً بدلاً من تشغيل المحرك أولاً والانتظار حتى تذوب النوافذ. هذا يكلف وقوداً غير ضروري تنبعث منه."
+      }
     },
     {
       "id": "exam7-q23",
       "image": "../../assets/exam7/q23.png",
-      "text": "Mag een aanhangwagen zwaarder zijn dan het voertuig zelf?",
+      "text": {
+        "nl": "Mag een aanhangwagen zwaarder zijn dan het voertuig zelf?",
+        "en": "May a trailer be heavier than the vehicle itself?",
+        "ar": "هل يمكن أن تكون المقطورة أثقل من المركبة نفسها؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Dit mag, mits de combinatie (auto + aanhangwagen) niet zwaarder is dan 3500kg."
+      "reason": {
+        "nl": "Dit mag, mits de combinatie (auto + aanhangwagen) niet zwaarder is dan 3500kg.",
+        "en": "This is allowed, provided the combination (car + trailer) is not heavier than 3500kg.",
+        "ar": "هذا مسموح به، بشرط ألا يزيد الوزن المركب (السيارة + المقطورة) عن 3500 كجم."
+      }
     },
     {
       "id": "exam7-q24",
       "image": "../../assets/exam7/q24.png",
-      "text": "Je verlaat de autosnelweg en haalt rechts in. Mag dat?",
+      "text": {
+        "nl": "Je verlaat de autosnelweg en haalt rechts in. Mag dat?",
+        "en": "You leave the highway and overtake on the right. Is that allowed?",
+        "ar": "تغادر الطريق السريع وتتجاوز على اليمين. هل هذا مسموح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Op een uitrijstrook mag je via rechts inhalen."
+      "reason": {
+        "nl": "Op een uitrijstrook mag je via rechts inhalen.",
+        "en": "On an exit lane, you may overtake on the right.",
+        "ar": "على حارة الخروج، يمكنك التجاوز على اليمين."
+      }
     },
     {
       "id": "exam7-q25",
       "image": "../../assets/exam7/q25.png",
-      "text": "Je rijdt op de autosnelweg en het matrixbord geeft het volgende signaal. Het is 17:00. Hoe hard mag je rijden?(Km/u)",
+      "text": {
+        "nl": "Je rijdt op de autosnelweg en het matrixbord geeft het volgende signaal. Het is 17:00. Hoe hard mag je rijden?(Km/u)",
+        "en": "You are driving on the highway and the matrix sign shows the following signal. It is 17:00. How fast can you drive?(Km/h)",
+        "ar": "أنت تقود على الطريق السريع وعلامة المصفوفة تظهر الإشارة التالية. الساعة 17:00. ما هي السرعة التي يمكنك القيادة بها؟ (كم/ساعة)"
+      },
       "type": "input",
-
-      "options": [
-
-      ],
-      "correct": "100 Km/u",
-      "reason": "Dit bord geeft het einde van een maximumsnelheid die eerder op de matrixborden stonden aangegeven aan. Dat betekent dat je weer de gebruikelijke maximumsnelheid mag rijden die geldt op de autosnelweg. Deze is in Nederland in elk geval tussen 06:00 en 19:00 uur maximaal 100 km/u."
+      "options": [],
+      "correct": {"nl": "100 Km/u", "en": "100 Km/h", "ar": "100 كم/ساعة"},
+      "reason": {
+        "nl": "Dit bord geeft het einde van een maximumsnelheid die eerder op de matrixborden stonden aangegeven aan. Dat betekent dat je weer de gebruikelijke maximumsnelheid mag rijden die geldt op de autosnelweg. Deze is in Nederland in elk geval tussen 06:00 en 19:00 uur maximaal 100 km/u.",
+        "en": "This sign indicates the end of a maximum speed that was previously indicated on the matrix signs. This means you may again drive the usual maximum speed that applies on the highway. In the Netherlands, this is maximum 100 km/h between 06:00 and 19:00.",
+        "ar": "تشير هذه العلامة إلى نهاية السرعة القصوى التي كانت موضحة سابقاً على علامات المصفوفة. هذا يعني أنه يمكنك مرة أخرى قيادة السرعة القصوى المعتادة التي تنطبق على الطريق السريع. في هولندا، هذه هي 100 كم/ساعة كحد أقصى بين الساعة 06:00 و 19:00."
+      }
     },
     {
       "id": "exam7-q26",
       "image": "../../assets/exam7/q26.png",
-      "text": "Je wilt rechtdoor. Moet je de bromfiester voor laten gaan?",
+      "text": {
+        "nl": "Je wilt rechtdoor. Moet je de bromfietser voor laten gaan?",
+        "en": "You want to go straight. Should you give way to the moped rider?",
+        "ar": "تريد السير مباشرة. هل يجب أن تعطي الأولوية لراكب الدراجة البخارية؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "In Nederland geef je op een gelijkwaardige weg alle bestuurders die van rechts komen voorrang."
+      "reason": {
+        "nl": "In Nederland geef je op een gelijkwaardige weg alle bestuurders die van rechts komen voorrang.",
+        "en": "In the Netherlands, on an equal road, you give way to all drivers coming from the right.",
+        "ar": "في هولندا، على طريق متساوٍ، تعطي الأولوية لجميع السائقين القادمين من اليمين."
+      }
     },
     {
       "id": "exam7-q27",
       "image": "../../assets/exam7/q27.png",
-      "text": "Je moet rechtsaf. Kun je hier een tegemoetkomende snorfiester verwachten?",
+      "text": {
+        "nl": "Je moet rechtsaf. Kun je hier een tegemoetkomende snorfietser verwachten?",
+        "en": "You need to turn right. Can you expect an oncoming moped rider here?",
+        "ar": "تحتاج إلى الانعطاف يميناً. هل يمكنك توقع راكب دراجة بخارية قادم هنا؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "De eenrichtingsweg geldt, door het onderbord, niet voor fietsers, snorfietsers en bromfietsers, dus je kunt deze hier van rechts verwachten."
+      "reason": {
+        "nl": "De eenrichtingsweg geldt, door het onderbord, niet voor fietsers, snorfietsers en bromfietsers, dus je kunt deze hier van rechts verwachten.",
+        "en": "The one-way street does not apply, due to the sub-sign, to cyclists, moped riders and moped riders, so you can expect these from the right here.",
+        "ar": "طريق الاتجاه الواحد لا ينطبق، بسبب العلامة الفرعية، على راكبي الدراجات، وراكبي الدراجات البخارية، وراكبي الدراجات البخارية، لذا يمكنك توقع هذه من اليمين هنا."
+      }
     },
     {
       "id": "exam7-q28",
       "image": "../../assets/exam7/q28.png",
-      "text": "Je rijdt in de schemering op een onverlichte weg binnen de bebouwde kom. Welk licht gebruik je?",
+      "text": {
+        "nl": "Je rijdt in de schemering op een onverlichte weg binnen de bebouwde kom. Welk licht gebruik je?",
+        "en": "You are driving at dusk on an unlit road within built-up areas. Which light do you use?",
+        "ar": "أنت تقود في الغسق على طريق غير مضاء داخل المناطق المأهولة. أي ضوء تستخدم؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Alleen stadlicht, omdat het voldoende zichtbaar is bij schemering"
-        },
-        {
-          "id": "b",
-          "label": "Dimlicht, omdat stadlicht niet voldoende is om zelf goed te zien en gezein te worden"
-        },
-        {
-          "id": "c",
-          "label": "Groot licht, want je rijdt op een onverlichte weg"
-        }
+        {"id": "a", "label": {"nl": "Alleen stadlicht, omdat het voldoende zichtbaar is bij schemering", "en": "Only parking lights, because it is sufficiently visible at dusk", "ar": "أضواء الركن فقط، لأنها مرئية بدرجة كافية في الغسق"}},
+        {"id": "b", "label": {"nl": "Dimlicht, omdat stadlicht niet voldoende is om zelf goed te zien en gezien te worden", "en": "Low beam, because parking lights are not sufficient to see well and be seen", "ar": "الضوء المنخفض، لأن أضواء الركن غير كافية للرؤية الجيدة ورؤيتك"}},
+        {"id": "c", "label": {"nl": "Groot licht, want je rijdt op een onverlichte weg", "en": "High beam, because you are driving on an unlit road", "ar": "الضوء العالي، لأنك تقود على طريق غير مضاء"}}
       ],
       "correct": "b",
-      "reason": "De adviessnelheid van 50 km/u is niet langer geldig."
+      "reason": {
+        "nl": "Dimlicht is verplicht bij slecht zicht, zoals bij schemering of op onverlichte wegen.",
+        "en": "Low beam is mandatory in poor visibility, such as at dusk or on unlit roads.",
+        "ar": "الضوء المنخفض إلزامي في الرؤية الضعيفة، مثل في الغسق أو على الطرق غير المضاءة."
+      }
     },
     {
       "id": "exam7-q29",
       "image": "../../assets/exam7/q29.png",
-      "text": "In welke situatie mag je maximaal 80km/u rijden?",
+      "text": {
+        "nl": "In welke situatie mag je maximaal 80km/u rijden?",
+        "en": "In which situation may you drive maximum 80km/h?",
+        "ar": "في أي موقف يمكنك القيادة بسرعة 80 كم/ساعة كحد أقصى؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Situatie A"
-        },
-        {
-          "id": "b",
-          "label": "Situatie B"
-        },
-        {
-          "id": "c",
-          "label" : "Beide situaties"
-        }
+        {"id": "a", "label": {"nl": "Situatie A", "en": "Situation A", "ar": "الموقف A"}},
+        {"id": "b", "label": {"nl": "Situatie B", "en": "Situation B", "ar": "الموقف B"}},
+        {"id": "c", "label": {"nl": "Beide situaties", "en": "Both situations", "ar": "كلا الموقفين"}}
       ],
       "correct": "b",
-      "reason": "De 3 diagonale strepen geven het einde van desbetreffend verkeersbord aan. Na dit bord mag je maximaal 80 km/u. Bord A geeft een autoweg aan. Hier mag je maximaal 100km/u, tenzij anders aangegeven."
+      "reason": {
+        "nl": "De 3 diagonale strepen geven het einde van desbetreffend verkeersbord aan. Na dit bord mag je maximaal 80 km/u. Bord A geeft een autoweg aan. Hier mag je maximaal 100km/u, tenzij anders aangegeven.",
+        "en": "The 3 diagonal stripes indicate the end of the relevant traffic sign. After this sign you may drive maximum 80 km/h. Sign A indicates a motor road. Here you may drive maximum 100 km/h, unless otherwise indicated.",
+        "ar": "الشرائط القطرية الثلاثة تشير إلى نهاية علامة المرور ذات الصلة. بعد هذه العلامة يمكنك القيادة بسرعة 80 كم/ساعة كحد أقصى. العلامة A تشير إلى طريق سيارات. هنا يمكنك القيادة بسرعة 100 كم/ساعة كحد أقصى، ما لم يُذكر خلاف ذلك."
+      }
     },
     {
       "id": "exam7-q30",
       "image": "../../assets/exam7/q30.png",
-      "text": "Gaan verkeerslichtn boven verkeerstekens die de voorrang regelen?",
+      "text": {
+        "nl": "Gaan verkeerslichten boven verkeerstekens die de voorrang regelen?",
+        "en": "Do traffic lights take precedence over traffic signs that regulate right of way?",
+        "ar": "هل إشارات المرور لها الأسبقية على علامات المرور التي تنظم حق الأولوية؟"
+      },
       "type": "multiple",
       "options": [
-       {
-        "id": "a",
-        "label": "Ja"
-       },
-       {
-        "id": "b",
-        "label": "Nee"
-       }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen."
+      "reason": {
+        "nl": "Verkeerslichten gaan boven verkeerstekens die de voorrang regelen.",
+        "en": "Traffic lights take precedence over traffic signs that regulate right of way.",
+        "ar": "إشارات المرور لها الأسبقية على علامات المرور التي تنظم حق الأولوية."
+      }
     },
     {
       "id": "exam7-q31",
       "image": "../../assets/exam7/q31.png",
-      "text": "Je parkeert hier . Mag dat ?",
+      "text": {
+        "nl": "Je parkeert hier. Mag dat?",
+        "en": "You park here. Is that allowed?",
+        "ar": "تركن هنا. هل هذا مسموح؟"
+      },
       "type": "multiple",
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-         },
-         {
-          "id": "b",
-          "label": "Nee"
-         }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Parkeren is hier verboden, deze plek is enkel bestemd voor laden en lossen van goederen zoals het bord aangeeft."
+      "reason": {
+        "nl": "Parkeren is hier verboden, deze plek is enkel bestemd voor laden en lossen van goederen zoals het bord aangeeft.",
+        "en": "Parking is prohibited here, this spot is only intended for loading and unloading goods as the sign indicates.",
+        "ar": "الركن محظور هنا، هذه البقعة مخصصة فقط لتحميل وتفريغ البضائع كما تشير العلامة."
+      }
     },
     {
       "id": "exam7-q32",
       "image": "../../assets/exam7/q32.png",
-      "text": "je stopt hier even. Mag dat?" ,
+      "text": {
+        "nl": "Je stopt hier even. Mag dat?",
+        "en": "You stop here for a moment. Is that allowed?",
+        "ar": "تتوقف هنا للحظة. هل هذا مسموح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-         },
-         {
-          "id": "b",
-          "label": "Nee"
-         }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "JOp een fietsstrook is het niet toegestaan om stil te staan."
+      "reason": {
+        "nl": "Op een fietsstrook is het niet toegestaan om stil te staan.",
+        "en": "On a bicycle lane, it is not allowed to stop.",
+        "ar": "على حارة الدراجات، لا يسمح بالتوقف."
+      }
     },
     {
       "id": "exam7-q33",
       "image": "../../assets/exam7/q33.png",
-      "text": "Wanneer mag je de vluchtstrook gebruiken?",
+      "text": {
+        "nl": "Wanneer mag je de vluchtstrook gebruiken?",
+        "en": "When may you use the hard shoulder?",
+        "ar": "متى يمكنك استخدام حارة الطوارئ؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "In geval van nood"
-        },
-        {
-          "id": "b",
-          "label": "Om je telefoon te beantwoorden"
-        },
-        {
-          "id": "c",
-          "label": "Zowel in geval van nood als om je telefoon te beantwoorden"
-        }
+        {"id": "a", "label": {"nl": "In geval van nood", "en": "In case of emergency", "ar": "في حالة الطوارئ"}},
+        {"id": "b", "label": {"nl": "Om je telefoon te beantwoorden", "en": "To answer your phone", "ar": "للرد على هاتفك"}},
+        {"id": "c", "label": {"nl": "Zowel in geval van nood als om je telefoon te beantwoorden", "en": "Both in case of emergency and to answer your phone", "ar": "كل من في حالة الطوارئ وللرد على هاتفك"}}
       ],
       "correct": "a",
-      "reason": "Dit mag alleen in geval van nood."
+      "reason": {
+        "nl": "Dit mag alleen in geval van nood.",
+        "en": "This is only allowed in case of emergency.",
+        "ar": "هذا مسموح فقط في حالة الطوارئ."
+      }
     },
     {
       "id": "exam7-q34",
       "image": "../../assets/exam7/q34.png",
-      "text": "Wat is hier de juiste volgorde van voor laten gaan?",
+      "text": {
+        "nl": "Wat is hier de juiste volgorde van voor laten gaan?",
+        "en": "What is the correct order of giving way here?",
+        "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية هنا؟"
+      },
       "type": "interactive-choice",
-
-      "options": [
-
-      ],
-      "correct": "1. Bromfiets, 2. Motor, 3. Auto",
-      "reason": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3)."
+      "options": [],
+      "correct": {
+        "nl": "1. Bromfiets, 2. Motor, 3. Auto",
+        "en": "1. Moped, 2. Motorcycle, 3. Car",
+        "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
+      },
+      "reason": {
+        "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
+        "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
+        "ar": "الدراجة البخارية تأتي من اليمين قبل الدراجة النارية. الدراجة النارية تأتي من اليمين قبل السيارة. لذا الدراجة البخارية (1) تذهب أولاً، ثم الدراجة النارية (2) وأخيراً السيارة (3)."
+      }
     },
     {
       "id": "exam7-q35",
       "image": "../../assets/exam7/q35.png",
-      "text": "Mag je in deze situatie groot licht voeren?",
+      "text": {
+        "nl": "Mag je in deze situatie groot licht voeren?",
+        "en": "Are you allowed to use high beam in this situation?",
+        "ar": "هل يسمح لك باستخدام الضوء العالي في هذا الموقف؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Grootlicht mag je alleen voeren als het nacht is en je niemand verblindt."
-
-
+      "reason": {
+        "nl": "Grootlicht mag je alleen voeren als het nacht is en je niemand verblindt.",
+        "en": "High beam may only be used when it is night and you do not blind anyone.",
+        "ar": "يمكن استخدام الضوء العالي فقط عندما يكون الليل ولا تعمي أي شخص."
+      }
     },
     {
       "id": "exam7-q36",
       "image": "../../assets/exam7/q36.png",
-      "text": "Wat is het eerste wat  je moet doen als je met je auto in het water terecht komt?",
+      "text": {
+        "nl": "Wat is het eerste wat je moet doen als je met je auto in het water terecht komt?",
+        "en": "What is the first thing you should do if your car ends up in water?",
+        "ar": "ما هو أول شيء يجب عليك فعله إذا انتهى الأمر بسيارتك في الماء؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Je maakt je gordel los"
-        },
-        {
-          "id": "b",
-          "label": "Je doet je verlichting aan"
-        },
-        {
-          "id": "c",
-          "label": "Je opent/breekt de zijruit"
-        }
+        {"id": "a", "label": {"nl": "Je maakt je gordel los", "en": "You unfasten your seatbelt", "ar": "تفك حزام الأمان الخاص بك"}},
+        {"id": "b", "label": {"nl": "Je doet je verlichting aan", "en": "You turn on your lights", "ar": "تشغل أضواءك"}},
+        {"id": "c", "label": {"nl": "Je opent/breekt de zijruit", "en": "You open/break the side window", "ar": "تفتح/تكسر النافذة الجانبية"}}
       ],
       "correct": "b",
-      "reason": "Als je met je voertuig in het water terecht komt, doe je eerst je verlichting aan. Als je binnen-en buitenverlichting aan is, kan je zelf meer zien en ben je beter zichtbaar voor eventuele voorbijgangers."
+      "reason": {
+        "nl": "Als je met je voertuig in het water terecht komt, doe je eerst je verlichting aan. Als je binnen-en buitenverlichting aan is, kan je zelf meer zien en ben je beter zichtbaar voor eventuele voorbijgangers.",
+        "en": "If your vehicle ends up in water, first turn on your lights. If your interior and exterior lights are on, you can see more yourself and you are more visible to any passers-by.",
+        "ar": "إذا انتهى الأمر بمركبتك في الماء، شغل أضواءك أولاً. إذا كانت أضواءك الداخلية والخارجية مضاءة، يمكنك رؤية المزيد بنفسك وستكون أكثر وضوحاً لأي عابر سبيل."
+      }
     },
     {
       "id": "exam7-q37",
       "image": "../../assets/exam7/q37.png",
-      "text": "Je wilt richtsaf slaan. Moet je rekening houden met een overstekende fiester?",
+      "text": {
+        "nl": "Je wilt rechtsaf slaan. Moet je rekening houden met een overstekende fietser?",
+        "en": "You want to turn right. Should you take into account a crossing cyclist?",
+        "ar": "تريد الانعطاف يميناً. هل يجب أن تأخذ في الاعتبار راكب دراجة عابر؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Omdat het stoplicht een pijlvorm heeft, hoef je geen rekening te houden met tegenliggers of overstekende fietsers."
-     },
+      "reason": {
+        "nl": "Omdat het stoplicht een pijlvorm heeft, hoef je geen rekening te houden met tegenliggers of overstekende fietsers.",
+        "en": "Because the traffic light has an arrow shape, you do not need to take into account oncoming traffic or crossing cyclists.",
+        "ar": "لأن إشارة المرور لها شكل سهم، لا تحتاج إلى أخذ حركة المرور القادمة أو راكبي الدراجات العابرين في الاعتبار."
+      }
+    },
     {
       "id": "exam7-q38",
       "image": "../../assets/exam7/q38.png",
-      "text": "Je gaat naar Nijmegen. Blijf je dan een autosnelweg volgen?",
+      "text": {
+        "nl": "Je gaat naar Nijmegen. Blijf je dan een autosnelweg volgen?",
+        "en": "You are going to Nijmegen. Do you then continue to follow a highway?",
+        "ar": "أنت ذاهب إلى Nijmegen. هل تستمر بعد ذلك في اتباع طريق سريع؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Als je richting Nijmegen gaat dan volg je een nationale weg (N322)"
+      "reason": {
+        "nl": "Als je richting Nijmegen gaat dan volg je een nationale weg (N322)",
+        "en": "If you are going towards Nijmegen then you follow a national road (N322)",
+        "ar": "إذا كنت متجهاً نحو Nijmegen فإنك تتبع طريقاً وطنياً (N322)"
+      }
     },
     {
       "id": "exam7-q39",
       "image": "../../assets/exam7/q39.png",
-      "text": "Je wilt linksaf. Sorteer je zo goed voor?",
+      "text": {
+        "nl": "Je wilt linksaf. Sorteer je zo goed voor?",
+        "en": "You want to turn left. Are you positioning yourself correctly?",
+        "ar": "تريد الانعطاف لليسار. هل تتمركز بشكل صحيح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-         },
-         {
-          "id": "b",
-          "label": "Nee"
-         }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Ondanks dat je hier een eenrichtingsweg in gaat, kan je vanaf rechts nog wel tegenliggers op jouw weghelft verwachten als je hier links voorsorteert."
+      "reason": {
+        "nl": "Ondanks dat je hier een eenrichtingsweg in gaat, kan je vanaf rechts nog wel tegenliggers op jouw weghelft verwachten als je hier links voorsorteert.",
+        "en": "Even though you are entering a one-way street here, you can still expect oncoming traffic on your side of the road from the right if you position yourself to the left here.",
+        "ar": "على الرغم من أنك تدخل طريقاً ذا اتجاه واحد هنا، لا يزال بإمكانك توقع حركة المرور القادمة على جانبك من الطريق من اليمين إذا تمركزت إلى اليسار هنا."
+      }
     },
     {
       "id": "exam7-q40",
       "image": "../../assets/exam7/q40.png",
+      "text": {
+        "nl": "Een kind komt met zijn oren boven de rand van het kinderzitje. Mag dat?",
+        "en": "A child's ears come above the edge of the child seat. Is that allowed?",
+        "ar": "آذان الطفل تأتي فوق حافة مقعد الأطفال. هل هذا مسموح؟"
+      },
       "type": "multiple",
-      "text": "Een kind komt met zijn oren boven de rand van het kinderzitje. Mag dat?",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
-
       "correct": "b",
-      "reason": "De oren mogen nooit boven de rand van een kinderstoeltje uitsteken."
+      "reason": {
+        "nl": "De oren mogen nooit boven de rand van een kinderstoeltje uitsteken.",
+        "en": "The ears should never protrude above the edge of a child seat.",
+        "ar": "يجب ألا تبرز الآذان أبداً فوق حافة مقعد الأطفال."
+      }
     },
     {
       "id": "exam7-q41",
       "image": "../../assets/exam7/q41.png",
-      "text": "Op wat voor kruispunt wordt de vororang niet geregeld door verkeerslichten, verkeersregelaars en borden ?",
+      "text": {
+        "nl": "Op wat voor kruispunt wordt de voorrang niet geregeld door verkeerslichten, verkeersregelaars en borden?",
+        "en": "At what type of intersection is right of way not regulated by traffic lights, traffic controllers and signs?",
+        "ar": "في أي نوع من التقاطعات لا يتم تنظيم حق الأولوية بواسطة إشارات المرور ومراقبي المرور والعلامات؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Voorrangskruispunt"
-        },
-        {
-          "id": "b",
-          "label": "Onoverzichtelijk kruispunt"
-        },
-        {
-          "id": "c",
-          "label": "Gelijkwaardig kruispunt"
-        }
+        {"id": "a", "label": {"nl": "Voorrangskruispunt", "en": "Priority intersection", "ar": "تقاطع أولوية"}},
+        {"id": "b", "label": {"nl": "Onoverzichtelijk kruispunt", "en": "Unclear intersection", "ar": "تقاطع غير واضح"}},
+        {"id": "c", "label": {"nl": "Gelijkwaardig kruispunt", "en": "Equal intersection", "ar": "تقاطع متساوٍ"}}
       ],
       "correct": "c",
-      "reason": "Als er op een kruispunt niets is geregeld op het gebied van de voorrang door borden, verkeerslichten of verkeerstekens, dan spreken we van een gelijkwaardig kruispunt."
+      "reason": {
+        "nl": "Als er op een kruispunt niets is geregeld op het gebied van de voorrang door borden, verkeerslichten of verkeerstekens, dan spreken we van een gelijkwaardig kruispunt.",
+        "en": "If at an intersection nothing is regulated regarding right of way by signs, traffic lights or traffic markings, then we speak of an equal intersection.",
+        "ar": "إذا لم يتم تنظيم أي شيء فيما يتعلق بحق الأولوية عند تقاطع بواسطة علامات أو إشارات مرور أو علامات مرور، فإننا نتحدث عن تقاطع متساوٍ."
+      }
     },
     {
       "id": "exam7-q42",
       "image": "../../assets/exam7/q42.png",
-      "text": "Je stopt hier om een passagier te laten uitstappen . Mag dat?",
+      "text": {
+        "nl": "Je stopt hier om een passagier te laten uitstappen. Mag dat?",
+        "en": "You stop here to let a passenger get out. Is that allowed?",
+        "ar": "تتوقف هنا لإنزال راكب. هل هذا مسموح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Het in en uit laten stappen van passagiers is hier toegestaan."
+      "reason": {
+        "nl": "Het in en uit laten stappen van passagiers is hier toegestaan.",
+        "en": "Letting passengers in and out is allowed here.",
+        "ar": "صعود ونزول الركاب مسموح به هنا."
+      }
     },
     {
       "id": "exam7-q43",
       "image": "../../assets/exam7/q43.png",
-      "text": "Wanneer geef je richting aan als je wilt invoegen?",
+      "text": {
+        "nl": "Wanneer geef je richting aan als je wilt invoegen?",
+        "en": "When do you indicate when you want to merge?",
+        "ar": "متى تشير عندما تريد الاندماج؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Wanneer de blokmarkering begint"
-        },
-        {
-          "id": "b",
-          "label": "Waanner je op de invoegstrook rijdt"
-        },
-
-      {
-        "id": "c",
-        "label": "Wanneer je daadwerkelijk gaat invoegen"
-      }
+        {"id": "a", "label": {"nl": "Wanneer de blokmarkering begint", "en": "When the block marking begins", "ar": "عندما تبدأ علامة الكتلة"}},
+        {"id": "b", "label": {"nl": "Wanneer je op de invoegstrook rijdt", "en": "When you are driving on the merge lane", "ar": "عندما تقود على حارة الاندماج"}},
+        {"id": "c", "label": {"nl": "Wanneer je daadwerkelijk gaat invoegen", "en": "When you actually start merging", "ar": "عندما تبدأ في الاندماج فعلياً"}}
       ],
       "correct": "c",
-      "reason": "Op het moment dat het veilig kan dien je jouw richting aan te geven."
+      "reason": {
+        "nl": "Op het moment dat het veilig kan dien je jouw richting aan te geven.",
+        "en": "When it is safe to do so, you should indicate your direction.",
+        "ar": "عندما يكون آمناً القيام بذلك، يجب أن تشير إلى اتجاهك."
+      }
     },
     {
       "id": "exam7-q44",
       "image": "../../assets/exam7/q44.png",
-      "text": "Moet je de fiester voor laten gaan bij het wegrijden?",
+      "text": {
+        "nl": "Moet je de fietser voor laten gaan bij het wegrijden?",
+        "en": "Should you give way to the cyclist when starting to drive?",
+        "ar": "هل يجب أن تعطي الأولوية لراكب الدراجة عند بدء القيادة؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-         },
-         {
-          "id": "b",
-          "label": "Nee"
-         }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Wegrijden vanuit stilstand is een bijzondere manoeuvre en dan dien je alle weggebruikers voorrang te verlenen."
+      "reason": {
+        "nl": "Wegrijden vanuit stilstand is een bijzondere manoeuvre en dan dien je alle weggebruikers voorrang te verlenen.",
+        "en": "Starting to drive from a standstill is a special maneuver and then you must give way to all road users.",
+        "ar": "بدء القيادة من التوقف هي مناورة خاصة وعندها يجب أن تعطي الأولوية لجميع مستخدمي الطريق."
+      }
     },
     {
       "id": "exam7-q45",
       "image": "../../assets/exam7/q45.png",
-      "text": "Mag je de motor hier inhalen?",
+      "text": {
+        "nl": "Mag je de motor hier inhalen?",
+        "en": "Are you allowed to overtake the motorcycle here?",
+        "ar": "هل يسمح لك بتجاوز الدراجة النارية هنا؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Motorvoertuigen mogen elkaar na dit bord onderling weer inhalen."
+      "reason": {
+        "nl": "Motorvoertuigen mogen elkaar na dit bord onderling weer inhalen.",
+        "en": "Motor vehicles may overtake each other again after this sign.",
+        "ar": "يمكن للمركبات ذات المحركات أن تتجاوز بعضها البعض مرة أخرى بعد هذه العلامة."
+      }
     },
     {
       "id": "exam7-q46",
       "image": "../../assets/exam7/q46.png",
-      "text": "De ondeelbare lading steekt aan de voorkant 120 cm uit. Is dit toegestaan?",
+      "text": {
+        "nl": "De ondeelbare lading steekt aan de voorkant 120 cm uit. Is dit toegestaan?",
+        "en": "The indivisible load protrudes 120 cm at the front. Is this allowed?",
+        "ar": "الحمولة غير القابلة للتجزئة تبرز 120 سم في الأمام. هل هذا مسموح؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-        },
-        {
-          "id": "b",
-          "label": "Nee"
-        }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "b",
-      "reason": "Ondeelbare lading mag niet meer dan 1 meter aan de voorkant uitsteken."
+      "reason": {
+        "nl": "Ondeelbare lading mag niet meer dan 1 meter aan de voorkant uitsteken.",
+        "en": "Indivisible load may not protrude more than 1 meter at the front.",
+        "ar": "لا يجوز للحمولة غير القابلة للتجزئة أن تبرز أكثر من 1 متر في الأمام."
+      }
     },
     {
       "id": "exam7-q47",
       "image": "../../assets/exam7/q47.png",
-      "text": "Van welk gedeelte van de snelweg mag een motor met zijspan gebruik maken?",
+      "text": {
+        "nl": "Van welk gedeelte van de snelweg mag een motor met zijspan gebruik maken?",
+        "en": "Which part of the highway may a motorcycle with sidecar use?",
+        "ar": "أي جزء من الطريق السريع يمكن للدراجة النارية مع العربة الجانبية استخدامه؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Gedeelte A"
-        },
-        {
-          "id": "b",
-          "label": "Gedeelte B"
-        }
+        {"id": "a", "label": {"nl": "Gedeelte A", "en": "Part A", "ar": "الجزء A"}},
+        {"id": "b", "label": {"nl": "Gedeelte B", "en": "Part B", "ar": "الجزء B"}}
       ],
       "correct": "b",
-      "reason": "Een motor met zijspan mag van elke rijstrook gebruik maken."
+      "reason": {
+        "nl": "Een motor met zijspan mag van elke rijstrook gebruik maken.",
+        "en": "A motorcycle with sidecar may use any lane.",
+        "ar": "يمكن للدراجة النارية مع العربة الجانبية استخدام أي حارة."
+      }
     },
     {
       "id": "exam7-q48",
       "image": "../../assets/exam7/q48.png",
-      "text": "Op welke afbeelding sorteer je goed voor als je rechts af wilt slaan?",
+      "text": {
+        "nl": "Op welke afbeelding sorteer je goed voor als je rechts af wilt slaan?",
+        "en": "On which image are you positioning yourself correctly if you want to turn right?",
+        "ar": "في أي صورة تتمركز بشكل صحيح إذا كنت تريد الانعطاف يميناً؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Afbeelding A"
-        },
-        {
-          "id": "b",
-          "label": "Afbeelding B"
-        }
+        {"id": "a", "label": {"nl": "Afbeelding A", "en": "Image A", "ar": "الصورة A"}},
+        {"id": "b", "label": {"nl": "Afbeelding B", "en": "Image B", "ar": "الصورة B"}}
       ],
       "correct": "a",
-      "reason": "Je mag de doorgetrokken streep van een fietsstrook niet overschrijden."
+      "reason": {
+        "nl": "Je mag de doorgetrokken streep van een fietsstrook niet overschrijden.",
+        "en": "You may not cross the solid line of a bicycle lane.",
+        "ar": "لا يجوز لك عبور الخط المتصل لحارة الدراجات."
+      }
     },
     {
       "id": "exam7-q49",
       "image": "../../assets/exam7/q49.png",
-      "text": "Mag je hier een passagier in laten stappen?",
+      "text": {
+        "nl": "Mag je hier een passagier in laten stappen?",
+        "en": "Are you allowed to let a passenger get in here?",
+        "ar": "هل يسمح لك بدخول راكب هنا؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Ja"
-         },
-         {
-          "id": "b",
-          "label": "Nee"
-         }
+        {"id": "a", "label": {"nl": "Ja", "en": "Yes", "ar": "نعم"}},
+        {"id": "b", "label": {"nl": "Nee", "en": "No", "ar": "لا"}}
       ],
       "correct": "a",
-      "reason": "Een passagier mag je in- en uit laten stappen op een parkeerverbod markering."
+      "reason": {
+        "nl": "Een passagier mag je in- en uit laten stappen op een parkeerverbod markering.",
+        "en": "You may let passengers in and out at a no-parking marking.",
+        "ar": "يمكنك دخول وخروج الركاب عند علامة حظر الركن."
+      }
     },
     {
       "id": "exam7-q50",
       "image": "../../assets/exam7/q50.png",
-      "text": "Op welk moment geef je in deze situatie richting aan naar rechts?",
+      "text": {
+        "nl": "Op welk moment geef je in deze situatie richting aan naar rechts?",
+        "en": "At what moment do you indicate right in this situation?",
+        "ar": "في أي لحظة تشير إلى اليمين في هذا الموقف؟"
+      },
       "type": "multiple",
-
       "options": [
-        {
-          "id": "a",
-          "label": "Voordat je de rotonde oprijdt"
-        },
-        {
-          "id": "b",
-          "label": "Als je de rotonde oprijdt"
-        },
-        {
-          "id": "c",
-          "label": "Voordat je de rotonde verlaat"
-        }
+        {"id": "a", "label": {"nl": "Voordat je de rotonde oprijdt", "en": "Before you enter the roundabout", "ar": "قبل أن تدخل الدوار"}},
+        {"id": "b", "label": {"nl": "Als je de rotonde oprijdt", "en": "When you enter the roundabout", "ar": "عندما تدخل الدوار"}},
+        {"id": "c", "label": {"nl": "Voordat je de rotonde verlaat", "en": "Before you exit the roundabout", "ar": "قبل أن تغادر الدوار"}}
       ],
       "correct": "a",
-      "reason": "Geef tijdig de richting aan waar je naartoe wilt afslaan."
+      "reason": {
+        "nl": "Geef tijdig de richting aan waar je naartoe wilt afslaan.",
+        "en": "Indicate in time the direction you want to turn.",
+        "ar": "اشير في الوقت المناسب إلى الاتجاه الذي تريد الانعطاف إليه."
+      }
     }
   ]
 }

@@ -16,8 +16,8 @@
             <img src="../assets/Logo-test1.png" alt="Logo" class="header-logo" />
           </div>
           <div class="exam-info">
-            <h1 class="exam-title">{{ examInfo.title }}</h1>
-            <p class="exam-subtitle">{{ $t('exam_run.exam_subtitle', { total: examInfo.totalQuestions }) }}</p>
+            <!-- <h1 class="exam-title">{{ examInfo.title }}</h1> -->
+            <!-- <p class="exam-subtitle">{{ $t('exam_run.exam_subtitle', { total: examInfo.totalQuestions }) }}</p> -->
           </div>
         </div>
 
@@ -62,8 +62,8 @@
       <div class="progress-container">
         <div class="progress-info">
           <div class="progress-text">
-            Vraag {{ indexDisplay }} van {{ questions.length }}
-          </div>
+          {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
+        </div>
           <div class="progress-percentage">{{ Math.round(progressPercentage) }}%</div>
         </div>
         <div class="progress-bar">
@@ -72,9 +72,7 @@
             :style="{ width: progressPercentage + '%' }"
           ></div>
         </div>
-        <div class="progress-text">
-          {{ $t('exam_run.progress_of', { current: indexDisplay, total: questions.length }) }}
-        </div>
+
         <!-- Debug info (uncomment if needed) -->
         <!-- <div class="debug-info">
           <small>Exam ID: {{ examId }} | Questions: {{ questions.length }} | Current: {{ indexDisplay }}</small>
@@ -163,27 +161,35 @@
 
                 <div class="options-content">
                   <!-- Multiple Choice Options -->
-                  <template v-if="questionType === 'multiple'">
+                  <template v-if="questionType === 'multiple-choice'">
+                    <div class="multi-hint" v-if="current.isMulti">
+                      <q-icon name="done_all" size="16px" />
+                      <span>{{ $t('exam_run.multiple_allowed') || 'Multiple answers allowed' }}</span>
+                    </div>
                     <div class="options-list">
                       <div
                         v-for="(option, idx) in optionGroup"
                         :key="option.value"
                         class="option-item"
-                        :class="{ 'selected': selected === option.value }"
-                        @click="selected = option.value"
+                        :class="{ 'selected': current.isMulti ? (Array.isArray(selected) && selected.includes(option.value)) : (selected === option.value) }"
+                        @click="toggleOption(option.value)"
                       >
                         <div class="option-selector">
-                          <div class="option-radio">
+                          <div v-if="!current.isMulti" class="option-radio">
                             <div class="radio-outer">
                               <div class="radio-inner" :class="{ 'checked': selected === option.value }"></div>
                             </div>
-
+                          </div>
+                          <div v-else class="option-checkbox">
+                            <div class="checkbox-outer">
+                              <div class="checkbox-inner" :class="{ 'checked': Array.isArray(selected) && selected.includes(option.value) }"></div>
+                            </div>
                           </div>
                           <div class="option-content">
                             <div class="option-label">{{ option.label }}</div>
                           </div>
                         </div>
-                        <div class="option-indicator" v-if="selected === option.value">
+                        <div class="option-indicator" v-if="current.isMulti ? (Array.isArray(selected) && selected.includes(option.value)) : (selected === option.value)">
                           <q-icon name="check_circle" class="check-icon" />
                         </div>
                       </div>
@@ -438,7 +444,7 @@ function resolveAsset(inputPath, examCode) {
 
     const raw = String(inputPath).trim().replace(/\\/g, '/')
     const fileName = raw.split('/').pop()
-    
+
     // Extract exam number from code (e.g., 'exam-1' -> '1')
     let examNumber = '1'
     if (examCode) {
@@ -487,10 +493,10 @@ async function loadExamDataById(id) {
 
     // Check if it's a UUID (contains dashes) or a number
     const isUUID = id && id.includes && id.includes('-')
-    
+
     // Use the appropriate endpoint
     const endpoint = isUUID ? `/exams/detail/${id}` : `/exams/number/${id}`
-    
+
     // Fetch exam data from backend API
     const response = await api.get(endpoint)
     const examData = response.data
@@ -559,11 +565,28 @@ export default defineComponent({
       }
     })
 
+    // Type helpers
+    function normalizeType(raw) {
+      const s = String(raw || '').toLowerCase().replace(/\s+/g, '-').replace(/_/g, '-')
+      if (['multiple', 'multiple-choice', 'choice', 'radio'].includes(s)) return 'multiple-choice'
+      if (['dropdown', 'select', 'select-one'].includes(s)) return 'dropdown'
+      if (['input', 'text', 'short-answer', 'numeric', 'number'].includes(s)) return 'input'
+      return 'multiple-choice'
+    }
+
+    function allowMultipleAnswers(question) {
+      if (!question) return false
+      if (question.allowMultiple === true || question.multi === true) return true
+      if (Array.isArray(question.correct)) return true
+      return false
+    }
+
     // State management
     function getDefaultSelection(question) {
       if (!question) return null
-      const type = (question.type || 'multiple')
+      const type = normalizeType(question.type || 'multiple-choice')
       if (type === 'input') return ''
+      if (type === 'multiple-choice' && allowMultipleAnswers(question)) return []
       return null
     }
 
@@ -592,7 +615,7 @@ export default defineComponent({
       }
 
       // Process localized options
-      const options = Array.isArray(question.options) 
+      const options = Array.isArray(question.options)
         ? question.options.map(opt => {
             let label = opt.label
             if (typeof label === 'object') {
@@ -630,7 +653,7 @@ export default defineComponent({
       return img
     })
 
-    const questionType = computed(() => current.value.type || 'multiple')
+    const questionType = computed(() => normalizeType(current.value.type || 'multiple-choice'))
     const optionGroup = computed(() => Array.isArray(current.value.options)
       ? current.value.options.map(o => ({ label: o.label, value: o.id }))
       : []
@@ -646,6 +669,19 @@ export default defineComponent({
       if (Array.isArray(val)) return val.length > 0
       return val !== null && val !== undefined && val !== ''
     })
+
+    function toggleOption(value) {
+      const q = questions.value[index.value]
+      const isMulti = !!q?.isMulti
+      if (!isMulti) {
+        selected.value = value
+        return
+      }
+      if (!Array.isArray(selected.value)) selected.value = []
+      const i = selected.value.indexOf(value)
+      if (i >= 0) selected.value.splice(i, 1)
+      else selected.value.push(value)
+    }
 
     // Overview stats
     const answeredCount = computed(() => answers.value.filter(a => a !== null && a !== undefined && a !== '').length)
@@ -680,7 +716,8 @@ export default defineComponent({
           const processedQuestion = {
             ...q,
             rawImage: q.image || '',
-            image: q.image ? resolveAsset(q.image, data.code) : ''
+            image: q.image ? resolveAsset(q.image, data.code) : '',
+            isMulti: allowMultipleAnswers(q)
           }
 
           console.log(`Processing question ${idx + 1}:`, {
@@ -879,7 +916,7 @@ export default defineComponent({
         router.push(`/exam/${examId}/results/${attemptId}`)
       } catch (error) {
         console.error('❌ Error submitting exam:', error)
-        
+
         // Fallback: Save to localStorage if API fails
         try {
           localStorage.setItem(`exam_${examId}_data`, JSON.stringify({
@@ -888,13 +925,13 @@ export default defineComponent({
             questions: questions.value
           }))
           localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers.value))
-          
+
           const timingData = {
             start: new Date().toISOString(),
             end: new Date().toISOString()
           }
           localStorage.setItem(`exam_${examId}_timing`, JSON.stringify(timingData))
-          
+
           console.log('⚠️ Saved to localStorage as fallback')
         } catch (storageError) {
           console.error('❌ Error saving to localStorage:', storageError)
@@ -948,7 +985,8 @@ export default defineComponent({
       flaggedCount,
       unansweredCount,
       goToFirstUnanswered,
-      goToFirstFlagged
+      goToFirstFlagged,
+      toggleOption
     }
   }
 })
@@ -1025,7 +1063,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  max-width: 1200px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -1033,11 +1071,18 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 
 .header-content {
   padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "logo . icons"
+    "timer timer timer";
   align-items: center;
-  flex-wrap: nowrap;
+  gap: 12px 16px;
 }
+.header-left { grid-area: logo; }
+.header-center { grid-area: timer; justify-self: stretch; min-width: 0; width: 100%; }
+.header-right { grid-area: icons; justify-self: end; }
 
 
 .header-left {
@@ -1053,7 +1098,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .exam-title {
-  font-size: 18px;
+  font-size: clamp(18px, 2vw, 26px);
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -1309,7 +1354,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 .main-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1.3fr 1.2fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
@@ -1347,6 +1392,8 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   border-radius: 20px;
   width: 100%;
   transition: transform 0.3s ease;
+  max-height: clamp(220px, 45vh, 560px);
+  object-fit: contain;
 }
 
 
@@ -1385,9 +1432,10 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .question-options-card {
-
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
   overflow: hidden;
-
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
@@ -1485,7 +1533,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
 }
 
 .question-text {
-  font-size: 12px;
+  font-size: clamp(14px, 1.2vw + 8px, 18px);
   line-height: 1.7;
   color: #1f2937;
   font-weight: 500;
@@ -1625,12 +1673,49 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   background: #fff;
 }
 
+.option-checkbox { display: flex; align-items: center; justify-content: center; }
+.checkbox-outer {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+.option-item:hover .checkbox-outer { border-color: #3b82f6; }
+.option-item.selected .checkbox-outer { border-color: #3b82f6; background: #3b82f6; }
+.checkbox-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.checkbox-inner.checked { background: #fff; }
+
+.multi-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .option-content {
   flex: 1;
 }
 
 .option-label {
-  font-size: 16px;
+  font-size: clamp(14px, 1vw + 8px, 18px);
   font-weight: 500;
   color: #374151;
   line-height: 1.5;
@@ -1841,6 +1926,20 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
     padding: 20px 16px;
   }
 
+  /* Header grid on tablets/phones: logo + icons row, timer full width below */
+  .header-content {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "logo . icons"
+      "timer timer timer";
+    gap: 10px 12px;
+  }
+  .header-left { grid-area: logo; }
+  .header-center { grid-area: timer; }
+  .header-right { grid-area: icons; }
+  .timer-container { width: 100%; max-width: 100%; justify-content: center; }
+
   .question-text-wrapper {
     flex-direction: column;
     gap: 12px;
@@ -1852,7 +1951,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .question-text {
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vw, 16px);
   }
 
   .navigation-buttons {
@@ -1880,7 +1979,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .option-label {
-    font-size: 14px;
+    font-size: clamp(13px, 2.2vw, 15px);
   }
 }
 
@@ -1894,7 +1993,7 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .question-text {
-    font-size: 15px;
+    font-size: clamp(14px, 3vw, 15px);
     padding: 0;
   }
 
@@ -1916,14 +2015,42 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
     padding: 12px 20px;
   }
 
+  /* Keep one-row layout at very small widths as well */
   .header-content {
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
   }
-
-  .header-center {
-    order: 3;
-    flex-basis: 100%;
+  .header-left { grid-column: 1; }
+  .header-center { grid-column: 2; min-width: 0; }
+  .header-right { grid-column: 3; }
+  .header-logo { height: 26px; }
+  .timer-container { padding: 8px 12px; width: 100%; max-width: 100%; }
+  .action-btn { width: 30px; height: 30px; }
+  /* Keep logo and icons on same row at very small screens */
+  .header-left {
+    order: 1;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .header-right {
+    order: 2;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .header-logo {
+    height: 28px;
+  }
+  .action-btn {
+    width: 32px;
+    height: 32px;
   }
 
   .option-selector {
@@ -1931,18 +2058,18 @@ input, textarea, .professional-input :deep(.q-field__native), .professional-sele
   }
 
   .option-label {
-    font-size: 13px;
+    font-size: clamp(12px, 3vw, 13px);
   }
 }
 
 .question-text {
-  font-size: 16px;
+  font-size: clamp(15px, 1vw + 12px, 18px);
   line-height: 1.7;
   color: #1f2937;
-  font-weight: 300;
+  font-weight: 400;
   width: 100%;
   background: #f8fafc;
-  padding: 24px;
+  padding: clamp(16px, 1.2vw + 8px, 24px);
   border-radius: 12px;
   border-left: 4px solid #3b82f6;
 }
