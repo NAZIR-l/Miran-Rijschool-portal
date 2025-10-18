@@ -660,7 +660,7 @@
       },
       "type": "interactive-choice",
       "options": [],
-      "correct": "1. Auto, 2. Fietser, 3. Bromfiets",
+      "correct": " 1. Witte personenauto, 2. Fietser, 3. Motor",
       "reason": {
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3).",
         "en": "The car (1) is going straight on a priority road. The cyclist and motorcycle are behind yield markings on the same road. The cyclist (2) is going straight and therefore has priority over the turning motorcycle (3).",
@@ -1101,9 +1101,9 @@
       "id": "exam1-q31",
       "image": "../../assets/exam1/q31.png",
       "text": {
-        "nl": "Mistlichten aan de voorkant mogen gevoerd worden bij mist, regen of sneeuwval als het zicht minder is dan hoeveel meter?",
-        "en": "Front fog lights may be used in fog, rain or snowfall when visibility is less than how many meters?",
-        "ar": "يمكن استخدام مصابيح الضباب الأمامية في الضباب أو المطر أو تساقط الثلوج عندما تقل الرؤية عن كم متراً؟"
+        "nl": "Mistlichten aan de voorkant mogen gevoerd worden bij mist, regen of sneeuwval als het zicht minder is dan hoeveel meter?(meter)",
+        "en": "Front fog lights may be used in fog, rain or snowfall when visibility is less than how many meters?(meter)",
+        "ar": "يمكن استخدام مصابيح الضباب الأمامية في الضباب أو المطر أو تساقط الثلوج عندما تقل الرؤية عن كم متراً؟(متر)"
       },
       "type": "input",
       "options": [],
@@ -1380,7 +1380,7 @@
             "ar": "سيارة"
           }
         }
-        
+
       ]
     },
     {
@@ -1562,7 +1562,7 @@
           }
         }
       ],
-      "correct": "b",
+      "correct": "a",
       "reason": {
         "nl": "Laden en lossen is toegestaan binnen een woonerf buiten de parkeervakken.",
         "en": "Loading and unloading is allowed within a residential area outside parking spaces.",
