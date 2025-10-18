@@ -169,17 +169,9 @@
       },
       "type": "interactive-choice",
       "options": [
-        {
-          "nl": "1. Aanwijzing, 2. Verkeerslichten, 3. Verkeerstekens, 4. Verkeersregels",
-          "en": "1. Instructions, 2. Traffic lights, 3. Traffic signs, 4. Traffic rules",
-          "ar": "1. التوجيهات، 2. إشارات المرور، 3. علامات المرور، 4. قواعد المرور"
-        }
+        
       ],
-      "correct": {
-        "nl": "1. Aanwijzing, 2. Verkeerslichten, 3. Verkeerstekens, 4. Verkeersregels",
-        "en": "1. Instructions, 2. Traffic lights, 3. Traffic signs, 4. Traffic rules",
-        "ar": "1. التوجيهات، 2. إشارات المرور، 3. علامات المرور، 4. قواعد المرور"
-      },
+      "correct":  "1. instructions, 2. trafficLights, 3. trafficSigns, 4. trafficRules",
       "reason": {
         "nl": "Aanwijzingen van ordehandhavers gaan altijd boven de rest, daarna gaan verkeerslichten voor verkeersborden-tekens en wanneer van geen van de drie sprake is gelden de algemene verkeersregels.",
         "en": "Instructions from enforcement officers always take precedence over the rest, then traffic lights take precedence over traffic signs, and when none of the three apply, the general traffic rules apply.",
@@ -187,8 +179,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 6,
+          "y": 88,
           "id": "instructions",
           "label": {
             "nl": "Aanwijzing",
@@ -197,8 +189,8 @@
           }
         },
         {
-          "x": 75,
-          "y": 25,
+          "x": 29.5,
+          "y": 87,
           "id": "trafficLights",
           "label": {
             "nl": "Verkeerslichten",
@@ -207,8 +199,8 @@
           }
         },
         {
-          "x": 25,
-          "y": 70,
+          "x": 52.5,
+          "y": 87,
           "id": "trafficSigns",
           "label": {
             "nl": "Verkeerstekens",
@@ -217,8 +209,8 @@
           }
         },
         {
-          "x": 75,
-          "y": 70,
+          "x": 76,
+          "y": 85,
           "id": "trafficRules",
           "label": {
             "nl": "Verkeersregels",
@@ -709,27 +701,9 @@
       },
       "type": "interactive-choice",
       "options": [
-        {
-          "nl": "1. Bromfiets, 2. Fietser, 3. Motor",
-          "en": "1. Moped, 2. Cyclist, 3. Motorcycle",
-          "ar": "1. الدراجة البخارية، 2. راكب الدراجة، 3. الدراجة النارية"
-        },
-        {
-          "nl": "1. Fietser, 2. Bromfiets, 3. Motor",
-          "en": "1. Cyclist, 2. Moped, 3. Motorcycle",
-          "ar": "1. راكب الدراجة، 2. الدراجة البخارية، 3. الدراجة النارية"
-        },
-        {
-          "nl": "1. Motor, 2. Fietser, 3. Bromfiets",
-          "en": "1. Motorcycle, 2. Cyclist, 3. Moped",
-          "ar": "1. الدراجة النارية، 2. راكب الدراجة، 3. الدراجة البخارية"
-        }
+        
       ],
-      "correct": {
-        "nl": "1. Bromfiets, 2. Fietser, 3. Motor",
-        "en": "1. Moped, 2. Cyclist, 3. Motorcycle",
-        "ar": "1. الدراجة البخارية، 2. راكب الدراجة، 3. الدراجة النارية"
-      },
+      "correct": "1. moped, 2. cyclist, 3. motor",
       "reason": {
         "nl": "Op een gelijkwaardig kruispunt hebben alle bestuurders van rechts voorrang. De bromfiets (1) die rechtdoor rijdt gaat voor de fietser (2) die afslaat. De motor (3) komt van links dus gaat als laatst.",
         "en": "At an equal intersection, all drivers from the right have priority. The moped (1) going straight has priority over the cyclist (2) turning. The motorcycle (3) comes from the left so goes last.",
@@ -737,8 +711,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 8,
+          "y": 65,
           "id": "moped",
           "label": {
             "nl": "Bromfiets",
@@ -747,8 +721,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 45,
+          "x": 18,
+          "y": 22,
           "id": "cyclist",
           "label": {
             "nl": "Fietser",
@@ -757,8 +731,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
+          "x": 35,
+          "y": 80,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -1078,27 +1052,9 @@
       },
       "type": "interactive-choice",
       "options": [
-        {
-          "nl": "1. Witte personenauto, 2. Groene personenauto, 3. Bromfiets",
-          "en": "1. White car, 2. Green car, 3. Moped",
-          "ar": "1. السيارة البيضاء، 2. السيارة الخضراء، 3. الدراجة البخارية"
-        },
-        {
-          "nl": "1. Groene personenauto, 2. Witte personenauto, 3. Bromfiets",
-          "en": "1. Green car, 2. White car, 3. Moped",
-          "ar": "1. السيارة الخضراء، 2. السيارة البيضاء، 3. الدراجة البخارية"
-        },
-        {
-          "nl": "1. Bromfiets, 2. Groene personenauto, 3. Witte personenauto",
-          "en": "1. Moped, 2. Green car, 3. White car",
-          "ar": "1. الدراجة البخارية، 2. السيارة الخضراء، 3. السيارة البيضاء"
-        }
+      
       ],
-      "correct": {
-        "nl": "1. Witte personenauto, 2. Groene personenauto, 3. Bromfiets",
-        "en": "1. White car, 2. Green car, 3. Moped",
-        "ar": "1. السيارة البيضاء، 2. السيارة الخضراء، 3. الدراجة البخارية"
-      },
+      "correct":  "1. whiteCar, 2. greenCar, 3. moped",
       "reason": {
         "nl": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang. De witte personenauto (1) komt voor de groene personenauto van rechts. De groene personenauto (2) komt voor de bromfiets van rechts. De bromfiets (3) gaat als laatst.",
         "en": "In the Netherlands, at an equal intersection, you give priority to all drivers coming from the right. The white car (1) comes from the right of the green car. The green car (2) comes from the right of the moped. The moped (3) goes last.",
@@ -1106,8 +1062,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 72,
+          "y": 77,
           "id": "whiteCar",
           "label": {
             "nl": "Witte personenauto",
@@ -1116,8 +1072,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 45,
+          "x": 3,
+          "y": 48,
           "id": "greenCar",
           "label": {
             "nl": "Groene personenauto",
@@ -1126,8 +1082,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
+          "x": 28,
+          "y": 27,
           "id": "moped",
           "label": {
             "nl": "Bromfiets",

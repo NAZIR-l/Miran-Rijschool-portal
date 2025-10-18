@@ -222,27 +222,9 @@
       },
       "type": "interactive-choice",
       "options": [
-        {
-          "nl": "1. Bromfiets, 2. Motor, 3. Auto",
-          "en": "1. Moped, 2. Motorcycle, 3. Car",
-          "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
-        },
-        {
-          "nl": "1. Motor, 2. Bromfiets, 3. Auto",
-          "en": "1. Motorcycle, 2. Moped, 3. Car",
-          "ar": "1. الدراجة النارية، 2. الدراجة البخارية، 3. السيارة"
-        },
-        {
-          "nl": "1. Auto, 2. Bromfiets, 3. Motor",
-          "en": "1. Car, 2. Moped, 3. Motorcycle",
-          "ar": "1. السيارة، 2. الدراجة البخارية، 3. الدراجة النارية"
-        }
+        
       ],
-      "correct": {
-        "nl": "1. Bromfiets, 2. Motor, 3. Auto",
-        "en": "1. Moped, 2. Motorcycle, 3. Car",
-        "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
-      },
+      "correct": "1. moped, 2. motor, 3. car",
       "reason": {
         "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
         "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
@@ -250,8 +232,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 67,
+          "y": 78,
           "id": "moped",
           "label": {
             "nl": "Bromfiets",
@@ -260,8 +242,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 50,
+          "x": 14,
+          "y": 16,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -270,8 +252,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
+          "x": 73,
+          "y": 19,
           "id": "car",
           "label": {
             "nl": "Auto",
@@ -729,11 +711,7 @@
       },
       "type": "interactive-choice",
       "options": [],
-      "correct": {
-        "nl": "1. Bromfiets, 2. Motor, 3. Auto",
-        "en": "1. Moped, 2. Motorcycle, 3. Car",
-        "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
-      },
+      "correct": "1. moped, 2. motor, 3. car",
       "reason": {
         "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
         "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
@@ -741,8 +719,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 66.5,
+          "y": 34,
           "id": "moped",
           "label": {
             "nl": "Bromfiets",
@@ -751,8 +729,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 50,
+          "x": 73,
+          "y": 89,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -761,8 +739,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
+          "x": 6,
+          "y": 82,
           "id": "car",
           "label": {
             "nl": "Auto",

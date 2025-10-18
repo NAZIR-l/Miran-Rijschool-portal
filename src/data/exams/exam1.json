@@ -659,11 +659,7 @@
         "ar": "ما هو الترتيب الصحيح للأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [
-        "1. Witte personenauto, 2. Fietser, 3. Motor",
-        "1. Fietser, 2. Motor, 3. Witte personenauto",
-        "1. Motor, 2. Fietser, 3. Witte personenauto"
-      ],
+    
       "correct": "1. car, 2. cyclist, 3. motor",
       "reason": {
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3).",
@@ -1358,10 +1354,6 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Tram, 2. Auto",
-        "1. Auto, 2. Tram",
-        "1. Beide tegelijk (gelijkwaardige kruising)",
-        "1. Geen van beiden, eerst voetganger"
       ],
       "correct": "1. Tram, 2. Auto",
       "reason": {
@@ -1371,8 +1363,8 @@
       },
       "dragTargets": [
         {
-          "x": 27,
-          "y": 78,
+          "x": 35.5,
+          "y": 26,
           "id": "Tram",
           "label": {
             "nl": "Tram",
@@ -1381,7 +1373,7 @@
           }
         },
         {
-          "x": 95,
+          "x": 60,
           "y": 32,
           "id": "Auto",
           "label": {
@@ -1631,12 +1623,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Motor, 2. Auto, 3. Bromfiets",
-        "1. Auto, 2. Motor, 3. Bromfiets",
-        "1. Bromfiets, 2. Auto, 3. Motor",
-        "1. Auto, 2. Bromfiets, 3. Motor"
       ],
-      "correct": "1. Motor, 2. Auto, 3. Bromfiets",
+      "correct": "1. motor, 2. car, 3. moped",
       "reason": {
         "nl": "De auto komt van rechts ten opzichte van de bromfiets. Echter, de auto slaat af naar dezelfde weg als de motor, waarbij de motor de korte bocht heeft. Daarom gaat de motor eerst, gevolgd door de auto, en als laatste de bromfiets.",
         "en": "The car comes from the right relative to the moped. However, the car turns onto the same road as the motorcycle, with the motorcycle having the short turn. Therefore, the motorcycle goes first, followed by the car, and finally the moped.",
@@ -1644,8 +1632,8 @@
       },
       "dragTargets": [
         {
-          "x": 27,
-          "y": 23,
+          "x": 68,
+          "y": 26,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -1654,8 +1642,8 @@
           }
         },
         {
-          "x": 95,
-          "y": 32,
+          "x": 30,
+          "y": 80,
           "id": "car",
           "label": {
             "nl": "Auto",
@@ -1664,8 +1652,8 @@
           }
         },
         {
-          "x": 72,
-          "y": 67,
+          "x": 8,
+          "y": 25,
           "id": "moped",
           "label": {
             "nl": "Bromfiets",

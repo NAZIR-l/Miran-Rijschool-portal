@@ -8,7 +8,7 @@
   "questions": [
     {
       "id": "exam2-q1",
-      "image": "../../assets/exam2/q1.png",
+      "image": "exam2/q1.png",
       "text": {
         "nl": "Waarom mag je niet rijden met een gedraaide veiligheidsgordel?",
         "en": "Why should you not drive with a twisted seat belt?",
@@ -50,7 +50,7 @@
     },
     {
       "id": "exam2-q2",
-      "image": "../../assets/exam2/q2.png",
+      "image": "exam2/q2.png",
       "text": {
         "nl": "Wat is de dode hoek?",
         "en": "What is the blind spot?",
@@ -92,7 +92,7 @@
     },
     {
       "id": "exam2-q3",
-      "image": "../../assets/exam2/q3.png",
+      "image": "exam2/q3.png",
       "text": {
         "nl": "Mag je op deze manier rijden?",
         "en": "Are you allowed to drive like this?",
@@ -126,7 +126,7 @@
     },
     {
       "id": "exam2-q4",
-      "image": "../../assets/exam2/q4.png",
+      "image": "exam2/q4.png",
       "text": {
         "nl": "Bij welk toerental verbruik je de minste brandstof?",
         "en": "At which engine speed do you consume the least fuel?",
@@ -168,7 +168,7 @@
     },
     {
       "id": "exam2-q5",
-      "image": "../../assets/exam2/q5.png",
+      "image": "exam2/q5.png",
       "text": {
         "nl": "Hoelang is een rijbewijs B geldig?",
         "en": "How long is a category B driving licence valid?",
@@ -210,7 +210,7 @@
     },
     {
       "id": "exam2-q6",
-      "image": "../../assets/exam2/q6.png",
+      "image": "exam2/q6.png",
       "text": {
         "nl": "Kun je hier een bromfietser op de rijbaan verwachten?",
         "en": "Can you expect a moped on the carriageway here?",
@@ -244,7 +244,7 @@
     },
     {
       "id": "exam2-q7",
-      "image": "../../assets/exam2/q7.png",
+      "image": "exam2/q7.png",
       "text": {
         "nl": "Mag je hier doorrijden?",
         "en": "Are you allowed to continue driving here?",
@@ -278,7 +278,7 @@
     },
     {
       "id": "exam2-q8",
-      "image": "../../assets/exam2/q8.png",
+      "image": "exam2/q8.png",
       "text": {
         "nl": "Moet de auto de persoon op skates voor laten gaan?",
         "en": "Should the car give way to the person on skates?",
@@ -312,7 +312,7 @@
     },
     {
       "id": "exam2-q9",
-      "image": "../../assets/exam2/q9.png",
+      "image": "exam2/q9.png",
       "text": {
         "nl": "Je wilt rechtdoor. Moet je de brandweerauto met optische- en geluidssignalen voor laten gaan?",
         "en": "You want to go straight. Do you have to yield to the fire engine with lights and siren?",
@@ -346,7 +346,7 @@
     },
     {
       "id": "exam2-q10",
-      "image": "../../assets/exam2/q10.png",
+      "image": "exam2/q10.png",
       "text": {
         "nl": "Je rijdt hier op de snelweg en wil deze rijstrook blijven volgen. Wat kan je verwachten?",
         "en": "You are on the motorway and want to stay on this lane. What can you expect?",
@@ -388,7 +388,7 @@
     },
     {
       "id": "exam2-q11",
-      "image": "../../assets/exam2/q11.png",
+      "image": "exam2/q11.png",
       "text": {
         "nl": "Mag je een motorfiets met pech slepen?",
         "en": "Are you allowed to tow a broken-down motorcycle?",
@@ -422,7 +422,7 @@
     },
     {
       "id": "exam2-q12",
-      "image": "../../assets/exam2/q12.png",
+      "image": "exam2/q12.png",
       "text": {
         "nl": "Moet je een douaneambtenaar voor laten gaan wanneer deze gele zwaailichten voert?",
         "en": "Do you have to give way to a customs officer using yellow flashing lights?",
@@ -456,7 +456,7 @@
     },
     {
       "id": "exam2-q13",
-      "image": "../../assets/exam2/q13.png",
+      "image": "exam2/q13.png",
       "text": {
         "nl": "Welke tijd moet je instellen op je parkeerschijf als je parkeert in een parkeerschijfzone?",
         "en": "Which time should you set on your parking disc when parking in a disc zone?",
@@ -498,7 +498,7 @@
     },
     {
       "id": "exam2-q14",
-      "image": "../../assets/exam2/q14.png",
+      "image": "exam2/q14.png",
       "text": {
         "nl": "Je wilt hier inhalen. Mag dat?",
         "en": "You want to overtake here. Is that allowed?",
@@ -532,7 +532,7 @@
     },
     {
       "id": "exam2-q15",
-      "image": "../../assets/exam2/q15.png",
+      "image": "exam2/q15.png",
       "text": {
         "nl": "Waar moet het derde, rode remlicht zitten?",
         "en": "Where should the third, red brake light be located?",
@@ -574,7 +574,7 @@
     },
     {
       "id": "exam2-q16",
-      "image": "../../assets/exam2/q16.png",
+      "image": "exam2/q16.png",
       "text": {
         "nl": "Mag je deze weg inrijden?",
         "en": "Are you allowed to enter this road?",
@@ -608,7 +608,7 @@
     },
     {
       "id": "exam2-q17",
-      "image": "../../assets/exam2/q17.png",
+      "image": "exam2/q17.png",
       "text": {
         "nl": "Welke volgafstand houd je aan voordat je gaat inhalen?",
         "en": "What following distance do you keep before overtaking?",
@@ -625,7 +625,7 @@
     },
     {
       "id": "exam2-q18",
-      "image": "../../assets/exam2/q18.png",
+      "image": "exam2/q18.png",
       "text": {
         "nl": "Een 4-seizoensband heeft een minimale profieldiepte van:",
         "en": "An all-season tire has a minimum tread depth of:",
@@ -642,7 +642,7 @@
     },
     {
       "id": "exam2-q19",
-      "image": "../../assets/exam2/q19.png",
+      "image": "exam2/q19.png",
       "text": {
         "nl": "Je bandenspanning is te laag. Waar moet je rekening mee houden?",
         "en": "Your tire pressure is too low. What should you take into account?",
@@ -684,7 +684,7 @@
     },
     {
       "id": "exam2-q20",
-      "image": "../../assets/exam2/q20.png",
+      "image": "exam2/q20.png",
       "text": {
         "nl": "Welk rijbewijs heb je nodig voor een motorvoertuig met meer dan 9 zitplaatsen?",
         "en": "Which driving licence do you need for a motor vehicle with more than 9 seats?",
@@ -726,7 +726,7 @@
     },
     {
       "id": "exam2-q21",
-      "image": "../../assets/exam2/q21.png",
+      "image": "exam2/q21.png",
       "text": {
         "nl": "Mag je hier sneller dan 30 km/u gaan rijden?",
         "en": "Are you allowed to drive faster than 30 km/h here?",
@@ -760,7 +760,7 @@
     },
     {
       "id": "exam2-q22",
-      "image": "../../assets/exam2/q22.png",
+      "image": "exam2/q22.png",
       "text": {
         "nl": "Wat is de juiste volgorde van voor laten gaan?",
         "en": "What is the correct order of giving way?",
@@ -768,12 +768,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
-        "1. Witte personenauto, 2. Rode personenauto, 3. Motor",
-        "1. Motor, 2. Witte personenauto, 3. Rode personenauto",
-        "1. Witte personenauto, 2. Motor, 3. Rode personenauto"
       ],
-      "correct": "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
+      "correct": "1. redCar, 2. whiteCar, 3. motor",
       "reason": {
         "nl": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links.",
         "en": "The red car (1) is on a bending priority road. The motorcycle and white car are behind yield markings. The white car (2) comes from the right and therefore has priority over the motorcycle (3) from the left.",
@@ -781,8 +777,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 30,
+          "x": 68.5,
+          "y": 23,
           "id": "redCar",
           "label": {
             "nl": "Rode personenauto",
@@ -791,8 +787,8 @@
           }
         },
         {
-          "x": 78,
-          "y": 42,
+          "x": 74.5,
+          "y": 67,
           "id": "whiteCar",
           "label": {
             "nl": "Witte personenauto",
@@ -801,8 +797,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 70,
+          "x": 6,
+          "y": 54,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -815,7 +811,7 @@
 
     {
       "id": "exam2-q23",
-      "image": "../../assets/exam2/q23.png",
+      "image": "exam2/q23.png",
       "text": {
         "nl": "Je wilt rechtsaf. In welke situatie sta je het veiligst opgesteld?",
         "en": "You want to turn right. In which situation are you positioned most safely?",
@@ -849,7 +845,7 @@
     },
     {
       "id": "exam2-q24",
-      "image": "../../assets/exam2/q24.png",
+      "image": "exam2/q24.png",
       "text": {
         "nl": "Wat is de juiste volgorde van voor laten gaan?",
         "en": "What is the correct order of giving way?",
@@ -857,12 +853,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Fietser, 2. Personenauto, 3. Motor",
-        "1. Personenauto, 2. Fietser, 3. Motor",
-        "1. Motor, 2. Personenauto, 3. Fietser",
-        "1. Fietser, 2. Motor, 3. Personenauto"
       ],
-      "correct": "1. Fietser, 2. Personenauto, 3. Motor",
+      "correct": "1. cyclist, 2. car, 3. motor",
       "reason": {
         "nl": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt.",
         "en": "The cyclist (1) is going straight on a priority road. The motorcycle comes from behind yield markings and the car is behind yield markings on the same road. The car (2) makes a short turn and therefore has priority over the motorcycle (3) making the long turn.",
@@ -870,8 +862,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 23,
+          "y": 42,
           "id": "cyclist",
           "label": {
             "nl": "Fietser",
@@ -880,8 +872,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 35,
+          "x": 81,
+          "y": 75,
           "id": "car",
           "label": {
             "nl": "Personenauto",
@@ -890,8 +882,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 70,
+          "x": 18.5,
+          "y": 89,
           "id": "motor",
           "label": {
             "nl": "Motor",
@@ -904,7 +896,7 @@
 
     {
       "id": "exam2-q25",
-      "image": "../../assets/exam2/q25.png",
+      "image": "exam2/q25.png",
       "text": {
         "nl": "Wat is het algemene alarmnummer wanneer elke seconde telt?",
         "en": "What is the general emergency number when every second counts?",
@@ -946,7 +938,7 @@
     },
     {
       "id": "exam2-q26",
-      "image": "../../assets/exam2/q26.png",
+      "image": "exam2/q26.png",
       "text": {
         "nl": "Wat of wie volg je hier op?",
         "en": "What or who do you follow here?",
@@ -988,7 +980,7 @@
     },
     {
       "id": "exam2-q27",
-      "image": "../../assets/exam2/q27.png",
+      "image": "exam2/q27.png",
       "text": {
         "nl": "De politie heeft je een rijverbod opgelegd. Welk voertuig mag je besturen?",
         "en": "The police have imposed a driving ban on you. Which vehicle are you allowed to drive?",
@@ -1030,7 +1022,7 @@
     },
     {
       "id": "exam2-q28",
-      "image": "../../assets/exam2/q28.png",
+      "image": "exam2/q28.png",
       "text": {
         "nl": "Wat betekent dit verkeersbord?",
         "en": "What does this traffic sign mean?",
@@ -1064,7 +1056,7 @@
     },
     {
       "id": "exam2-q29",
-      "image": "../../assets/exam2/q29.png",
+      "image": "exam2/q29.png",
       "text": {
         "nl": "Mag je hier stilstaan om te bellen?",
         "en": "Are you allowed to stop here to make a phone call?",
@@ -1098,7 +1090,7 @@
     },
     {
       "id": "exam2-q30",
-      "image": "../../assets/exam2/q30.png",
+      "image": "exam2/q30.png",
       "text": {
         "nl": "Bij welk bord mag je een vrachtauto inhalen?",
         "en": "At which sign are you allowed to overtake a truck?",
@@ -1140,7 +1132,7 @@
     },
     {
       "id": "exam2-q31",
-      "image": "../../assets/exam2/q31.png",
+      "image": "exam2/q31.png",
       "text": {
         "nl": "Sta je hier goed als je linksaf wilt slaan?",
         "en": "Are you positioned correctly here if you want to turn left?",
@@ -1174,7 +1166,7 @@
     },
     {
       "id": "exam2-q32",
-      "image": "../../assets/exam2/q32.png",
+      "image": "exam2/q32.png",
       "text": {
         "nl": "Verlaat je hier de autosnelweg?",
         "en": "Are you leaving the motorway here?",
@@ -1208,7 +1200,7 @@
     },
     {
       "id": "exam2-q33",
-      "image": "../../assets/exam2/q33.png",
+      "image": "exam2/q33.png",
       "text": {
         "nl": "Welk bord geeft aan dat je op een voorrangsweg rijdt?",
         "en": "Which sign indicates that you are on a priority road?",
@@ -1250,7 +1242,7 @@
     },
     {
       "id": "exam2-q34",
-      "image": "../../assets/exam2/q34.png",
+      "image": "exam2/q34.png",
       "text": {
         "nl": "Gebruikt een auto met een volle dakkoffer extra brandstof?",
         "en": "Does a car with a full roof box use extra fuel?",
@@ -1284,7 +1276,7 @@
     },
     {
       "id": "exam2-q35",
-      "image": "../../assets/exam2/q35.png",
+      "image": "exam2/q35.png",
       "text": {
         "nl": "Welk symbool heeft te maken met het oliesysteem?",
         "en": "Which symbol is related to the oil system?",
@@ -1326,7 +1318,7 @@
     },
     {
       "id": "exam2-q36",
-      "image": "../../assets/exam2/q36.png",
+      "image": "exam2/q36.png",
       "text": {
         "nl": "Ben je ter controle verplicht je autopapieren aan de agent af te geven?",
         "en": "Are you required to hand over your car documents to the officer for inspection?",
@@ -1360,7 +1352,7 @@
     },
     {
       "id": "exam2-q37",
-      "image": "../../assets/exam2/q37.png",
+      "image": "exam2/q37.png",
       "text": {
         "nl": "Wat betekenen de schuine witte strepen op de weg?",
         "en": "What do the diagonal white stripes on the road mean?",
@@ -1402,7 +1394,7 @@
     },
     {
       "id": "exam2-q38",
-      "image": "../../assets/exam2/q38.png",
+      "image": "exam2/q38.png",
       "text": {
         "nl": "Wat mag je doen wanneer je wordt verblind door een tegenligger die zijn groot licht aan heeft?",
         "en": "What may you do when you are dazzled by an oncoming driver with high beams on?",
@@ -1436,7 +1428,7 @@
     },
     {
       "id": "exam2-q39",
-      "image": "../../assets/exam2/q39.png",
+      "image": "exam2/q39.png",
       "text": {
         "nl": "Kun je hier bromfietsers op de rijbaan verwachten?",
         "en": "Can you expect moped riders on the carriageway here?",
@@ -1470,7 +1462,7 @@
     },
     {
       "id": "exam2-q40",
-      "image": "../../assets/exam2/q40.png",
+      "image": "exam2/q40.png",
       "text": {
         "nl": "Je staat met pech langs de snelweg. Op hoeveel meter afstand plaats je de gevarendriehoek? (meter)",
         "en": "You have broken down on the motorway. At what distance do you place the warning triangle? (meters)",
@@ -1487,7 +1479,7 @@
     },
     {
       "id": "exam2-q41",
-      "image": "../../assets/exam2/q41.png",
+      "image": "exam2/q41.png",
       "text": {
         "nl": "Je rijdt op de middelste rijstrook. Mag dat?",
         "en": "You are driving in the middle lane. Is that allowed?",
@@ -1521,7 +1513,7 @@
     },
     {
       "id": "exam2-q42",
-      "image": "../../assets/exam2/q42.png",
+      "image": "exam2/q42.png",
       "text": {
         "nl": "Je rijdt met mist. Je kunt de twee volgende hectometerpaaltjes nog zien. Mag je het mistachterlicht aandoen?",
         "en": "You are driving in fog. You can still see the next two hectometer posts. Are you allowed to turn on the rear fog light?",
@@ -1555,7 +1547,7 @@
     },
     {
       "id": "exam2-q43",
-      "image": "../../assets/exam2/q43.png",
+      "image": "exam2/q43.png",
       "text": {
         "nl": "Waar waarschuwt dit bord je voor?",
         "en": "What does this sign warn you for?",
@@ -1597,7 +1589,7 @@
     },
     {
       "id": "exam2-q44",
-      "image": "../../assets/exam2/q44.png",
+      "image": "exam2/q44.png",
       "text": {
         "nl": "Bij welk bord mag je laden en lossen?",
         "en": "At which sign are you allowed to load and unload?",
@@ -1631,7 +1623,7 @@
     },
     {
       "id": "exam2-q45",
-      "image": "../../assets/exam2/q45.png",
+      "image": "exam2/q45.png",
       "text": {
         "nl": "Moet je de voetgangers hier voor laten gaan bij het oversteken?",
         "en": "Do you have to give priority to pedestrians here when crossing?",
@@ -1665,7 +1657,7 @@
     },
     {
       "id": "exam2-q46",
-      "image": "../../assets/exam2/q46.png",
+      "image": "exam2/q46.png",
       "text": {
         "nl": "Je wilt de weg naar links blijven volgen. Moet je de snorfietser voor laten gaan?",
         "en": "You want to keep following the road to the left. Do you have to yield to the moped?",
@@ -1699,7 +1691,7 @@
     },
     {
       "id": "exam2-q47",
-      "image": "../../assets/exam2/q47.png",
+      "image": "exam2/q47.png",
       "text": {
         "nl": "Mag je zo gaan rijden?",
         "en": "Are you allowed to drive like this?",
@@ -1733,7 +1725,7 @@
     },
     {
       "id": "exam2-q48",
-      "image": "../../assets/exam2/q48.png",
+      "image": "exam2/q48.png",
       "text": {
         "nl": "Je wilt de autosnelweg oprijden. Mag je nu al richting aangeven?",
         "en": "You want to enter the motorway. Are you allowed to signal already?",
@@ -1767,7 +1759,7 @@
     },
     {
       "id": "exam2-q49",
-      "image": "../../assets/exam2/q49.png",
+      "image": "exam2/q49.png",
       "text": {
         "nl": "Wie moet je voor laten gaan bij het wegrijden?",
         "en": "Who do you have to give way to when pulling away?",
@@ -1809,7 +1801,7 @@
     },
     {
       "id": "exam2-q50",
-      "image": "../../assets/exam2/q50.png",
+      "image": "exam2/q50.png",
       "text": {
         "nl": "Je wilt aan de linkerkant file-parkeren. Moet je de voetganger voor laten gaan?",
         "en": "You want to parallel park on the left side. Do you have to yield to the pedestrian?",

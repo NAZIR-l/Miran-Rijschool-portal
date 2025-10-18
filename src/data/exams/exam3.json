@@ -338,12 +338,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
-        "1. Personenauto, 2. Fietser, 3. Rode bromfiets, 4. Paarse bromfiets",
-        "1. Paarse bromfiets, 2. Rode bromfiets, 3. Personenauto, 4. Fietser",
-        "1. Rode bromfiets, 2. Paarse bromfiets, 3. Personenauto, 4. Fietser"
       ],
-      "correct": "1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
+      "correct": "1. cyclist, 2. car, 3. purpleMoped, 4. redMoped",
       "reason": {
         "nl": "De fietser rijdt op een voorrangsweg rechtdoor op dezelfde weg waar de auto wilt afslaan. De fietser (1) heeft voorrang op de witte auto (2). De rode- en paarse bromfiets staan achter haaientanden op dezelfde weg. De paarse bromfiets (3) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande rode bromfiets (4).",
         "en": "The cyclist is going straight on a priority road on the same road where the car wants to turn. The cyclist (1) has priority over the white car (2). The red and purple mopeds are behind yield markings on the same road. The purple moped (3) is going straight and therefore has priority over the turning red moped (4).",
@@ -351,8 +347,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 20,
+          "x": 15.5,
+          "y": 21,
           "id": "cyclist",
           "label": {
             "nl": "Fietser",
@@ -361,8 +357,8 @@
           }
         },
         {
-          "x": 80,
-          "y": 30,
+          "x": 57.5,
+          "y": 69,
           "id": "car",
           "label": {
             "nl": "Personenauto",
@@ -371,8 +367,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 65,
+          "x": 57.5,
+          "y": 18,
           "id": "purpleMoped",
           "label": {
             "nl": "Paarse bromfiets",
@@ -381,8 +377,8 @@
           }
         },
         {
-          "x": 70,
-          "y": 80,
+          "x": 13.5,
+          "y": 75,
           "id": "redMoped",
           "label": {
             "nl": "Rode bromfiets",
@@ -888,12 +884,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        "1. Witte personenauto, 2. Ruiter, 3. Fietser",
-        "1. Ruiter, 2. Fietser, 3. Witte personenauto",
-        "1. Fietser, 2. Ruiter, 3. Witte personenauto",
-        "1. Ruiter, 2. Witte personenauto, 3. Fietser"
       ],
-      "correct": "1. Witte personenauto, 2. Ruiter, 3. Fietser",
+      "correct": "1. whiteCar, 2. rider, 3. cyclist",
       "reason": {
         "nl": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang. De witte personenauto (1) komt van rechts voor de ruiter. De ruiter (2) komt van rechts voor de fietser. De fietser (3) gaat als laatst.",
         "en": "In the Netherlands, at an equivalent intersection, you give priority to all drivers coming from the right. The white car (1) comes from the right before the rider. The rider (2) comes from the right before the cyclist. The cyclist (3) goes last.",
@@ -901,8 +893,8 @@
       },
       "dragTargets": [
         {
-          "x": 85,
-          "y": 30,
+          "x": 75,
+          "y": 63,
           "id": "whiteCar",
           "label": {
             "nl": "Witte personenauto",
@@ -911,8 +903,8 @@
           }
         },
         {
-          "x": 55,
-          "y": 45,
+          "x": 17,
+          "y": 70,
           "id": "rider",
           "label": {
             "nl": "Ruiter",
@@ -921,8 +913,8 @@
           }
         },
         {
-          "x": 30,
-          "y": 65,
+          "x": 11,
+          "y": 32,
           "id": "cyclist",
           "label": {
             "nl": "Fietser",

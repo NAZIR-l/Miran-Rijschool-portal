@@ -56,28 +56,8 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [
-        {
-          "nl": "1. Fietser, 2. Rode personenauto, 3. Witte personenauto",
-          "en": "1. Cyclist, 2. Red car, 3. White car",
-          "ar": "1. راكب الدراجة، 2. السيارة الحمراء، 3. السيارة البيضاء"
-        },
-        {
-          "nl": "1. Rode personenauto, 2. Fietser, 3. Witte personenauto",
-          "en": "1. Red car, 2. Cyclist, 3. White car",
-          "ar": "1. السيارة الحمراء، 2. راكب الدراجة، 3. السيارة البيضاء"
-        },
-        {
-          "nl": "1. Witte personenauto, 2. Rode personenauto, 3. Fietser",
-          "en": "1. White car, 2. Red car, 3. Cyclist",
-          "ar": "1. السيارة البيضاء، 2. السيارة الحمراء، 3. راكب الدراجة"
-        }
-      ],
-      "correct": {
-        "nl": "1. Fietser, 2. Rode personenauto, 3. Witte personenauto",
-        "en": "1. Cyclist, 2. Red car, 3. White car",
-        "ar": "1. راكب الدراجة، 2. السيارة الحمراء، 3. السيارة البيضاء"
-      },
+      "options": [],
+      "correct": "1. cyclist, 2. redcar, 3. whitecar",
       "reason": {
         "nl": "De fietser rijdt rechtdoor op dezelfde weg waar de witte- en de rode auto's willen afslaan. De fietser (1) heeft voorrang op de afslaande auto's. De rode auto (2) maakt de korte bocht dus heeft voorrang op de witte auto (3) die de lange bocht maakt.",
         "en": "The cyclist is going straight on the same road where the white and red cars want to turn. The cyclist (1) has priority over the turning cars. The red car (2) makes the short turn so has priority over the white car (3) making the long turn.",
@@ -85,8 +65,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 3,
+          "y": 27,
           "id": "cyclist",
           "label": {
             "nl": "Fietser",
@@ -95,9 +75,9 @@
           }
         },
         {
-          "x": 60,
-          "y": 50,
-          "id": "redCar",
+          "x": 20,
+          "y": 16,
+          "id": "redcar",
           "label": {
             "nl": "Rode personenauto",
             "en": "Red car",
@@ -105,9 +85,9 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
-          "id": "whiteCar",
+          "x": 74,
+          "y": 36,
+          "id": "whitecar",
           "label": {
             "nl": "Witte personenauto",
             "en": "White car",
@@ -127,27 +107,8 @@
       },
       "type": "interactive-choice",
       "options": [
-        {
-          "nl": "1. Bus, 2. Voetganger, 3. Personenauto",
-          "en": "1. Bus, 2. Pedestrian, 3. Car",
-          "ar": "1. الحافلة، 2. المشاة، 3. السيارة"
-        },
-        {
-          "nl": "1. Voetganger, 2. Bus, 3. Personenauto",
-          "en": "1. Pedestrian, 2. Bus, 3. Car",
-          "ar": "1. المشاة، 2. الحافلة، 3. السيارة"
-        },
-        {
-          "nl": "1. Personenauto, 2. Bus, 3. Voetganger",
-          "en": "1. Car, 2. Bus, 3. Pedestrian",
-          "ar": "1. السيارة، 2. الحافلة، 3. المشاة"
-        }
       ],
-      "correct": {
-        "nl": "1. Bus, 2. Voetganger, 3. Personenauto",
-        "en": "1. Bus, 2. Pedestrian, 3. Car",
-        "ar": "1. الحافلة، 2. المشاة، 3. السيارة"
-      },
+      "correct": "1. bus, 2. pedestrian, 3. car",
       "reason": {
         "nl": "De bus (1) rijdt op een voorrangsweg. De auto staat achter haaientanden. De voetganger (2) gaat rechtdoor op dezelfde weg als de auto en heeft hierdoor voorrang op de auto (3) die wilt afslaan.",
         "en": "The bus (1) is driving on a priority road. The car is behind shark's teeth. The pedestrian (2) is going straight on the same road as the car and therefore has priority over the car (3) that wants to turn.",
@@ -155,8 +116,8 @@
       },
       "dragTargets": [
         {
-          "x": 25,
-          "y": 25,
+          "x": 58,
+          "y": 28,
           "id": "bus",
           "label": {
             "nl": "Bus",
@@ -165,8 +126,8 @@
           }
         },
         {
-          "x": 60,
-          "y": 50,
+          "x": 11,
+          "y": 28,
           "id": "pedestrian",
           "label": {
             "nl": "Voetganger",
@@ -175,8 +136,8 @@
           }
         },
         {
-          "x": 85,
-          "y": 70,
+          "x": 82,
+          "y": 74,
           "id": "car",
           "label": {
             "nl": "Personenauto",
