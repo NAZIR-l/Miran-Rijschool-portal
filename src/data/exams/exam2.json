@@ -767,14 +767,52 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
+        "1. Witte personenauto, 2. Rode personenauto, 3. Motor",
+        "1. Motor, 2. Witte personenauto, 3. Rode personenauto",
+        "1. Witte personenauto, 2. Motor, 3. Rode personenauto"
+      ],
       "correct": "1. Rode personenauto, 2. Witte personenauto, 3. Motor",
       "reason": {
         "nl": "De rode personenauto (1) rijdt op een afbuigende voorrangsweg. De motor en witte personenauto staan achter haaientanden. De witte personenauto (2) komt van rechts en heeft hierdoor voorrang op de motor (3) van links.",
         "en": "The red car (1) is on a bending priority road. The motorcycle and white car are behind yield markings. The white car (2) comes from the right and therefore has priority over the motorcycle (3) from the left.",
-        "ar": "السيارة الحمراء (1) على طريق أولوية منحني. الدراجة النارية والسيارة البيضاء خلف علامات الأولوية. السيارة البيضاء (2) تأتي من اليمين وبالتالي لها الأولوية على الدراجة النارية (3) من اليسار."
-      }
+        "ar": "السيارة الحمراء (1) على طريق أولوية منحني. الدراجة النارية والسيارة البيضاء خلف علامات إعطاء الأولوية. السيارة البيضاء (2) تأتي من اليمين وبالتالي لها الأولوية على الدراجة النارية (3) القادمة من اليسار."
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 30,
+          "id": "redCar",
+          "label": {
+            "nl": "Rode personenauto",
+            "en": "Red car",
+            "ar": "السيارة الحمراء"
+          }
+        },
+        {
+          "x": 78,
+          "y": 42,
+          "id": "whiteCar",
+          "label": {
+            "nl": "Witte personenauto",
+            "en": "White car",
+            "ar": "السيارة البيضاء"
+          }
+        },
+        {
+          "x": 60,
+          "y": 70,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "دراجة نارية"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam2-q23",
       "image": "../../assets/exam2/q23.png",
@@ -818,14 +856,52 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Fietser, 2. Personenauto, 3. Motor",
+        "1. Personenauto, 2. Fietser, 3. Motor",
+        "1. Motor, 2. Personenauto, 3. Fietser",
+        "1. Fietser, 2. Motor, 3. Personenauto"
+      ],
       "correct": "1. Fietser, 2. Personenauto, 3. Motor",
       "reason": {
         "nl": "De fietser (1) rijdt rechtdoor op een voorrangsweg. De motor komt vanachter haaientanden vandaan en auto staat achter haaientanden op dezelfde weg. De auto (2) maakt een korte bocht en heeft hierdoor voorrang op de motor (3) die de lange bocht maakt.",
         "en": "The cyclist (1) is going straight on a priority road. The motorcycle comes from behind yield markings and the car is behind yield markings on the same road. The car (2) makes a short turn and therefore has priority over the motorcycle (3) making the long turn.",
-        "ar": "راكب الدراجة (1) يسير مباشرة على طريق أولوية. الدراجة النارية تأتي من خلف علامات الأولوية والسيارة خلف علامات الأولوية على نفس الطريق. السيارة (2) تقوم بالمنعطف القصير وبالتالي لها الأولوية على الدراجة النارية (3) التي تقوم بالمنعطف الطويل."
-      }
+        "ar": "راكب الدراجة (1) يسير مباشرة على طريق أولوية. الدراجة النارية تأتي من خلف علامات إعطاء الأولوية والسيارة خلف علامات إعطاء الأولوية على نفس الطريق. السيارة (2) تقوم بالمنعطف القصير وبالتالي لها الأولوية على الدراجة النارية (3) التي تقوم بالمنعطف الطويل."
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "cyclist",
+          "label": {
+            "nl": "Fietser",
+            "en": "Cyclist",
+            "ar": "راكب الدراجة"
+          }
+        },
+        {
+          "x": 85,
+          "y": 35,
+          "id": "car",
+          "label": {
+            "nl": "Personenauto",
+            "en": "Car",
+            "ar": "سيارة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 70,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "دراجة نارية"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam2-q25",
       "image": "../../assets/exam2/q25.png",

@@ -56,7 +56,23 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        {
+          "nl": "1. Fietser, 2. Rode personenauto, 3. Witte personenauto",
+          "en": "1. Cyclist, 2. Red car, 3. White car",
+          "ar": "1. راكب الدراجة، 2. السيارة الحمراء، 3. السيارة البيضاء"
+        },
+        {
+          "nl": "1. Rode personenauto, 2. Fietser, 3. Witte personenauto",
+          "en": "1. Red car, 2. Cyclist, 3. White car",
+          "ar": "1. السيارة الحمراء، 2. راكب الدراجة، 3. السيارة البيضاء"
+        },
+        {
+          "nl": "1. Witte personenauto, 2. Rode personenauto, 3. Fietser",
+          "en": "1. White car, 2. Red car, 3. Cyclist",
+          "ar": "1. السيارة البيضاء، 2. السيارة الحمراء، 3. راكب الدراجة"
+        }
+      ],
       "correct": {
         "nl": "1. Fietser, 2. Rode personenauto, 3. Witte personenauto",
         "en": "1. Cyclist, 2. Red car, 3. White car",
@@ -66,8 +82,41 @@
         "nl": "De fietser rijdt rechtdoor op dezelfde weg waar de witte- en de rode auto's willen afslaan. De fietser (1) heeft voorrang op de afslaande auto's. De rode auto (2) maakt de korte bocht dus heeft voorrang op de witte auto (3) die de lange bocht maakt.",
         "en": "The cyclist is going straight on the same road where the white and red cars want to turn. The cyclist (1) has priority over the turning cars. The red car (2) makes the short turn so has priority over the white car (3) making the long turn.",
         "ar": "راكب الدراجة يسير مباشرة على نفس الطريق حيث تريد السيارتان البيضاء والحمراء الانعطاف. راكب الدراجة (1) له الأولوية على السيارات المنعطفة. السيارة الحمراء (2) تنعطف المنعطف القصير لذا لها الأولوية على السيارة البيضاء (3) التي تنعطف المنعطف الطويل."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "cyclist",
+          "label": {
+            "nl": "Fietser",
+            "en": "Cyclist",
+            "ar": "راكب الدراجة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "redCar",
+          "label": {
+            "nl": "Rode personenauto",
+            "en": "Red car",
+            "ar": "السيارة الحمراء"
+          }
+        },
+        {
+          "x": 85,
+          "y": 70,
+          "id": "whiteCar",
+          "label": {
+            "nl": "Witte personenauto",
+            "en": "White car",
+            "ar": "السيارة البيضاء"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam6-q4",
       "image": "../../assets/exam6/q4.png",
@@ -77,7 +126,23 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        {
+          "nl": "1. Bus, 2. Voetganger, 3. Personenauto",
+          "en": "1. Bus, 2. Pedestrian, 3. Car",
+          "ar": "1. الحافلة، 2. المشاة، 3. السيارة"
+        },
+        {
+          "nl": "1. Voetganger, 2. Bus, 3. Personenauto",
+          "en": "1. Pedestrian, 2. Bus, 3. Car",
+          "ar": "1. المشاة، 2. الحافلة، 3. السيارة"
+        },
+        {
+          "nl": "1. Personenauto, 2. Bus, 3. Voetganger",
+          "en": "1. Car, 2. Bus, 3. Pedestrian",
+          "ar": "1. السيارة، 2. الحافلة، 3. المشاة"
+        }
+      ],
       "correct": {
         "nl": "1. Bus, 2. Voetganger, 3. Personenauto",
         "en": "1. Bus, 2. Pedestrian, 3. Car",
@@ -87,8 +152,41 @@
         "nl": "De bus (1) rijdt op een voorrangsweg. De auto staat achter haaientanden. De voetganger (2) gaat rechtdoor op dezelfde weg als de auto en heeft hierdoor voorrang op de auto (3) die wilt afslaan.",
         "en": "The bus (1) is driving on a priority road. The car is behind shark's teeth. The pedestrian (2) is going straight on the same road as the car and therefore has priority over the car (3) that wants to turn.",
         "ar": "الحافلة (1) تسير على طريق أولوية. السيارة وراء أسنان القرش. المشاة (2) يسير مباشرة على نفس طريق السيارة وبالتالي له الأولوية على السيارة (3) التي تريد الانعطاف."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "bus",
+          "label": {
+            "nl": "Bus",
+            "en": "Bus",
+            "ar": "الحافلة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "pedestrian",
+          "label": {
+            "nl": "Voetganger",
+            "en": "Pedestrian",
+            "ar": "المشاة"
+          }
+        },
+        {
+          "x": 85,
+          "y": 70,
+          "id": "car",
+          "label": {
+            "nl": "Personenauto",
+            "en": "Car",
+            "ar": "السيارة"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam6-q5",
       "image": "../../assets/exam6/q5.png",

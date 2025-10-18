@@ -659,14 +659,28 @@
         "ar": "ما هو الترتيب الصحيح للأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
-      "correct": " 1. Witte personenauto, 2. Fietser, 3. Motor",
+      "options": [
+        "1. Witte personenauto, 2. Fietser, 3. Motor",
+        "1. Fietser, 2. Motor, 3. Witte personenauto",
+        "1. Motor, 2. Fietser, 3. Witte personenauto"
+      ],
+      "correct": "1. Witte personenauto, 2. Fietser, 3. Motor",
       "reason": {
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3).",
         "en": "The car (1) is going straight on a priority road. The cyclist and motorcycle are behind yield markings on the same road. The cyclist (2) is going straight and therefore has priority over the turning motorcycle (3).",
-        "ar": "السيارة (1) تسير مباشرة على طريق أولوية. راكب الدراجة والدراجة النارية خلف علامات الأولوية على نفس الطريق. راكب الدراجة (2) يسير مباشرة وبالتالي لديه الأولوية على الدراجة النارية المنعطفة (3)."
+        "ar": "السيارة (1) تسير مباشرة على طريق أولوية. راكب الدراجة والدراجة النارية خلف علامات إعطاء الأولوية على نفس الطريق. راكب الدراجة (2) يسير مباشرة، وبالتالي لديه الأولوية على الدراجة النارية المنعطفة (3)."
       },
       "dragTargets": [
+        {
+          "x": 95,
+          "y": 32,
+          "id": "car",
+          "label": {
+            "nl": "Witte personenauto",
+            "en": "White car",
+            "ar": "السيارة البيضاء"
+          }
+        },
         {
           "x": 27,
           "y": 23,
@@ -678,27 +692,18 @@
           }
         },
         {
-          "x": 95,
-          "y": 32,
-          "id": "car",
-          "label": {
-            "nl": "Auto",
-            "en": "Car",
-            "ar": "سيارة"
-          }
-        },
-        {
           "x": 72,
           "y": 67,
-          "id": "moped",
+          "id": "motor",
           "label": {
-            "nl": "Bromfiets",
-            "en": "Moped",
-            "ar": "دراجة بخارية"
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "دراجة نارية"
           }
         }
       ]
     },
+
     {
       "id": "exam1-q20",
       "image": "../../assets/exam1/q20.png",
@@ -1352,12 +1357,17 @@
         "ar": "من له الأسبقية أولاً؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Tram, 2. Auto",
+        "1. Auto, 2. Tram",
+        "1. Beide tegelijk (gelijkwaardige kruising)",
+        "1. Geen van beiden, eerst voetganger"
+      ],
       "correct": "1. Tram, 2. Auto",
       "reason": {
         "nl": "De tram heeft altijd voorrang, behalve als deze van rechts komt. Daarna heeft de auto voorrang omdat deze van rechts komt ten opzichte van de andere auto.",
-        "en": "The tram always has priority, except when it comes from the right. Then the car has priority because it comes from the right relative to the other car.",
-        "ar": "الترام دائماً له الأولوية، إلا إذا جاء من اليمين. ثم السيارة لها الأولوية لأنها تأتي من اليمين بالنسبة للسيارة الأخرى."
+        "en": "The tram always has priority, except when it comes from the right. After that, the car has priority because it comes from the right relative to the other car.",
+        "ar": "الترام دائماً له الأولوية، إلا إذا جاء من اليمين. بعد ذلك، السيارة لها الأولوية لأنها تأتي من اليمين بالنسبة للسيارة الأخرى."
       },
       "dragTargets": [
         {
@@ -1380,9 +1390,9 @@
             "ar": "سيارة"
           }
         }
-
       ]
     },
+
     {
       "id": "exam1-q40",
       "image": "../../assets/exam1/q40.png",
@@ -1620,14 +1630,52 @@
         "ar": "ما هو الترتيب الصحيح للأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Motor, 2. Auto, 3. Bromfiets",
+        "1. Auto, 2. Motor, 3. Bromfiets",
+        "1. Bromfiets, 2. Auto, 3. Motor",
+        "1. Auto, 2. Bromfiets, 3. Motor"
+      ],
       "correct": "1. Motor, 2. Auto, 3. Bromfiets",
       "reason": {
         "nl": "De auto komt van rechts ten opzichte van de bromfiets. Echter, de auto slaat af naar dezelfde weg als de motor, waarbij de motor de korte bocht heeft. Daarom gaat de motor eerst, gevolgd door de auto, en als laatste de bromfiets.",
         "en": "The car comes from the right relative to the moped. However, the car turns onto the same road as the motorcycle, with the motorcycle having the short turn. Therefore, the motorcycle goes first, followed by the car, and finally the moped.",
         "ar": "السيارة تأتي من اليمين بالنسبة للدراجة البخارية. ومع ذلك، تنعطف السيارة إلى نفس طريق الدراجة النارية، حيث يكون للدراجة النارية المنعطف القصير. لذلك، تذهب الدراجة النارية أولاً، تليها السيارة، وأخيراً الدراجة البخارية."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 27,
+          "y": 23,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "دراجة نارية"
+          }
+        },
+        {
+          "x": 95,
+          "y": 32,
+          "id": "car",
+          "label": {
+            "nl": "Auto",
+            "en": "Car",
+            "ar": "سيارة"
+          }
+        },
+        {
+          "x": 72,
+          "y": 67,
+          "id": "moped",
+          "label": {
+            "nl": "Bromfiets",
+            "en": "Moped",
+            "ar": "دراجة بخارية"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam1-q47",
       "image": "../../assets/exam1/q47.png",

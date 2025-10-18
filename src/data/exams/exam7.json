@@ -221,7 +221,23 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية هنا؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        {
+          "nl": "1. Bromfiets, 2. Motor, 3. Auto",
+          "en": "1. Moped, 2. Motorcycle, 3. Car",
+          "ar": "1. الدراجة البخارية، 2. الدراجة النارية، 3. السيارة"
+        },
+        {
+          "nl": "1. Motor, 2. Bromfiets, 3. Auto",
+          "en": "1. Motorcycle, 2. Moped, 3. Car",
+          "ar": "1. الدراجة النارية، 2. الدراجة البخارية، 3. السيارة"
+        },
+        {
+          "nl": "1. Auto, 2. Bromfiets, 3. Motor",
+          "en": "1. Car, 2. Moped, 3. Motorcycle",
+          "ar": "1. السيارة، 2. الدراجة البخارية، 3. الدراجة النارية"
+        }
+      ],
       "correct": {
         "nl": "1. Bromfiets, 2. Motor, 3. Auto",
         "en": "1. Moped, 2. Motorcycle, 3. Car",
@@ -231,8 +247,41 @@
         "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
         "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
         "ar": "الدراجة البخارية تأتي من اليمين قبل الدراجة النارية. الدراجة النارية تأتي من اليمين قبل السيارة. لذا الدراجة البخارية (1) تذهب أولاً، ثم الدراجة النارية (2) وأخيراً السيارة (3)."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "moped",
+          "label": {
+            "nl": "Bromfiets",
+            "en": "Moped",
+            "ar": "الدراجة البخارية"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "الدراجة النارية"
+          }
+        },
+        {
+          "x": 85,
+          "y": 70,
+          "id": "car",
+          "label": {
+            "nl": "Auto",
+            "en": "Car",
+            "ar": "السيارة"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam7-q12",
       "image": "../../assets/exam7/q12.png",
@@ -689,8 +738,41 @@
         "nl": "De bromfiets komt van rechts voor de motor. De motor komt van rechts voor de auto. De bromfiets (1) mag dus eerst, dan de motor (2) en als laatst de auto (3).",
         "en": "The moped comes from the right before the motorcycle. The motorcycle comes from the right before the car. So the moped (1) goes first, then the motorcycle (2) and last the car (3).",
         "ar": "الدراجة البخارية تأتي من اليمين قبل الدراجة النارية. الدراجة النارية تأتي من اليمين قبل السيارة. لذا الدراجة البخارية (1) تذهب أولاً، ثم الدراجة النارية (2) وأخيراً السيارة (3)."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "moped",
+          "label": {
+            "nl": "Bromfiets",
+            "en": "Moped",
+            "ar": "الدراجة البخارية"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "الدراجة النارية"
+          }
+        },
+        {
+          "x": 85,
+          "y": 70,
+          "id": "car",
+          "label": {
+            "nl": "Auto",
+            "en": "Car",
+            "ar": "السيارة"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam7-q35",
       "image": "../../assets/exam7/q35.png",
