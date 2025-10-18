@@ -95,7 +95,7 @@
           class="action-btn next-btn"
           @click="nextExam"
         >
-          <q-icon name="arrow_forward" class="q-mr-sm" />
+          <q-icon name="home" class="q-mr-sm" />
           <q-tooltip>{{ $t('exam_results.next_exam') }}</q-tooltip>
         </q-btn>
       </div>

@@ -239,7 +239,15 @@
     },
     "image_not_available": "Image not available",
     "progress_of": "Question {current} of {total}",
-    "exam_subtitle": "{total} questions"
+    "exam_subtitle": "{total} questions",
+    "question_counter": "Question {current} of {total}",
+    "progress_complete": "{percentage}% Complete",
+    "drag_instructions": "Drag the numbers to the correct positions on the image",
+    "current_order": "Current order:",
+    "answered": "Answered",
+    "flagged": "Flagged",
+    "open": "Open",
+    "current": "Current"
   },
   "exam_results": {
     "passed_title": "Congratulations! You passed!",

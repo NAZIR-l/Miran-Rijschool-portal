@@ -902,11 +902,21 @@ export default defineComponent({
 
 .content-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 16px;
 }
+@media (max-width: 1024px) {
+  .content-container {
+    max-width: 90%;
+  }
+}
 
+@media (max-width: 768px) {
+  .content-container {
+    max-width: 90%;
+  }
+}
 .footer-wrap {
   padding: 40px 0 0;
 }

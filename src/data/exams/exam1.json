@@ -664,7 +664,7 @@
         "1. Fietser, 2. Motor, 3. Witte personenauto",
         "1. Motor, 2. Fietser, 3. Witte personenauto"
       ],
-      "correct": "1. Witte personenauto, 2. Fietser, 3. Motor",
+      "correct": "1. car, 2. cyclist, 3. motor",
       "reason": {
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De fietser en motor staan achter haaientanden op dezelfde weg. De fietser (2) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande motor (3).",
         "en": "The car (1) is going straight on a priority road. The cyclist and motorcycle are behind yield markings on the same road. The cyclist (2) is going straight and therefore has priority over the turning motorcycle (3).",
@@ -672,8 +672,8 @@
       },
       "dragTargets": [
         {
-          "x": 95,
-          "y": 32,
+          "x": 65,
+          "y": 33,
           "id": "car",
           "label": {
             "nl": "Witte personenauto",
@@ -682,7 +682,7 @@
           }
         },
         {
-          "x": 27,
+          "x": 30,
           "y": 23,
           "id": "cyclist",
           "label": {
@@ -692,8 +692,8 @@
           }
         },
         {
-          "x": 72,
-          "y": 67,
+          "x": 53,
+          "y": 66,
           "id": "motor",
           "label": {
             "nl": "Motor",

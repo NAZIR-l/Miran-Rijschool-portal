@@ -207,7 +207,15 @@
     },
     "image_not_available": "Afbeelding niet beschikbaar",
     "progress_of": "Vraag {current} van {total}",
-    "exam_subtitle": "{total} vragen"
+    "exam_subtitle": "{total} vragen",
+    "question_counter": "Vraag {current} van {total}",
+    "progress_complete": "{percentage}% Voltooid",
+    "drag_instructions": "Sleep de nummers naar de juiste posities op de afbeelding",
+    "current_order": "Huidige volgorde:",
+    "answered": "Beantwoord",
+    "flagged": "Gemarkeerd",
+    "open": "Open",
+    "current": "Huidig"
   },
   "exam_results": {
     "passed_title": "Gefeliciteerd! Je bent geslaagd!",

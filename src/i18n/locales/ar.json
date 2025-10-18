@@ -241,7 +241,15 @@
     },
     "image_not_available": "الصورة غير متاحة",
     "progress_of": "سؤال {current} من {total}",
-    "exam_subtitle": "{total} سؤال"
+    "exam_subtitle": "{total} سؤال",
+    "question_counter": "سؤال {current} من {total}",
+    "progress_complete": "{percentage}% مكتمل",
+    "drag_instructions": "اسحب الأرقام إلى المواضع الصحيحة على الصورة",
+    "current_order": "الترتيب الحالي:",
+    "answered": "مُجاب",
+    "flagged": "مُعلّم",
+    "open": "مفتوح",
+    "current": "الحالي"
   },
   "exam_results": {
     "passed_title": "تهانينا! لقد نجحت!",
