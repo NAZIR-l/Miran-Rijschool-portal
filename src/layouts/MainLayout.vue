@@ -406,7 +406,7 @@
                     class="footer-logo"
                     />
                   </div>
-                  <p class="tagline">Learn smarter. Pass faster.</p>
+                  <p class="tagline">{{ t('layout.footer.tagline') }}</p>
 
                 </div>
 
@@ -450,6 +450,7 @@
 <script>
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { useI18n } from "vue-i18n";
 import HeaderLangSwitcher from "src/components/HeaderLangSwitcher.vue";
 import { useNotifications } from "src/composables/useNotifications.js";
 import { api } from "src/boot/axios.js";
@@ -459,6 +460,7 @@ export default defineComponent({
   name: "MainLayout",
   components: { HeaderLangSwitcher },
   setup() {
+    const { t } = useI18n();
     const isMenuOpen = ref(false);
     const isDrawerOpen = ref(false);
     const isPakkettenOpen = ref(false);
@@ -562,6 +564,7 @@ export default defineComponent({
       // User Programs
       hasActivePrograms,
       loading,
+      t,
     };
   },
 });

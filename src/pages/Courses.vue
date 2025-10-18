@@ -63,7 +63,7 @@
             :aria-label="`${p.name} €${p.coursePrice}`"
             v-ripple
           >
-            <div v-if="i === 1" class="badge">{{ t('packages.retake_note') }}</div>
+            <div v-if="i === 1" class="badge">{{ t('packages.recommended') }}</div>
 
             <div class="card-body">
               <div class="title-row">
@@ -83,11 +83,11 @@
                 </li>
                 <li>
                   <q-icon name="schedule" color="primary" size="18px" />
-                  <span>{{ p.lessonDuration }} min per lesson</span>
+                  <span>{{ p.lessonDuration }} {{ t('packages.lesson_duration') }}</span>
                 </li>
                 <li v-if="p.hasFreeExam">
                   <q-icon name="star" color="warning" size="18px" />
-                  <span>FREE practical exam</span>
+                  <span>{{ t('packages.free_practical_exam') }}</span>
                 </li>
               </ul>
               <div class="card-footer">

@@ -350,7 +350,7 @@
             class="nav-btn prev-btn"
             @click="previous"
           >
-            Vorige
+            {{ $t('exam_run.previous') }}
           </q-btn>
 
           <div class="spacer"></div>
@@ -364,7 +364,7 @@
             @click="next"
             :disabled="!canProceed"
           >
-            {{ isLastQuestion ? 'Examen Afronden' : 'Volgende' }}
+            {{ isLastQuestion ? $t('exam_run.finish') : $t('exam_run.next') }}
           </q-btn>
         </div>
       </div>
