@@ -856,7 +856,23 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        {
+          "nl": "1. Personenauto, 2. Motor, 3. Voetganger",
+          "en": "1. Car, 2. Motorcycle, 3. Pedestrian",
+          "ar": "1. السيارة، 2. الدراجة النارية، 3. المشاة"
+        },
+        {
+          "nl": "1. Motor, 2. Personenauto, 3. Voetganger",
+          "en": "1. Motorcycle, 2. Car, 3. Pedestrian",
+          "ar": "1. الدراجة النارية، 2. السيارة، 3. المشاة"
+        },
+        {
+          "nl": "1. Voetganger, 2. Personenauto, 3. Motor",
+          "en": "1. Pedestrian, 2. Car, 3. Motorcycle",
+          "ar": "1. المشاة، 2. السيارة، 3. الدراجة النارية"
+        }
+      ],
       "correct": {
         "nl": "1. Personenauto, 2. Motor, 3. Voetganger",
         "en": "1. Car, 2. Motorcycle, 3. Pedestrian",
@@ -866,8 +882,41 @@
         "nl": "De auto (1) rijdt rechtdoor op een voorrangsweg. De motor (2) staat achter haaientanden dus dient de auto voorrang te verlenen, maar heeft wel voorrang op de overstekende voetganger (3).",
         "en": "The car (1) is driving straight on a priority road. The motorcycle (2) is behind shark's teeth so must yield to the car, but has priority over the crossing pedestrian (3).",
         "ar": "السيارة (1) تسير مباشرة على طريق أولوية. الدراجة النارية (2) وراء أسنان القرش لذا يجب أن تعطي الأولوية للسيارة، ولكن لها الأولوية على المشاة العابرين (3)."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "car",
+          "label": {
+            "nl": "Personenauto",
+            "en": "Car",
+            "ar": "السيارة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "motor",
+          "label": {
+            "nl": "Motor",
+            "en": "Motorcycle",
+            "ar": "الدراجة النارية"
+          }
+        },
+        {
+          "x": 85,
+          "y": 75,
+          "id": "pedestrian",
+          "label": {
+            "nl": "Voetganger",
+            "en": "Pedestrian",
+            "ar": "المشاة"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam5-q41",
       "image": "../../assets/exam5/q41.png",
@@ -897,7 +946,23 @@
         "ar": "ما هو الترتيب الصحيح لإعطاء الأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        {
+          "nl": "1. De fietser, 2. De groene personenauto, 3. De witte personenauto",
+          "en": "1. The cyclist, 2. The green car, 3. The white car",
+          "ar": "1. راكب الدراجة، 2. السيارة الخضراء، 3. السيارة البيضاء"
+        },
+        {
+          "nl": "1. De groene personenauto, 2. De fietser, 3. De witte personenauto",
+          "en": "1. The green car, 2. The cyclist, 3. The white car",
+          "ar": "1. السيارة الخضراء، 2. راكب الدراجة، 3. السيارة البيضاء"
+        },
+        {
+          "nl": "1. De witte personenauto, 2. De groene personenauto, 3. De fietser",
+          "en": "1. The white car, 2. The green car, 3. The cyclist",
+          "ar": "1. السيارة البيضاء، 2. السيارة الخضراء، 3. راكب الدراجة"
+        }
+      ],
       "correct": {
         "nl": "1. De fietser, 2. De groene personenauto, 3. De witte personenauto",
         "en": "1. The cyclist, 2. The green car, 3. The white car",
@@ -907,8 +972,41 @@
         "nl": "De twee auto's willen afslaan waar de fietser rechtdoor rijdt. De rechtdoorgaande fietser (1) heeft voorrang op afslaand verkeer. De groene auto (2) heeft de korte bocht en de witte auto (3) heeft de lange bocht.",
         "en": "The two cars want to turn where the cyclist is going straight. The through cyclist (1) has priority over turning traffic. The green car (2) has the short turn and the white car (3) has the long turn.",
         "ar": "السيارتان تريدان الانعطاف حيث يسير راكب الدراجة مباشرة. راكب الدراجة المار (1) له الأولوية على حركة المرور المنعطفة. السيارة الخضراء (2) لها المنعطف القصير والسيارة البيضاء (3) لها المنعطف الطويل."
-      }
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 25,
+          "id": "cyclist",
+          "label": {
+            "nl": "De fietser",
+            "en": "The cyclist",
+            "ar": "راكب الدراجة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 50,
+          "id": "greenCar",
+          "label": {
+            "nl": "De groene personenauto",
+            "en": "The green car",
+            "ar": "السيارة الخضراء"
+          }
+        },
+        {
+          "x": 85,
+          "y": 70,
+          "id": "whiteCar",
+          "label": {
+            "nl": "De witte personenauto",
+            "en": "The white car",
+            "ar": "السيارة البيضاء"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam5-q43",
       "image": "../../assets/exam5/q43.png",

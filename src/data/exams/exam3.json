@@ -337,14 +337,62 @@
         "ar": "ما هو الترتيب الصحيح للأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
+        "1. Personenauto, 2. Fietser, 3. Rode bromfiets, 4. Paarse bromfiets",
+        "1. Paarse bromfiets, 2. Rode bromfiets, 3. Personenauto, 4. Fietser",
+        "1. Rode bromfiets, 2. Paarse bromfiets, 3. Personenauto, 4. Fietser"
+      ],
       "correct": "1. Fietser, 2. Personenauto, 3. Paarse bromfiets, 4. Rode bromfiets",
       "reason": {
         "nl": "De fietser rijdt op een voorrangsweg rechtdoor op dezelfde weg waar de auto wilt afslaan. De fietser (1) heeft voorrang op de witte auto (2). De rode- en paarse bromfiets staan achter haaientanden op dezelfde weg. De paarse bromfiets (3) rijdt rechtdoor en heeft hierdoor voorrang op de afslaande rode bromfiets (4).",
         "en": "The cyclist is going straight on a priority road on the same road where the car wants to turn. The cyclist (1) has priority over the white car (2). The red and purple mopeds are behind yield markings on the same road. The purple moped (3) is going straight and therefore has priority over the turning red moped (4).",
-        "ar": "راكب الدراجة يسير مباشرة على طريق أولوية على نفس الطريق حيث تريد السيارة الانعطاف. راكب الدراجة (1) له الأولوية على السيارة البيضاء (2). الدراجتان البخاريتان الحمراء والبنفسجية خلف علامات الأولوية على نفس الطريق. الدراجة البخارية البنفسجية (3) تسير مباشرة وبالتالي لها الأولوية على الدراجة البخارية الحمراء المنعطفة (4)."
-      }
+        "ar": "راكب الدراجة يسير مباشرة على طريق أولوية على نفس الطريق الذي تريد السيارة الانعطاف فيه. راكب الدراجة (1) له الأولوية على السيارة البيضاء (2). الدراجة البخارية البنفسجية والحمراء خلف علامات إعطاء الأولوية على نفس الطريق. الدراجة البخارية البنفسجية (3) تسير مباشرة وبالتالي لها الأولوية على الدراجة البخارية الحمراء المنعطفة (4)."
+      },
+      "dragTargets": [
+        {
+          "x": 25,
+          "y": 20,
+          "id": "cyclist",
+          "label": {
+            "nl": "Fietser",
+            "en": "Cyclist",
+            "ar": "راكب الدراجة"
+          }
+        },
+        {
+          "x": 80,
+          "y": 30,
+          "id": "car",
+          "label": {
+            "nl": "Personenauto",
+            "en": "Car",
+            "ar": "سيارة"
+          }
+        },
+        {
+          "x": 60,
+          "y": 65,
+          "id": "purpleMoped",
+          "label": {
+            "nl": "Paarse bromfiets",
+            "en": "Purple moped",
+            "ar": "دراجة بخارية بنفسجية"
+          }
+        },
+        {
+          "x": 70,
+          "y": 80,
+          "id": "redMoped",
+          "label": {
+            "nl": "Rode bromfiets",
+            "en": "Red moped",
+            "ar": "دراجة بخارية حمراء"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam3-q12",
       "image": "../../assets/exam3/q12.png",
@@ -839,14 +887,52 @@
         "ar": "ما هو الترتيب الصحيح للأولوية؟"
       },
       "type": "interactive-choice",
-      "options": [],
+      "options": [
+        "1. Witte personenauto, 2. Ruiter, 3. Fietser",
+        "1. Ruiter, 2. Fietser, 3. Witte personenauto",
+        "1. Fietser, 2. Ruiter, 3. Witte personenauto",
+        "1. Ruiter, 2. Witte personenauto, 3. Fietser"
+      ],
       "correct": "1. Witte personenauto, 2. Ruiter, 3. Fietser",
       "reason": {
         "nl": "In Nederland geef je op een gelijkwaardig kruispunt alle bestuurders die van rechts komen voorrang. De witte personenauto (1) komt van rechts voor de ruiter. De ruiter (2) komt van rechts voor de fietser. De fietser (3) gaat als laatst.",
         "en": "In the Netherlands, at an equivalent intersection, you give priority to all drivers coming from the right. The white car (1) comes from the right before the rider. The rider (2) comes from the right before the cyclist. The cyclist (3) goes last.",
-        "ar": "في هولندا، في تقاطع متكافئ، تعطي الأولوية لجميع السائقين القادمين من اليمين. السيارة البيضاء (1) تأتي من اليمين قبل الفارس. الفارس (2) يأتي من اليمين قبل راكب الدراجة. راكب الدراجة (3) يذهب أخيراً."
-      }
+        "ar": "في هولندا، في تقاطع متكافئ، تُعطى الأولوية لجميع السائقين القادمين من اليمين. السيارة البيضاء (1) تأتي من اليمين قبل الفارس. الفارس (2) يأتي من اليمين قبل راكب الدراجة. راكب الدراجة (3) يذهب أخيراً."
+      },
+      "dragTargets": [
+        {
+          "x": 85,
+          "y": 30,
+          "id": "whiteCar",
+          "label": {
+            "nl": "Witte personenauto",
+            "en": "White car",
+            "ar": "السيارة البيضاء"
+          }
+        },
+        {
+          "x": 55,
+          "y": 45,
+          "id": "rider",
+          "label": {
+            "nl": "Ruiter",
+            "en": "Horse rider",
+            "ar": "فارس"
+          }
+        },
+        {
+          "x": 30,
+          "y": 65,
+          "id": "cyclist",
+          "label": {
+            "nl": "Fietser",
+            "en": "Cyclist",
+            "ar": "راكب الدراجة"
+          }
+        }
+      ]
     },
+
     {
       "id": "exam3-q26",
       "image": "../../assets/exam3/q26.png",
