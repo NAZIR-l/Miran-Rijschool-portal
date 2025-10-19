@@ -67,7 +67,8 @@
     "payment_failed": "فشل الدفع. يرجى المحاولة مرة أخرى.",
     "failed_to_load_packages": "فشل في تحميل الباقات. يرجى تحديث الصفحة.",
     "lesson_duration": "دقيقة لكل درس",
-    "free_practical_exam": "امتحان عملي مجاني"
+    "free_practical_exam": "امتحان عملي مجاني",
+    "already_enrolled": "مسجل مسبقاً"
   },
   "index": {
     "title": "باقات دروس القيادة",
