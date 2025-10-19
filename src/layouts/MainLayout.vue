@@ -737,6 +737,7 @@ export default defineComponent({
 .sidebar {
   width: 220px;
   padding: 16px 0;
+  margin : 0 10px;
 }
 @media (max-width: 1024px) {
   .sidebar {
