@@ -534,7 +534,7 @@
     },
     "complaints": {
       "title": "Klachten",
-      "body": "Klachten kunnen worden gericht aan info@miranrijschool.nl. Wij streven ernaar binnen 5 werkdagen te reageren."
+      "body": "Klachten kunnen worden gericht aan info{'@'}miranrijschool.nl. Wij streven ernaar binnen 5 werkdagen te reageren."
     }
   }
   ,

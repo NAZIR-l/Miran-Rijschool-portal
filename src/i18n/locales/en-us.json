@@ -533,7 +533,7 @@
     },
     "complaints": {
       "title": "Complaints",
-      "body": "Complaints can be sent to info@miranrijschool.nl. We aim to respond within 5 working days."
+      "body": "Complaints can be sent to info{'@'}miranrijschool.nl. We aim to respond within 5 working days."
     }
   }
   ,
