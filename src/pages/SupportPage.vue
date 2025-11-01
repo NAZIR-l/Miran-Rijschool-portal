@@ -234,6 +234,21 @@ export default defineComponent({
         // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 1500));
         
+        // Build WhatsApp message and open chat with prefilled text
+        const whatsappNumber = "31686300588"; // +31 6 86300588 without plus/spaces
+        const details = [
+          "New support inquiry",
+          `Name: ${form.value.name}`,
+          `Email: ${form.value.email}`,
+          `Topic: ${form.value.topic}`,
+          form.value.orderId ? `Order ID: ${form.value.orderId}` : null,
+          "",
+          "Message:",
+          form.value.message
+        ].filter(Boolean).join("\n");
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(details)}`;
+        window.open(whatsappUrl, "_blank");
+        
         $q.notify({
           type: "positive",
           message: $t('support.notify.send_ok_title'),
