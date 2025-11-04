@@ -92,6 +92,7 @@
               </ul>
               <div class="card-footer">
                 <q-btn
+                  v-if="!isCourseEnrolled(p.id)"
                   no-caps
                   unelevated
                   color="primary"
@@ -100,6 +101,10 @@
                   icon-right="arrow_forward"
                   @click.stop="handlePurchase(p)"
                 />
+                <div v-else class="enrolled-indicator">
+                  <q-icon name="check_circle" color="positive" size="20px" />
+                  <span>{{ t('packages.already_enrolled') || 'Already Enrolled' }}</span>
+                </div>
               </div>
             </div>
           </q-card>
@@ -194,6 +199,7 @@
         <!-- CTA Section -->
         <div class="exam-cta-section">
           <q-btn
+            v-if="selectedExam && !isCourseEnrolled(getExamByCode(selectedExam)?.id)"
             no-caps
             unelevated
             size="lg"
@@ -201,10 +207,13 @@
             class="exam-cta-btn"
             :label="t('packages.cta')"
             icon-right="arrow_forward"
-            :disabled="!selectedExam"
             @click="handleExamPurchase"
           />
-          <div v-if="!selectedExam" class="exam-selection-hint">
+          <div v-else-if="selectedExam && isCourseEnrolled(getExamByCode(selectedExam)?.id)" class="exam-enrolled-indicator">
+            <q-icon name="check_circle" color="positive" size="24px" />
+            <span>{{ t('packages.already_enrolled') || 'Already Enrolled' }}</span>
+          </div>
+          <div v-else class="exam-selection-hint">
             {{ t('packages.exam_select_hint') }}
           </div>
         </div>
@@ -244,6 +253,7 @@ export default defineComponent({
     });
     const examPackages = ref([]);
     const loading = ref(true);
+    const userEnrollments = ref([]);
 
     // Authentication check
     const isAuthenticated = computed(() => !!Cookies.get('auth_token'));
@@ -258,6 +268,11 @@ export default defineComponent({
         });
         pakketten.value = response.data;
         examPackages.value = response.data.exams || [];
+        
+        // Fetch user enrollments if authenticated
+        if (isAuthenticated.value) {
+          await fetchUserEnrollments();
+        }
       } catch (error) {
         console.error("Failed to fetch packages:", error);
         if ($q && $q.notify) {
@@ -279,8 +294,33 @@ export default defineComponent({
       }
     }
 
+    async function fetchUserEnrollments() {
+      try {
+        const response = await api.get("/exams/enrollments");
+        userEnrollments.value = response.data || [];
+      } catch (error) {
+        console.error("Failed to fetch user enrollments:", error);
+        userEnrollments.value = [];
+      }
+    }
+
+    function isCourseEnrolled(courseId) {
+      if (!isAuthenticated.value) return false;
+      return userEnrollments.value.some(enrollment => enrollment.courseId === courseId);
+    }
+
     async function handlePurchase(pkg) {
       try {
+        // Check if user already has this course enrolled
+        if (isCourseEnrolled(pkg.id)) {
+          $q.notify({
+            type: "warning",
+            message: t("packages.already_enrolled") || "You already have an active enrollment for this course",
+            position: "top"
+          });
+          return;
+        }
+
         if ($q && $q.loading) {
           $q.loading.show({ message: t("packages.processing") || "Processing..." });
         }
@@ -360,13 +400,23 @@ export default defineComponent({
       if (!selectedExam.value) return;
 
       try {
-        if ($q && $q.loading) {
-          $q.loading.show({ message: t("packages.processing") || "Processing..." });
-        }
-
         const selectedExamData = getExamByCode(selectedExam.value);
         if (!selectedExamData) {
           throw new Error("Selected exam package not found");
+        }
+
+        // Check if user already has this course enrolled
+        if (isCourseEnrolled(selectedExamData.id)) {
+          $q.notify({
+            type: "warning",
+            message: t("packages.already_enrolled") || "You already have an active enrollment for this course",
+            position: "top"
+          });
+          return;
+        }
+
+        if ($q && $q.loading) {
+          $q.loading.show({ message: t("packages.processing") || "Processing..." });
         }
 
         let response;
@@ -408,7 +458,7 @@ export default defineComponent({
       fetchPackages();
     });
 
-    return { t, viewMode, activeTab, selected, selectedExam, pakketten, examPackages, heroClass, selectCard, selectExam, iconFor, loading, handlePurchase, handleExamPurchase, getExamVariantClass, getExamImage, isAuthenticated };
+    return { t, viewMode, activeTab, selected, selectedExam, pakketten, examPackages, heroClass, selectCard, selectExam, iconFor, loading, handlePurchase, handleExamPurchase, getExamVariantClass, getExamImage, isAuthenticated, userEnrollments, isCourseEnrolled, getExamByCode };
   },
 });
 </script>
@@ -668,6 +718,35 @@ export default defineComponent({
 }
 .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 16px 28px -12px rgba(37,99,235,.66); }
 .cta-btn:active { transform: translateY(0); box-shadow: 0 8px 18px -12px rgba(37,99,235,.6); }
+
+/* Enrolled indicators */
+.enrolled-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-radius: 12px;
+  color: #065f46;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #6ee7b7;
+}
+
+.exam-enrolled-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-radius: 12px;
+  color: #065f46;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1px solid #6ee7b7;
+  min-width: 200px;
+  justify-content: center;
+}
 /* Color variants */
 .variant-orange .card-hero {
   background: linear-gradient(135deg, #f59e0b, #fcd34d);

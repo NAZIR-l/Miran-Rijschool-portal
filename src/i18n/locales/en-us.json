@@ -67,7 +67,8 @@
     "payment_failed": "Payment failed. Please try again.",
     "failed_to_load_packages": "Failed to load packages. Please refresh the page.",
     "lesson_duration": "min per lesson",
-    "free_practical_exam": "FREE practical exam"
+    "free_practical_exam": "FREE practical exam",
+    "already_enrolled": "Already enrolled"
   },
   "index": {
     "title": "Driving Lesson Packages",
@@ -533,7 +534,7 @@
     },
     "complaints": {
       "title": "Complaints",
-      "body": "Complaints can be sent to info@miranrijschool.nl. We aim to respond within 5 working days."
+      "body": "Complaints can be sent to info{'@'}miranrijschool.nl. We aim to respond within 5 working days."
     }
   }
   ,

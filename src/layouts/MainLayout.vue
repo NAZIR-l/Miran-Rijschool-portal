@@ -728,7 +728,7 @@ export default defineComponent({
 
 .layout-wrap {
   display: flex;
-  padding: 0 24px;
+  padding: 0 2px;
   gap: 24px;
 }
 .layout-wrap.drawer-open {
@@ -737,6 +737,7 @@ export default defineComponent({
 .sidebar {
   width: 220px;
   padding: 16px 0;
+  margin : 0 10px;
 }
 @media (max-width: 1024px) {
   .sidebar {
@@ -914,7 +915,7 @@ export default defineComponent({
 
 @media (max-width: 768px) {
   .content-container {
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 .footer-wrap {
