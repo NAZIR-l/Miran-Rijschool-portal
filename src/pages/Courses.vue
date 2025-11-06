@@ -620,7 +620,7 @@ export default defineComponent({
   gap: 28px;
   margin-top: 24px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
