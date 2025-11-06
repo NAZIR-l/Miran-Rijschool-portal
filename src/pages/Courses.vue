@@ -331,12 +331,16 @@ export default defineComponent({
           // Authenticated user - use purchase endpoint
           response = await api.post(`/payments/purchase/${pkg.id}`);
         } else {
-          // Guest user - use checkout endpoint
-          response = await api.post('/payments/checkout', {
-            courseId: pkg.id,
-            privacyAccepted: true,
-            marketingOptIn: false
+          // Guest user - redirect to checkout page with course info
+          // The checkout page will handle the enrollment check
+          router.push({
+            path: '/checkout',
+            query: {
+              courseId: pkg.id,
+              courseType: activeTab.value
+            }
           });
+          return;
         }
 
         if (response.data?.checkoutUrl) {
@@ -345,7 +349,16 @@ export default defineComponent({
         }
       } catch (error) {
         console.error("Failed to initiate payment:", error);
-        if ($q && $q.notify) {
+        
+        // Handle specific error for existing enrollment
+        if (error.response?.status === 400 && error.response?.data?.message?.includes('enrollment')) {
+          $q.notify({
+            type: "warning",
+            message: t("packages.already_enrolled") || "You already have an active enrollment for this course",
+            position: "top",
+            timeout: 5000
+          });
+        } else {
           $q.notify({
             type: "negative",
             message: error.response?.data?.message || t("errors.payment_failed") || "Failed to initiate payment",
@@ -425,13 +438,16 @@ export default defineComponent({
           // Authenticated user - use purchase endpoint
           response = await api.post(`/payments/purchase/${selectedExamData.id}`);
         } else {
-          // Guest user - use checkout endpoint
-          response = await api.post('/payments/checkout', {
-            courseId: selectedExamData.id,
-            plan: selectedExam.value.replace('exam-', ''), // Convert exam-deluxe to deluxe
-            privacyAccepted: true,
-            marketingOptIn: false
+          // Guest user - redirect to checkout page with course info
+          // The checkout page will handle the enrollment check
+          router.push({
+            path: '/checkout',
+            query: {
+              courseId: selectedExamData.id,
+              plan: selectedExam.value.replace('exam-', '') // Convert exam-deluxe to deluxe
+            }
           });
+          return;
         }
 
         if (response.data?.checkoutUrl) {
@@ -440,7 +456,16 @@ export default defineComponent({
         }
       } catch (error) {
         console.error("Failed to initiate payment:", error);
-        if ($q && $q.notify) {
+        
+        // Handle specific error for existing enrollment
+        if (error.response?.status === 400 && error.response?.data?.message?.includes('enrollment')) {
+          $q.notify({
+            type: "warning",
+            message: t("packages.already_enrolled") || "You already have an active enrollment for this course",
+            position: "top",
+            timeout: 5000
+          });
+        } else {
           $q.notify({
             type: "negative",
             message: error.response?.data?.message || t("errors.payment_failed") || "Failed to initiate payment",
